@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlbyCorp.JQLBuilder", "AlbyCorp.JQLBuilder\AlbyCorp.JQLBuilder.csproj", "{3E794B9A-2F6A-4DDC-A1B6-C09ACD1831C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlbyCorp.JQLBuilder.Tests", "AlbyCorp.JQLBuilder.Tests\AlbyCorp.JQLBuilder.Tests.csproj", "{19AC8E20-14F9-4350-B106-6AADBFA75029}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E794B9A-2F6A-4DDC-A1B6-C09ACD1831C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E794B9A-2F6A-4DDC-A1B6-C09ACD1831C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E794B9A-2F6A-4DDC-A1B6-C09ACD1831C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E794B9A-2F6A-4DDC-A1B6-C09ACD1831C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19AC8E20-14F9-4350-B106-6AADBFA75029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19AC8E20-14F9-4350-B106-6AADBFA75029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19AC8E20-14F9-4350-B106-6AADBFA75029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19AC8E20-14F9-4350-B106-6AADBFA75029}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
