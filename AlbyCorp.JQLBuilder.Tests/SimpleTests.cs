@@ -1,7 +1,7 @@
 namespace AlbyCorp.JQLBuilder.Tests;
 
-using Operators;
 using Queries;
+using Types;
 
 [TestClass]
 public class SimpleTests
@@ -9,6 +9,7 @@ public class SimpleTests
     const int ProjectId = 12345;
     const string Project1 = "CLOVER";
     const string Project2 = "HEARTH";
+    const string Project3 = "SPADE";
     const string ProjectLead = "hulk@avengers.world";
     const string Component1 = "Black Bull";
     const string Component2 = "Golder Dawn";
@@ -54,6 +55,36 @@ public class SimpleTests
             .OrderBy(f => f.Project)
             .ThenByDescending(f => f.Assignee)
             .ThenBy(f => f.Assignee)
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void TestMethod4()
+    {
+        const string expected = "project = \"CLOVER\" and (project = 12345 or project in (\"CLOVER\", 12345))";
+        
+        var actual = JqlBuilder.Query
+            .Where(f => f.Project == Project1)
+            .And(f => (f.Project == ProjectId) | f.Project.In(Project1, ProjectId))
+            .ToString();
+        
+        var actual1 = JqlBuilder.Query
+            .Where(f => f.Project == Project1)
+            .And(f => (f.Project == ProjectId) | f.Project == "CAZZO" & f.Project == "FIGA")
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }    
+    [TestMethod]
+    public void TestMethod5()
+    {
+        var expected = $"project = {Project1} and (project = {ProjectId} or project = {Project2} and project = {Project3})";
+        
+        var actual = JqlBuilder.Query
+            .Where(f => f.Project == Project1)
+            .And(f => (f.Project == ProjectId) | f.Project == Project2 & f.Project == Project3)
             .ToString();
 
         Assert.AreEqual(expected, actual);

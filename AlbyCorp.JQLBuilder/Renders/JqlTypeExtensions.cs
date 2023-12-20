@@ -1,7 +1,7 @@
 ﻿namespace AlbyCorp.JQLBuilder.Renders;
 
 using System.Diagnostics;
-using Types.Abstract;
+using Types;
 
 internal static class JqlTypeExtensions
 {
@@ -10,7 +10,7 @@ internal static class JqlTypeExtensions
         switch (type)
         {
             case JqlType.Operator f:
-                render.Operator(f.Left, f.Name, f.Right);
+                render.Operator(f.Left, f.Name, f.Right, f.Priority);
                 break;
             case JqlValue { Value: JqlType.Field s }:
                 render.Field(s.Value);

@@ -1,4 +1,4 @@
-﻿namespace AlbyCorp.JQLBuilder.Types.Abstract;
+﻿namespace AlbyCorp.JQLBuilder.Types;
 
 public abstract class JqlValue(object value)
 {

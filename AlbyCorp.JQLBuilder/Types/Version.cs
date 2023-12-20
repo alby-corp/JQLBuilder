@@ -1,7 +1,5 @@
 ﻿namespace AlbyCorp.JQLBuilder.Types;
 
-using Abstract;
-
 public class Version(object value) : JqlValue(value), IJqlType.IEquatable<Version>, IJqlType.IComparable<Version>
 {
     public static Bool operator >(Version left, Version right) => JqlType.GreaterThan(left, right);

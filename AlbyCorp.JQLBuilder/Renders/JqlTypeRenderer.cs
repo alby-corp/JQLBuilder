@@ -1,7 +1,8 @@
 ﻿namespace AlbyCorp.JQLBuilder.Renders;
 
 using System.Text;
-using Types.Abstract;
+using Enums;
+using Types;
 
 internal class JqlTypeRenderer(StringBuilder builder) : IJqlTypeRender
 {
@@ -20,15 +21,17 @@ internal class JqlTypeRenderer(StringBuilder builder) : IJqlTypeRender
     public void Number(int value)
         => builder.Append(value);
 
-    public void Operator(IJqlType left, string name, IJqlType right)
+    public void Operator(IJqlType left, string name, IJqlType right, Priority priority)
     {
-        builder.Append('(');
+        var render = right is JqlType.Operator o && o.Priority <= priority;
+        
         left.Render(this);
         builder.Append(' ');
         builder.Append(name);
         builder.Append(' ');
+        if(render) builder.Append('(');
         right.Render(this);
-        builder.Append(')');
+        if(render) builder.Append(')');
     }
 
     public void Collection(IReadOnlyList<IJqlType> values)

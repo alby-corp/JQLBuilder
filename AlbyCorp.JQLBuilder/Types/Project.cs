@@ -1,7 +1,5 @@
 ﻿namespace AlbyCorp.JQLBuilder.Types;
 
-using Abstract;
-
 public class Project(object value) : JqlValue(value), IJqlType.IEquatable<Project>
 {
     static ProjectFunctions Functions => new ProjectFunctions();
@@ -11,11 +9,8 @@ public class Project(object value) : JqlValue(value), IJqlType.IEquatable<Projec
     public static implicit operator Project(string value) => new Project(value);
     public static implicit operator Project(int value) => new Project(value);
 
-    public Bool In(Func<ProjectFunctions, IJqlType.ICollection<Project>> functions) =>
-        new JqlType.Operator(this, "in", functions(Functions));
-
-    public Bool NotIn(Func<ProjectFunctions, IJqlType.ICollection<Project>> functions) =>
-        new JqlType.Operator(this, "not in", functions(Functions));
+    public Bool In(Func<ProjectFunctions, IJqlType.ICollection<Project>> functions) => this.In(functions(Functions));
+    public Bool NotIn(Func<ProjectFunctions, IJqlType.ICollection<Project>> functions) => this.NotIn(functions(Functions));
 
     public class ProjectFunctions
     {

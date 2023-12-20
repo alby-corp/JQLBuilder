@@ -3,7 +3,6 @@
 namespace AlbyCorp.JQLBuilder.Global;
 
 using Types;
-using Types.Abstract;
 
 public class Fields
 {
