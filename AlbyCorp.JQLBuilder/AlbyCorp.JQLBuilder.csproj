@@ -16,9 +16,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="Assert\icon.png">
-        <Pack>True</Pack>
-      </None>
+        <None Update="Assert\icon.png">
+            <Pack>True</Pack>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Types\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AlbyCorp.JQLBuilder.Types\AlbyCorp.JQLBuilder.Types.csproj"/>
     </ItemGroup>
 
 </Project>

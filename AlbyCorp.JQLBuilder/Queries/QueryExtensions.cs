@@ -2,7 +2,7 @@
 
 using Enums;
 using Global;
-using Types;
+using Types.Primitive;
 
 public static class QueryExtensions
 {

@@ -2,7 +2,7 @@
 
 using System.Text;
 using Renders;
-using Types;
+using Types.Primitive;
 
 public class Query(Bool? filter)
 {

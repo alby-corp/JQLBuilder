@@ -1,7 +1,7 @@
 namespace AlbyCorp.JQLBuilder.Tests;
 
 using Queries;
-using Types;
+using Types.Support;
 
 [TestClass]
 public class SimpleTests
@@ -18,7 +18,7 @@ public class SimpleTests
     public void TestMethod1()
     {
         var expected =
-            $"""(((((project = "{Project1}") and (project = {ProjectId})) and (project in ("{Project1}", {ProjectId}))) and ((project in projectsLeadByUser("{ProjectLead}")) or (project = "{Project1}"))) and (project not in projectsWhereUserHasRole("{ProjectLead}")))""";
+            $"""project = "{Project1}" AND project = {ProjectId} AND project in ("{Project1}", {ProjectId}) AND (project in projectsLeadByUser("{ProjectLead}") OR project = "{Project1}") AND project not in projectsWhereUserHasRole("{ProjectLead}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
@@ -34,7 +34,7 @@ public class SimpleTests
     [TestMethod]
     public void TestMethod2()
     {
-        const string expected = $"""((project = "{Project1}") or (project = "{Project2}")) order by project asc, assignee desc""";
+        const string expected = $"""project = "{Project1}" OR project = "{Project2}" order by project asc, assignee desc""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
@@ -59,32 +59,54 @@ public class SimpleTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void TestMethod4()
     {
-        const string expected = "project = \"CLOVER\" and (project = 12345 or project in (\"CLOVER\", 12345))";
-        
+        const string expected = "project = \"CLOVER\" AND (project = 12345 OR project in (\"CLOVER\", 12345))";
+
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
             .And(f => (f.Project == ProjectId) | f.Project.In(Project1, ProjectId))
             .ToString();
-        
-        var actual1 = JqlBuilder.Query
-            .Where(f => f.Project == Project1)
-            .And(f => (f.Project == ProjectId) | f.Project == "CAZZO" & f.Project == "FIGA")
-            .ToString();
 
         Assert.AreEqual(expected, actual);
-    }    
+    }
+
     [TestMethod]
     public void TestMethod5()
     {
-        var expected = $"project = {Project1} and (project = {ProjectId} or project = {Project2} and project = {Project3})";
+        var expected = $"""project = "{Project1}" AND (project = {ProjectId} OR project = "{Project2}" AND project = "{Project3}")""";
         
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
-            .And(f => (f.Project == ProjectId) | f.Project == Project2 & f.Project == Project3)
+            .And(f => (f.Project == ProjectId) | ((f.Project == Project2) & (f.Project == Project3)))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestMethod6()
+    {
+        var expected = $"""NOT(project = "{Project1}") AND (project = {ProjectId} OR project = "{Project2}" AND project = "{Project3}")""";
+        
+        var actual = JqlBuilder.Query
+            .Where(f => !(f.Project == Project1))
+            .And(f => (f.Project == ProjectId) | ((f.Project == Project2) & (f.Project == Project3)))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestMethod7()
+    {
+        var expected = $"""NOT(NOT(project = "{Project1}")) AND (project = {ProjectId} OR project = "{Project2}" AND project = "{Project3}")""";
+        
+        var actual = JqlBuilder.Query
+            .Where(f => !!(f.Project == Project1))
+            .And(f => (f.Project == ProjectId) | ((f.Project == Project2) & (f.Project == Project3)))
             .ToString();
 
         Assert.AreEqual(expected, actual);

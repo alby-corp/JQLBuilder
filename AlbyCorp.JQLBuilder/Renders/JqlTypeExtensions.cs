@@ -1,7 +1,8 @@
 ﻿namespace AlbyCorp.JQLBuilder.Renders;
 
 using System.Diagnostics;
-using Types;
+using Types.Abstract;
+using Types.Primitive;
 
 internal static class JqlTypeExtensions
 {
@@ -9,22 +10,25 @@ internal static class JqlTypeExtensions
     {
         switch (type)
         {
-            case JqlType.Operator f:
-                render.Operator(f.Left, f.Name, f.Right, f.Priority);
+            case BinaryOperator f:
+                render.BinaryOperator(f.Left, f.Name, f.Right, f.Priority);
                 break;
-            case JqlValue { Value: JqlType.Field s }:
+            case UnaryOperator f:
+                render.UnaryOperator(f.Value, f.Name, f.Direction);
+                break;
+            case IJqlValue { Value: Field s }:
                 render.Field(s.Value);
                 break;
-            case JqlValue { Value : string s }:
+            case IJqlValue { Value : string s }:
                 render.String(s);
                 break;
-            case JqlValue { Value : bool s }:
+            case IJqlValue { Value : bool s }:
                 render.Bool(s);
                 break;
-            case JqlValue { Value : int s }:
+            case IJqlValue { Value : int s }:
                 render.Number(s);
                 break;
-            case JqlValue { Value : IReadOnlyList<IJqlType> s }:
+            case IJqlValue { Value : IReadOnlyList<IJqlType> s }:
                 render.Collection(s);
                 break;
             default:

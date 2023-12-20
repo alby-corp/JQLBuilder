@@ -1,7 +1,7 @@
 ﻿namespace AlbyCorp.JQLBuilder.Renders;
 
-using Enums;
-using Types;
+using Types.Abstract;
+using Types.Enum;
 
 internal interface IJqlTypeRender
 {
@@ -13,7 +13,8 @@ internal interface IJqlTypeRender
 
     void Number(int value);
 
-    void Operator(IJqlType left, string name, IJqlType right, Priority priority);
+    void BinaryOperator(IJqlType left, string name, IJqlType right, Priority priority);
+    public void UnaryOperator(IJqlType left, string name, Direction direction);
 
     void Collection(IReadOnlyList<IJqlType> values);
 }
