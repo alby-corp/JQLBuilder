@@ -4,9 +4,11 @@ using Abstract;
 using Primitive;
 using Support;
 
-public class Version : IJqlValue, IJqlMembership<Version>
+#pragma warning disable CS0660, CS0661
+public class Version(object value) : IJqlValue, IJqlMembership<Version>
+#pragma warning restore CS0660, CS0661
 {
-    public required object Value { get; init; }
+    object IJqlValue.Value { get; init; } = value;
 
     public static Bool operator ==(Version left, Version right) => left.Equal(right);
     public static Bool operator !=(Version left, Version right) => left.NotEqual(right);

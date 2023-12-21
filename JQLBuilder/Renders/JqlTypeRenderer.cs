@@ -32,17 +32,24 @@ internal class JqlTypeRenderer(StringBuilder builder) : IJqlTypeRender
 
     public void UnaryOperator(IJqlType left, string name, Direction direction)
     {
-        if (direction == Direction.Prefix)
+        if (left is BinaryOperator ||
+            (direction == Direction.Suffix && left is UnaryOperator { Direction: Direction.Prefix }))
         {
-            builder.Append(name).Append('(');
+            if (direction == Direction.Prefix) builder.Append(name);
+            builder.Append('(');
+
             left.Render(this);
+
             builder.Append(')');
+            if (direction == Direction.Suffix) builder.Append(' ').Append(name);
         }
         else
         {
-            builder.Append('(');
+            if (direction == Direction.Prefix) builder.Append(name).Append(' ');
+
             left.Render(this);
-            builder.Append(')').Append(' ').Append(name);
+
+            if (direction == Direction.Suffix) builder.Append(' ').Append(name);
         }
     }
 

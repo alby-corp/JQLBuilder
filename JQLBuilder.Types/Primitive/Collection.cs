@@ -2,7 +2,7 @@
 
 using Abstract;
 
-public class JqlCollection<T> : IJqlValue, IJqlCollection<T> where T : IJqlType
+public class JqlCollection<T>(object value) : IJqlValue, IJqlCollection<T> where T : IJqlType
 {
-    public required object Value { get; init; }
+    object IJqlValue.Value { get; init; } = value;
 }

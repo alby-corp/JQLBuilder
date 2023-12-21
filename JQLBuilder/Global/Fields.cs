@@ -7,6 +7,6 @@ public class Fields
 {
     public static Fields All { get; } = new();
 
-    public Project Project { get; } = new() { Value = new Field("project") };
-    public Version Version { get; } = new() { Value = new Field("version") };
+    public Project Project { get; } = new(new Field("project"));
+    public Version Version { get; } = new(new Field("version"));
 }

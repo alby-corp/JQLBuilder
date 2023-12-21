@@ -10,5 +10,5 @@ public interface IJqlMembership<in T> : IJqlType where T : IJqlMembership<T>;
 
 public interface IJqlValue : IJqlType
 {
-    object Value { get; }
+    object Value { get; init; }
 }

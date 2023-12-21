@@ -4,5 +4,5 @@ using Queries;
 
 public static class JqlBuilder
 {
-    public static InitialQuery InitialQuery { get; } = new();
+    public static InitialQuery Query { get; } = new();
 }
