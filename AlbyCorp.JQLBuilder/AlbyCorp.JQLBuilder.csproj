@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Title>JQLBuilder</Title>
+        <RootNamespace>JQLBuilder</RootNamespace>
         <Authors>Alberto Viezzi &amp; Roald Humar</Authors>
         <PackageProjectUrl>https://github.com/alby-corp/jql-builder</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/alby-corp/jql-builder/blob/main/LICENSE</PackageLicenseUrl>
@@ -19,10 +20,6 @@
         <None Update="Assert\icon.png">
             <Pack>True</Pack>
         </None>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Types\"/>
     </ItemGroup>
 
     <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace AlbyCorp.JQLBuilder.Enums;
+﻿namespace JQLBuilder.Enums;
 
 public enum Order
 {

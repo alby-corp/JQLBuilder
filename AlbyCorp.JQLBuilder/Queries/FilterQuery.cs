@@ -1,10 +1,10 @@
-﻿namespace AlbyCorp.JQLBuilder.Queries;
+﻿namespace JQLBuilder.Queries;
 
 using System.Text;
+using global::JqlBuilder.Types.Primitive;
 using Renders;
-using Types.Primitive;
 
-public class Query(Bool? filter)
+public class FilterQuery(Bool? filter)
 {
     internal Bool? Filter { get; } = filter;
 

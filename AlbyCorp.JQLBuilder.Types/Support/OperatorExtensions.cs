@@ -1,4 +1,4 @@
-﻿namespace AlbyCorp.JQLBuilder.Types.Support;
+﻿namespace JqlBuilder.Types.Support;
 
 using Abstract;
 using Enum;
@@ -16,49 +16,49 @@ internal static class OperatorExtensions
     ///     Creates a binary operator for the equality comparison (==).
     /// </summary>
     internal static BinaryOperator Equal(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, "=", right, Priority.Equality);
+        new(left, "=", right, Priority.Equality);
 
     /// <summary>
     ///     Creates a binary operator for the inequality comparison (!=).
     /// </summary>
     internal static BinaryOperator NotEqual(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, "!=", right, Priority.Equality);
+        new(left, "!=", right, Priority.Equality);
 
     /// <summary>
     ///     Creates a binary operator for the greater-than comparison (>).
     /// </summary>
     internal static BinaryOperator GreaterThan(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, ">", right, Priority.Relation);
+        new(left, ">", right, Priority.Relation);
 
     /// <summary>
     ///     Creates a binary operator for the greater-than-or-equal comparison (>=).
     /// </summary>
     internal static BinaryOperator GreaterThanOrEqual(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, ">=", right, Priority.Relation);
+        new(left, ">=", right, Priority.Relation);
 
     /// <summary>
     ///     Creates a binary operator for the less-than comparison (<).
     /// </summary>
     internal static BinaryOperator LessThan(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, "<", right, Priority.Relation);
+        new(left, "<", right, Priority.Relation);
 
     /// <summary>
     ///     Creates a binary operator for the less-than-or-equal comparison (<=).
     /// </summary>
     internal static BinaryOperator LessThanOrEqual(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, "<=", right, Priority.Relation);
+        new(left, "<=", right, Priority.Relation);
 
     /// <summary>
     ///     Creates a binary operator for the AND logical operation (!).
     /// </summary>
     internal static BinaryOperator And(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, "AND", right, Priority.LogicalAnd);
+        new(left, "AND", right, Priority.LogicalAnd);
 
     /// <summary>
     ///     Creates a binary operator for the OR logical operation (||).
     /// </summary>
     internal static BinaryOperator Or(this IJqlType left, IJqlType right) =>
-        new BinaryOperator(left, "OR", right, Priority.LogicalOr);
+        new(left, "OR", right, Priority.LogicalOr);
 
     /// <summary>
     ///     Creates a unary operator for the NOT logical operation (!).

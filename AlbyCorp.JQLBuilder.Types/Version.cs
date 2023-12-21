@@ -1,4 +1,4 @@
-﻿namespace AlbyCorp.JQLBuilder.Types;
+﻿namespace JqlBuilder.Types;
 
 using Abstract;
 using Primitive;

@@ -1,9 +1,9 @@
-﻿namespace AlbyCorp.JQLBuilder.Global;
+﻿namespace JQLBuilder.Global;
 
 public class OrderingFields
 {
-    public static OrderingFields All { get; } = new OrderingFields();
+    public static OrderingFields All { get; } = new();
 
-    public string Project { get; } = "project";
-    public string Assignee { get; } = "assignee";
+    public static string Project => "project";
+    public static string Assignee => "assignee";
 }

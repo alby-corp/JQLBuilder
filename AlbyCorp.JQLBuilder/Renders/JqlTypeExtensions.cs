@@ -1,8 +1,8 @@
-﻿namespace AlbyCorp.JQLBuilder.Renders;
+﻿namespace JQLBuilder.Renders;
 
 using System.Diagnostics;
-using Types.Abstract;
-using Types.Primitive;
+using global::JqlBuilder.Types.Abstract;
+using global::JqlBuilder.Types.Primitive;
 
 internal static class JqlTypeExtensions
 {

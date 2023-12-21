@@ -1,8 +1,8 @@
-﻿namespace AlbyCorp.JQLBuilder;
+﻿namespace JQLBuilder;
 
 using Queries;
 
 public static class JqlBuilder
 {
-    public static QueryBuilder Query { get; } = new QueryBuilder();
+    public static InitialQuery InitialQuery { get; } = new();
 }

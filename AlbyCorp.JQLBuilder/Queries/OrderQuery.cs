@@ -1,11 +1,11 @@
-﻿namespace AlbyCorp.JQLBuilder.Queries;
+﻿namespace JQLBuilder.Queries;
 
 using System.Text;
 using Enums;
 
-public class OrderedQuery(Query? query, IReadOnlyList<(string Value, Order Order)> orderings)
+public class OrderQuery(FilterQuery? query, IReadOnlyList<(string Value, Order Order)> orderings)
 {
-    internal Query? Query { get; init; } = query;
+    internal FilterQuery? Query { get; } = query;
     internal IReadOnlyList<(string Value, Order Order)> Orderings { get; } = orderings;
 
     void Build(StringBuilder builder)

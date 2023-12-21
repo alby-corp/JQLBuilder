@@ -1,14 +1,12 @@
-﻿// ReSharper disable CheckNamespace
+﻿namespace JQLBuilder.Global;
 
-namespace AlbyCorp.JQLBuilder.Global;
-
-using Types;
-using Types.Primitive;
+using global::JqlBuilder.Types;
+using global::JqlBuilder.Types.Primitive;
 
 public class Fields
 {
-    public static Fields All { get; } = new Fields();
+    public static Fields All { get; } = new();
 
-    public Project Project { get; } = new Project { Value = new Field("project") };
-    public Version Version { get; } = new Version { Value = new Field("version") };
+    public Project Project { get; } = new() { Value = new Field("project") };
+    public Version Version { get; } = new() { Value = new Field("version") };
 }

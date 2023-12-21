@@ -1,9 +1,9 @@
-﻿namespace AlbyCorp.JQLBuilder.Renders;
+﻿namespace JQLBuilder.Renders;
 
 using System.Text;
-using Types.Abstract;
-using Types.Enum;
-using Types.Primitive;
+using global::JqlBuilder.Types.Abstract;
+using global::JqlBuilder.Types.Enum;
+using global::JqlBuilder.Types.Primitive;
 
 internal class JqlTypeRenderer(StringBuilder builder) : IJqlTypeRender
 {

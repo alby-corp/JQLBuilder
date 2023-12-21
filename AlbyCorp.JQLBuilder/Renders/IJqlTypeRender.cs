@@ -1,7 +1,7 @@
-﻿namespace AlbyCorp.JQLBuilder.Renders;
+﻿namespace JQLBuilder.Renders;
 
-using Types.Abstract;
-using Types.Enum;
+using global::JqlBuilder.Types.Abstract;
+using global::JqlBuilder.Types.Enum;
 
 internal interface IJqlTypeRender
 {

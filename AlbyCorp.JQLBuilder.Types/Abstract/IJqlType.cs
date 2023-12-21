@@ -1,4 +1,4 @@
-﻿namespace AlbyCorp.JQLBuilder.Types.Abstract;
+﻿namespace JqlBuilder.Types.Abstract;
 
 public interface IJqlType;
 

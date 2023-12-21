@@ -1,16 +1,17 @@
-﻿namespace AlbyCorp.JQLBuilder.Types;
+﻿namespace JqlBuilder.Types;
 
 using Abstract;
+using JQLBuilder;
 using Primitive;
 using Support;
 
 public class Project : IJqlValue, IJqlNullable, IJqlMembership<Project>
 {
-    static ProjectFunctions Functions => new ProjectFunctions();
+    static ProjectFunctions Functions => new();
     public required object Value { get; init; }
 
-    public static implicit operator Project(string value) => new Project { Value = value };
-    public static implicit operator Project(int value) => new Project { Value = value };
+    public static implicit operator Project(string value) => new() { Value = value };
+    public static implicit operator Project(int value) => new() { Value = value };
 
     public static Bool operator ==(Project left, Project right) => left.Equal(right);
     public static Bool operator !=(Project left, Project right) => left.NotEqual(right);

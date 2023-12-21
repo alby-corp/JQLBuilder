@@ -1,4 +1,4 @@
-﻿namespace AlbyCorp.JQLBuilder.Types.Enum;
+﻿namespace JqlBuilder.Types.Enum;
 
 public enum Priority
 {
