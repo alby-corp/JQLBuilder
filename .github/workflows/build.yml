@@ -1,0 +1,28 @@
+﻿name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-build-job:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_FOLDER: ./JQLBuilder
+      
+    steps:
+        # checking out the repository
+      - uses: actions/checkout@v2
+        
+        # setting up .NET Core SDK
+      - uses: actions/setup-dotnet@v1
+        with:
+          # SDK Version to use.
+          dotnet-version: "8.0.x"
+      
+        # building the projects
+      - name: Build
+        working-directory: ${{env.PROJECT_FOLDER}}
+        run: dotnet build --configuration Release

@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFrameworks>net8.0;net5.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
         <Title>JQLBuilder</Title>
         <Authors>Alberto Viezzi &amp; Roald Humar</Authors>
         <PackageProjectUrl>https://github.com/alby-corp/jql-builder</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/alby-corp/jql-builder/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageLicense>https://github.com/alby-corp/jql-builder/blob/main/LICENSE</PackageLicense>
         <RepositoryUrl>https://github.com/alby-corp/jql-builder</RepositoryUrl>
         <PackageTags>jql builder atlassian</PackageTags>
         <Version>1.0.0</Version>
