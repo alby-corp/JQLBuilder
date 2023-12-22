@@ -1,145 +1,181 @@
 # JQL Builder
 
-This repository houses a C# library designed to provide a JQL (Jira Query Language) builder, aiding programmers in constructing JQL queries programmatically. At its current stage, the package is considered alpha, implementing only partial functionality for the Project and Version fields. However, the library's structure is well-defined.
+This repository houses a C# library designed to provide a JQL (Jira Query Language) builder, aiding programmers in constructing JQL queries programmatically. 
 
-While a comprehensive readme is currently deemed excessive, here are some examples demonstrating how the library is intended to be used, with a focus on operators and query production.
+> **_NOTE:_** At its current stage, the package is considered alpha, implementing only partial functionality for the Project and Version fields.
 
-## Example Usage:
+However, the library's structure is well-defined. While a comprehensive readme is currently deemed excessive, here are some examples demonstrating how the library is intended to be used, with a focus on operators and query production.
 
-### Example 1:
+## Introduction
+The JqlBuilder library provides a fluent interface for constructing Jira Query Language (JQL) queries in a flexible and expressive manner. 
+This README serves as a guide to help you understand how to use the library effectively.
+
+## Getting Started
+To start building JQL queries, use the ```JqlBuilder.Query``` entry point. The library follows a fluent API design, allowing you to chain methods to construct complex queries.
 
 ```csharp
-const string expected = """project = "CLOVER" AND project = 12345 AND project in ("HEARTH", 54321) AND (project in projectsLeadByUser("Yami") OR project = "Black Bull") AND project not in projectsWhereUserHasRole("Yuno")""";
+JqlBuilder.Query
+    .Where(f => f.Project == "example")
+    .And(f => f.Assignee == "john.doe")
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Priority)
+    .ToString();
+```
 
-var actual = JqlBuilder.Query
+## Query Construction
+The library provides extension methods for constructing various parts of a JQL query:
+
+### Filtering
+- **Where:** Start the query with a filter condition.
+- **And:** Add an AND condition to the existing filter.
+- **Or:** Add an OR condition to the existing filter.
+
+```csharp
+JqlBuilder.Query
+    .Where(f => f.Project == "example")
+    .And(f => f.Assignee == "john.doe")
+    .Or(f => f.Status == "In Progress");
+```
+
+### Ordering
+- **OrderBy:** Specify the primary ordering field.
+- **OrderByDescending:** Specify the primary ordering field in descending order.
+- **ThenBy:** Add secondary ordering fields.
+- **ThenByDescending:** Add secondary ordering fields in descending order.
+
+```csharp
+JqlBuilder.Query
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Priority)
+    .ThenBy(f => f.Assignee);
+```
+
+### Building
+The ```ToString``` method is used to obtain the final JQL query string.
+
+```csharp
+JqlBuilder.Query
+    .Where(f => f.Project == "example")
+    .And(f => f.Assignee == "john.doe")
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Priority)
+    .ToString();
+```
+
+## Examples:
+Below are examples demonstrating the usage of the JqlBuilder library based on the provided test class.
+
+### Example 1: Basic Query Construction
+```csharp
+JqlBuilder.Query
     .Where(f => f.Project == "CLOVER")
     .And(f => f.Project == 12345)
-    .And(f => f.Project.In("HEARTH", 54321))
-    .And(f => f.Project.In(functions => functions.LeadByUser("Yami")) | (f.Project == "Black Bull"))
-    .And(f => f.Project.NotIn(functions => functions.WhereUserHasRole("Yuno")))
+    .And(f => f.Project.In("CLOVER", 12345))
+    .And(f => f.Project.In(func => func.LeadByUser("hulk@avengers.world")) | (f.Project == "CLOVER"))
+    .And(f => f.Project.NotIn(func => func.WhereUserHasRole("hulk@avengers.world")))
     .ToString();
-
-Assert.AreEqual(expected, actual);
+```
+**Generated JQL:** 
+```jql 
+    project = "CLOVER" AND project = 12345 AND project in ("CLOVER", 12345) AND (project in projectsLeadByUser("hulk@avengers.world") OR project = "CLOVER") AND project not in projectsWhereUserHasRole("hulk@avengers.world")
 ```
 
-### Example 2:
-
+### Example 2: OR Condition with Ordering
 ```csharp
-[TestMethod]
-public void TestMethod2()
-{
-    const string expected = """project = "CLOVER" OR project = "HEARTH" order by project asc, assignee desc""";
-
-    var actual = JqlBuilder.Query
-        .Where(f => f.Project == "CLOVER")
-        .Or(f => f.Project == "HEARTH")
-        .OrderBy(f => OrderingFields.Project)
-        .ThenByDescending(f => OrderingFields.Assignee)
-        .ToString();
-
-    Assert.AreEqual(expected, actual);
-}
+JqlBuilder.Query
+    .Where(f => f.Project == "CLOVER")
+    .Or(f => f.Project == "HEARTH")
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Assignee)
+    .ToString();
+```
+**Generated JQL:** 
+```jql
+    project = "CLOVER" OR project = "HEARTH" order by project asc, assignee desc
 ```
 
-### Example 3:
-
+### Example 3: Ordering Without Filtering
 ```csharp
-[TestMethod]
-public void TestMethod3()
-{
-    const string expected = """order by project asc, assignee desc, assignee asc""";
-
-    var actual = JqlBuilder.Query
-        .OrderBy(f => OrderingFields.Project)
-        .ThenByDescending(f => OrderingFields.Assignee)
-        .ThenBy(f => OrderingFields.Assignee)
-        .ToString();
-
-    Assert.AreEqual(expected, actual);
-}
+JqlBuilder.Query
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Assignee)
+    .ThenBy(f => f.Assignee)
+    .ToString();
+```
+**Generated JQL:** 
+```jql
+    order by project asc, assignee desc, assignee asc
 ```
 
-### Example 4:
-
+### Example 4: Complex Nested Conditions
 ```csharp
-[TestMethod]
-public void TestMethod4()
-{
-    const string expected = """project = "CLOVER" AND (project = 12345 OR project in ("HEARTH", 54321))""";
-
-    var actual = JqlBuilder.Query
-        .Where(f => f.Project == "CLOVER")
-        .And(f => (f.Project == 12345) | f.Project.In("HEARTH", 54321))
-        .ToString();
-
-    Assert.AreEqual(expected, actual);
-}
+JqlBuilder.Query
+    .Where(f => f.Project == "CLOVER")
+    .And(f => (f.Project == 12345) | f.Project.In("CLOVER", 12345))
+    .ToString();
+```
+**Generated JQL:** 
+```jql
+    project = "CLOVER" AND (project = 12345 OR project in ("CLOVER", 12345))
 ```
 
-### Example 5:
-
+### Example 5: Nested AND and OR Conditions
 ```csharp
-[TestMethod]
-public void TestMethod5()
-{
-    const string expected = """project = "CLOVER" AND (project = 12345 OR project = "HEARTH" AND project = "SPADE")""";
-
-    var actual = JqlBuilder.Query
-        .Where(f => f.Project == "CLOVER")
-        .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
-        .ToString();
-
-    Assert.AreEqual(expected, actual);
-}
+JqlBuilder.Query
+    .Where(f => f.Project == "CLOVER")
+    .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
+    .ToString();
+```
+**Generated JQL:** 
+```jql
+    project = "CLOVER" AND (project = 12345 OR project = "HEARTH" AND project = "SPADE")
 ```
 
-### Example 6:
-
+### Example 6: NOT Conditions
 ```csharp
-[TestMethod]
-public void TestMethod6()
-{
-    const string expected = """NOT(project = "CLOVER") AND (project = {12345} OR project = "HEARTH" AND project = "SPADE")""";
-
-    var actual = JqlBuilder.Query
-        .Where(f => !(f.Project == "CLOVER"))
-        .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
-        .ToString();
-
-    Assert.AreEqual(expected, actual);
-}
+JqlBuilder.Query
+    .Where(f => !(f.Project == "CLOVER"))
+    .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
+    .ToString();
+```
+**Generated JQL:** 
+```jql
+    NOT(project = "CLOVER") AND (project = 12345 OR project = "HEARTH" AND project = "SPADE")
 ```
 
-### Example 7:
-
+### Example 7: Double NOT Conditions
 ```csharp
-[TestMethod]
-public void TestMethod7()
-{
-    const string expected = """NOT(NOT(project = "CLOVER")) AND (project = 12345 OR project = "HEARTH" AND project = "SPADE}")""";
-
-    var actual = JqlBuilder.Query
-        .Where(f => !!(f.Project == "CLOVER"))
-        .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
-        .ToString();
-
-    Assert.AreEqual(expected, actual);
-}
+JqlBuilder.Query
+    .Where(f => !!(f.Project == "CLOVER"))
+    .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
+    .ToString();
+```
+**Generated JQL:** 
+```jql
+    NOT NOT(project = "CLOVER") AND (project = 12345 OR project = "HEARTH" AND project = "SPADE")
 ```
 
-### Example 8:
-
+### Example 8: Double NOT Condition Only
 ```csharp
-[TestMethod]
-public void TestMethod8()
-{
-    const string expected = "project is NULL AND (project = 12345 OR project is not EMPTY)";
+JqlBuilder.Query
+    .Where(f => !!(f.Project == "CLOVER"))
+    .ToString();
+```
+**Generated JQL:**
 
-    var actual = JqlBuilder.Query
-        .Where(f => f.Project.Is(v => v.Null))
-        .And(f => (f.Project == 12345) | f.Project.IsNot(v => v.Empty))
-        .ToString();
+```jql 
+    NOT NOT(project = "CLOVER")
+```
 
-    Assert.AreEqual(expected, actual);
-}
+### Example 9: NULL and NOT EMPTY Conditions
+```csharp
+JqlBuilder.Query
+    .Where(f => f.Project.Is(v => v.Null))
+    .And(f => (f.Project == 12345) | f.Project.IsNot(v => v.Empty))
+    .ToString();
+```
+**Generated JQL:**
+
+```jql
+    project is NULL AND (project = 12345 OR project is not EMPTY)
 ```

@@ -10,14 +10,11 @@ public class SimpleTests
     const string Project2 = "HEARTH";
     const string Project3 = "SPADE";
     const string ProjectLead = "hulk@avengers.world";
-    const string Component1 = "Black Bull";
-    const string Component2 = "Golder Dawn";
 
     [TestMethod]
     public void TestMethod1()
     {
-        var expected =
-            $"""project = "{Project1}" AND project = {ProjectId} AND project in ("{Project1}", {ProjectId}) AND (project in projectsLeadByUser("{ProjectLead}") OR project = "{Project1}") AND project not in projectsWhereUserHasRole("{ProjectLead}")""";
+        var expected = $"""project = "{Project1}" AND project = {ProjectId} AND project in ("{Project1}", {ProjectId}) AND (project in projectsLeadByUser("{ProjectLead}") OR project = "{Project1}") AND project not in projectsWhereUserHasRole("{ProjectLead}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
@@ -33,8 +30,7 @@ public class SimpleTests
     [TestMethod]
     public void TestMethod2()
     {
-        const string expected =
-            $"""project = "{Project1}" OR project = "{Project2}" order by project asc, assignee desc""";
+        const string expected = $"""project = "{Project1}" OR project = "{Project2}" order by project asc, assignee desc""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
@@ -63,11 +59,11 @@ public class SimpleTests
     [TestMethod]
     public void TestMethod4()
     {
-        const string expected = "project = \"CLOVER\" AND (project = 12345 OR project in (\"CLOVER\", 12345))";
+        var expected = $"""project = "{Project1}" AND (project = {ProjectId} OR project in ("{Project2}", {ProjectId}))""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
-            .And(f => (f.Project == ProjectId) | f.Project.In(Project1, ProjectId))
+            .And(f => (f.Project == ProjectId) | f.Project.In(Project2, ProjectId))
             .ToString();
 
         Assert.AreEqual(expected, actual);
