@@ -1,5 +1,12 @@
 # JQL Builder
 
+![Build Development](https://github.com/alby-corp/JQLBuilder/actions/workflows/build.yml/badge.svg?branch=development)
+![Build Production](https://github.com/alby-corp/JQLBuilder/actions/workflows/build.yml/badge.svg?branch=main)
+![Test Development](https://github.com/alby-corp/JQLBuilder/actions/workflows/test.yml/badge.svg?branch=development)
+![Test Production](https://github.com/alby-corp/JQLBuilder/actions/workflows/test.yml/badge.svg?branch=main)
+![Publish Nuget](https://github.com/alby-corp/JQLBuilder/actions/workflows/release.yml/badge.svg)
+[![NuGet version (JQLBuilder)](https://img.shields.io/nuget/v/JQLBuilder.svg?style=flat-square)](https://www.nuget.org/packages/JQLBuilder/)
+
 This repository houses a C# library designed to provide a JQL (Jira Query Language) builder, aiding programmers in constructing JQL queries programmatically. 
 
 > **_NOTE:_** At its current stage, the package is considered alpha, implementing only partial functionality for the Project and Version fields.

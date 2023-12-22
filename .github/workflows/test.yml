@@ -1,10 +1,8 @@
-﻿name: Build and test
+﻿name: Tests
 
 on:
-  push:
-    branches: [development] # run tests on push to dev branch
   pull_request:
-    branches: [main] # OR run tests on pull requests to main branch
+    branches: [main, development] 
 
 jobs:
   Test:

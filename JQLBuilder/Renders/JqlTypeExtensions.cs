@@ -1,6 +1,5 @@
 ﻿namespace JQLBuilder.Renders;
 
-using System.Diagnostics;
 using Types.Abstract;
 using Types.Primitive;
 
@@ -32,7 +31,7 @@ internal static class JqlTypeExtensions
                 render.Collection(s);
                 break;
             default:
-                throw new UnreachableException();
+                throw new InvalidOperationException("Passed type is not mapped!");
         }
     }
 }

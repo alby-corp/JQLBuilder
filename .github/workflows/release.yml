@@ -1,8 +1,8 @@
 ﻿name: Publish nuget
 
 on:
-  push:
-    branches: [main] # run deployment on push to main branch
+  release:
+    types: [ published ]
 jobs:
   build:
     runs-on: ubuntu-latest
