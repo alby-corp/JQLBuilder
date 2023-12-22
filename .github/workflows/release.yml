@@ -1,0 +1,52 @@
+﻿name: Publish nuget
+
+on:
+  push:
+    branches: [main] # run deployment on push to main branch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      solution-file: JQLBuilder.sln
+      project: JQLBuilder      
+      PROJECT_FOLDER: ./JQLBuilder
+      PROJECT_FILE: JQLBuilder/JQLBuilder.csproj
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "8.0.x" # .NET SDK version to use.
+          
+      - name: Install dependencies # installing dependencies for all projects in the solution
+        run: dotnet restore ${{env.solution-file}}
+
+      - name: Test # running tests for all projects in the solution
+        run: dotnet test ${{env.solution-file}} --no-restore --verbosity normal
+      
+      # github.run_number is a number of the pipeline run. It is increased automatically.
+      # That's why we can use it to increase the version of the nuget package.
+      # Here we replace the last number in the version with github.run_number.
+      - name: Set version
+        run: |
+          echo "Buid version is ${{github.run_number}}"
+          sed -i "s/\(<Version>\([0-9]\+\.\)\{2\}\)\([0-9]\+\)/\1${{github.run_number}}/" ${{env.PROJECT_FILE}}       
+
+      - name: Build
+        working-directory: ${{env.PROJECT_FOLDER}}
+        run: dotnet build --configuration Release
+
+      - name: Pack
+        working-directory: ${{env.PROJECT_FOLDER}}
+        run: dotnet pack --configuration Release --no-build --output .
+      
+      # Here we use external public config file to publish nuget package.
+      # The script needs to know the path to the csproj file and the nuget API key.
+      - name: Publish nuget package
+        uses: brandedoutcast/publish-nuget@v2.5.2
+        with:
+          PROJECT_FILE_PATH: ${{env.PROJECT_FILE}}
+          NUGET_KEY: ${{secrets.SQLBUILDER_NUGET_API_KEY}}

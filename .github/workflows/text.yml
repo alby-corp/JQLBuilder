@@ -1,0 +1,25 @@
+﻿name: Build and test
+
+on:
+  push:
+    branches: [development] # run tests on push to dev branch
+  pull_request:
+    branches: [main] # OR run tests on pull requests to main branch
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    env:
+      solution-file: JQLBuilder.sln
+    steps:
+      - uses: actions/checkout@v2
+      - name: Backend build and test
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "8.0.x" # SDK Version to use.
+
+      - name: Install dependencies # installing dependencies for all projects in the solution
+        run: dotnet restore ${{env.solution-file}}
+
+      - name: Test # running tests for all projects in the solution
+        run: dotnet test ${{env.solution-file}} --no-restore --verbosity normal

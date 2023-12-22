@@ -10,16 +10,15 @@
         <PackageLicenseUrl>https://github.com/alby-corp/jql-builder/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/alby-corp/jql-builder</RepositoryUrl>
         <PackageTags>jql builder atlassian</PackageTags>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
-        <FileVersion>1.0.0</FileVersion>
         <Version>1.0.0</Version>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
     <ItemGroup>
-        <None Update="Assert\icon.png">
-            <Pack>True</Pack>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        <None Include="../README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
     <ItemGroup>
