@@ -1,10 +1,13 @@
 # JQL Builder
 
-[![Build](https://github.com/alby-corp/JQLBuilder/actions/workflows/build.yml/badge.svg?event=push)](https://github.com/alby-corp/JQLBuilder/actions/workflows/build.yml)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Tests](https://github.com/alby-corp/JQLBuilder/actions/workflows/test.yml/badge.svg?event=push)](https://github.com/alby-corp/JQLBuilder/actions/workflows/test.yml)
+[![Build](https://github.com/alby-corp/JQLBuilder/actions/workflows/build.yml/badge.svg?event=push)](https://github.com/alby-corp/JQLBuilder/actions/workflows/build.yml)
 [![Publish Pre-Release](https://github.com/alby-corp/JQLBuilder/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alby-corp/JQLBuilder/actions/workflows/pre-release.yml)
+[![NuGet Version](https://img.shields.io/nuget/vpre/JQLBuilder.svg?style=flat-square)](https://www.nuget.org/packages/JQLBuilder/)
 [![Publish](https://github.com/alby-corp/JQLBuilder/actions/workflows/release.yml/badge.svg)](https://github.com/alby-corp/JQLBuilder/actions/workflows/release.yml)
-[![NuGet version (JQLBuilder)](https://img.shields.io/nuget/v/JQLBuilder.svg?style=flat-square)](https://www.nuget.org/packages/JQLBuilder/)
+[![NuGet Version](https://img.shields.io/nuget/v/JQLBuilder.svg?style=flat-square)](https://www.nuget.org/packages/JQLBuilder/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/JQLBuilder.svg)](https://www.nuget.org/packages/JQLBuilder/)
 
 This repository houses a C# library designed to provide a JQL (Jira Query Language) builder, aiding programmers in constructing JQL queries programmatically. 
 
