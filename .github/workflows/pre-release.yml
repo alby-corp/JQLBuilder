@@ -1,9 +1,9 @@
-﻿name: Publish
+﻿name: Publish Pre-Release
 
 on:
   release:
-    types: 
-      - released
+    types:
+      - prereleased
 
 jobs:
   publish-job:
@@ -26,7 +26,7 @@ jobs:
   
         # determining the version of the package to be published
       - name: Determine package version
-        run: echo "VERSION=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
+        run: echo "VERSION=${{ github.event.release.tag_name }}.$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
   
         # publishing the package
       - name: Publish

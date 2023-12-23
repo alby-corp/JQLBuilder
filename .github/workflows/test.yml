@@ -7,25 +7,19 @@ on:
     branches: [main] 
 
 jobs:
-  test-job:
+  unit-tests-job:
     runs-on: ubuntu-latest
-    env:
-      SOLUTION_FILE: JQLBuilder.sln
       
     steps:
-        # checking out the repository
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
         
-        # setting up .NET Core SDK
-      - uses: actions/setup-dotnet@v1 
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4
         with:
           # SDK Version to use.
           dotnet-version: "8.0.x" 
-      
-        # installing dependencies for all projects in the solution
-      - name: Restore dependencies  
-        run: dotnet restore ${{env.solution-file}}
 
         # running tests for all projects in the solution
       - name: Test 
-        run: dotnet test ${{env.SOLUTION_FILE}} --no-restore --verbosity normal
+        run: dotnet test --verbosity minimal
