@@ -9,4 +9,5 @@ public class Fields
 
     public Project Project { get; } = new(new Field("project"));
     public Version Version { get; } = new(new Field("affectedVersion"));
+    public Approval Approval { get; } = new(new Field("approvals"));
 }
