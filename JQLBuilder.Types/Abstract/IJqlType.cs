@@ -10,5 +10,5 @@ public interface IJqlMembership<in T> : IJqlType where T : IJqlMembership<T>;
 
 public abstract class JqlValue() : IJqlType
 {
-    internal object? Value { get; init; }
+    internal virtual object? Value { get; init; }
 }

@@ -5,7 +5,7 @@ using Types.Primitive;
 
 internal static class JqlTypeExtensions
 {
-    internal static void Render(this IJqlType type, IJqlTypeRender render)
+    internal static void Render(this IJqlType type, JqlTypeRenderer render)
     {
         switch (type)
         {
@@ -29,6 +29,9 @@ internal static class JqlTypeExtensions
                 break;
             case JqlValue { Value : IReadOnlyList<IJqlType> s }:
                 render.Collection(s);
+                break;
+            case JqlValue { Value : DateTime s }:
+                render.DateTime(s);
                 break;
             default:
                 throw new InvalidOperationException("Passed type is not mapped!");

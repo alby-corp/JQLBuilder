@@ -5,9 +5,15 @@ using Types.Abstract;
 using Types.Enum;
 using Types.Primitive;
 
-internal class JqlTypeRenderer(StringBuilder builder) : IJqlTypeRender
+internal class JqlTypeRenderer(StringBuilder builder)
 {
-    public void Field(string value) => builder.Append(value);
+    public void Field(string value)
+    {
+        if (value.Contains(" "))
+            builder.Append('"').Append(value).Append('"');
+        else
+            builder.Append(value);
+    }
 
     public void String(string value) => builder.Append('"').Append(value).Append('"');
 
@@ -67,6 +73,8 @@ internal class JqlTypeRenderer(StringBuilder builder) : IJqlTypeRender
 
         builder.Append(')');
     }
+    
+    public void DateTime(DateTime value) => builder.Append(value.ToString(""""yyyy-MM-dd""""));
 
     public override string ToString() => builder.ToString();
 }
