@@ -1,20 +1,18 @@
 ﻿namespace JQLBuilder.Types;
 
-using System.ComponentModel;
 using Abstract;
 using Primitive;
 using Support;
 
 #pragma warning disable CS0660, CS0661
-public class Version(object value) : IJqlValue, IJqlMembership<Version>, IJqlNullable
+public class Version : JqlValue, IJqlMembership<Version>, IJqlNullable
 #pragma warning restore CS0660, CS0661
 {
     static MembershipFunctions StaticMembershipFunctions => new();
     static EqualityFunctions StaticEqualityFunctions => new();
-    object IJqlValue.Value { get; init; } = value;
     
-    public static implicit operator Version(string value) => new(value);
-    public static implicit operator Version(int value) => new(value);
+    public static implicit operator Version(string value) => new() { Value = value };
+    public static implicit operator Version(int value) => new() { Value = value };
 
     public static Bool operator ==(Version left, Version right) => left.Equal(right);
     public static Bool operator !=(Version left, Version right) => left.NotEqual(right);
@@ -32,13 +30,13 @@ public class Version(object value) : IJqlValue, IJqlMembership<Version>, IJqlNul
     
     public class EqualityFunctions
     {
-        public Version Released() => new(new Field("latestReleasedVersion()"));
-        public Version Unreleased() => new(new Field("earliestUnreleasedVersion()"));
+        public Version Released() => new() { Value = new Field("latestReleasedVersion()") };
+        public Version Unreleased() => new() { Value = new Field("latestUnreleasedVersion()") };
     }
     
     public class MembershipFunctions
     {
-        public IJqlCollection<Project> Released() => new JqlCollection<Project>(new Field("releasedVersions()"));
-        public IJqlCollection<Project> Unreleased() => new JqlCollection<Project>(new Field("unreleasedVersions()"));
+        public IJqlCollection<Project> Released() => new JqlCollection<Project> { Value = new Field("releasedVersions()") };
+        public IJqlCollection<Project> Unreleased() => new JqlCollection<Project> { Value = new Field("unreleasedVersions()") };
     }
 }

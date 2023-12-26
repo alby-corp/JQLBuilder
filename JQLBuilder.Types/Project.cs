@@ -5,14 +5,13 @@ using Primitive;
 using Support;
 
 #pragma warning disable CS0660, CS0661
-public class Project(object value) : IJqlValue, IJqlNullable, IJqlMembership<Project>
+public class Project : JqlValue, IJqlNullable, IJqlMembership<Project>
 #pragma warning restore CS0660, CS0661
 {
     static ProjectFunctions Functions => new();
-    object IJqlValue.Value { get; init; } = value;
 
-    public static implicit operator Project(string value) => new(value);
-    public static implicit operator Project(int value) => new(value);
+    public static implicit operator Project(string value) => new() { Value = value };
+    public static implicit operator Project(int value) => new() { Value = value };
 
     public static Bool operator ==(Project left, Project right) => left.Equal(right);
     public static Bool operator !=(Project left, Project right) => left.NotEqual(right);
@@ -23,12 +22,12 @@ public class Project(object value) : IJqlValue, IJqlNullable, IJqlMembership<Pro
     public class ProjectFunctions
     {
         public IJqlCollection<Project> LeadByUser(string value) =>
-            new JqlCollection<Project>(new Field($"""projectsLeadByUser("{value}")"""));
+            new JqlCollection<Project> { Value = new Field($"""projectsLeadByUser("{value}")""") };
 
         public IJqlCollection<Project> WhereUserHasPermission(string value) =>
-            new JqlCollection<Project>(new Field($"""projectsWhereUserHasPermission("{value}")"""));
+            new JqlCollection<Project> { Value = new Field($"""projectsWhereUserHasPermission("{value}")""") };
 
         public IJqlCollection<Project> WhereUserHasRole(string value) =>
-            new JqlCollection<Project>(new Field($"""projectsWhereUserHasRole("{value}")"""));
+            new JqlCollection<Project> { Value = new Field($"""projectsWhereUserHasRole("{value}")""") };
     }
 }

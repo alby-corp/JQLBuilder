@@ -15,19 +15,19 @@ internal static class JqlTypeExtensions
             case UnaryOperator f:
                 render.UnaryOperator(f.Value, f.Name, f.Direction);
                 break;
-            case IJqlValue { Value: Field s }:
+            case JqlValue { Value: Field s }:
                 render.Field(s.Value);
                 break;
-            case IJqlValue { Value : string s }:
+            case JqlValue { Value : string s }:
                 render.String(s);
                 break;
-            case IJqlValue { Value : bool s }:
+            case JqlValue { Value : bool s }:
                 render.Bool(s);
                 break;
-            case IJqlValue { Value : int s }:
+            case JqlValue { Value : int s }:
                 render.Number(s);
                 break;
-            case IJqlValue { Value : IReadOnlyList<IJqlType> s }:
+            case JqlValue { Value : IReadOnlyList<IJqlType> s }:
                 render.Collection(s);
                 break;
             default:

@@ -21,7 +21,7 @@ public static class MembershipExtensions
     ///     Creates a binary operator for the "in" membership check using a variable number of parameters.
     /// </summary>
     public static Bool In<T>(this T value, params T[] collection) where T : class, IJqlMembership<T> =>
-        new BinaryOperator(value, "in", new JqlCollection<T>(collection), Priority.Powerful);
+        new BinaryOperator(value, "in", new JqlCollection<T> {Value = collection}, Priority.Powerful);
 
     /// <summary>
     ///     Creates a binary operator for the "not in" non-membership check.
@@ -33,5 +33,5 @@ public static class MembershipExtensions
     ///     Creates a binary operator for the "not in" non-membership check using a variable number of parameters.
     /// </summary>
     public static Bool NotIn<T>(this T value, params T[] collection) where T : class, IJqlMembership<T> =>
-        new BinaryOperator(value, "not in", new JqlCollection<T>(collection), Priority.Powerful);
+        new BinaryOperator(value, "not in", new JqlCollection<T> { Value = collection}, Priority.Powerful);
 }
