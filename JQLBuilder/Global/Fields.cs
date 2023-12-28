@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Global;
 
-using Tests.BuildIn;
+using BuildIn;
 using Types;
 using Types.Custom;
 using Types.Primitive;
@@ -19,4 +19,6 @@ public class Fields
 
     public CustomFields Custom { get; } = new();
     public BuildInDate Date { get; } = new();
+    public BuildInVersion.Equality VersionBuildIn { get; } = new();
+    public BuildInVersion.Membership MembershipVersionBuildIn { get; } = new();
 }

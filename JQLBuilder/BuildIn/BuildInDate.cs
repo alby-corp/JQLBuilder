@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Tests.BuildIn;
+﻿namespace JQLBuilder.BuildIn;
 
 using Types.Custom;
 using Types.Primitive;

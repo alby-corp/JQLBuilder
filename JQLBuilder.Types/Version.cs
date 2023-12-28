@@ -16,8 +16,6 @@ public class Version : JqlValue, IJqlMembership<Version>, IJqlNullable
 
     public static Bool operator ==(Version left, Version right) => left.Equal(right);
     public static Bool operator !=(Version left, Version right) => left.NotEqual(right);
-    public static Bool operator ==(Version left, Func<EqualityFunctions, Version> selector) => left.Equal(selector(StaticEqualityFunctions));
-    public static Bool operator !=(Version left, Func<EqualityFunctions, Version> selector) => left.NotEqual(selector(StaticEqualityFunctions));
 
     public static Bool operator >(Version left, Version right) => left.GreaterThan(right);
     public static Bool operator >=(Version left, Version right) => left.GreaterThanOrEqual(right);
@@ -30,13 +28,11 @@ public class Version : JqlValue, IJqlMembership<Version>, IJqlNullable
     
     public class EqualityFunctions
     {
-        public Version Released() => new() { Value = new Field("latestReleasedVersion()") };
-        public Version Unreleased() => new() { Value = new Field("latestUnreleasedVersion()") };
+ 
     }
     
     public class MembershipFunctions
     {
-        public IJqlCollection<Project> Released() => new JqlCollection<Project> { Value = new Field("releasedVersions()") };
-        public IJqlCollection<Project> Unreleased() => new JqlCollection<Project> { Value = new Field("unreleasedVersions()") };
+
     }
 }
