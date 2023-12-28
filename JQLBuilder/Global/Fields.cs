@@ -1,5 +1,6 @@
 ﻿namespace JQLBuilder.Global;
 
+using Tests.BuildIn;
 using Types;
 using Types.Custom;
 using Types.Primitive;
@@ -11,6 +12,11 @@ public class Fields
     public Project Project { get; } = Field.Custom<Project>("project");
 
     public Version Version { get; } = Field.Custom<Version>("affectedVersion");
+    
+    public Date DueDate { get; } = Field.Custom<Date>("dueDate");
+    
+    public Date Due { get; } = Field.Custom<Date>("due");
 
     public CustomFields Custom { get; } = new();
+    public BuildInDate Date { get; } = new();
 }

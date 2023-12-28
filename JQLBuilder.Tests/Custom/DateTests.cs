@@ -9,7 +9,7 @@ public class DateTests
         const string expected = @"""Start date"" = now()";
         
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date["Start date"] == f.Custom.Date.Now);
+            .Where(f => f.Custom.Date["Start date"] == f.Date.Now);
         
         Assert.AreEqual(expected, actual.ToString());
     }
@@ -17,10 +17,11 @@ public class DateTests
     [TestMethod]
     public void Method2()
     {
-        const string expected = @"""cf[123456]"" = now()";
+        const string expected = "cf[12345] = now()";
         
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[12345] == f.Custom.Date.Now);
+            .Where(f => f.Custom.Date[12345] == f.Date.Now);
+            // .Where(f => f.Custom.Date(12345) == f.Custom.Date.Now);
         
         Assert.AreEqual(expected, actual.ToString());
     }

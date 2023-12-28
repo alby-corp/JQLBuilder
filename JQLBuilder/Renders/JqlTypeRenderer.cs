@@ -9,7 +9,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
 {
     public void Field(string value)
     {
-        if (value.Contains(" "))
+        if (value.Contains(' '))
             builder.Append('"').Append(value).Append('"');
         else
             builder.Append(value);
