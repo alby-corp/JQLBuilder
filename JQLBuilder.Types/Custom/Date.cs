@@ -11,17 +11,17 @@ public class Date: JqlValue, IJqlMembership<Date>, IJqlNullable
     internal override object? Value { get; init; }
     
     public static implicit operator Date(string value) => new() { Value = Init(value) };
-    public static implicit operator Date(DateTime value) => new() { Value = value };
+    public static implicit operator Date(DateTime value) => new() { Value = value.ToString("yyyy-MM-dd") };
 
     public static Bool operator ==(Date left, Date right) => left.Equal(right);
     public static Bool operator !=(Date left, Date right) => left.NotEqual(right);
-
+    
     public static Bool operator >(Date left, Date right) => left.GreaterThan(right);
     public static Bool operator >=(Date left, Date right) => left.GreaterThanOrEqual(right);
 
     public static Bool operator <(Date left, Date right) => left.LessThan(right);
     public static Bool operator <=(Date left, Date right) => left.LessThanOrEqual(right);
-
+    
     static DateTime Init(string value)
     {
         var result = DateTime.TryParse(value, out var datetime);
