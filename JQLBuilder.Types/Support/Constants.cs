@@ -13,8 +13,8 @@ public static class Constants
     public const string LessThan = "<";
     public const string LessThanOrEqual = "<=";
     public const string And = "AND";
-    public const string Or = "or";
-    public const string Not = "not";
+    public const string Or = "OR";
+    public const string Not = "NOT";
     public const string OrderBy = "order by";
     public const string Ascending = "asc";
     public const string Descending = "desc";

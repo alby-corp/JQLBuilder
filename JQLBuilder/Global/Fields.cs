@@ -20,7 +20,7 @@ public class Fields
 
     public BuildInDate Date { get; } = new();
 
-    public Version AffectedVersion { get; } = Field.Custom<Version>("affectedVersion");
-    public Version FixVersion { get; } = Field.Custom<Version>("fixVersion");
-    public BuildInVersion Version { get; } = new();
+    public Base.Version AffectedVersion { get; } = Field.Custom<Base.Version>("affectedVersion");
+    public Base.Version FixVersion { get; } = Field.Custom<Base.Version>("fixVersion");
+    public Versions Versions { get; } = new();
 }
