@@ -9,16 +9,18 @@ public class Fields
 {
     public static Fields All { get; } = new();
 
+    public CustomFields Custom { get; } = new();
+
     public Project Project { get; } = Field.Custom<Project>("project");
 
-    public Version Version { get; } = Field.Custom<Version>("affectedVersion");
     
     public Date DueDate { get; } = Field.Custom<Date>("dueDate");
     
     public Date Due { get; } = Field.Custom<Date>("due");
 
-    public CustomFields Custom { get; } = new();
     public BuildInDate Date { get; } = new();
-    public BuildInVersion.Equality VersionBuildIn { get; } = new();
-    public BuildInVersion.Membership MembershipVersionBuildIn { get; } = new();
+
+    public Version AffectedVersion { get; } = Field.Custom<Version>("affectedVersion");
+    public Version FixVersion { get; } = Field.Custom<Version>("fixVersion");
+    public BuildInVersion Version { get; } = new();
 }

@@ -1,10 +1,8 @@
-﻿// ReSharper disable once CheckNamespace
+﻿namespace JQLBuilder.Types.Support;
 
-namespace JQLBuilder;
-
-using Types.Abstract;
-using Types.Enum;
-using Types.Primitive;
+using Abstract;
+using Enum;
+using Primitive;
 
 public static class NullableExtensions
 {

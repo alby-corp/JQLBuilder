@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Tests;
+﻿namespace JQLBuilder.Types.Tests;
 
 [TestClass]
 public class VersionTests
@@ -8,7 +8,7 @@ public class VersionTests
     {
         const string expected = "affectedVersion = latestReleasedVersion()";
 
-        var actual = JqlBuilder.Query.Where(f => f.Version == f.VersionBuildIn.Released()).ToString();
+        var actual = JqlBuilder.Query.Where(f => f.Version.LatestUnreleased() == f.Version.LatestReleased()).ToString();
         
         Assert.AreEqual(expected, actual);
     }
@@ -18,7 +18,7 @@ public class VersionTests
     {
         const string expected = "affectedVersion = latestReleasedVersion()";
 
-        var actual = JqlBuilder.Query.Where(f => f.Version.In(f.VersionBuildIn.Released())).ToString();
+        var actual = JqlBuilder.Query.Where(f => f.AffectedVersion.In(f.Version.Released())).ToString();
         
         Assert.AreEqual(expected, actual);
     }
@@ -28,7 +28,7 @@ public class VersionTests
     {
         const string expected = "affectedVersion = latestReleasedVersion()";
 
-        var actual = JqlBuilder.Query.Where(f => f.Version.In(f.MembershipVersionBuildIn.Released())).ToString();
+        var actual = JqlBuilder.Query.Where(f => f.AffectedVersion.In(f.Version.LatestReleased())).ToString();
         
         Assert.AreEqual(expected, actual);
     }

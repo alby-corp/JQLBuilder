@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Tests.Custom;
+﻿namespace JQLBuilder.Types.Tests.Custom;
 
 [TestClass]
 public class DateTests
