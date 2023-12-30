@@ -1,33 +1,56 @@
 ﻿namespace JQLBuilder.Types.Custom;
 
 using Abstract;
-using Support;
 using Primitive;
+using Support;
 
 #pragma warning disable CS0660, CS0661
-public class Date: JqlValue, IJqlMembership<Date>, IJqlNullable
+public class DateField : JqlValue, IJqlField<DateExpression>, IJqlNullable
 #pragma warning restore CS0660, CS0661
 {
     internal override object? Value { get; init; }
-    
-    public static implicit operator Date(string value) => new() { Value = Init(value) };
-    public static implicit operator Date(DateTime value) => new() { Value = value };
 
-    public static Bool operator ==(Date left, Date right) => left.Equal(right);
-    public static Bool operator !=(Date left, Date right) => left.NotEqual(right);
-    
-    public static Bool operator >(Date left, Date right) => left.GreaterThan(right);
-    public static Bool operator >=(Date left, Date right) => left.GreaterThanOrEqual(right);
+    public static Bool operator ==(DateField left, DateExpression right) => left.Equal(right);
 
-    public static Bool operator <(Date left, Date right) => left.LessThan(right);
-    public static Bool operator <=(Date left, Date right) => left.LessThanOrEqual(right);
+    public static Bool operator !=(DateField left, DateExpression right) => left.NotEqual(right);
+
+    public static Bool operator >(DateField left, DateExpression right) => left.LessThan(right);
+
+    public static Bool operator >=(DateField left, DateExpression right) => left.LessThanOrEqual(right);
+
+    public static Bool operator <(DateField left, DateExpression right) => left.GreaterThan(right);
+
+    public static Bool operator <=(DateField left, DateExpression right) => left.GreaterThanOrEqual(right);
     
+    public static Bool operator ==(DateExpression left, DateField right) => right.Equal(left);
+
+    public static Bool operator !=(DateExpression left, DateField right) => right.NotEqual(left);
+
+    public static Bool operator >(DateExpression left, DateField right) => right.GreaterThan(left);
+
+    public static Bool operator >=(DateExpression left, DateField right) => right.GreaterThanOrEqual(left);
+
+    public static Bool operator <(DateExpression left, DateField right) => right.LessThan(left);
+
+    public static Bool operator <=(DateExpression left, DateField right) => right.LessThanOrEqual(left);
+}
+
+public class DateExpression : JqlValue, IJqlMembership<DateExpression>
+{
+    public static implicit operator DateExpression(string value) => new() { Value = Init(value) };
+
+    public static implicit operator DateExpression(DateTime value) => new() { Value = value };
+    
+
     static DateTime Init(string value)
     {
         var result = DateTime.TryParse(value, out var datetime);
-        
-        if(!result) throw new ArgumentException("Invalid date format");
 
-        return datetime ;
+        if (!result)
+        {
+            throw new ArgumentException("Invalid date format");
+        }
+
+        return datetime;
     }
 }

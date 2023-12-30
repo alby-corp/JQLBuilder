@@ -11,16 +11,16 @@ public class Fields
 
     public CustomFields Custom { get; } = new();
 
-    public Project Project { get; } = Field.Custom<Project>("project");
+    public ProjectField Project { get; } = Field.Custom<ProjectField>("project");
 
     
-    public Date DueDate { get; } = Field.Custom<Date>("dueDate");
+    public DateField DueDate { get; } = Field.Custom<DateField>("dueDate");
     
-    public Date Due { get; } = Field.Custom<Date>("due");
+    public DateField Due { get; } = Field.Custom<DateField>("due");
 
     public BuildInDate Date { get; } = new();
 
-    public Base.Version AffectedVersion { get; } = Field.Custom<Base.Version>("affectedVersion");
-    public Base.Version FixVersion { get; } = Field.Custom<Base.Version>("fixVersion");
+    public VersionField AffectedVersion { get; } = Field.Custom<VersionField>("affectedVersion");
+    public VersionField FixVersion { get; } = Field.Custom<VersionField>("fixVersion");
     public Versions Versions { get; } = new();
 }
