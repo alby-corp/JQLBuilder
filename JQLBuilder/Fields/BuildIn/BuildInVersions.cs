@@ -4,7 +4,7 @@ using Types;
 using Types.Abstract;
 using Types.Primitive;
 
-public class Versions
+public class BuildInVersions
 {
     public VersionExpression LatestReleased() => Field.Custom<VersionExpression>("latestReleasedVersion()");
     public VersionExpression LatestUnreleased() => Field.Custom<VersionExpression>("latestUnreleasedVersion()");

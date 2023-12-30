@@ -1,11 +1,11 @@
 ﻿namespace JQLBuilder.Types.Custom;
 
 using Abstract;
-using Support;
 using Primitive;
+using Support;
 
 #pragma warning disable CS0660, CS0661
-public class Url: JqlValue, IJqlMembership<Url>, IJqlNullable
+public class Url : JqlValue, IJqlMembership<Url>, IJqlNullable
 #pragma warning restore CS0660, CS0661
 {
     public static Bool operator ==(Url left, Url right) => left.Equal(right);

@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Global;
+﻿namespace JQLBuilder.Fields;
 
 public class OrderingFields
 {

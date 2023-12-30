@@ -58,7 +58,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
             if (direction == Direction.Suffix) builder.Append(' ').Append(name);
         }
     }
-    
+
     public void Collection(IReadOnlyList<IJqlType> values)
     {
         builder.Append('(');
@@ -73,7 +73,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
         builder.Append(')');
     }
-    
+
     public void DateTime(DateTime value) => builder.Append(value.ToString("yyyy-MM-dd"));
 
     public override string ToString() => builder.ToString();

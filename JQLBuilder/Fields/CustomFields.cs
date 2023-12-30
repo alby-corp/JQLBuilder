@@ -1,6 +1,6 @@
-﻿namespace JQLBuilder.Global;
+﻿namespace JQLBuilder.Fields;
 
-using Types.Custom;
+using Types;
 using Types.Primitive;
 
 public class CustomFields

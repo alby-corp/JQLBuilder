@@ -4,7 +4,9 @@ using Abstract;
 using Primitive;
 using Support;
 
+#pragma warning disable CS0660, CS0661
 public class VersionField : JqlValue, IJqlNullable, IJqlField<VersionExpression>
+#pragma warning restore CS0660, CS0661
 {
     public static Bool operator ==(VersionField left, VersionExpression right) => left.Equal(right);
 
@@ -17,7 +19,7 @@ public class VersionField : JqlValue, IJqlNullable, IJqlField<VersionExpression>
     public static Bool operator <(VersionField left, VersionExpression right) => left.GreaterThan(right);
 
     public static Bool operator <=(VersionField left, VersionExpression right) => left.GreaterThanOrEqual(right);
-    
+
     public static Bool operator ==(VersionExpression left, VersionField right) => right.Equal(left);
 
     public static Bool operator !=(VersionExpression left, VersionField right) => right.NotEqual(left);

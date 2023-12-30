@@ -1,7 +1,6 @@
 namespace JQLBuilder.Types.Tests;
 
-using Global;
-using Support;
+using Fields;
 using Types.Support;
 
 [TestClass]
@@ -13,21 +12,21 @@ public class ProjectTests
     const string Project3 = "SPADE";
     const string ProjectLead = "hulk@avengers.world";
 
-    // [TestMethod]
-    // public void TestMethod1()
-    // {
-    //     var expected = $"""project = "{Project1}" AND project = {ProjectId} AND project in ("{Project1}", {ProjectId}) AND (project in projectsLeadByUser("{ProjectLead}") OR project = "{Project1}") AND project not in projectsWhereUserHasRole("{ProjectLead}")""";
-    //
-    //     var actual = JqlBuilder.Query
-    //         .Where(f => f.Project == Project1)
-    //         .And(f => f.Project == ProjectId)
-    //         .And(f => f.Project.In(Project1, ProjectId))
-    //         .And(f => f.Project.In(f.) | (f.Project == Project1))
-    //         .And(f => f.Project.NotIn(functions => functions.WhereUserHasRole(ProjectLead)))
-    //         .ToString();
-    //
-    //     Assert.AreEqual(expected, actual);
-    // }
+    [TestMethod]
+    public void TestMethod1()
+    {
+        var expected = $"""project = "{Project1}" AND project = {ProjectId} AND project in ("{Project1}", {ProjectId}) AND (project in (projectsLeadByUser()) OR project = "{Project1}") AND project not in (projectsWhereUserHasRole("{ProjectLead}"))""";
+    
+        var actual = JqlBuilder.Query
+            .Where(f => f.Project == Project1)
+            .And(f => f.Project == ProjectId)
+            .And(f => f.Project.In(Project1, ProjectId))
+            .And(f => f.Project.In(f.Projects.LeadByUser()) | (f.Project == Project1))
+            .And(f => f.Project.NotIn(f.Projects.WhereUserHasRole(ProjectLead)))
+            .ToString();
+    
+        Assert.AreEqual(expected, actual);
+    }
 
     [TestMethod]
     public void TestMethod2()

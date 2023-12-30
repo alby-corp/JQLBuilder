@@ -3,5 +3,4 @@
 [TestClass]
 public class MembershipExtensionsTests
 {
-    
 }

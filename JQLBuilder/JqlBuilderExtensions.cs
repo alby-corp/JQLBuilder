@@ -1,24 +1,24 @@
 ﻿namespace JQLBuilder;
 
 using Enums;
-using Global;
+using Fields;
 using Queries;
 using Types.Primitive;
 
 public static class JqlBuilderExtensions
 {
-    public static FilterQuery Where(this InitialQuery initialQuery, Func<Fields, Bool> filter) =>
-        new(filter(Fields.All));
+    public static FilterQuery Where(this InitialQuery initialQuery, Func<Fields.Fields, Bool> filter) =>
+        new(filter(Fields.Fields.All));
 
-    public static FilterQuery And(this FilterQuery filterQuery, Func<Fields, Bool> filter)
+    public static FilterQuery And(this FilterQuery filterQuery, Func<Fields.Fields, Bool> filter)
         => filterQuery.Filter is null
-            ? new FilterQuery(filter(Fields.All))
-            : new FilterQuery(filterQuery.Filter & filter(Fields.All));
+            ? new FilterQuery(filter(Fields.Fields.All))
+            : new FilterQuery(filterQuery.Filter & filter(Fields.Fields.All));
 
-    public static FilterQuery Or(this FilterQuery filterQuery, Func<Fields, Bool> filter)
+    public static FilterQuery Or(this FilterQuery filterQuery, Func<Fields.Fields, Bool> filter)
         => filterQuery.Filter is null
-            ? new FilterQuery(filter(Fields.All))
-            : new FilterQuery(filterQuery.Filter | filter(Fields.All));
+            ? new FilterQuery(filter(Fields.Fields.All))
+            : new FilterQuery(filterQuery.Filter | filter(Fields.Fields.All));
 
     public static OrderQuery OrderBy(this FilterQuery filterQuery, Func<OrderingFields, string> keySelector)
         => new(filterQuery, [new ValueTuple<string, Order>(keySelector(OrderingFields.All), Order.Ascending)]);

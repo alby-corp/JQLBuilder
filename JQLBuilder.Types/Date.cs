@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types.Custom;
+﻿namespace JQLBuilder.Types;
 
 using Abstract;
 using Primitive;
@@ -21,7 +21,7 @@ public class DateField : JqlValue, IJqlField<DateExpression>, IJqlNullable
     public static Bool operator <(DateField left, DateExpression right) => left.GreaterThan(right);
 
     public static Bool operator <=(DateField left, DateExpression right) => left.GreaterThanOrEqual(right);
-    
+
     public static Bool operator ==(DateExpression left, DateField right) => right.Equal(left);
 
     public static Bool operator !=(DateExpression left, DateField right) => right.NotEqual(left);
@@ -40,16 +40,13 @@ public class DateExpression : JqlValue, IJqlMembership<DateExpression>
     public static implicit operator DateExpression(string value) => new() { Value = Init(value) };
 
     public static implicit operator DateExpression(DateTime value) => new() { Value = value };
-    
+
 
     static DateTime Init(string value)
     {
         var result = DateTime.TryParse(value, out var datetime);
 
-        if (!result)
-        {
-            throw new ArgumentException("Invalid date format");
-        }
+        if (!result) throw new ArgumentException("Invalid date format");
 
         return datetime;
     }

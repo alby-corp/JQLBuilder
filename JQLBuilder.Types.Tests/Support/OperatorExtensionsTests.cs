@@ -7,10 +7,8 @@ using Types.Support;
 [TestClass]
 public class NameExtensionsTests
 {
-    class MyJql : JqlValue;
-    
-    readonly MyJql left = new(){ Value = DateTime.Now };
-    readonly MyJql right = new(){ Value = 1 };
+    readonly MyJql left = new() { Value = DateTime.Now };
+    readonly MyJql right = new() { Value = 1 };
 
     [TestMethod]
     public void EQUAL_TEST()
@@ -22,7 +20,7 @@ public class NameExtensionsTests
         Assert.AreEqual(right, actual.Right);
         Assert.AreEqual(Priority.Equality, actual.Priority);
     }
-    
+
     [TestMethod]
     public void NOT_EQUAL_TEST()
     {
@@ -33,73 +31,75 @@ public class NameExtensionsTests
         Assert.AreEqual(right, actual.Right);
         Assert.AreEqual(Priority.Equality, actual.Priority);
     }
-    
-           [TestMethod]
-        public void GREATER_THAN_TEST()
-        {
-            var actual = left.GreaterThan(right);
 
-            Assert.AreEqual(left, actual.Left);
-            Assert.AreEqual(Constants.GreaterThan, actual.Name);
-            Assert.AreEqual(right, actual.Right);
-            Assert.AreEqual(Priority.Relation, actual.Priority);
-        }
+    [TestMethod]
+    public void GREATER_THAN_TEST()
+    {
+        var actual = left.GreaterThan(right);
 
-        [TestMethod]
-        public void GREATER_THAN_OR_EQUAL_TEST()
-        {
-            var actual = left.GreaterThanOrEqual(right);
+        Assert.AreEqual(left, actual.Left);
+        Assert.AreEqual(Constants.GreaterThan, actual.Name);
+        Assert.AreEqual(right, actual.Right);
+        Assert.AreEqual(Priority.Relation, actual.Priority);
+    }
 
-            Assert.AreEqual(left, actual.Left);
-            Assert.AreEqual(Constants.GreaterThanOrEqual, actual.Name);
-            Assert.AreEqual(right, actual.Right);
-            Assert.AreEqual(Priority.Relation, actual.Priority);
-        }
+    [TestMethod]
+    public void GREATER_THAN_OR_EQUAL_TEST()
+    {
+        var actual = left.GreaterThanOrEqual(right);
 
-        [TestMethod]
-        public void LESS_THAN_TEST()
-        {
-            var actual = left.LessThan(right);
+        Assert.AreEqual(left, actual.Left);
+        Assert.AreEqual(Constants.GreaterThanOrEqual, actual.Name);
+        Assert.AreEqual(right, actual.Right);
+        Assert.AreEqual(Priority.Relation, actual.Priority);
+    }
 
-            Assert.AreEqual(left, actual.Left);
-            Assert.AreEqual(Constants.LessThan, actual.Name);
-            Assert.AreEqual(right, actual.Right);
-            Assert.AreEqual(Priority.Relation, actual.Priority);
-        }
+    [TestMethod]
+    public void LESS_THAN_TEST()
+    {
+        var actual = left.LessThan(right);
 
-        [TestMethod]
-        public void LESS_THAN_OR_EQUAL_TEST()
-        {
-            var actual = left.LessThanOrEqual(right);
+        Assert.AreEqual(left, actual.Left);
+        Assert.AreEqual(Constants.LessThan, actual.Name);
+        Assert.AreEqual(right, actual.Right);
+        Assert.AreEqual(Priority.Relation, actual.Priority);
+    }
 
-            Assert.AreEqual(left, actual.Left);
-            Assert.AreEqual(Constants.LessThanOrEqual, actual.Name);
-            Assert.AreEqual(right, actual.Right);
-            Assert.AreEqual(Priority.Relation, actual.Priority);
-        }
+    [TestMethod]
+    public void LESS_THAN_OR_EQUAL_TEST()
+    {
+        var actual = left.LessThanOrEqual(right);
 
-        [TestMethod]
-        public void AND_TEST()
-        {
-            var actual = left.And(right);
+        Assert.AreEqual(left, actual.Left);
+        Assert.AreEqual(Constants.LessThanOrEqual, actual.Name);
+        Assert.AreEqual(right, actual.Right);
+        Assert.AreEqual(Priority.Relation, actual.Priority);
+    }
 
-            Assert.AreEqual(left, actual.Left);
-            Assert.AreEqual(Constants.And, actual.Name);
-            Assert.AreEqual(right, actual.Right);
-            Assert.AreEqual(Priority.LogicalAnd, actual.Priority);
-        }
+    [TestMethod]
+    public void AND_TEST()
+    {
+        var actual = left.And(right);
 
-        [TestMethod]
-        public void OR_TEST()
-        {
-            var actual = left.Or(right);
+        Assert.AreEqual(left, actual.Left);
+        Assert.AreEqual(Constants.And, actual.Name);
+        Assert.AreEqual(right, actual.Right);
+        Assert.AreEqual(Priority.LogicalAnd, actual.Priority);
+    }
 
-            Assert.AreEqual(left, actual.Left);
-            Assert.AreEqual(Constants.Or, actual.Name);
-            Assert.AreEqual(right, actual.Right);
-            Assert.AreEqual(Priority.LogicalOr, actual.Priority);
-        }
+    [TestMethod]
+    public void OR_TEST()
+    {
+        var actual = left.Or(right);
 
-        [TestMethod]
-        public void NOT_TEST() => throw new NotImplementedException();
+        Assert.AreEqual(left, actual.Left);
+        Assert.AreEqual(Constants.Or, actual.Name);
+        Assert.AreEqual(right, actual.Right);
+        Assert.AreEqual(Priority.LogicalOr, actual.Priority);
+    }
+
+    [TestMethod]
+    public void NOT_TEST() => throw new NotImplementedException();
+
+    class MyJql : JqlValue;
 }
