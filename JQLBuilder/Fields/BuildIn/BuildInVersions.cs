@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.BuildIn;
+﻿namespace JQLBuilder.Fields.BuildIn;
 
 using Types;
 using Types.Abstract;

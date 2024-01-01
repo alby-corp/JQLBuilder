@@ -1,19 +1,19 @@
-﻿namespace JQLBuilder.BuildIn;
+﻿namespace JQLBuilder.Fields.BuildIn;
 
-using Types;
+using Types.Abstract;
 using Types.Primitive;
 
-public class BuildInDate
+public class BuildInDate<T> where T : JqlValue, new()
 {
-    public DateExpression Now => Field.Custom<DateExpression>("now()");
-    public DateExpression CurrentLogin => Field.Custom<DateExpression>("currentLogin()");
-    public DateExpression LastLogin => Field.Custom<DateExpression>("lastLogin()");
-    public DateExpression StartOfDay(int value) => Field.Custom<DateExpression>("startOfDay(${value})");
-    public DateExpression StartOfWeek(int value) => Field.Custom<DateExpression>($"startOfWeek({value})");
-    public DateExpression StartOfMonth(int value) => Field.Custom<DateExpression>($"startOfMonth({value})");
-    public DateExpression StartOfYear(int value) => Field.Custom<DateExpression>($"startOfYear({value})");
-    public DateExpression EndOfDay(int value) => Field.Custom<DateExpression>($"endOfDay({value})");
-    public DateExpression EndOfWeek(int value) => Field.Custom<DateExpression>($"endOfWeek({value})");
-    public DateExpression EndOfMonth(int value) => Field.Custom<DateExpression>($"endOfMonth({value})");
-    public DateExpression EndOfYear(int value) => Field.Custom<DateExpression>($"endOfYear({value})");
+    public T Now => Field.Custom<T>("now()");
+    public T CurrentLogin => Field.Custom<T>("currentLogin()");
+    public T LastLogin => Field.Custom<T>("lastLogin()");
+    public T StartOfDay(int value) => Field.Custom<T>("startOfDay(${value})");
+    public T StartOfWeek(int value) => Field.Custom<T>($"startOfWeek({value})");
+    public T StartOfMonth(int value) => Field.Custom<T>($"startOfMonth({value})");
+    public T StartOfYear(int value) => Field.Custom<T>($"startOfYear({value})");
+    public T EndOfDay(int value) => Field.Custom<T>($"endOfDay({value})");
+    public T EndOfWeek(int value) => Field.Custom<T>($"endOfWeek({value})");
+    public T EndOfMonth(int value) => Field.Custom<T>($"endOfMonth({value})");
+    public T EndOfYear(int value) => Field.Custom<T>($"endOfYear({value})");
 }

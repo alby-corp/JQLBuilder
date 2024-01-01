@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types;
+﻿namespace JQLBuilder.Types.Custom;
 
 using Abstract;
 using Primitive;
@@ -39,12 +39,11 @@ public class DateExpression : JqlValue, IJqlMembership<DateExpression>
 {
     public static implicit operator DateExpression(string value) => new() { Value = Init(value) };
 
-    public static implicit operator DateExpression(DateTime value) => new() { Value = value };
+    public static implicit operator DateExpression(DateOnly value) => new() { Value = value };
 
-
-    static DateTime Init(string value)
+    static DateOnly Init(string value)
     {
-        var result = DateTime.TryParse(value, out var datetime);
+        var result = DateOnly.TryParse(value, out var datetime);
 
         if (!result) throw new ArgumentException("Invalid date format");
 

@@ -2,6 +2,7 @@
 
 using BuildIn;
 using Types;
+using Types.Custom;
 using Types.Primitive;
 
 public class Fields
@@ -12,13 +13,16 @@ public class Fields
 
     public CustomFields Custom { get; } = new();
     
-    public BuildInDate Date { get; } = new();
-    public DateField DueDate { get; } = Field.Custom<DateField>("dueDate");
-    public DateField Due { get; } = Field.Custom<DateField>("due");
-
+    public BuildInDate<DateExpression> Date { get; } = new();
+    public BuildInDate<DateTimeExpression> DateTime { get; } = new();
+    public BuildInPicker Picker { get; } = new();
+    
     #endregion
     
     #region Standard
+
+    public DateField DueDate { get; } = Field.Custom<DateField>("dueDate");
+    public DateField Due { get; } = Field.Custom<DateField>("due");
     
     public BuildInProjects Projects { get; } = new();
     public ProjectField Project { get; } = Field.Custom<ProjectField>("project");

@@ -33,6 +33,9 @@ internal static class JqlTypeExtensions
             case JqlValue { Value : DateTime s }:
                 render.DateTime(s);
                 break;
+            case JqlValue { Value : DateOnly s }:
+                render.DateOnly(s);
+                break;
             default:
                 throw new InvalidOperationException("Passed type is not mapped!");
         }
