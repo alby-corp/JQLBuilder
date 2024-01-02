@@ -13,8 +13,8 @@ public class Fields
 
     public CustomFields Custom { get; } = new();
     
-    public BuildInDate<DateExpression> Date { get; } = new();
-    public BuildInDate<DateTimeExpression> DateTime { get; } = new();
+    public BuildInDate<DateExpression> Date { get; } = JQLBuilder.Fields.BuildIn.Date.DateOnly;
+    public BuildInDate<DateTimeExpression> DateTime { get; } = JQLBuilder.Fields.BuildIn.Date.DateTime;
     public BuildInPicker Picker { get; } = new();
     
     #endregion

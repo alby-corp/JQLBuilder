@@ -1,10 +1,13 @@
 ﻿namespace JQLBuilder.Fields.BuildIn;
 
 using Types.Abstract;
+using Types.Custom;
 using Types.Primitive;
 
 public class BuildInDate<T> where T : JqlValue, new()
 {
+    internal static BuildInDate<T> Date { get; } = new();
+    
     public T Now => Field.Custom<T>("now()");
     public T CurrentLogin => Field.Custom<T>("currentLogin()");
     public T LastLogin => Field.Custom<T>("lastLogin()");
@@ -16,4 +19,10 @@ public class BuildInDate<T> where T : JqlValue, new()
     public T EndOfWeek(int value) => Field.Custom<T>($"endOfWeek({value})");
     public T EndOfMonth(int value) => Field.Custom<T>($"endOfMonth({value})");
     public T EndOfYear(int value) => Field.Custom<T>($"endOfYear({value})");
+}
+
+public static class Date
+{
+    public static readonly BuildInDate<DateExpression> DateOnly = BuildInDate<DateExpression>.Date;
+    public static readonly BuildInDate<DateTimeExpression> DateTime = BuildInDate<DateTimeExpression>.Date;
 }

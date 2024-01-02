@@ -1,6 +1,7 @@
 ﻿namespace JQLBuilder.Renders;
 
 using Types.Abstract;
+using Types.Custom;
 using Types.Primitive;
 
 internal static class JqlTypeExtensions
@@ -30,10 +31,10 @@ internal static class JqlTypeExtensions
             case JqlValue { Value : IReadOnlyList<IJqlType> s }:
                 render.Collection(s);
                 break;
-            case JqlValue { Value : DateTime s }:
+            case DateTimeExpression { Value : DateTime s }:
                 render.DateTime(s);
                 break;
-            case JqlValue { Value : DateOnly s }:
+            case DateExpression { Value : DateTime s }:
                 render.DateOnly(s);
                 break;
             default:

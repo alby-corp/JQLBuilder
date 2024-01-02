@@ -1,47 +1,103 @@
 ﻿namespace JQLBuilder.Types.Tests.Custom;
 
 [TestClass]
-public class DateTests
+public partial class DateTests
 {
+    const string CustomFieldName = "Start date";
+    const int CustomFieldId = 10421;
+    readonly string dateString = $"{DateTime.Now:yyyy-MM-dd}";
+    readonly DateTime dateTime = DateTime.Now;
+
     [TestMethod]
-    public void Method1()
+    public void Should_Parses_Custom_Date_By_Name()
     {
-        const string expected = @"""Start date"" = now()";
+        const string expected = $"""
+                                 "{CustomFieldName}" = now()
+                                 """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date["Start date"] == f.Date.Now);
+            .Where(f => f.Custom.Date[CustomFieldName] == f.Date.Now)
+            .ToString();
 
-        Assert.AreEqual(expected, actual.ToString());
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void Method2()
+    public void Should_Parses_Custom_Date_By_Id()
     {
-        const string expected = "cf[12345] = now()";
+        var expected = $"cf[{CustomFieldId}] = now()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[12345] == f.Date.Now);
-        // .Where(f => f.Custom.Date(12345) == f.Custom.Date.Now);
+            .Where(f => f.Custom.Date[CustomFieldId] == f.Date.Now)
+            .ToString();
 
-        Assert.AreEqual(expected, actual.ToString());
-    }
-
-
-    [TestMethod]
-    public void Method3()
-    {
-        var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date["Start date"] == "2023-10-10");
-
-        Assert.AreEqual(@"""Start date"" = 2023-10-10", actual.ToString());
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void Method4()
+    public void Should_Parses_Custom_Date_String()
     {
-        var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date["Start date"] == new DateTime(2023, 10, 10));
+        var expected = $"""
+                        "{CustomFieldName}" = "{dateString}"
+                        """;
 
-        Assert.AreEqual(@"""Start date"" = 2023-10-10", actual.ToString());
+        var actual = JqlBuilder.Query
+            .Where(f => f.Custom.Date[CustomFieldName] == dateString)
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_Custom_Date_String_Reverse()
+    {
+        var expected = $"""
+                        "{CustomFieldName}" = "{dateString}"
+                        """;
+
+        var actual = JqlBuilder.Query
+            .Where(f => dateString == f.Custom.Date[CustomFieldName])
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_Custom_Date_DateTime()
+    {
+        var expected = $"""
+                        "{CustomFieldName}" = "{dateString}"
+                        """;
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Custom.Date[CustomFieldName] == DateTime.Parse(dateString))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_Custom_Date_DateTime_Reverse()
+    {
+        var expected = $"""
+                        "{CustomFieldName}" = "{dateString}"
+                        """;
+
+        var actual = JqlBuilder.Query
+            .Where(f => DateTime.Parse(dateString) == f.Custom.Date[CustomFieldName])
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Throw_Exception_When_Custom_Date_Is_Invalid_String()
+    {
+        Assert.ThrowsException<ArgumentException>(Actual, "Invalid Date Format!");
+        return;
+
+        string Actual() => JqlBuilder.Query
+            .Where(f => f.Custom.Date[CustomFieldName] == "invalid date")
+            .ToString();
     }
 }
