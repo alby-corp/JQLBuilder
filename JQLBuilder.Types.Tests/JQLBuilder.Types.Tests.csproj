@@ -30,6 +30,15 @@
       <Compile Update="Custom\DateTests.Nullable.cs">
         <DependentUpon>DateTests.cs</DependentUpon>
       </Compile>
+      <Compile Update="Custom\DateTimeTests.Equality.cs">
+        <DependentUpon>DateTimeTests.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Custom\DateTimeTests.Membership.cs">
+        <DependentUpon>DateTimeTests.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Custom\DateTimeTests.Nullable.cs">
+        <DependentUpon>DateTimeTests.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

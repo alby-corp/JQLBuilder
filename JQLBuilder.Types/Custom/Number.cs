@@ -12,13 +12,13 @@ public class NumberField : JqlValue, IJqlField<NumberExpression>, IJqlNullable
 
     public static Bool operator !=(NumberField left, NumberExpression right) => left.NotEqual(right);
 
-    public static Bool operator >(NumberField left, NumberExpression right) => left.LessThan(right);
+    public static Bool operator >(NumberField left, NumberExpression right) => left.GreaterThan(right);
 
-    public static Bool operator >=(NumberField left, NumberExpression right) => left.LessThanOrEqual(right);
+    public static Bool operator >=(NumberField left, NumberExpression right) => left.GreaterThanOrEqual(right);
 
-    public static Bool operator <(NumberField left, NumberExpression right) => left.GreaterThan(right);
+    public static Bool operator <(NumberField left, NumberExpression right) => left.LessThan(right);
 
-    public static Bool operator <=(NumberField left, NumberExpression right) => left.GreaterThanOrEqual(right);
+    public static Bool operator <=(NumberField left, NumberExpression right) => left.LessThanOrEqual(right);
 
     public static Bool operator ==(NumberExpression left, NumberField right) => right.Equal(left);
 
