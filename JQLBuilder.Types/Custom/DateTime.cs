@@ -14,13 +14,13 @@ public class DateTimeField : JqlValue, IJqlField<DateTimeExpression>, IJqlNullab
 
     public static Bool operator !=(DateTimeField left, DateTimeExpression right) => left.NotEqual(right);
 
-    public static Bool operator >(DateTimeField left, DateTimeExpression right) => left.LessThan(right);
+    public static Bool operator >(DateTimeField left, DateTimeExpression right) => left.GreaterThan(right);
 
-    public static Bool operator >=(DateTimeField left, DateTimeExpression right) => left.LessThanOrEqual(right);
+    public static Bool operator >=(DateTimeField left, DateTimeExpression right) => left.GreaterThanOrEqual(right);
 
-    public static Bool operator <(DateTimeField left, DateTimeExpression right) => left.GreaterThan(right);
+    public static Bool operator <(DateTimeField left, DateTimeExpression right) => left.LessThan(right);
 
-    public static Bool operator <=(DateTimeField left, DateTimeExpression right) => left.GreaterThanOrEqual(right);
+    public static Bool operator <=(DateTimeField left, DateTimeExpression right) => left.LessThanOrEqual(right);
 
     public static Bool operator ==(DateTimeExpression left, DateTimeField right) => right.Equal(left);
 

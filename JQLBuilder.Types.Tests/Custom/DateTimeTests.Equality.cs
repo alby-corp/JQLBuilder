@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Custom;
 
-public partial class DateTests
+public partial class DateTimeTests
 {
     [TestMethod]
     public void Should_Parses_Equals_Expression()
@@ -10,7 +10,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] == dateString)
+            .Where(f => f.Custom.DateTime[CustomFieldName] == dateString)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -24,7 +24,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] != dateString )
+            .Where(f => f.Custom.DateTime[CustomFieldName] != dateString )
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -38,7 +38,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] > dateString)
+            .Where(f => f.Custom.DateTime[CustomFieldName] > dateString)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -52,7 +52,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] >= dateString)
+            .Where(f => f.Custom.DateTime[CustomFieldName] >= dateString)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -66,7 +66,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] < dateString)
+            .Where(f => f.Custom.DateTime[CustomFieldName] < dateString)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -80,7 +80,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] <= dateString)
+            .Where(f => f.Custom.DateTime[CustomFieldName] <= dateString)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -96,7 +96,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString == f.Custom.Date[CustomFieldName])
+            .Where(f => dateString == f.Custom.DateTime[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -110,7 +110,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString != f.Custom.Date[CustomFieldName] )
+            .Where(f => dateString != f.Custom.DateTime[CustomFieldName] )
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -124,7 +124,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString > f.Custom.Date[CustomFieldName])
+            .Where(f => dateString > f.Custom.DateTime[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -138,7 +138,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString >= f.Custom.Date[CustomFieldName])
+            .Where(f => dateString >= f.Custom.DateTime[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -152,7 +152,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString < f.Custom.Date[CustomFieldName])
+            .Where(f => dateString < f.Custom.DateTime[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -166,7 +166,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString <= f.Custom.Date[CustomFieldName])
+            .Where(f => dateString <= f.Custom.DateTime[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
