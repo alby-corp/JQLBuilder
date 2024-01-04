@@ -70,7 +70,7 @@ public partial class DateTimeTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", "{dateString}")
                         """;
 
-        var filters = new List<DateTimeExpression> { dateString, dateString, dateString }.ToJqlCollection();
+        var filters = new JqlCollection<DateTimeExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.DateTime[CustomFieldName].In(filters))
@@ -86,7 +86,7 @@ public partial class DateTimeTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new List<DateTimeExpression> { dateString, dateTime, Date.DateTime.Now  }.ToJqlCollection();
+        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Date.DateTime.Now  };
         
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.DateTime[CustomFieldName].In(filters))
@@ -102,7 +102,7 @@ public partial class DateTimeTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", "{dateString}")
                         """;
 
-        var filters = new List<DateTimeExpression> { dateString, dateString, dateString }.ToJqlCollection();
+        var filters = new JqlCollection<DateTimeExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.DateTime[CustomFieldName].NotIn(filters))
@@ -118,7 +118,8 @@ public partial class DateTimeTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new List<DateTimeExpression> { dateString, dateTime, Date.DateTime.Now }.ToJqlCollection();
+        // var filters = new List<DateTimeExpression> { dateString, dateTime, Date.DateTime.Now }.ToJqlCollection();
+        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Date.DateTime.Now };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.DateTime[CustomFieldName].NotIn(filters))

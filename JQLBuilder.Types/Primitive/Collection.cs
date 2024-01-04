@@ -1,11 +1,15 @@
 ﻿namespace JQLBuilder.Types.Primitive;
 
+using System.Collections;
 using Abstract;
 
-public class JqlCollection<T> : JqlValue, IJqlCollection<T> where T : IJqlType;
-
-public static class CollectionExtensions
+public sealed class JqlCollection<T> : JqlValue, IJqlCollection<T>, IEnumerable<T> where T : IJqlType
 {
-    public static IJqlCollection<T> ToJqlCollection<T>(this IEnumerable<T> collection) where T : IJqlType
-        => new JqlCollection<T> { Value = collection };
+    public JqlCollection() => Value = new List<T>();
+
+    public void Add(T item) => ((List<T>)Value).Add(item);
+    
+    public IEnumerator<T> GetEnumerator() => ((List<T>)Value).GetEnumerator();
+
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

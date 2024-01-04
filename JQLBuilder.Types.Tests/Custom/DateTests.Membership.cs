@@ -70,7 +70,7 @@ public partial class DateTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", "{dateString}")
                         """;
 
-        var filters = new List<DateExpression> { dateString, dateString, dateString }.ToJqlCollection();
+        var filters = new JqlCollection<DateExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Date[CustomFieldName].In(filters))
@@ -86,7 +86,7 @@ public partial class DateTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new List<DateExpression> { dateString, dateTime, Date.DateOnly.Now  }.ToJqlCollection();
+        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Date.DateOnly.Now  };
         
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Date[CustomFieldName].In(filters))
@@ -102,7 +102,7 @@ public partial class DateTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", "{dateString}")
                         """;
 
-        var filters = new List<DateExpression> { dateString, dateString, dateString }.ToJqlCollection();
+        var filters = new JqlCollection<DateExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Date[CustomFieldName].NotIn(filters))
@@ -118,7 +118,7 @@ public partial class DateTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new List<DateExpression> { dateString, dateTime, Date.DateOnly.Now }.ToJqlCollection();
+        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Date.DateOnly.Now };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Date[CustomFieldName].NotIn(filters))

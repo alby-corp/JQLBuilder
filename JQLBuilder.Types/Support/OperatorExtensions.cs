@@ -51,13 +51,13 @@ internal static class OperatorExtensions
     /// <summary>
     ///     Creates a binary operator for the AND logical operation (!).
     /// </summary>
-    internal static BinaryOperator And(this IJqlType left, IJqlType right) =>
+    internal static BinaryOperator And(this Bool left, Bool right) =>
         new(left, Constants.And, right, Priority.LogicalAnd);
 
     /// <summary>
     ///     Creates a binary operator for the OR logical operation (||).
     /// </summary>
-    internal static BinaryOperator Or(this IJqlType left, IJqlType right) =>
+    internal static BinaryOperator Or(this Bool left, Bool right) =>
         new(left, Constants.Or, right, Priority.LogicalOr);
 
     /// <summary>

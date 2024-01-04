@@ -16,5 +16,5 @@ public interface IJqlNullable : IJqlType;
 
 public class JqlValue : IJqlType
 {
-    internal virtual object? Value { get; init; }
+    internal object Value { get; init; } = null!;
 }

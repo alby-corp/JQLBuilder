@@ -8,8 +8,6 @@ using Support;
 public class DateField : JqlValue, IJqlField<DateExpression>, IJqlNullable
 #pragma warning restore CS0660, CS0661
 {
-    internal override object? Value { get; init; }
-
     public static Bool operator ==(DateField left, DateExpression right) => left.Equal(right);
 
     public static Bool operator !=(DateField left, DateExpression right) => left.NotEqual(right);

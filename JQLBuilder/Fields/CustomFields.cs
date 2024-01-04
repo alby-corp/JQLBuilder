@@ -5,9 +5,16 @@ using Types.Primitive;
 
 public class CustomFields
 {
+    public CustomText Text { get; } = new();
     public CustomDate Date { get; } = new();
     public CustomDateTime DateTime { get; } = new();
     public CustomNumber Number { get; } = new();
+
+    public class CustomText
+    {
+        public TextField this[string field] => Field.Custom<TextField>(field);
+        public TextField this[int field] => Field.Custom<TextField>($"cf[{field}]");
+    }
 
     public class CustomDate
     {

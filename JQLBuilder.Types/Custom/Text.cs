@@ -9,5 +9,4 @@ public class TextField : JqlValue, IJqlField<TextExpression>, IJqlNullable;
 public class TextExpression : JqlValue, IJqlMembership<TextExpression>, IJqlLike<TextExpression>
 {
     public static implicit operator TextExpression(string value) => new() { Value = value };
-    public static implicit operator TextExpression(int value) => new() { Value = value };
 }

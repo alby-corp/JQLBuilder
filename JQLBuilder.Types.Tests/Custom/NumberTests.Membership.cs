@@ -60,7 +60,7 @@ public partial class NumberTests
     {
         var expected = $"{CustomFieldName} in ({Number}, {Number}, {Number})";
 
-        var filters = new List<NumberExpression> { Number, Number, Number }.ToJqlCollection();
+        var filters = new JqlCollection<NumberExpression> { Number, Number, Number };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Number[CustomFieldName].In(filters))
@@ -74,7 +74,7 @@ public partial class NumberTests
     {
         var expected = $"{CustomFieldName} in ({Number}, {Number})";
 
-        var filters = new List<NumberExpression> { Number, Number  }.ToJqlCollection();
+        var filters = new JqlCollection<NumberExpression> { Number, Number  };
         
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Number[CustomFieldName].In(filters))
@@ -88,7 +88,7 @@ public partial class NumberTests
     {
         var expected = $"{CustomFieldName} not in ({Number}, {Number}, {Number})";
 
-        var filters = new List<NumberExpression> { Number, Number, Number }.ToJqlCollection();
+        var filters = new JqlCollection<NumberExpression> { Number, Number, Number };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Number[CustomFieldName].NotIn(filters))
@@ -102,7 +102,7 @@ public partial class NumberTests
     {
         var expected = $"{CustomFieldName} not in ({Number}, {Number})";
 
-        var filters = new List<NumberExpression> { Number, Number }.ToJqlCollection();
+        var filters = new JqlCollection<NumberExpression> { Number, Number };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Number[CustomFieldName].NotIn(filters))
