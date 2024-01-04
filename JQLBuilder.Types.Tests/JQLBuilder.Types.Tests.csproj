@@ -39,6 +39,21 @@
       <Compile Update="Custom\DateTimeTests.Nullable.cs">
         <DependentUpon>DateTimeTests.cs</DependentUpon>
       </Compile>
+      <Compile Update="Custom\NumberTests.Equality.cs">
+        <DependentUpon>NumberTests.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Custom\NumberTests.Membership.cs">
+        <DependentUpon>NumberTests.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Custom\NumberTests.Nullable.cs">
+        <DependentUpon>NumberTests.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Custom\TextTests.Like.cs">
+        <DependentUpon>TextTests.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Custom\TextTests.Nullable.cs">
+        <DependentUpon>TextTests.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

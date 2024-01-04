@@ -20,4 +20,9 @@ public static class Constants
     public const string Descending = "desc";
     public new const string Equals = "=";
     public const string NotEquals = "!=";
+    public const string Was = "was";
+    public const string WasNot = "was not";
+    public const string WasIn = "was in";
+    public const string WasNotIn = "was not in";
+    public const string Changed = "CHANGED";
 }
