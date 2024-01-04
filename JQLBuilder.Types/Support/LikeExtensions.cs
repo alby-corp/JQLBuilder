@@ -1,11 +1,15 @@
 ﻿namespace JQLBuilder.Types.Support;
 
-using Abstract;
-using Enum;
-using Primitive;
+using Infrastructure.Abstract;
+using Infrastructure.Constants;
+using Infrastructure.Enum;
+using Infrastructure.Operators;
 
-public static class LikeExtensions
+internal static class LikeExtensions
 {
-    public static Bool Like<T>(this IJqlField<T> left, T right) where T : IJqlLike<T> => new BinaryOperator(left, Constants.Like, right, Priority.Equality);
-    public static Bool NotLike<T>(this IJqlField<T> left, T right) where T : IJqlLike<T> => new BinaryOperator(left, Constants.NotLike, right, Priority.Equality);
+    internal static Bool Like<T>(this IJqlField<T> left, T right) where T : IJqlLike<T> => 
+        new BinaryOperator(left, JqlKeywords.Like, right, Priority.Equality);
+    
+    internal static Bool NotLike<T>(this IJqlField<T> left, T right) where T : IJqlLike<T> => 
+        new BinaryOperator(left, JqlKeywords.NotLike, right, Priority.Equality);
 }

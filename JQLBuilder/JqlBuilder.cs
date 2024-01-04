@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder;
 
-using Queries;
+using Render.Queries;
 
 public static class JqlBuilder
 {

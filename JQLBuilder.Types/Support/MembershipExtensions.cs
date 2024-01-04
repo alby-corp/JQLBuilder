@@ -2,25 +2,23 @@
 
 namespace JQLBuilder;
 
-using Types.Abstract;
-using Types.Enum;
-using Types.Primitive;
+using Infrastructure;
+using Infrastructure.Abstract;
+using Infrastructure.Constants;
+using Infrastructure.Enum;
+using Infrastructure.Operators;
 
-public static class MembershipExtensions
+internal static class MembershipExtensions
 {
-    public static Bool In<T>(this IJqlField<T> value, IJqlCollection<T> jqlCollection)
-        where T : IJqlType, IJqlMembership<T>
-        => new BinaryOperator(value, "in", jqlCollection, Priority.Powerful);
+    internal static Bool In<T>(this IJqlField<T> value, IJqlCollection<T> jqlCollection) where T : IJqlType, IJqlMembership<T> => 
+        new BinaryOperator(value, JqlKeywords.In, jqlCollection, Priority.Powerful);
 
-    public static Bool In<T>(this IJqlField<T> value, params T[] collection)
-        where T : IJqlType, IJqlMembership<T>
-        => new BinaryOperator(value, "in", new JqlValue { Value = collection }, Priority.Powerful);
+    internal static Bool In<T>(this IJqlField<T> value, params T[] collection) where T : IJqlType, IJqlMembership<T> => 
+        new BinaryOperator(value, JqlKeywords.In, new JqlValue { Value = collection }, Priority.Powerful);
 
-    public static Bool NotIn<T>(this IJqlField<T> value, IJqlCollection<T> jqlCollection)
-        where T : IJqlType, IJqlMembership<T>
-        => new BinaryOperator(value, "not in", jqlCollection, Priority.Powerful);
+    internal static Bool NotIn<T>(this IJqlField<T> value, IJqlCollection<T> jqlCollection) where T : IJqlType, IJqlMembership<T> => 
+        new BinaryOperator(value, JqlKeywords.NotIn, jqlCollection, Priority.Powerful);
 
-    public static Bool NotIn<T>(this IJqlField<T> value, params T[] collection)
-        where T : IJqlType, IJqlMembership<T>
-        => new BinaryOperator(value, "not in", new JqlValue { Value = collection }, Priority.Powerful);
+    internal static Bool NotIn<T>(this IJqlField<T> value, params T[] collection) where T : IJqlType, IJqlMembership<T> => 
+        new BinaryOperator(value, JqlKeywords.NotIn, new JqlValue { Value = collection }, Priority.Powerful);
 }

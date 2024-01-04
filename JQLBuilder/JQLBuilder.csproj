@@ -23,6 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\JQLBuilder.Render\JQLBuilder.Render.csproj" />
         <ProjectReference Include="..\JQLBuilder.Types\JQLBuilder.Types.csproj"/>
     </ItemGroup>
 

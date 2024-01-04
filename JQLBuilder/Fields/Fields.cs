@@ -1,9 +1,8 @@
 ﻿namespace JQLBuilder.Fields;
 
-using BuildIn;
-using Types;
-using Types.Custom;
-using Types.Primitive;
+using Infrastructure;
+using Types.Functions;
+using Types.JqlTypes;
 
 public class Fields
 {
@@ -12,24 +11,25 @@ public class Fields
     #region Custom
 
     public CustomFields Custom { get; } = new();
+
+    public DateFunctions<DateExpression> DateOnly { get; } = Date.Only;
+    public DateFunctions<DateTimeExpression> DateTime { get; } =  Date.Time;
     
-    public BuildInDate<DateExpression> Date { get; } = JQLBuilder.Fields.BuildIn.Date.DateOnly;
-    public BuildInDate<DateTimeExpression> DateTime { get; } = JQLBuilder.Fields.BuildIn.Date.DateTime;
     public BuildInPicker Picker { get; } = new();
-    
+
     #endregion
-    
+
     #region Standard
 
     public DateField DueDate { get; } = Field.Custom<DateField>("dueDate");
     public DateField Due { get; } = Field.Custom<DateField>("due");
-    
+
     public BuildInProjects Projects { get; } = new();
     public ProjectField Project { get; } = Field.Custom<ProjectField>("project");
-    
+
     public BuildInVersions BuildInVersions { get; } = new();
     public VersionField FixVersion { get; } = Field.Custom<VersionField>("fixVersion");
     public VersionField AffectedVersion { get; } = Field.Custom<VersionField>("affectedVersion");
-    
+
     #endregion
 }

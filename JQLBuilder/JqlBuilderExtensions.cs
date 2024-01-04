@@ -1,9 +1,9 @@
 ﻿namespace JQLBuilder;
 
-using Enums;
 using Fields;
-using Queries;
-using Types.Primitive;
+using Infrastructure.Operators;
+using Render.Enums;
+using Render.Queries;
 
 public static class JqlBuilderExtensions
 {

@@ -1,18 +1,25 @@
 ﻿namespace JQLBuilder.Types.Support;
 
-using Abstract;
-using Enum;
-using Primitive;
+using Infrastructure;
+using Infrastructure.Abstract;
+using Infrastructure.Constants;
+using Infrastructure.Enum;
+using Infrastructure.Operators;
 
-public static class HistoricalExtensions
+internal static class HistoricalExtensions
 {
-    public static Bool Was<T>(this IJqlField<T> left, T right) where T : IJqlHistorical<T> => new BinaryOperator(left, Constants.Was, right, Priority.Powerful);
+    internal static Bool Was<T>(this IJqlField<T> left, T right) where T : IJqlHistorical<T> => 
+        new BinaryOperator(left, JqlKeywords.Was, right, Priority.Powerful);
 
-    public static Bool WasIn<T>(this IJqlField<T> left, JqlCollection<T> right) where T : IJqlHistorical<T> => new BinaryOperator(left, Constants.WasIn, right, Priority.Powerful);
+    internal static Bool WasIn<T>(this IJqlField<T> left, JqlCollection<T> right) where T : IJqlHistorical<T> => 
+        new BinaryOperator(left, JqlKeywords.WasIn, right, Priority.Powerful);
 
-    public static Bool WasNot<T>(this IJqlField<T> left, T right) where T : IJqlHistorical<T> => new BinaryOperator(left, Constants.WasNot, right, Priority.Powerful);
+    internal static Bool WasNot<T>(this IJqlField<T> left, T right) where T : IJqlHistorical<T> => 
+        new BinaryOperator(left, JqlKeywords.WasNot, right, Priority.Powerful);
 
-    public static Bool WasNotIn<T>(this IJqlField<T> left, JqlCollection<T> right) where T : IJqlHistorical<T> => new BinaryOperator(left, Constants.WasNotIn, right, Priority.Powerful);
+    internal static Bool WasNotIn<T>(this IJqlField<T> left, JqlCollection<T> right) where T : IJqlHistorical<T> => 
+        new BinaryOperator(left, JqlKeywords.WasNotIn, right, Priority.Powerful);
 
-    public static Bool Changed<T>(this IJqlField<T> left, T right) where T : IJqlHistorical<T> => new BinaryOperator(left, Constants.Changed, right, Priority.Powerful);
+    internal static Bool Changed<T>(this IJqlField<T> left, T right) where T : IJqlHistorical<T> => 
+        new BinaryOperator(left, JqlKeywords.Changed, right, Priority.Powerful);
 }
