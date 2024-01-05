@@ -1,7 +1,5 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade.Builders;
-
 public partial class NumberTests
 {
     [TestMethod]

@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Infrastructure.Constants;
 
-internal static class JqlKeywords
+internal static partial class JqlKeywords
 {
     internal const string Like = "~";
     internal const string NotLike = "!~";

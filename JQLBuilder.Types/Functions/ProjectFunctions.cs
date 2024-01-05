@@ -1,11 +1,12 @@
 ﻿namespace JQLBuilder.Types.Functions;
 
 using Infrastructure;
+using Infrastructure.Constants;
 using JqlTypes;
 
 public class ProjectFunctions
 {
-    public ProjectExpression LeadByUser() => Field.Custom<ProjectExpression>("projectsLeadByUser()");
-    public ProjectExpression WhereUserHasPermission(string user) => Field.Custom<ProjectExpression>($"""projectsWhereUserHasPermission("{user}")""");
-    public ProjectExpression WhereUserHasRole(string user) => Field.Custom<ProjectExpression>($"""projectsWhereUserHasRole("{user}")""");
+    public ProjectExpression LeadByUser(string user) => Field.Custom<ProjectExpression>(JqlKeywords.LeadByUser(user));
+    public ProjectExpression WhereUserHasPermission(string user) => Field.Custom<ProjectExpression>(JqlKeywords.WhereUserHasPermission(user));
+    public ProjectExpression WhereUserHasRole(string user) => Field.Custom<ProjectExpression>(JqlKeywords.WhereUserHasRole(user));
 }

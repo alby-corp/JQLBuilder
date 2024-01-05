@@ -1,10 +1,9 @@
-namespace JQLBuilder.Types.Tests.Types;
+namespace JQLBuilder.Types.Tests;
 
-using Facade.Builders;
 using Support;
 
 [TestClass]
-public class ProjectTests
+public class SampleTests
 {
     const int ProjectId = 12345;
     const string Project1 = "CLOVER";
@@ -15,13 +14,13 @@ public class ProjectTests
     [TestMethod]
     public void TestMethod1()
     {
-        var expected = $"""project = "{Project1}" AND project = {ProjectId} AND project in ("{Project1}", {ProjectId}) AND (project in (projectsLeadByUser()) OR project = "{Project1}") AND project not in (projectsWhereUserHasRole("{ProjectLead}"))""";
+        var expected = $"""project = "{Project1}" AND project = {ProjectId} AND project in ("{Project1}", {ProjectId}) AND (project in (projectsLeadByUser("{ProjectLead}")) OR project = "{Project1}") AND project not in (projectsWhereUserHasRole("{ProjectLead}"))""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
             .And(f => f.Project == ProjectId)
             .And(f => f.Project.In(Project1, ProjectId))
-            .And(f => f.Project.In(f.Project.Functions.LeadByUser()) | (f.Project == Project1))
+            .And(f => f.Project.In(f.Project.Functions.LeadByUser(ProjectLead)) | (f.Project == Project1))
             .And(f => f.Project.NotIn(f.Project.Functions.WhereUserHasRole(ProjectLead)))
             .ToString();
 
@@ -133,6 +132,36 @@ public class ProjectTests
             .Where(f => f.Project.Is(v => v.Null))
             .And(f => (f.Project == ProjectId) | f.Project.IsNot(v => v.Empty))
             .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestMethod10()
+    {
+        const string expected = "affectedVersion = latestReleasedVersion()";
+
+        var actual = JqlBuilder.Query.Where(f => f.Version.Affected == f.Version.Functions.LatestReleased).ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestMethod11()
+    {
+        const string expected = "affectedVersion in releasedVersions()";
+
+        var actual = JqlBuilder.Query.Where(f => f.Version.Affected.In(f.Version.Functions.Released)).ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void TestMethod12()
+    {
+        const string expected = """affectedVersion in ("12121", latestReleasedVersion(), 123)""";
+
+        var actual = JqlBuilder.Query.Where(f => f.Version.Affected.In("12121", f.Version.Functions.LatestReleased, 123)).ToString();
 
         Assert.AreEqual(expected, actual);
     }

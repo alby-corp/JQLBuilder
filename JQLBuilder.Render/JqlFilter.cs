@@ -1,16 +1,17 @@
-﻿namespace JQLBuilder.Render.Queries;
+﻿namespace JQLBuilder.Render;
 
 using System.Text;
 using Infrastructure.Operators;
+using Renders;
 
-public class FilterQuery(Bool? filter)
+public class JqlFilter(Bool? query)
 {
-    internal Bool? Filter { get; } = filter;
+    internal Bool? Query { get; } = query;
 
     internal void Build(StringBuilder builder)
     {
         var renderer = new JqlTypeRenderer(builder);
-        Filter?.Render(renderer);
+        Query?.Render(renderer);
     }
 
     public override string ToString()

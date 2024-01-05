@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Render;
+﻿namespace JQLBuilder.Render.Renders;
 
 using System.Text;
 using Infrastructure.Abstract;

@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Facade;
+﻿namespace JQLBuilder;
 
 using Types;
 

@@ -10,7 +10,7 @@
 
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-            <_Parameter1>JQLBuilder.Facade</_Parameter1>
+            <_Parameter1>JQLBuilder</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
 

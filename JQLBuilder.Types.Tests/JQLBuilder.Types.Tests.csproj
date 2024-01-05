@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\JQLBuilder.Facade\JQLBuilder.Facade.csproj"/>
+        <ProjectReference Include="..\JQLBuilder\JQLBuilder.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -55,13 +55,13 @@
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\DateOnlyTests.Equality.cs">
-            <DependentUpon>DateTests.cs</DependentUpon>
+            <DependentUpon>DateOnlyTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\DateOnlyTests.Membership.cs">
-            <DependentUpon>DateTests.cs</DependentUpon>
+            <DependentUpon>DateOnlyTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\DateOnlyTests.Nullable.cs">
-            <DependentUpon>DateTests.cs</DependentUpon>
+            <DependentUpon>DateOnlyTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\DateTimeTests.Equality.cs">
             <DependentUpon>DateTimeTests.cs</DependentUpon>

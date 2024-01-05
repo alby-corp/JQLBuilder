@@ -1,13 +1,14 @@
-﻿namespace JQLBuilder.Render.Queries;
+﻿namespace JQLBuilder.Render;
 
 using System.Text;
 using Enums;
 using Infrastructure.Abstract;
 using Infrastructure.Constants;
+using Renders;
 
-public class OrderQuery(FilterQuery? query, IReadOnlyList<(IJqlType Value, Order Order)> orderings)
+public class JqlOrder(JqlFilter? query, IReadOnlyList<(IJqlType Value, Order Order)> orderings)
 {
-    internal FilterQuery? Query { get; } = query;
+    internal JqlFilter? Query { get; } = query;
     internal IReadOnlyList<(IJqlType Value, Order Order)> Orderings { get; } = orderings;
 
     void Build(StringBuilder builder)

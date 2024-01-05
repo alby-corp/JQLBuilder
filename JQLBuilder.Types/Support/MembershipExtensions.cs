@@ -1,6 +1,4 @@
-﻿// ReSharper disable once CheckNamespace
-
-namespace JQLBuilder;
+﻿namespace JQLBuilder.Types.Support;
 
 using Infrastructure;
 using Infrastructure.Abstract;
