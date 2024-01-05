@@ -4,9 +4,9 @@ using Functions;
 using Infrastructure;
 using JqlTypes;
 
-public class Projecto
+public class Project : ProjectField
 {
-    public ProjectFunctions Functions { get; } = new();
+    public Project() => Value = new Field("project");
 
-    public ProjectField Project { get; } = Field.Custom<ProjectField>("project");
+    public ProjectFunctions Functions { get; } = new();
 }

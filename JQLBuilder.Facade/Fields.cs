@@ -13,7 +13,7 @@ public class Fields
 
     public Number Number { get; } = new();
 
-    public Projecto Project { get; } = new();
+    public Project Project { get; } = new();
 
     public Version Version { get; } = new();
 }
