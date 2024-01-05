@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Facade.Builders;
+﻿namespace JQLBuilder.Builders;
 
 using Infrastructure.Abstract;
 using Infrastructure.Operators;

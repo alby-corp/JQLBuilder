@@ -1,8 +1,8 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
-using Facade.Builders;
+using Builders;
 using DateTime = System.DateTime;
+using Functions = JQLBuilder.Functions;
 
 [TestClass]
 public partial class DateOnlyTests

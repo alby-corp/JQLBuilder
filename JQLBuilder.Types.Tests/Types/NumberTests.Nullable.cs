@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade.Builders;
+using Builders;
 using Support;
 
 public partial class NumberTests

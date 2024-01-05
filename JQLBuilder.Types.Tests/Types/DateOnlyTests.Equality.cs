@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade.Builders;
+using Builders;
 
 public partial class DateOnlyTests
 {
