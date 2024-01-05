@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Fields;
+﻿namespace JQLBuilder.Facade.Fields;
 
 using Infrastructure;
 using Types.Functions;
@@ -13,8 +13,8 @@ public class Fields
     public CustomFields Custom { get; } = new();
 
     public DateFunctions<DateExpression> DateOnly { get; } = Date.Only;
-    public DateFunctions<DateTimeExpression> DateTime { get; } =  Date.Time;
-    
+    public DateFunctions<DateTimeExpression> DateTime { get; } = Date.Time;
+
     public BuildInPicker Picker { get; } = new();
 
     #endregion

@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder;
+﻿namespace JQLBuilder.Facade;
 
 using Render.Queries;
 

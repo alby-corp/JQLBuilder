@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Fields;
+using Facade;
 
 [TestClass]
 public partial class DateTests

@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Fields;
+using Facade;
 using Functions;
 using Infrastructure;
 using JqlTypes;
@@ -43,7 +43,7 @@ public partial class DateTests
                         """;
 
         var filter = new JqlCollection<DateExpression> { dateString, dateTime, Date.Only.Now };
-        
+
         var actual = JqlBuilder.Query
             .Where(f => f.Custom.Date[CustomFieldName].NotIn(filter))
             .ToString();

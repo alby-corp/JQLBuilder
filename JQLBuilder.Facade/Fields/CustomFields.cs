@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Fields;
+﻿namespace JQLBuilder.Facade.Fields;
 
 using Infrastructure;
 using Types.JqlTypes;

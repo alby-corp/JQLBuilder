@@ -2,7 +2,7 @@
 
 using System.Text;
 using Infrastructure.Abstract;
-using JQLBuilder.Infrastructure.Enum;
+using Infrastructure.Enum;
 using Infrastructure.Operators;
 
 internal class JqlTypeRenderer(StringBuilder builder)

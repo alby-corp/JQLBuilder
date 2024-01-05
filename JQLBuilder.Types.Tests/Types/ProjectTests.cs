@@ -1,6 +1,7 @@
 namespace JQLBuilder.Types.Tests.Types;
 
-using Fields;
+using Facade;
+using Facade.Fields;
 using Support;
 
 [TestClass]

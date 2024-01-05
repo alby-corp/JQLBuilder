@@ -2,7 +2,6 @@
 
 using System.Text;
 using Infrastructure.Operators;
-using Render;
 
 public class FilterQuery(Bool? filter)
 {
