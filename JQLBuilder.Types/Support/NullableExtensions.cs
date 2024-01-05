@@ -1,30 +1,23 @@
-﻿// ReSharper disable once CheckNamespace
+﻿namespace JQLBuilder.Types.Support;
 
-namespace JQLBuilder;
+using Infrastructure.Abstract;
+using Infrastructure.Constants;
+using Infrastructure.Enum;
+using Infrastructure.Operators;
 
-using Types.Abstract;
-using Types.Enum;
-using Types.Primitive;
-
-public static class NullableExtensions
+internal static class NullableExtensions
 {
     static Values ValuesSelection { get; } = new();
 
-    /// <summary>
-    ///     Creates a unary operator for the "is EMPTY" check.
-    /// </summary>
-    public static Bool Is<T>(this T value, Func<Values, string> selector) where T : IJqlNullable =>
-        new UnaryOperator($"is {selector(ValuesSelection)}", value, Direction.Suffix);
+    internal static Bool Is<T>(this T value, Func<Values, string>? selector = default) where T : IJqlNullable =>
+        new UnaryOperator($"{JqlKeywords.Is} {selector?.Invoke(ValuesSelection) ?? ValuesSelection.Empty}", value, Direction.Suffix);
 
-    /// <summary>
-    ///     Creates a unary operator for the "is NOT EMPTY" check.
-    /// </summary>
-    public static Bool IsNot<T>(this T value, Func<Values, string> selector) where T : IJqlNullable =>
-        new UnaryOperator($"is not {selector(ValuesSelection)}", value, Direction.Suffix);
+    internal static Bool IsNot<T>(this T value, Func<Values, string>? selector = default) where T : IJqlNullable =>
+        new UnaryOperator($"{JqlKeywords.IsNot} {selector?.Invoke(ValuesSelection) ?? ValuesSelection.Empty}", value, Direction.Suffix);
 
-    public class Values
+    internal class Values
     {
-        public readonly string Empty = "EMPTY";
-        public readonly string Null = "NULL";
+        public readonly string Empty = JqlKeywords.Empty;
+        public readonly string Null = JqlKeywords.Null;
     }
 }

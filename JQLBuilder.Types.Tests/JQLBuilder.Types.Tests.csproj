@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
+        <PackageReference Include="MSTest.TestAdapter" Version="3.0.4"/>
+        <PackageReference Include="MSTest.TestFramework" Version="3.0.4"/>
+        <PackageReference Include="coverlet.collector" Version="6.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\JQLBuilder.Facade\JQLBuilder.Facade.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Custom\DateTests.Equality.cs">
+            <DependentUpon>DateTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\DateTests.Membership.cs">
+            <DependentUpon>DateTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\DateTests.Nullable.cs">
+            <DependentUpon>DateTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\DateTimeTests.Equality.cs">
+            <DependentUpon>DateTimeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\DateTimeTests.Membership.cs">
+            <DependentUpon>DateTimeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\DateTimeTests.Nullable.cs">
+            <DependentUpon>DateTimeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\NumberTests.Equality.cs">
+            <DependentUpon>NumberTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\NumberTests.Membership.cs">
+            <DependentUpon>NumberTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\NumberTests.Nullable.cs">
+            <DependentUpon>NumberTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\TextTests.Like.cs">
+            <DependentUpon>TextTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Custom\TextTests.Nullable.cs">
+            <DependentUpon>TextTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\DateOnlyTests.Equality.cs">
+            <DependentUpon>DateTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\DateOnlyTests.Membership.cs">
+            <DependentUpon>DateTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\DateOnlyTests.Nullable.cs">
+            <DependentUpon>DateTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\DateTimeTests.Equality.cs">
+            <DependentUpon>DateTimeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\DateTimeTests.Membership.cs">
+            <DependentUpon>DateTimeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\DateTimeTests.Nullable.cs">
+            <DependentUpon>DateTimeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\NumberTests.Equality.cs">
+            <DependentUpon>NumberTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\NumberTests.Membership.cs">
+            <DependentUpon>NumberTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\NumberTests.Nullable.cs">
+            <DependentUpon>NumberTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\TextTests.Like.cs">
+            <DependentUpon>TextTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\TextTests.Nullable.cs">
+            <DependentUpon>TextTests.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+</Project>
