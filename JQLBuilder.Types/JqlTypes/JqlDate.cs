@@ -41,12 +41,5 @@ public class DateExpression : JqlDate.Only, IJqlMembership<DateExpression>
 
     public static implicit operator DateExpression(DateTime value) => new() { Value = value };
 
-    static DateTime Init(string value)
-    {
-        var result = DateTime.TryParse(value, out var datetime);
-
-        if (!result) throw new ArgumentException("Invalid date format");
-
-        return datetime;
-    }
+    public static implicit operator DateExpression(TimeSpan value) => new() { Value = DateTime.Now.Add(value) };
 }
