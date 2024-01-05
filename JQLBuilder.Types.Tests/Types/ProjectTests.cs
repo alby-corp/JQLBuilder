@@ -1,6 +1,5 @@
 namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
 using Facade.Builders;
 using Support;
 
@@ -32,13 +31,13 @@ public class ProjectTests
     [TestMethod]
     public void TestMethod2()
     {
-        const string expected = $"""project = "{Project1}" OR project = "{Project2}" order by project asc, assignee desc""";
+        const string expected = $"""project = "{Project1}" OR project = "{Project2}" order by project asc, affectedVersion desc""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project1)
             .Or(f => f.Project == Project2)
-            .OrderBy(f => Ordering.Project)
-            .ThenByDescending(f => Ordering.Assignee)
+            .OrderBy(f => f.Project)
+            .ThenByDescending(f => f.Version.Affected)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -47,12 +46,12 @@ public class ProjectTests
     [TestMethod]
     public void TestMethod3()
     {
-        const string expected = "order by project asc, assignee desc, assignee asc";
+        const string expected = "order by project asc, project desc, fixVersion asc";
 
         var actual = JqlBuilder.Query
-            .OrderBy(f => Ordering.Project)
-            .ThenByDescending(f => Ordering.Assignee)
-            .ThenBy(f => Ordering.Assignee)
+            .OrderBy(f => f.Project)
+            .ThenByDescending(f => f.Project)
+            .ThenBy(f => f.Version.Fix)
             .ToString();
 
         Assert.AreEqual(expected, actual);

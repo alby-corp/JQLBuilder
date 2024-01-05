@@ -10,3 +10,8 @@ public class Project : ProjectField
 
     public ProjectFunctions Functions { get; } = new();
 }
+
+public class OrderingProject : ProjectField
+{
+    public OrderingProject() => Value = new Field("project");
+}

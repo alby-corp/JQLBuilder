@@ -11,3 +11,9 @@ public class Version
     public VersionField Fix { get; } = Field.Custom<VersionField>("fixVersion");
     public VersionField Affected { get; } = Field.Custom<VersionField>("affectedVersion");
 }
+
+public class OrderingVersion
+{
+    public VersionField Fix { get; } = Field.Custom<VersionField>("fixVersion");
+    public VersionField Affected { get; } = Field.Custom<VersionField>("affectedVersion");
+}

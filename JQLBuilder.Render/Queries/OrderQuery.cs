@@ -2,12 +2,13 @@
 
 using System.Text;
 using Enums;
+using Infrastructure.Abstract;
 using Infrastructure.Constants;
 
-public class OrderQuery(FilterQuery? query, IReadOnlyList<(string Value, Order Order)> orderings)
+public class OrderQuery(FilterQuery? query, IReadOnlyList<(IJqlType Value, Order Order)> orderings)
 {
     internal FilterQuery? Query { get; } = query;
-    internal IReadOnlyList<(string Value, Order Order)> Orderings { get; } = orderings;
+    internal IReadOnlyList<(IJqlType Value, Order Order)> Orderings { get; } = orderings;
 
     void Build(StringBuilder builder)
     {
@@ -26,7 +27,7 @@ public class OrderQuery(FilterQuery? query, IReadOnlyList<(string Value, Order O
         {
             var (value, direction) = Orderings[index];
 
-            builder.Append(value);
+            value.Render(new JqlTypeRenderer(builder));
             builder.Append(' ');
             builder.Append(direction switch
             {
