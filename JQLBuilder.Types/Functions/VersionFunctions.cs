@@ -4,7 +4,7 @@ using Infrastructure;
 using Infrastructure.Abstract;
 using JqlTypes;
 
-public class BuildInVersions
+public class VersionFunctions
 {
     public VersionExpression LatestReleased() => Field.Custom<VersionExpression>("latestReleasedVersion()");
     public VersionExpression LatestUnreleased() => Field.Custom<VersionExpression>("latestUnreleasedVersion()");

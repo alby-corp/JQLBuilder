@@ -54,13 +54,13 @@
         <Compile Update="Custom\TextTests.Nullable.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\DateTests.Equality.cs">
+        <Compile Update="Types\DateOnlyTests.Equality.cs">
             <DependentUpon>DateTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\DateTests.Membership.cs">
+        <Compile Update="Types\DateOnlyTests.Membership.cs">
             <DependentUpon>DateTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\DateTests.Nullable.cs">
+        <Compile Update="Types\DateOnlyTests.Nullable.cs">
             <DependentUpon>DateTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\DateTimeTests.Equality.cs">

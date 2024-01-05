@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
+using Facade.Builders;
 using Infrastructure;
 using JqlTypes;
 
@@ -12,7 +12,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} in ({Number}, {Number})";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].In(Number, Number))
+            .Where(f => f.Number[CustomFieldName].In(Number, Number))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -24,7 +24,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} in ({Number}, {Number}, {Number})";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].In(Number, Number, Number))
+            .Where(f => f.Number[CustomFieldName].In(Number, Number, Number))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -36,7 +36,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} not in ({Number}, {Number})";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].NotIn(Number, Number))
+            .Where(f => f.Number[CustomFieldName].NotIn(Number, Number))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -48,7 +48,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} not in ({Number}, {Number}, {Number})";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].NotIn(Number, Number, Number))
+            .Where(f => f.Number[CustomFieldName].NotIn(Number, Number, Number))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -62,7 +62,7 @@ public partial class NumberTests
         var filters = new JqlCollection<NumberExpression> { Number, Number, Number };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].In(filters))
+            .Where(f => f.Number[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -76,7 +76,7 @@ public partial class NumberTests
         var filters = new JqlCollection<NumberExpression> { Number, Number };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].In(filters))
+            .Where(f => f.Number[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -90,7 +90,7 @@ public partial class NumberTests
         var filters = new JqlCollection<NumberExpression> { Number, Number, Number };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].NotIn(filters))
+            .Where(f => f.Number[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -104,7 +104,7 @@ public partial class NumberTests
         var filters = new JqlCollection<NumberExpression> { Number, Number };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName].NotIn(filters))
+            .Where(f => f.Number[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);

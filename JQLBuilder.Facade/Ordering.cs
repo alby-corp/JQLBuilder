@@ -1,8 +1,8 @@
-﻿namespace JQLBuilder.Facade.Fields;
+﻿namespace JQLBuilder.Facade;
 
-public class OrderingFields
+public class Ordering
 {
-    public static OrderingFields All { get; } = new();
+    public static Ordering All { get; } = new();
 
     public static string Project => "project";
     public static string Assignee => "assignee";

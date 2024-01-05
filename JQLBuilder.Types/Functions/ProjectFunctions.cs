@@ -3,7 +3,7 @@
 using Infrastructure;
 using JqlTypes;
 
-public class BuildInProjects
+public class ProjectFunctions
 {
     public ProjectExpression LeadByUser() => Field.Custom<ProjectExpression>("projectsLeadByUser()");
     public ProjectExpression WhereUserHasPermission(string user) => Field.Custom<ProjectExpression>($"""projectsWhereUserHasPermission("{user}")""");

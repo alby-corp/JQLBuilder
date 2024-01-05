@@ -1,11 +1,11 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
 using Facade;
-using Functions;
+using Facade.Builders;
 using Infrastructure;
 using JqlTypes;
 
-public partial class DateTests
+public partial class DateOnlyTests
 {
     [TestMethod]
     public void Should_Parses_In_Params_When_Are_Heterogeneous()
@@ -15,7 +15,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].In(dateString, dateTime, f.DateOnly.Now))
+            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateTime, f.DateOnly.Functions.Now))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -29,7 +29,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].In(dateString, dateString, dateString))
+            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateString, dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -42,10 +42,10 @@ public partial class DateTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filter = new JqlCollection<DateExpression> { dateString, dateTime, Date.Only.Now };
+        var filter = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].NotIn(filter))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(filter))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -59,7 +59,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].NotIn(dateString, dateString, dateString))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(dateString, dateString, dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -75,7 +75,7 @@ public partial class DateTests
         var filters = new JqlCollection<DateExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].In(filters))
+            .Where(f => f.DateOnly[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -88,10 +88,10 @@ public partial class DateTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Date.Only.Now };
+        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].In(filters))
+            .Where(f => f.DateOnly[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -107,7 +107,7 @@ public partial class DateTests
         var filters = new JqlCollection<DateExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].NotIn(filters))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -120,10 +120,10 @@ public partial class DateTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Date.Only.Now };
+        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].NotIn(filters))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);

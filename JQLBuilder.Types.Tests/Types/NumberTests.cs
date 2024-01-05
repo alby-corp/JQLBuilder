@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
+using Facade.Builders;
 
 [TestClass]
 public partial class NumberTests
@@ -15,7 +15,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] == Number)
+            .Where(f => f.Number[CustomFieldName] == Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -27,7 +27,7 @@ public partial class NumberTests
         var expected = $"cf[{CustomFieldId}] = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldId] == Number)
+            .Where(f => f.Number[CustomFieldId] == Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -39,7 +39,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] == Number)
+            .Where(f => f.Number[CustomFieldName] == Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -51,7 +51,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => Number == f.Custom.Number[CustomFieldName])
+            .Where(f => Number == f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -64,7 +64,7 @@ public partial class NumberTests
         return;
 
         string Actual() => JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName] == "invalid date")
+            .Where(f => f.DateTime[CustomFieldName] == "invalid date")
             .ToString();
     }
 }

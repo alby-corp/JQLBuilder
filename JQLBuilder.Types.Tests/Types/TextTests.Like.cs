@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
+using Facade.Builders;
 using Support;
 
 public partial class TextTests
@@ -13,7 +13,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Text[CustomFieldName].Like(Text))
+            .Where(f => f.Text[CustomFieldName].Like(Text))
             .ToString();
 
         Assert.AreEqual(expected, actual);

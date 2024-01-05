@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
+using Facade.Builders;
 
 public partial class NumberTests
 {
@@ -10,7 +10,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] == Number)
+            .Where(f => f.Number[CustomFieldName] == Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -22,7 +22,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} != {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] != Number)
+            .Where(f => f.Number[CustomFieldName] != Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -34,7 +34,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} > {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] > Number)
+            .Where(f => f.Number[CustomFieldName] > Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -46,7 +46,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} >= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] >= Number)
+            .Where(f => f.Number[CustomFieldName] >= Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -58,7 +58,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} < {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] < Number)
+            .Where(f => f.Number[CustomFieldName] < Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -70,7 +70,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} <= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Number[CustomFieldName] <= Number)
+            .Where(f => f.Number[CustomFieldName] <= Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -84,7 +84,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => Number == f.Custom.Number[CustomFieldName])
+            .Where(f => Number == f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -96,7 +96,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} != {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => Number != f.Custom.Number[CustomFieldName])
+            .Where(f => Number != f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -108,7 +108,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} > {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => Number > f.Custom.Number[CustomFieldName])
+            .Where(f => Number > f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -120,7 +120,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} >= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => Number >= f.Custom.Number[CustomFieldName])
+            .Where(f => Number >= f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -132,7 +132,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} < {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => Number < f.Custom.Number[CustomFieldName])
+            .Where(f => Number < f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -144,7 +144,7 @@ public partial class NumberTests
         var expected = $"{CustomFieldName} <= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => Number <= f.Custom.Number[CustomFieldName])
+            .Where(f => Number <= f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);

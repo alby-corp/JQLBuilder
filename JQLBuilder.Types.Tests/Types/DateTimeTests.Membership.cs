@@ -1,7 +1,7 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
 using Facade;
-using Functions;
+using Facade.Builders;
 using Infrastructure;
 using JqlTypes;
 
@@ -15,7 +15,7 @@ public partial class DateTimeTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].In(dateString, dateTime, f.DateTime.Now))
+            .Where(f => f.DateTime[CustomFieldName].In(dateString, dateTime, f.DateTime.Functions.Now))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -29,7 +29,7 @@ public partial class DateTimeTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].In(dateString, dateString, dateString))
+            .Where(f => f.DateTime[CustomFieldName].In(dateString, dateString, dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -43,7 +43,7 @@ public partial class DateTimeTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].NotIn(dateString, dateTime, f.DateTime.Now))
+            .Where(f => f.DateTime[CustomFieldName].NotIn(dateString, dateTime, f.DateTime.Functions.Now))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -57,7 +57,7 @@ public partial class DateTimeTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].NotIn(dateString, dateString, dateString))
+            .Where(f => f.DateTime[CustomFieldName].NotIn(dateString, dateString, dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -73,7 +73,7 @@ public partial class DateTimeTests
         var filters = new JqlCollection<DateTimeExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].In(filters))
+            .Where(f => f.DateTime[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -86,10 +86,10 @@ public partial class DateTimeTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Date.Time.Now };
+        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Functions.DateTime.Now };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].In(filters))
+            .Where(f => f.DateTime[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -105,7 +105,7 @@ public partial class DateTimeTests
         var filters = new JqlCollection<DateTimeExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].NotIn(filters))
+            .Where(f => f.DateTime[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -119,10 +119,10 @@ public partial class DateTimeTests
                         """;
 
         // var filters = new List<DateTimeExpression> { dateString, dateTime, Date.DateTime.Now }.ToJqlCollection();
-        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Date.Time.Now };
+        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Functions.DateTime.Now };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.DateTime[CustomFieldName].NotIn(filters))
+            .Where(f => f.DateTime[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);

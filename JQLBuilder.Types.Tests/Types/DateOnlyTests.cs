@@ -1,9 +1,11 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
 using Facade;
+using Facade.Builders;
+using DateTime = System.DateTime;
 
 [TestClass]
-public partial class DateTests
+public partial class DateOnlyTests
 {
     const string CustomFieldName = "Start date";
     const int CustomFieldId = 10421;
@@ -18,7 +20,7 @@ public partial class DateTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] == f.DateOnly.Now)
+            .Where(f => f.DateOnly[CustomFieldName] == Functions.DateOnly.Now)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -30,7 +32,7 @@ public partial class DateTests
         var expected = $"cf[{CustomFieldId}] = now()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldId] == f.DateOnly.Now)
+            .Where(f => f.DateOnly[CustomFieldId] == f.DateOnly.Functions.Now)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -44,7 +46,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] == dateString)
+            .Where(f => f.DateOnly[CustomFieldName] == dateString)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -58,7 +60,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString == f.Custom.Date[CustomFieldName])
+            .Where(f => dateString == f.DateOnly[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -72,7 +74,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] == DateTime.Parse(dateString))
+            .Where(f => f.DateOnly[CustomFieldName] == DateTime.Parse(dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -86,7 +88,7 @@ public partial class DateTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => DateTime.Parse(dateString) == f.Custom.Date[CustomFieldName])
+            .Where(f => DateTime.Parse(dateString) == f.DateOnly[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -99,7 +101,7 @@ public partial class DateTests
         return;
 
         string Actual() => JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName] == "invalid date")
+            .Where(f => f.DateOnly[CustomFieldName] == "invalid date")
             .ToString();
     }
 }

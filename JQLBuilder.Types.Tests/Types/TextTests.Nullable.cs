@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
+using Facade.Builders;
 using Support;
 
 public partial class TextTests
@@ -13,7 +13,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].Is(s => s.Empty))
+            .Where(f => f.Text[CustomFieldName].Is(s => s.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -27,7 +27,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].Is(s => s.Null))
+            .Where(f => f.Text[CustomFieldName].Is(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -41,7 +41,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].Is(s => s.Empty))
+            .Where(f => f.Text[CustomFieldName].Is(s => s.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -55,7 +55,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].IsNot(s => s.Empty))
+            .Where(f => f.Text[CustomFieldName].IsNot(s => s.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -69,7 +69,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].IsNot(s => s.Null))
+            .Where(f => f.Text[CustomFieldName].IsNot(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -83,7 +83,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Date[CustomFieldName].IsNot(s => s.Empty))
+            .Where(f => f.Text[CustomFieldName].IsNot(s => s.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);

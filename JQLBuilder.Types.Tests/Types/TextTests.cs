@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Facade;
+using Facade.Builders;
 using Support;
 
 [TestClass]
@@ -18,7 +18,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Text[CustomFieldName].Is(v => v.Empty))
+            .Where(f => f.Text[CustomFieldName].Is(v => v.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -30,7 +30,7 @@ public partial class TextTests
         var expected = $"cf[{CustomFieldId}] is EMPTY";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Custom.Text[CustomFieldId].Is(v => v.Empty))
+            .Where(f => f.Text[CustomFieldId].Is(v => v.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);
