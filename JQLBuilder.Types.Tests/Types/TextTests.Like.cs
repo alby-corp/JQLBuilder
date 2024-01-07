@@ -12,7 +12,7 @@ public partial class TextTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Text[CustomFieldName].Like(Text))
+            .Where(f => f.Text[CustomFieldName].Contains(Text))
             .ToString();
 
         Assert.AreEqual(expected, actual);

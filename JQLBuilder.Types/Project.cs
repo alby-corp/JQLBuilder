@@ -1,18 +1,18 @@
 ﻿namespace JQLBuilder.Types;
 
+using Contains;
 using Functions;
 using Infrastructure;
-using Infrastructure.Constants;
 using JqlTypes;
 
 public class Project : ProjectField
 {
-    public Project() => Value = new Field(JqlKeywords.Project);
+    public Project() => Value = new Field(Fields.Project);
 
     public ProjectFunctions Functions { get; } = new();
 }
 
 public class OrderingProject : ProjectField
 {
-    public OrderingProject() => Value = new Field(JqlKeywords.Project);
+    public OrderingProject() => Value = new Field(Fields.Project);
 }

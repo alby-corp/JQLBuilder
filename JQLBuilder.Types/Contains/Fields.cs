@@ -1,6 +1,6 @@
-﻿namespace JQLBuilder.Infrastructure.Constants;
+﻿namespace JQLBuilder.Types.Contains;
 
-internal static partial class JqlKeywords
+internal static class Fields
 {
     internal const string Project = "project";
     internal const string FixVersion = "fixVersion";

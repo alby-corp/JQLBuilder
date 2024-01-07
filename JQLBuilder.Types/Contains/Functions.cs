@@ -1,6 +1,6 @@
-﻿namespace JQLBuilder.Infrastructure.Constants;
+﻿namespace JQLBuilder.Types.Contains;
 
-internal static partial class JqlKeywords
+internal static class Functions
 {
     #region Date
 

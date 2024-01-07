@@ -21,7 +21,7 @@ public class JqlOrder(JqlFilter? query, IReadOnlyList<(IJqlType Value, Order Ord
                 builder.Append(' ');
             }
 
-            builder.Append(JqlKeywords.OrderBy).Append(' ');
+            builder.Append(Keywords.OrderBy).Append(' ');
         }
 
         for (var index = 0; index < Orderings.Count; index++)
@@ -32,8 +32,8 @@ public class JqlOrder(JqlFilter? query, IReadOnlyList<(IJqlType Value, Order Ord
             builder.Append(' ');
             builder.Append(direction switch
             {
-                Order.Ascending => JqlKeywords.Ascending,
-                Order.Descending => JqlKeywords.Descending,
+                Order.Ascending => Keywords.Ascending,
+                Order.Descending => Keywords.Descending,
                 _ => string.Empty
             });
 

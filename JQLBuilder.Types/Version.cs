@@ -1,20 +1,20 @@
 ﻿namespace JQLBuilder.Types;
 
+using Contains;
 using Functions;
 using Infrastructure;
-using Infrastructure.Constants;
 using JqlTypes;
 
 public class Version
 {
     public VersionFunctions Functions { get; } = new();
 
-    public VersionField Fix { get; } = Field.Custom<VersionField>(JqlKeywords.FixVersion);
-    public VersionField Affected { get; } = Field.Custom<VersionField>(JqlKeywords.AffectedVersion);
+    public VersionField Fix { get; } = Field.Custom<VersionField>(Fields.FixVersion);
+    public VersionField Affected { get; } = Field.Custom<VersionField>(Fields.AffectedVersion);
 }
 
 public class OrderingVersion
 {
-    public VersionField Fix { get; } = Field.Custom<VersionField>(JqlKeywords.FixVersion);
-    public VersionField Affected { get; } = Field.Custom<VersionField>(JqlKeywords.AffectedVersion);
+    public VersionField Fix { get; } = Field.Custom<VersionField>(Fields.FixVersion);
+    public VersionField Affected { get; } = Field.Custom<VersionField>(Fields.AffectedVersion);
 }
