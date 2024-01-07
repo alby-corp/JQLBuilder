@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types.Tests.Types;
+﻿namespace JQLBuilder.Types.Tests.Types.Date;
 
 using Support;
 

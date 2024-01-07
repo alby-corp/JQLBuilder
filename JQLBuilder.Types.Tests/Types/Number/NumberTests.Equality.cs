@@ -1,16 +1,14 @@
-﻿namespace JQLBuilder.Types.Tests.Types;
+﻿namespace JQLBuilder.Types.Tests.Types.Number;
 
-public partial class DateTimeTests
+public partial class NumberTests
 {
     [TestMethod]
     public void Should_Parses_Equals_Expression()
     {
-        var expected = $"""
-                        "{CustomFieldName}" = "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName] == dateString)
+            .Where(f => f.Number[CustomFieldName] == Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -19,12 +17,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Not_Equals_Expression()
     {
-        var expected = $"""
-                        "{CustomFieldName}" != "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} != {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName] != dateString)
+            .Where(f => f.Number[CustomFieldName] != Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -33,12 +29,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Greater_Than_Expression()
     {
-        var expected = $"""
-                        "{CustomFieldName}" > "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} > {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName] > dateString)
+            .Where(f => f.Number[CustomFieldName] > Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -47,12 +41,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Greater_Than_Or_Equals_Expression()
     {
-        var expected = $"""
-                        "{CustomFieldName}" >= "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} >= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName] >= dateString)
+            .Where(f => f.Number[CustomFieldName] >= Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -61,12 +53,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Less_Than_Expression()
     {
-        var expected = $"""
-                        "{CustomFieldName}" < "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} < {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName] < dateString)
+            .Where(f => f.Number[CustomFieldName] < Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -75,12 +65,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Less_Than_Or_Equals_Expression()
     {
-        var expected = $"""
-                        "{CustomFieldName}" <= "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} <= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName] <= dateString)
+            .Where(f => f.Number[CustomFieldName] <= Number)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -91,12 +79,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Equals_Expression_Reverse()
     {
-        var expected = $"""
-                        "{CustomFieldName}" = "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} = {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString == f.DateTime[CustomFieldName])
+            .Where(f => Number == f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -105,12 +91,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Not_Equals_Expression_Reverse()
     {
-        var expected = $"""
-                        "{CustomFieldName}" != "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} != {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString != f.DateTime[CustomFieldName])
+            .Where(f => Number != f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -119,12 +103,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Greater_Than_Expression_Reverse()
     {
-        var expected = $"""
-                        "{CustomFieldName}" > "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} > {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString > f.DateTime[CustomFieldName])
+            .Where(f => Number > f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -133,12 +115,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Greater_Than_Or_Equals_Expression_Reverse()
     {
-        var expected = $"""
-                        "{CustomFieldName}" >= "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} >= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString >= f.DateTime[CustomFieldName])
+            .Where(f => Number >= f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -147,12 +127,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Less_Than_Expression_Reverse()
     {
-        var expected = $"""
-                        "{CustomFieldName}" < "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} < {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString < f.DateTime[CustomFieldName])
+            .Where(f => Number < f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -161,12 +139,10 @@ public partial class DateTimeTests
     [TestMethod]
     public void Should_Parses_Less_Than_Or_Equals_Expression_Reverse()
     {
-        var expected = $"""
-                        "{CustomFieldName}" <= "{dateString}"
-                        """;
+        var expected = $"{CustomFieldName} <= {Number}";
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString <= f.DateTime[CustomFieldName])
+            .Where(f => Number <= f.Number[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);

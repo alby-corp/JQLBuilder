@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types.Tests.Types;
+﻿namespace JQLBuilder.Types.Tests.Types.Number;
 
 [TestClass]
 public partial class NumberTests

@@ -10,6 +10,6 @@ public interface IJqlMembership<in T> : IJqlType where T : IJqlMembership<T>;
 
 public interface IJqlHistorical<in T> : IJqlType where T : IJqlHistorical<T>;
 
-public interface IJqlLike<in T> : IJqlType where T : IJqlLike<T>;
+public interface IJqlContains<in T> : IJqlType where T : IJqlContains<T>;
 
 public interface IJqlNullable : IJqlType;

@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types.Tests.Types;
+﻿namespace JQLBuilder.Types.Tests.Types.Number;
 
 using Infrastructure;
 using JqlTypes;

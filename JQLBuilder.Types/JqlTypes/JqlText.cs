@@ -7,7 +7,7 @@ using Infrastructure.Abstract;
 public class TextField : JqlValue, IJqlField<TextExpression>, IJqlNullable;
 #pragma warning restore CS0660, CS0661
 
-public class TextExpression : JqlValue, IJqlMembership<TextExpression>, IJqlLike<TextExpression>
+public class TextExpression : JqlValue, IJqlMembership<TextExpression>, IJqlContains<TextExpression>
 {
     public static implicit operator TextExpression(string value) => new() { Value = value };
 }
