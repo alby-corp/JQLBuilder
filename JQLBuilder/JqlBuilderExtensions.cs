@@ -12,12 +12,12 @@ public static class JqlBuilderExtensions
 
     public static JqlFilter And(this JqlFilter filterQuery, Func<Fields, Bool> filter) =>
         filterQuery.Query is null
-            ? new JqlFilter(filter(Fields.All))
+            ? new(filter(Fields.All))
             : new JqlFilter(filterQuery.Query & filter(Fields.All));
 
     public static JqlFilter Or(this JqlFilter filterQuery, Func<Fields, Bool> filter) =>
         filterQuery.Query is null
-            ? new JqlFilter(filter(Fields.All))
+            ? new(filter(Fields.All))
             : new JqlFilter(filterQuery.Query | filter(Fields.All));
 
     public static JqlOrder OrderBy<T>(this JqlFilter filterQuery, Func<Ordering, IJqlField<T>> keySelector) =>

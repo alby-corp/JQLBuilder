@@ -28,7 +28,7 @@ public class JqlOrder(JqlFilter? query, IReadOnlyList<(IJqlType Value, Order Ord
         {
             var (value, direction) = Orderings[index];
 
-            value.Render(new JqlTypeRenderer(builder));
+            value.Render(new(builder));
             builder.Append(' ');
             builder.Append(direction switch
             {
