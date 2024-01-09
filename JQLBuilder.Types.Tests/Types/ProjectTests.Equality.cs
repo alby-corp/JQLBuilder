@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types.Tests.Types.Project;
+﻿namespace JQLBuilder.Types.Tests.Types;
 
 public partial class ProjectTests
 {
