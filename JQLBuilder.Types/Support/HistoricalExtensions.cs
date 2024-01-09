@@ -1,5 +1,6 @@
 ﻿namespace JQLBuilder.Types.Support;
 
+using Abstract;
 using Contains;
 using Infrastructure;
 using Infrastructure.Abstract;

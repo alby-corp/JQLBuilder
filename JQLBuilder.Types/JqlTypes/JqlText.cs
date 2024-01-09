@@ -1,5 +1,6 @@
 ﻿namespace JQLBuilder.Types.JqlTypes;
 
+using Abstract;
 using Infrastructure;
 using Infrastructure.Abstract;
 
