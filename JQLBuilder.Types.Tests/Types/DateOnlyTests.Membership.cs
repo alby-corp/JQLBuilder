@@ -1,11 +1,11 @@
-﻿namespace JQLBuilder.Types.Tests.Types.Date;
+﻿namespace JQLBuilder.Types.Tests.Types;
 
 using Infrastructure;
 using JqlTypes;
 using Support;
 using Functions = JQLBuilder.Functions;
 
-public partial class DateTimeTests
+public partial class DateOnlyTests
 {
     [TestMethod]
     public void Should_Parses_In_Params_When_Are_Heterogeneous()
@@ -15,7 +15,7 @@ public partial class DateTimeTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].In(dateString, dateTime, f.DateTime.Functions.Now))
+            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateTime, f.DateOnly.Functions.Now))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -29,7 +29,7 @@ public partial class DateTimeTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].In(dateString, dateString, dateString))
+            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateString, dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -42,8 +42,10 @@ public partial class DateTimeTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
+        var filter = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
+
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].NotIn(dateString, dateTime, f.DateTime.Functions.Now))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(filter))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -57,7 +59,7 @@ public partial class DateTimeTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].NotIn(dateString, dateString, dateString))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(dateString, dateString, dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -70,10 +72,10 @@ public partial class DateTimeTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", "{dateString}")
                         """;
 
-        var filters = new JqlCollection<DateTimeExpression> { dateString, dateString, dateString };
+        var filters = new JqlCollection<DateExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].In(filters))
+            .Where(f => f.DateOnly[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -86,10 +88,10 @@ public partial class DateTimeTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Functions.DateTime.Now };
+        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].In(filters))
+            .Where(f => f.DateOnly[CustomFieldName].In(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -102,10 +104,10 @@ public partial class DateTimeTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", "{dateString}")
                         """;
 
-        var filters = new JqlCollection<DateTimeExpression> { dateString, dateString, dateString };
+        var filters = new JqlCollection<DateExpression> { dateString, dateString, dateString };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].NotIn(filters))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -118,11 +120,10 @@ public partial class DateTimeTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
-        // var filters = new List<DateTimeExpression> { dateString, dateTime, Date.DateTime.Now }.ToJqlCollection();
-        var filters = new JqlCollection<DateTimeExpression> { dateString, dateTime, Functions.DateTime.Now };
+        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].NotIn(filters))
+            .Where(f => f.DateOnly[CustomFieldName].NotIn(filters))
             .ToString();
 
         Assert.AreEqual(expected, actual);
