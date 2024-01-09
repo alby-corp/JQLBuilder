@@ -1,7 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
 using Support;
-using Functions = JQLBuilder.Functions;
 
 public partial class ProjectTests
 {
@@ -9,11 +8,11 @@ public partial class ProjectTests
     public void Should_Parses_In_Params_When_Are_Heterogeneous()
     {
         var expected = $"""
-                        project in ({ProjectId}, "{ProjectName}", projectsLeadByUser("{Lead}"))
+                        project in ({ProjectId}, "{ProjectName}")
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(ProjectId, ProjectName, f.Project.Functions.LeadByUser(Lead)))
+            .Where(f => f.Project.In(ProjectId, ProjectName))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -37,11 +36,11 @@ public partial class ProjectTests
     public void Should_Parses_Not_In_Params_When_Are_Heterogeneous()
     {
         var expected = $"""
-                        project in ({ProjectId}, "{ProjectName}", projectsLeadByUser("{Lead}"))
+                        project in ({ProjectId}, "{ProjectName}")
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(ProjectId, ProjectName, Functions.Project.LeadByUser(Lead)))
+            .Where(f => f.Project.In(ProjectId, ProjectName))
             .ToString();
 
         Assert.AreEqual(expected, actual);

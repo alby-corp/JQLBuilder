@@ -9,7 +9,7 @@ public partial class ProjectTests
     public void Should_Parses_ProjectLeadByUser()
     {
         const string expected = $"""
-                                 project in (projectsLeadByUser("{Lead}"))
+                                 project in projectsLeadByUser("{Lead}")
                                  """;
 
         var actual = JqlBuilder.Query
@@ -23,7 +23,7 @@ public partial class ProjectTests
     public void Should_Parses_ProjectLeadByUser_Static()
     {
         const string expected = $"""
-                                 project in (projectsLeadByUser("{Lead}"))
+                                 project in projectsLeadByUser("{Lead}")
                                  """;
 
         var actual = JqlBuilder.Query
@@ -37,7 +37,7 @@ public partial class ProjectTests
     public void Should_Parses_WhereUserHasPermission()
     {
         const string expected = $"""
-                                 project in (projectsWhereUserHasPermission("{Role}"))
+                                 project in projectsWhereUserHasPermission("{Role}")
                                  """;
 
         var actual = JqlBuilder.Query
@@ -51,7 +51,7 @@ public partial class ProjectTests
     public void Should_Parses_WhereUserHasPermission_Static()
     {
         const string expected = $"""
-                                 project in (projectsWhereUserHasPermission("{Role}"))
+                                 project in projectsWhereUserHasPermission("{Role}")
                                  """;
 
         var actual = JqlBuilder.Query
@@ -65,7 +65,7 @@ public partial class ProjectTests
     public void Should_Parses_WhereUserHasRole()
     {
         const string expected = $"""
-                                 project in (projectsWhereUserHasRole("{Role}"))
+                                 project in projectsWhereUserHasRole("{Role}")
                                  """;
 
         var actual = JqlBuilder.Query
@@ -79,7 +79,7 @@ public partial class ProjectTests
     public void Should_Parses_WhereUserHasRole_Static()
     {
         const string expected = $"""
-                                 project in (projectsWhereUserHasRole("{Role}"))
+                                 project in projectsWhereUserHasRole("{Role}")
                                  """;
 
         var actual = JqlBuilder.Query
