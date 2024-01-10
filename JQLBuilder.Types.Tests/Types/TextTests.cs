@@ -1,36 +1,51 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Support;
+using Infrastructure;
+using JqlTypes;
 
 [TestClass]
 public partial class TextTests
 {
     const string CustomFieldName = "Start date";
     const int CustomFieldId = 10421;
-    const string Text = "my text";
+    const string Text = "MyText";
 
     [TestMethod]
-    public void Should_Parses_Custom_Date_By_Name()
+    public void Should_Cast_Project_Expression_By_String()
     {
-        const string expected = $"""
-                                 "{CustomFieldName}" is EMPTY
-                                 """;
+        var expression = (TextExpression)CustomFieldName;
 
-        var actual = JqlBuilder.Query
-            .Where(f => f.Text[CustomFieldName].Is(v => v.Empty))
-            .ToString();
+        Assert.AreEqual("String", expression.Value.GetType().Name);
+        Assert.AreEqual(CustomFieldName, expression.Value);
+    }
+
+    [TestMethod]
+    public void Should_Cast_Custom_Text_String_Field()
+    {
+        var field = Fields.All.Text[CustomFieldName];
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(CustomFieldName, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_Custom_Text_Int_Field()
+    {
+        var expected = Constants.Fields.Custom(CustomFieldId);
+
+        var field = Fields.All.Text[CustomFieldId];
+        var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void Should_Parses_Custom_Date_By_Id()
+    public void Should_Cast_Summary_Field()
     {
-        var expected = $"cf[{CustomFieldId}] is EMPTY";
+        const string expected = Constants.Fields.Summary;
 
-        var actual = JqlBuilder.Query
-            .Where(f => f.Text[CustomFieldId].Is(v => v.Empty))
-            .ToString();
+        var field = Fields.All.Text.Summary;
+        var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
     }

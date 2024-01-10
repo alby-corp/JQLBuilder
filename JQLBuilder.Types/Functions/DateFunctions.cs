@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Functions;
 
-using Contains;
+using Constants;
 using Infrastructure;
 
 public class DateFunctions<T> where T : JqlDate, new()

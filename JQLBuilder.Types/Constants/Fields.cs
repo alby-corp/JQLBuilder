@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types.Contains;
+﻿namespace JQLBuilder.Types.Constants;
 
 internal static class Fields
 {
@@ -7,5 +7,6 @@ internal static class Fields
     internal const string AffectedVersion = "affectedVersion";
     internal const string Due = "due";
     internal const string DueDate = "dueDate";
+    internal const string Summary = "summary";
     internal static string Custom(int id) => $"cf[{id}]";
 }

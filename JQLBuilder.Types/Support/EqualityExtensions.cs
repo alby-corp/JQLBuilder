@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types.Support;
 
-using Contains;
+using Constants;
 using Infrastructure.Abstract;
 using Infrastructure.Enum;
 using Infrastructure.Operators;

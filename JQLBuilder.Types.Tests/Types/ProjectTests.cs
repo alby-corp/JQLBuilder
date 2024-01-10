@@ -1,5 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
+using Infrastructure;
 using JqlTypes;
 
 [TestClass]
@@ -11,7 +12,7 @@ public partial class ProjectTests
     const int ProjectId = 123;
 
     [TestMethod]
-    public void Should_Cast_Project_Expression_By_String()
+    public void Should_Cast_Version_Expression_By_String()
     {
         var expression = (ProjectExpression)ProjectName;
 
@@ -20,11 +21,22 @@ public partial class ProjectTests
     }
 
     [TestMethod]
-    public void Should_Cast_Project_Expression_By_Int()
+    public void Should_Cast_Version_Expression_By_Int()
     {
         var expression = (ProjectExpression)ProjectId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(ProjectId, expression.Value);
+    }
+
+    [TestMethod]
+    public void Should_Cast_Fix_Version_Field()
+    {
+        const string expected = Constants.Fields.Project;
+
+        var field = Fields.All.Project;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
     }
 }
