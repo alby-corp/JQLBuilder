@@ -9,7 +9,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Is_Empty()
     {
-        const string expected = $"{Fields.Project} {Operators.Is} EMPTY";
+        const string expected = $"{Fields.Project} {Operators.Is} {Keywords.Empty}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.Is(s => s.Empty))

@@ -10,7 +10,7 @@ public partial class VersionTests
     const int VersionId = 123;
 
     [TestMethod]
-    public void Should_Cast_Project_Expression_By_String()
+    public void Should_Cast_Version_Expression_By_String()
     {
         var expression = (VersionExpression)VersionName;
 
@@ -19,7 +19,7 @@ public partial class VersionTests
     }
 
     [TestMethod]
-    public void Should_Cast_Project_Expression_By_Int()
+    public void Should_Cast_Version_Expression_By_Int()
     {
         var expression = (VersionExpression)VersionId;
 
