@@ -2,6 +2,7 @@
 
 internal static class Fields
 {
+    internal const string Attachment = "attachments";
     internal const string Project = "project";
     internal const string FixVersion = "fixVersion";
     internal const string AffectedVersion = "affectedVersion";
