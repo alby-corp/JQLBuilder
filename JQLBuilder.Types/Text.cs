@@ -1,6 +1,6 @@
 ﻿namespace JQLBuilder.Types;
 
-using Contains;
+using Constants;
 using Infrastructure;
 using JqlTypes;
 

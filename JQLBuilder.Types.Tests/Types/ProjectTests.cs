@@ -32,7 +32,8 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Cast_Fix_Version_Field()
     {
-        const string expected = "project";
+        const string expected = Constants.Fields.Project;
+
         var field = Fields.All.Project;
         var actual = ((Field)field.Value).Value;
 

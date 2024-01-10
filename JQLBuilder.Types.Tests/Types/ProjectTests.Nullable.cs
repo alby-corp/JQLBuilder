@@ -1,5 +1,7 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
+using Constants;
+using Infrastructure.Constants;
 using Support;
 
 public partial class ProjectTests
@@ -7,7 +9,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Is_Empty()
     {
-        const string expected = "project is EMPTY";
+        const string expected = $"{Fields.Project} {Operators.Is} EMPTY";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.Is(s => s.Empty))
@@ -19,7 +21,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Is_Null()
     {
-        const string expected = "project is NULL";
+        const string expected = $"{Fields.Project} {Operators.Is} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.Is(s => s.Null))
@@ -31,7 +33,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Is_Not_Empty()
     {
-        const string expected = "project is not EMPTY";
+        const string expected = $"{Fields.Project} {Operators.IsNot} {Keywords.Empty}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.IsNot(s => s.Empty))
@@ -43,7 +45,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Is_Not_Null()
     {
-        const string expected = "project is not NULL";
+        const string expected = $"{Fields.Project} {Operators.IsNot} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.IsNot(s => s.Null))

@@ -1,12 +1,14 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
+using Constants;
+
 public partial class ProjectTests
 {
     [TestMethod]
     public void Should_Parses_Equals_Expression()
     {
         const string expected = $"""
-                                 project = "{ProjectName}"
+                                 {Fields.Project} {Operators.Equals} "{ProjectName}"
                                  """;
 
         var actual = JqlBuilder.Query
@@ -19,7 +21,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Not_Equals_Expression()
     {
-        var expected = $"project != {ProjectId}";
+        var expected = $"{Fields.Project} {Operators.NotEquals} {ProjectId}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project != ProjectId)
@@ -27,12 +29,12 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Equals_Expression_Reverse()
     {
         const string expected = $"""
-                                 project = "{ProjectName}"
+                                 {Fields.Project} {Operators.Equals} "{ProjectName}"
                                  """;
 
         var actual = JqlBuilder.Query
@@ -45,7 +47,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Not_Equals_Expression_Reverse()
     {
-        var expected = $"project != {ProjectId}";
+        var expected = $"{Fields.Project} {Operators.NotEquals} {ProjectId}";
 
         var actual = JqlBuilder.Query
             .Where(f => ProjectId != f.Project)

@@ -60,9 +60,6 @@
         <Compile Update="Types\ProjectTests.Nullable.cs">
             <DependentUpon>ProjectTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\Text.Summary.cs">
-            <DependentUpon>TextTests.cs</DependentUpon>
-        </Compile>
         <Compile Update="Types\TextTests.Like.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
@@ -70,22 +67,22 @@
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\Version.Tests.Equality.cs">
-          <DependentUpon>VersionTests.cs</DependentUpon>
+            <DependentUpon>VersionTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\VersionTests.Membership.cs">
-          <DependentUpon>VersionTests.cs</DependentUpon>
+            <DependentUpon>VersionTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\VersionTests.Nullable.cs">
-          <DependentUpon>VersionTests.cs</DependentUpon>
+            <DependentUpon>VersionTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\VersionTests.Functions.cs">
-          <DependentUpon>VersionTests.cs</DependentUpon>
+            <DependentUpon>VersionTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\VersionTests.Ordering.cs">
-          <DependentUpon>VersionTests.cs</DependentUpon>
+            <DependentUpon>VersionTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\ProjectTests.Ordering.cs">
-          <DependentUpon>ProjectTests.cs</DependentUpon>
+            <DependentUpon>ProjectTests.cs</DependentUpon>
         </Compile>
     </ItemGroup>
 

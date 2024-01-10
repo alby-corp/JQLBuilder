@@ -6,7 +6,7 @@ using JqlTypes;
 [TestClass]
 public partial class VersionTests
 {
-    const string VersionName = "My Version";
+    const string VersionName = "MyVersion";
     const int VersionId = 123;
 
     [TestMethod]
@@ -26,22 +26,23 @@ public partial class VersionTests
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(VersionId, expression.Value);
     }
-    
-    
+
     [TestMethod]
     public void Should_Cast_Affected_Version()
     {
-        const string expected = "affectedVersion";
+        const string expected = Constants.Fields.AffectedVersion;
+
         var field = Fields.All.Version.Affected;
         var actual = ((Field)field.Value).Value;
-        
+
         Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
     public void Should_Cast_Fix_Version_Field()
     {
-        const string expected = "fixVersion";
+        const string expected = Constants.Fields.FixVersion;
+
         var field = Fields.All.Version.Fix;
         var actual = ((Field)field.Value).Value;
 

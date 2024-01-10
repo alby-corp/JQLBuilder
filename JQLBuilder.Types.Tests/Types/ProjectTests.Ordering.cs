@@ -1,11 +1,14 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
+using Constants;
+using Infrastructure.Constants;
+
 public partial class ProjectTests
 {
     [TestMethod]
     public void Should_Order_By_ASC_Project()
     {
-        const string expected = "order by project asc";
+        const string expected = $"{Keywords.OrderBy} {Fields.Project} {Keywords.Ascending}";
 
         var actual = JqlBuilder.Query
             .OrderBy(f => f.Project)
@@ -13,11 +16,11 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Order_By_DESC_Project()
     {
-        const string expected = "order by project desc";
+        const string expected = $"{Keywords.OrderBy} {Fields.Project} {Keywords.Descending}";
 
         var actual = JqlBuilder.Query
             .OrderByDescending(f => f.Project)
