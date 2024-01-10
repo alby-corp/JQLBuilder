@@ -1,18 +1,19 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
 using Support;
+using Functions = JQLBuilder.Functions;
 
-public partial class ProjectTests
+public partial class VersionTests
 {
     [TestMethod]
     public void Should_Parses_In_Params_When_Are_Heterogeneous()
     {
         var expected = $"""
-                        project in ({ProjectId}, "{ProjectName}")
+                        fixVersion in ({VersionId}, "{VersionName}", latestReleasedVersion())
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(ProjectId, ProjectName))
+            .Where(f => f.Version.Fix.In(VersionId, VersionName, f.Version.Functions.LatestReleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -21,10 +22,10 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_In_Params_When_Are_Homogeneous()
     {
-        var expected = $"project in ({ProjectId}, {ProjectId}, {ProjectId})";
+        var expected = $"fixVersion in ({VersionId}, {VersionId}, {VersionId})";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(ProjectId, ProjectId, ProjectId))
+            .Where(f => f.Version.Fix.In(VersionId, VersionId, VersionId))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -34,11 +35,11 @@ public partial class ProjectTests
     public void Should_Parses_Not_In_Params_When_Are_Heterogeneous()
     {
         var expected = $"""
-                        project in ({ProjectId}, "{ProjectName}")
+                        fixVersion not in ({VersionId}, "{VersionName}", latestReleasedVersion())
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(ProjectId, ProjectName))
+            .Where(f => f.Version.Fix.NotIn(VersionId, VersionName, Functions.Version.LatestReleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -48,11 +49,11 @@ public partial class ProjectTests
     public void Should_Parses_Not_In_Params_When_Are_Homogeneous()
     {
         var expected = $"""
-                        project in ("{ProjectName}", "{ProjectName}", "{ProjectName}")
+                        fixVersion in ("{VersionName}", "{VersionName}", "{VersionName}")
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(ProjectName, ProjectName, ProjectName))
+            .Where(f => f.Version.Fix.In(VersionName, VersionName, VersionName))
             .ToString();
 
         Assert.AreEqual(expected, actual);
