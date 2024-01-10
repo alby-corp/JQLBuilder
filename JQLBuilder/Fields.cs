@@ -16,4 +16,6 @@ public class Fields
     public Project Project { get; } = new();
 
     public Version Version { get; } = new();
+
+    public Attachment Attachment { get; } = new();
 }
