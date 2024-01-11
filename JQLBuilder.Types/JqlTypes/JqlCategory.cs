@@ -7,7 +7,7 @@ using Infrastructure.Operators;
 using Support;
 
 #pragma warning disable CS0660, CS0661
-public class CategoryField: JqlValue, IJqlField<CategoryExpression>, IJqlNullable
+public class CategoryField : JqlValue, IJqlField<CategoryExpression>, IJqlNullable
 #pragma warning restore CS0660, CS0661
 {
     public static Bool operator ==(CategoryField left, ProjectExpression right) => left.Equal(right);

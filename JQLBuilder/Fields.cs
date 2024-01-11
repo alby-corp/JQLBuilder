@@ -18,6 +18,6 @@ public class Fields
     public Version Version { get; } = new();
 
     public Attachment Attachment { get; } = new();
-    
-    public Category Category { get; } = new(); 
+
+    public Category Category { get; } = new();
 }

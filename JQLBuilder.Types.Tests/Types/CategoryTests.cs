@@ -7,7 +7,7 @@ using JqlTypes;
 public partial class CategoryTests
 {
     const string CategoryName = "Category";
-    
+
     [TestMethod]
     public void Should_Cast_Category_Expression_By_String()
     {
@@ -16,7 +16,7 @@ public partial class CategoryTests
         Assert.AreEqual("String", expression.Value.GetType().Name);
         Assert.AreEqual(CategoryName, expression.Value);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Category()
     {

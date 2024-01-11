@@ -18,7 +18,7 @@ public partial class CategoryTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_NotIn_Params_When_Are_Heterogeneous()
     {

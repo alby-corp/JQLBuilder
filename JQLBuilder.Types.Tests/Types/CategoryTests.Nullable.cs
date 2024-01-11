@@ -52,5 +52,5 @@ public partial class CategoryTests
             .ToString();
 
         Assert.AreEqual(expected, actual);
-    }   
+    }
 }
