@@ -84,6 +84,18 @@
         <Compile Update="Types\ProjectTests.Ordering.cs">
             <DependentUpon>ProjectTests.cs</DependentUpon>
         </Compile>
+        <Compile Update="Types\AttachmentTests.Nullable.cs">
+          <DependentUpon>AttachmentTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\CategoryTests.Equality.cs">
+          <DependentUpon>CategoryTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\CategoryTests.Nullable.cs">
+          <DependentUpon>CategoryTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\CategoryTests.Membership.cs">
+          <DependentUpon>CategoryTests.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
