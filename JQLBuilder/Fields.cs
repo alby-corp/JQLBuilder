@@ -20,4 +20,6 @@ public class Fields
     public Attachment Attachment { get; } = new();
 
     public Category Category { get; } = new();
+    
+    public Priority Priority { get; } = new();
 }
