@@ -10,5 +10,6 @@ internal static class Fields
     internal const string DueDate = "dueDate";
     internal const string Summary = "summary";
     internal const string Category = "category";
+    internal const string Priority = "priority";
     internal static string Custom(int id) => $"cf[{id}]";
 }

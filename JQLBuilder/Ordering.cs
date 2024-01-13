@@ -9,4 +9,5 @@ public class Ordering
     public OrderingProject Project { get; } = new();
 
     public OrderingVersion Version { get; } = new();
+    public OrderingPriority Priority { get; } = new();
 }
