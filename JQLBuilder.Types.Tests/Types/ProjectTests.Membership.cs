@@ -20,12 +20,12 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_In_Collection_When_Are_Homogeneous()
     {
         var expected = $"{Fields.Project} {Operators.In} ({ProjectId}, {ProjectId}, {ProjectId})";
-        
+
         var filter = new JqlCollection<ProjectExpression> { ProjectId, ProjectId, ProjectId };
 
         var actual = JqlBuilder.Query
@@ -34,7 +34,7 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_In_Params_When_Are_Heterogeneous()
     {
@@ -48,12 +48,12 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_In_Collection_When_Are_Heterogeneous()
     {
         var expected = $"""{Fields.Project} {Operators.In} ({ProjectId}, "{ProjectName}", {ProjectId})""";
-        
+
         var filter = new JqlCollection<ProjectExpression> { ProjectId, ProjectName, ProjectId };
 
         var actual = JqlBuilder.Query
@@ -78,12 +78,12 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_NotIn_Collection_When_Are_Homogeneous()
     {
         var expected = $"{Fields.Project} {Operators.NotIn} ({ProjectId}, {ProjectId}, {ProjectId})";
-        
+
         var filter = new JqlCollection<ProjectExpression> { ProjectId, ProjectId, ProjectId };
 
         var actual = JqlBuilder.Query
@@ -106,12 +106,12 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_NotIn_Collection_When_Are_Heterogeneous()
     {
         var expected = $"""{Fields.Project} {Operators.NotIn} ({ProjectId}, "{ProjectName}", {ProjectId})""";
-        
+
         var filter = new JqlCollection<ProjectExpression> { ProjectId, ProjectName, ProjectId };
 
         var actual = JqlBuilder.Query
@@ -120,6 +120,6 @@ public partial class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     #endregion
 }

@@ -4,7 +4,7 @@ using Constants;
 using Infrastructure;
 using JqlTypes;
 
-public class Priority: PriorityField
+public class Priority : PriorityField
 {
     public Priority() => Value = new Field(Fields.Priority);
 }

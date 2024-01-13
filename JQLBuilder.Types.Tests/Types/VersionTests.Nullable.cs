@@ -31,6 +31,18 @@ public partial class VersionTests
     }
 
     [TestMethod]
+    public void Should_Parses_Is_Default()
+    {
+        const string expected = $"{Fields.AffectedVersion} {Operators.Is} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Version.Affected.Is())
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
     public void Should_Parses_Is_Not_Empty()
     {
         const string expected = $"{Fields.AffectedVersion} {Operators.IsNot} {Keywords.Empty}";
@@ -49,6 +61,18 @@ public partial class VersionTests
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.IsNot(s => s.Null))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_Is_Not_Default()
+    {
+        const string expected = $"{Fields.AffectedVersion} {Operators.IsNot} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Version.Affected.IsNot())
             .ToString();
 
         Assert.AreEqual(expected, actual);

@@ -22,7 +22,7 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WasNot_Expression()
     {
@@ -35,7 +35,7 @@ public partial class PriorityTests
             .ToString();
 
         Assert.AreEqual(expected, actual);
-    }    
+    }
 
     #endregion
 
@@ -54,12 +54,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WasIn_Collection_When_Are_Homogeneous()
     {
         var expected = $"""{Fields.Priority} {Operators.WasIn} ("{PriorityName}", "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityName, PriorityName };
 
         var actual = JqlBuilder.Query
@@ -68,7 +68,7 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WasIn_Params_Expression_Heterogeneous()
     {
@@ -82,12 +82,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WasIn_Collection_When_Are_Heterogeneous()
     {
         var expected = $"""{Fields.Priority} {Operators.WasIn} ({PriorityId}, "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityId, PriorityName };
 
         var actual = JqlBuilder.Query
@@ -96,7 +96,7 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     #endregion
 
     #region WasNotIn
@@ -114,12 +114,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WasNotIn_Collection_When_Are_Homogeneous()
     {
         var expected = $"""{Fields.Priority} {Operators.WasNotIn} ("{PriorityName}", "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityName, PriorityName };
 
         var actual = JqlBuilder.Query
@@ -128,7 +128,7 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WasNotIn_Params_Expression_Heterogeneous()
     {
@@ -142,12 +142,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WasNotIn_Collection_When_Are_Heterogeneous()
     {
         var expected = $"""{Fields.Priority} {Operators.WasNotIn} ({PriorityId}, "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityId, PriorityName };
 
         var actual = JqlBuilder.Query

@@ -31,6 +31,18 @@ public partial class PriorityTests
     }
 
     [TestMethod]
+    public void Should_Parses_Is_Default()
+    {
+        const string expected = $"{Fields.Priority} {Operators.Is} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Priority.Is())
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
     public void Should_Parses_Is_Not_Empty()
     {
         const string expected = $"{Fields.Priority} {Operators.IsNot} {Keywords.Empty}";
@@ -49,6 +61,18 @@ public partial class PriorityTests
 
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.IsNot(s => s.Null))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_Is_Not_Default()
+    {
+        const string expected = $"{Fields.Priority} {Operators.IsNot} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Priority.IsNot())
             .ToString();
 
         Assert.AreEqual(expected, actual);

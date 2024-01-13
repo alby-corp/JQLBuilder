@@ -97,19 +97,19 @@
             <DependentUpon>CategoryTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\Priority.Tests.Equality.cs">
-          <DependentUpon>PriorityTests.cs</DependentUpon>
+            <DependentUpon>PriorityTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\PriorityTests.Membership.cs">
-          <DependentUpon>PriorityTests.cs</DependentUpon>
+            <DependentUpon>PriorityTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\PriorityTests.Nullable.cs">
-          <DependentUpon>PriorityTests.cs</DependentUpon>
+            <DependentUpon>PriorityTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\PriorityTests.Ordering.cs">
-          <DependentUpon>PriorityTests.cs</DependentUpon>
+            <DependentUpon>PriorityTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\PriorityTests.Historical.cs">
-          <DependentUpon>PriorityTests.cs</DependentUpon>
+            <DependentUpon>PriorityTests.cs</DependentUpon>
         </Compile>
     </ItemGroup>
 

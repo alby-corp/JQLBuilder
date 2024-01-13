@@ -20,12 +20,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_In_Collection_When_Are_Heterogeneous()
     {
         var expected = $"""{Fields.Priority} {Operators.In} ({PriorityId}, "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityId, PriorityName };
 
         var actual = JqlBuilder.Query
@@ -46,12 +46,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_In_Collection_When_Are_Homogeneous()
     {
         const string expected = $"""{Fields.Priority} {Operators.In} ("{PriorityName}", "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityName, PriorityName };
 
         var actual = JqlBuilder.Query
@@ -76,12 +76,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Not_In_Collection_When_Are_Heterogeneous()
     {
         var expected = $"""{Fields.Priority} {Operators.NotIn} ({PriorityId}, "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityId, PriorityName };
 
         var actual = JqlBuilder.Query
@@ -102,12 +102,12 @@ public partial class PriorityTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Not_In_Collection_When_Are_Homogeneous()
     {
         const string expected = $"""{Fields.Priority} {Operators.NotIn} ("{PriorityName}", "{PriorityName}")""";
-        
+
         var filter = new JqlCollection<PriorityExpression> { PriorityName, PriorityName };
 
         var actual = JqlBuilder.Query

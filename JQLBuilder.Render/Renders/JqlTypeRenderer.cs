@@ -1,7 +1,6 @@
 ﻿namespace JQLBuilder.Render.Renders;
 
 using System.Text;
-using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Enum;
 using Infrastructure.Operators;
@@ -87,9 +86,8 @@ internal class JqlTypeRenderer(StringBuilder builder)
             var (name, value) = readOnlyList[index];
             builder.Append(name).Append(' ');
             value.Render(this);
-            
+
             if (index < readOnlyList.Count - 1) builder.Append(' ');
-            
         }
     }
 

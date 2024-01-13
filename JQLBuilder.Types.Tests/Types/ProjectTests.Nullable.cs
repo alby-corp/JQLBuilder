@@ -31,6 +31,18 @@ public partial class ProjectTests
     }
 
     [TestMethod]
+    public void Should_Parses_Is_Default()
+    {
+        const string expected = $"{Fields.Project} {Operators.Is} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Project.Is())
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
     public void Should_Parses_Is_Not_Empty()
     {
         const string expected = $"{Fields.Project} {Operators.IsNot} {Keywords.Empty}";
@@ -49,6 +61,19 @@ public partial class ProjectTests
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.IsNot(s => s.Null))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+
+    [TestMethod]
+    public void Should_Parses_Is_Not_Default()
+    {
+        const string expected = $"{Fields.Project} {Operators.IsNot} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Project.IsNot())
             .ToString();
 
         Assert.AreEqual(expected, actual);

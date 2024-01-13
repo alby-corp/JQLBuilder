@@ -40,7 +40,7 @@ public partial class DateOnlyTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName].Is(s => s.Empty))
+            .Where(f => f.DateOnly[CustomFieldName].Is())
             .ToString();
 
         Assert.AreEqual(expected, actual);

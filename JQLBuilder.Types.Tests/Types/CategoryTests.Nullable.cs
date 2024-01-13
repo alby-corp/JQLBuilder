@@ -31,6 +31,18 @@ public partial class CategoryTests
     }
 
     [TestMethod]
+    public void Should_Parses_Is_Default()
+    {
+        const string expected = $"{Fields.Category} {Operators.Is} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Category.Is())
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
     public void Should_Parses_Is_Not_Empty()
     {
         const string expected = $"{Fields.Category} {Operators.IsNot} {Keywords.Empty}";
@@ -49,6 +61,18 @@ public partial class CategoryTests
 
         var actual = JqlBuilder.Query
             .Where(f => f.Category.IsNot(s => s.Null))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Parses_Is_Not_Default()
+    {
+        const string expected = $"{Fields.Category} {Operators.IsNot} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Category.IsNot())
             .ToString();
 
         Assert.AreEqual(expected, actual);

@@ -20,12 +20,12 @@ public partial class CategoryTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_In_Collection_When_Are_Homogeneous()
     {
         const string expected = $"""{Fields.Category} {Operators.In} ("{CategoryName}", "{CategoryName}", "{CategoryName}")""";
-        
+
         var filter = new JqlCollection<CategoryExpression> { CategoryName, CategoryName, CategoryName };
 
         var actual = JqlBuilder.Query
@@ -34,7 +34,7 @@ public partial class CategoryTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     #endregion
 
     #region Not In
@@ -50,12 +50,12 @@ public partial class CategoryTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_NotIn_Collection_When_Are_Homogeneous()
     {
         const string expected = $"""{Fields.Category} {Operators.NotIn} ("{CategoryName}", "{CategoryName}", "{CategoryName}")""";
-        
+
         var filter = new JqlCollection<CategoryExpression> { CategoryName, CategoryName, CategoryName };
 
         var actual = JqlBuilder.Query
@@ -64,6 +64,6 @@ public partial class CategoryTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     #endregion
 }

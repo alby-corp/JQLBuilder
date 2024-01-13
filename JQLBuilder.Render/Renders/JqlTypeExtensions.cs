@@ -30,10 +30,10 @@ internal static class JqlTypeExtensions
                 break;
             case JqlValue { Value : IReadOnlyList<ChangeOperator> s }:
                 render.ChangeOperator(s);
-                break;      
+                break;
             case JqlValue { Value : Tuple<IJqlType, IJqlType> s }:
                 render.Tuple(s);
-                break;   
+                break;
             case JqlValue { Value : IReadOnlyList<IJqlType> s }:
                 render.Collection(s);
                 break;

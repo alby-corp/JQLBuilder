@@ -31,6 +31,18 @@ public partial class AttachmentTests
     }
 
     [TestMethod]
+    public void Should_Parses_Is_Default()
+    {
+        const string expected = $"{Fields.Attachment} {Operators.Is} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Attachment.Is())
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
     public void Should_Parses_Is_Not_Empty()
     {
         const string expected = $"{Fields.Attachment} {Operators.IsNot} {Keywords.Empty}";
@@ -49,6 +61,18 @@ public partial class AttachmentTests
 
         var actual = JqlBuilder.Query
             .Where(f => f.Attachment.IsNot(s => s.Null))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_Not_Is_Default()
+    {
+        const string expected = $"{Fields.Attachment} {Operators.IsNot} {Keywords.Empty}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Attachment.IsNot())
             .ToString();
 
         Assert.AreEqual(expected, actual);
