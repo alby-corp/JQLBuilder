@@ -50,9 +50,9 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_Not_In_Params_When_Are_Homogeneous()
     {
-        var expected = $"""
-                        {Fields.Project} {Operators.In} ("{ProjectName}", "{ProjectName}", "{ProjectName}")
-                        """;
+        const string expected = $"""
+                                 {Fields.Project} {Operators.In} ("{ProjectName}", "{ProjectName}", "{ProjectName}")
+                                 """;
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(ProjectName, ProjectName, ProjectName))

@@ -35,7 +35,7 @@ public class PriorityField : JqlValue, IJqlField<PriorityExpression>, IJqlNullab
     public static Bool operator <=(PriorityExpression left, PriorityField right) => right.GreaterThanOrEqual(left);
 }
 
-public class PriorityExpression : JqlValue, IJqlMembership<PriorityExpression>
+public class PriorityExpression : JqlValue, IJqlMembership<PriorityExpression>, IJqlHistorical<PriorityExpression>
 {
     public static implicit operator PriorityExpression(string value) => new() { Value = value };
     public static implicit operator PriorityExpression(int value) => new() { Value = value };
