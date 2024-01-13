@@ -28,6 +28,12 @@ internal static class JqlTypeExtensions
             case JqlValue { Value : int s }:
                 render.Number(s);
                 break;
+            case JqlValue { Value : IReadOnlyList<ChangeOperator> s }:
+                render.ChangeOperator(s);
+                break;      
+            case JqlValue { Value : Tuple<IJqlType, IJqlType> s }:
+                render.Tuple(s);
+                break;   
             case JqlValue { Value : IReadOnlyList<IJqlType> s }:
                 render.Collection(s);
                 break;
@@ -38,7 +44,7 @@ internal static class JqlTypeExtensions
                 render.DateOnly(s);
                 break;
             default:
-                throw new InvalidOperationException("Passed type is not mapped!");
+                throw new InvalidOperationException($"Passed type '{type.GetType().Name}' is not mapped!");
         }
     }
 }

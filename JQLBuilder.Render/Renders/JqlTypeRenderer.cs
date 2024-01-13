@@ -1,6 +1,7 @@
 ﻿namespace JQLBuilder.Render.Renders;
 
 using System.Text;
+using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Enum;
 using Infrastructure.Operators;
@@ -78,4 +79,26 @@ internal class JqlTypeRenderer(StringBuilder builder)
     public void DateOnly(DateTime value) => builder.Append('"').Append($"{value:yyyy-MM-dd}").Append('"');
 
     public override string ToString() => builder.ToString();
+
+    public void ChangeOperator(IReadOnlyList<ChangeOperator> readOnlyList)
+    {
+        for (var index = 0; index < readOnlyList.Count; index++)
+        {
+            var (name, value) = readOnlyList[index];
+            builder.Append(name).Append(' ');
+            value.Render(this);
+            
+            if (index < readOnlyList.Count - 1) builder.Append(' ');
+            
+        }
+    }
+
+    public void Tuple(Tuple<IJqlType, IJqlType> tuple)
+    {
+        builder.Append('(');
+        tuple.Item1.Render(this);
+        builder.Append(", ");
+        tuple.Item2.Render(this);
+        builder.Append(')');
+    }
 }
