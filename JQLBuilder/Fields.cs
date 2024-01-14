@@ -22,4 +22,6 @@ public class Fields
     public Category Category { get; } = new();
 
     public Priority Priority { get; } = new();
+
+    public Type Type { get; } = new();
 }

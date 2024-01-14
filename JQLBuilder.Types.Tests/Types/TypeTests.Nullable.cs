@@ -4,15 +4,15 @@ using Constants;
 using Infrastructure.Constants;
 using Support;
 
-public partial class CategoryTests
+public partial class TypeTests
 {
     [TestMethod]
     public void Should_Parses_Is_Empty()
     {
-        const string expected = $"{Fields.Category} {Operators.Is} {Keywords.Empty}";
+        const string expected = $"{Fields.Type} {Operators.Is} {Keywords.Empty}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Category.Is(s => s.Empty))
+            .Where(f => f.Type.Is(s => s.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -21,10 +21,10 @@ public partial class CategoryTests
     [TestMethod]
     public void Should_Parses_Is_Null()
     {
-        const string expected = $"{Fields.Category} {Operators.Is} {Keywords.Null}";
+        const string expected = $"{Fields.Type} {Operators.Is} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Category.Is(s => s.Null))
+            .Where(f => f.Type.Is(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -33,10 +33,10 @@ public partial class CategoryTests
     [TestMethod]
     public void Should_Parses_Is_Default()
     {
-        const string expected = $"{Fields.Category} {Operators.Is} {Keywords.Empty}";
+        const string expected = $"{Fields.Type} {Operators.Is} {Keywords.Empty}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Category.Is())
+            .Where(f => f.Type.Is())
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -45,10 +45,10 @@ public partial class CategoryTests
     [TestMethod]
     public void Should_Parses_Is_Not_Empty()
     {
-        const string expected = $"{Fields.Category} {Operators.IsNot} {Keywords.Empty}";
+        const string expected = $"{Fields.Type} {Operators.IsNot} {Keywords.Empty}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Category.IsNot(s => s.Empty))
+            .Where(f => f.Type.IsNot(s => s.Empty))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -57,22 +57,23 @@ public partial class CategoryTests
     [TestMethod]
     public void Should_Parses_Is_Not_Null()
     {
-        const string expected = $"{Fields.Category} {Operators.IsNot} {Keywords.Null}";
+        const string expected = $"{Fields.Type} {Operators.IsNot} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Category.IsNot(s => s.Null))
+            .Where(f => f.Type.IsNot(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
     }
 
+
     [TestMethod]
     public void Should_Parses_Is_Not_Default()
     {
-        const string expected = $"{Fields.Category} {Operators.IsNot} {Keywords.Empty}";
+        const string expected = $"{Fields.Type} {Operators.IsNot} {Keywords.Empty}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Category.IsNot())
+            .Where(f => f.Type.IsNot())
             .ToString();
 
         Assert.AreEqual(expected, actual);
