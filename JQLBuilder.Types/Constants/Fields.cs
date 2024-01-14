@@ -11,5 +11,7 @@ internal static class Fields
     internal const string Summary = "summary";
     internal const string Category = "category";
     internal const string Priority = "priority";
+    internal const string Type = "type";
+    internal const string IssueType = "issueType";
     internal static string Custom(int id) => $"cf[{id}]";
 }

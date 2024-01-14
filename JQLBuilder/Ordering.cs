@@ -10,4 +10,6 @@ public class Ordering
 
     public OrderingVersion Version { get; } = new();
     public OrderingPriority Priority { get; } = new();
+
+    public OrderingType Type { get; } = new();
 }
