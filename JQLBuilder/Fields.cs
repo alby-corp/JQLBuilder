@@ -24,4 +24,6 @@ public class Fields
     public Priority Priority { get; } = new();
 
     public Type Type { get; } = new();
+
+    public Parent Parent { get; } = new();
 }
