@@ -31,7 +31,7 @@ internal static class HistoricalExtensions
     public static Bool Change<T>(this IJqlField<T> field, Func<JqlChange<T>, JqlChange<T>> operators)
         where T : IJqlType, IJqlHistorical<T>
     {
-        var changes = operators(new([]));
+        var changes = operators(new JqlChange<T>([]));
         return new BinaryOperator(field, "CHANGED", changes, Priority.Powerful);
     }
 }

@@ -2,8 +2,9 @@
 
 using Constants;
 using Infrastructure;
+using JqlTypes;
 
-public class DateFunctions<T> where T : JqlDate, new()
+public class DateFunctions<T> where T : DateTimeExpression, new()
 {
     public T Now => Field.Custom<T>(Functions.Now);
     public T CurrentLogin => Field.Custom<T>(Functions.CurrentLogin);

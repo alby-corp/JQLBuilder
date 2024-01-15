@@ -40,10 +40,10 @@ internal static class JqlTypeExtensions
             case JqlValue { Value : IReadOnlyList<IJqlType> s }:
                 render.Collection(s);
                 break;
-            case JqlDate.Time { Value : DateTime s }:
+            case JqlValue { Value : DateTime s }:
                 render.DateTime(s);
                 break;
-            case JqlDate.Only { Value : DateTime s }:
+            case JqlValue { Value : DateOnly s }:
                 render.DateOnly(s);
                 break;
             default:

@@ -2,6 +2,7 @@ namespace JQLBuilder.Types.Tests;
 
 using Support;
 using Functions = JQLBuilder.Functions;
+using Infrastructure;
 
 [TestClass]
 public class SampleTests
@@ -15,13 +16,21 @@ public class SampleTests
     [TestMethod]
     public void Change()
     {
-        const string expected = """project = "project" AND priority CHANGED AFTER now() BEFORE now() DURING (now(), now())""";
+        const string expected = $"""project = "project" AND priority CHANGED AFTER now() BEFORE "2000-01-01" DURING ("2000-01-01 13:00", now()) BY ("{ProjectLead}", "{ProjectLead}")""";
 
-        var actual = JqlBuilder.Query.Where(f => (f.Project == "project") & f.Priority.Change(c => c.After(f.DateOnly.Functions.Now).Before(f.DateTime.Functions.Now).During(f.DateTime.Functions.Now, f.DateOnly.Functions.Now))).ToString();
+        var actual = JqlBuilder.Query.Where(f => 
+            f.Project == "project" & 
+            f.Priority.Change(c => c
+                .After(f.DateTime.Functions.Now)
+                .Before("2000-01-01")
+                .During("2000-01-01 13:00", f.DateOnly.Functions.Now)
+                .By(ProjectLead, ProjectLead)
+            ))
+            .ToString();
 
         Assert.AreEqual(expected, actual);
     }
-
+    
     [TestMethod]
     public void TestMethod1()
     {
@@ -176,4 +185,6 @@ public class SampleTests
 
         Assert.AreEqual(expected, actual);
     }
+    
+
 }

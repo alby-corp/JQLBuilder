@@ -36,11 +36,11 @@ public class DateField : JqlValue, IJqlField<DateExpression>, IJqlNullable
     public static Bool operator <=(DateExpression left, DateField right) => right.LessThanOrEqual(left);
 }
 
-public class DateExpression : JqlDate.Only, IJqlMembership<DateExpression>
+public class DateExpression : DateTimeExpression, IJqlMembership<DateExpression>
 {
-    public static implicit operator DateExpression(string value) => new() { Value = Init(value) };
+    public static implicit operator DateExpression(string value) => new () { Value = Init(value) };
 
-    public static implicit operator DateExpression(DateTime value) => new() { Value = value };
+    public static implicit operator DateExpression(System.DateOnly value) => new() { Value = value };
 
     public static implicit operator DateExpression(TimeSpan value) => new() { Value = DateTime.Now.Add(value) };
 }
