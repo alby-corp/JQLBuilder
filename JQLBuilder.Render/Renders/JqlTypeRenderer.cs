@@ -18,6 +18,8 @@ internal class JqlTypeRenderer(StringBuilder builder)
     public void String(string value) => builder.Append('"').Append(value).Append('"');
 
     public void Number(int value) => builder.Append(value);
+    
+    public void Issue(string value) => builder.Append(value);
 
     public void Bool(bool value) => builder.Append(value ? "true" : "false");
 

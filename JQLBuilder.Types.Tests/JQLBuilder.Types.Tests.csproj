@@ -66,9 +66,6 @@
         <Compile Update="Types\TextTests.Nullable.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\Version.Tests.Equality.cs">
-            <DependentUpon>VersionTests.cs</DependentUpon>
-        </Compile>
         <Compile Update="Types\VersionTests.Membership.cs">
             <DependentUpon>VersionTests.cs</DependentUpon>
         </Compile>
@@ -110,6 +107,42 @@
         </Compile>
         <Compile Update="Types\PriorityTests.Historical.cs">
             <DependentUpon>PriorityTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\ParentTests.Equality.cs">
+          <DependentUpon>ParentTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\ParentTests.Membership.cs">
+          <DependentUpon>ParentTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\TypeTests.Equality.cs">
+          <DependentUpon>TypeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\TypeTests.Membership.cs">
+          <DependentUpon>TypeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\TypeTests.Nullable.cs">
+          <DependentUpon>TypeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\TypeTests.Ordering.cs">
+          <DependentUpon>TypeTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\VersionTests.Equality.cs">
+          <DependentUpon>VersionTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\IssueTests.Equality.cs">
+          <DependentUpon>IssueTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\IssueTests.Functions.cs">
+          <DependentUpon>IssueTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\IssueTests.Membership.cs">
+          <DependentUpon>IssueTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\IssueTests.Nullable.cs">
+          <DependentUpon>IssueTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\IssueTests.Ordering.cs">
+          <DependentUpon>IssueTests.cs</DependentUpon>
         </Compile>
     </ItemGroup>
 

@@ -34,4 +34,15 @@ internal static class Functions
     internal const string Unreleased = "unreleasedVersions()";
 
     #endregion
+
+    #region Issue
+
+    internal const string History = "issueHistory()";
+    internal const string VotedIssues = "votedIssues()";
+    internal const string WatchedIssues = "watchedIssues()";
+    internal static string Linked(string key, string? caseSensitiveLinkType = default) => string.IsNullOrEmpty(caseSensitiveLinkType) 
+        ? $"linkedIssues({key})"
+        : $"""linkedIssues({key}, "{caseSensitiveLinkType}")""";
+    
+    #endregion
 }

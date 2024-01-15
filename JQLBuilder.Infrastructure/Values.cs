@@ -8,6 +8,8 @@ public class JqlValue : IJqlType
     internal object Value { get; init; } = null!;
 }
 
+public class JqlIssue : JqlValue;
+
 public class JqlDate : JqlValue
 {
     static readonly Dictionary<char, TimeSpan> DurationMap = new()

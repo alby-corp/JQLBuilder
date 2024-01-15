@@ -26,4 +26,6 @@ public class Fields
     public Type Type { get; } = new();
 
     public Parent Parent { get; } = new();
+    
+    public Issue Issue { get; } = new();
 }
