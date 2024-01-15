@@ -1,5 +1,6 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
+using DateOnly = System.DateOnly;
 using DateTime = System.DateTime;
 using Functions = JQLBuilder.Functions;
 
@@ -10,6 +11,7 @@ public partial class DateOnlyTests
     const int CustomFieldId = 10421;
     readonly string dateString = $"{DateTime.Now:yyyy-MM-dd}";
     readonly DateTime dateTime = DateTime.Now;
+    readonly DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
 
     [TestMethod]
     public void Should_Parses_Custom_Date_By_Name()
@@ -73,7 +75,7 @@ public partial class DateOnlyTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == DateTime.Parse(dateString))
+            .Where(f => f.DateOnly[CustomFieldName] == DateOnly.Parse(dateString))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -87,7 +89,7 @@ public partial class DateOnlyTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => DateTime.Parse(dateString) == f.DateOnly[CustomFieldName])
+            .Where(f => DateOnly.Parse(dateString) == f.DateOnly[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);

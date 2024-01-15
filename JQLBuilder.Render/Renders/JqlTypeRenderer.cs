@@ -75,7 +75,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
     }
 
     public void DateTime(DateTime value) => builder.Append('"').Append($"{value:yyyy-MM-dd HH:mm}").Append('"');
-    public void DateOnly(DateTime value) => builder.Append('"').Append($"{value:yyyy-MM-dd}").Append('"');
+    public void DateOnly(DateOnly value) => builder.Append('"').Append($"{value:yyyy-MM-dd}").Append('"');
 
     public override string ToString() => builder.ToString();
 

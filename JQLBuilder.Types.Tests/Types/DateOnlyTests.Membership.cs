@@ -15,7 +15,7 @@ public partial class DateOnlyTests
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateTime, f.DateOnly.Functions.Now))
+            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateOnly, f.DateOnly.Functions.Now))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -42,7 +42,7 @@ public partial class DateOnlyTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filter = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
+        var filter = new JqlCollection<DateExpression> { dateString, dateOnly, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
             .Where(f => f.DateOnly[CustomFieldName].NotIn(filter))
@@ -88,7 +88,7 @@ public partial class DateOnlyTests
                         "{CustomFieldName}" in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
+        var filters = new JqlCollection<DateExpression> { dateString, dateOnly, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
             .Where(f => f.DateOnly[CustomFieldName].In(filters))
@@ -120,7 +120,7 @@ public partial class DateOnlyTests
                         "{CustomFieldName}" not in ("{dateString}", "{dateString}", now())
                         """;
 
-        var filters = new JqlCollection<DateExpression> { dateString, dateTime, Functions.DateOnly.Now };
+        var filters = new JqlCollection<DateExpression> { dateString, dateOnly, Functions.DateOnly.Now };
 
         var actual = JqlBuilder.Query
             .Where(f => f.DateOnly[CustomFieldName].NotIn(filters))

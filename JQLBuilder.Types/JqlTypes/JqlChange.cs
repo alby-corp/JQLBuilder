@@ -1,10 +1,12 @@
 ﻿namespace JQLBuilder.Types.JqlTypes;
 
 using Infrastructure;
-using Infrastructure.Abstract;
+using JQLBuilder.Infrastructure.Abstract;
+using JQLBuilder.Infrastructure.Constants;
 using Infrastructure.Operators;
 
-public class JqlChange<T> : JqlValue where T : IJqlType
+class JqlChange<T> : JqlValue
+    where T : IJqlType
 {
     public JqlChange(IReadOnlyList<ChangeOperator> operators)
     {
@@ -14,21 +16,31 @@ public class JqlChange<T> : JqlValue where T : IJqlType
 
     IReadOnlyList<ChangeOperator> Operators { get; }
 
-    public JqlChange<T> After<TDate>(TDate value)
-        where TDate : JqlDate =>
-        new([..Operators, new("AFTER", value)]);
+    public JqlChange<T> After(DateTimeExpression value) =>
+        new([..Operators, new ChangeOperator(Keywords.After, value)]);
 
-    public JqlChange<T> Before<TDate>(TDate value)
-        where TDate : JqlDate =>
-        new([..Operators, new("BEFORE", value)]);
+    public JqlChange<T> Before(DateTimeExpression value) =>
+        new([..Operators, new ChangeOperator(Keywords.Before, value)]);
+    
+    public JqlChange<T> On(DateTimeExpression value) =>
+        new([..Operators, new ChangeOperator(Keywords.On, value)]);
 
-    public JqlChange<T> During<T1, T2>(T1 from, T2 to)
-        where T1 : JqlDate
-        where T2 : JqlDate =>
-        new([..Operators, new("DURING", new JqlRange<T1, T2>(from, to))]);
-}
+    public JqlChange<T> During(DateTimeExpression from, DateTimeExpression to) =>
+        new([..Operators, new ChangeOperator(Keywords.During, new JqlDateRange<DateTimeExpression>(from, to))]);
+    
+    public JqlChange<T> From(T value) =>
+        new([..Operators, new ChangeOperator(Keywords.From, value)]);
+    
+    public JqlChange<T> To(T value) =>
+        new([..Operators, new ChangeOperator(Keywords.To, value)]);
+    
+    public JqlChange<T> By(UserExpression user) =>
+        new([..Operators, new ChangeOperator(Keywords.By, user)]);
 
-public class JqlRange<T, T2> : JqlValue where T : JqlDate where T2 : JqlDate
-{
-    public JqlRange(T from, T2 to) => Value = Tuple.Create<IJqlType, IJqlType>(from, to);
+    public JqlChange<T> By(params UserExpression[] users) =>
+        By(new JqlCollection<UserExpression>(users));
+    
+    public JqlChange<T> By(IJqlCollection<UserExpression> users) =>
+        new([..Operators, new ChangeOperator(Keywords.By, users)]);    
+    
 }
