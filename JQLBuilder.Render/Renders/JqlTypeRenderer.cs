@@ -92,6 +92,14 @@ internal class JqlTypeRenderer(StringBuilder builder)
             if (index < readOnlyList.Count - 1) builder.Append(' ');
         }
     }
+    
+    public void NoValueOperator(NoValueOperator @operator)
+    {
+        @operator.Field.Render(this);
+        builder.Append(' ');
+        builder.Append(@operator.Name).Append(' ');
+        @operator.Value.Render(this);
+    }
 
     public void Tuple(Tuple<IJqlType, IJqlType> tuple)
     {

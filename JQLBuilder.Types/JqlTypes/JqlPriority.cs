@@ -37,6 +37,6 @@ public class PriorityField : JqlValue, IJqlField<PriorityExpression>, IJqlNullab
 
 public class PriorityExpression : JqlValue, IJqlMembership<PriorityExpression>, IJqlHistorical<PriorityExpression>
 {
-    public static implicit operator PriorityExpression(string value) => new() { Value = value };
-    public static implicit operator PriorityExpression(int value) => new() { Value = value };
+    public static implicit operator PriorityExpression(string value) => new() { Value = new Field(value) };
+    public static implicit operator PriorityExpression(int value) => new() { Value = new Field($"{value}") };
 }

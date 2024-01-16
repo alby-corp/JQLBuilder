@@ -33,7 +33,7 @@ internal static class HistoricalExtensions
     {
         if (operators is null) return new UnaryOperator(Operators.Changed, field, Direction.Suffix);
         
-        var changes = operators(new JqlChange<T>([]));
+        var changes = operators(new([]));
         return new BinaryOperator(field, Operators.Changed, changes, Priority.Powerful);
     }
 }

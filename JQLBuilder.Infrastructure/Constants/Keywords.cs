@@ -10,12 +10,4 @@ internal static class Keywords
     internal const string Descending = "desc";
     internal const string Empty = "EMPTY";
     internal const string Null = "NULL";
-    internal const string Changed = "CHANGED";
-    internal const string By = "BY";
-    internal const string From = "FROM";
-    internal const string To = "TO";
-    internal const string On = "ON";
-    internal const string After = "AFTER";
-    internal const string Before = "BEFORE";
-    internal const string During = "DURING";
 }

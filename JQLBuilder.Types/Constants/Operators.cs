@@ -19,4 +19,13 @@ internal static class Operators
     internal const string WasIn = "was in";
     internal const string WasNotIn = "was not in";
     internal const string Changed = "CHANGED";
+    internal const string By = "BY";
+    internal const string From = "FROM";
+    internal const string To = "TO";
+    internal const string On = "ON";
+    internal const string After = "AFTER";
+    internal const string Before = "BEFORE";
+    internal const string During = "DURING";
+    internal const string Empty = "EMPTY";
+    internal const string Null = "NULL";
 }

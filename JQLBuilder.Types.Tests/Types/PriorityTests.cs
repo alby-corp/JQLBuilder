@@ -6,7 +6,7 @@ using JqlTypes;
 [TestClass]
 public partial class PriorityTests
 {
-    const string PriorityName = "MyVersion";
+    const string PriorityName = "MyPriority";
     const int PriorityId = 123;
 
     [TestMethod]

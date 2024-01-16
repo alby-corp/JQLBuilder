@@ -34,6 +34,9 @@ internal static class JqlTypeExtensions
             case JqlValue { Value : IReadOnlyList<ChangeOperator> s }:
                 render.ChangeOperator(s);
                 break;
+            case NoValueOperator s:
+                render.NoValueOperator(s);
+                break;
             case JqlValue { Value : Tuple<IJqlType, IJqlType> s }:
                 render.Tuple(s);
                 break;
