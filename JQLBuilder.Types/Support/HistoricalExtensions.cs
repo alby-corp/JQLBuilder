@@ -28,10 +28,12 @@ internal static class HistoricalExtensions
     internal static Bool WasNotIn<T>(this IJqlField<T> left, JqlCollection<T> right) where T : IJqlHistorical<T> =>
         new BinaryOperator(left, Operators.WasNotIn, right, Priority.Powerful);
 
-    public static Bool Change<T>(this IJqlField<T> field, Func<JqlChange<T>, JqlChange<T>> operators)
+    public static Bool Changed<T>(this IJqlField<T> field, Func<JqlChange<T>, JqlChange<T>>? operators = default)
         where T : IJqlType, IJqlHistorical<T>
     {
+        if (operators is null) return new UnaryOperator(Operators.Changed, field, Direction.Suffix);
+        
         var changes = operators(new JqlChange<T>([]));
-        return new BinaryOperator(field, "CHANGED", changes, Priority.Powerful);
+        return new BinaryOperator(field, Operators.Changed, changes, Priority.Powerful);
     }
 }

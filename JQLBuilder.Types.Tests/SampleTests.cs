@@ -20,7 +20,7 @@ public class SampleTests
 
         var actual = JqlBuilder.Query.Where(f => 
             f.Project == "project" & 
-            f.Priority.Change(c => c
+            f.Priority.Changed(c => c
                 .After(f.DateTime.Functions.Now)
                 .Before("2000-01-01")
                 .During("2000-01-01 13:00", f.DateOnly.Functions.Now)

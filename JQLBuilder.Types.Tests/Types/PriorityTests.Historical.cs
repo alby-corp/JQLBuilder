@@ -158,4 +158,20 @@ public partial class PriorityTests
     }
 
     #endregion
+
+    #region Changed
+
+    [TestMethod]
+    public void Should_Parses_Changed_Empty()
+    {
+        const string expected = $"{Fields.Priority} {Operators.Changed}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Priority.Changed())
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    #endregion
 }
