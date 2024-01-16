@@ -39,3 +39,8 @@ public class NumberExpression : JqlValue, IJqlMembership<NumberExpression>
 {
     public static implicit operator NumberExpression(int value) => new() { Value = value };
 }
+
+public class NumberArgument : JqlValue, IJqlArgument
+{
+    public static implicit operator NumberArgument(int value) => new() { Value = value };
+}

@@ -4,45 +4,44 @@ internal static class Functions
 {
     #region Date
 
-    internal const string Now = "now()";
-    internal const string CurrentLogin = "currentLogin()";
-    internal const string LastLogin = "lastLogin()";
-    internal static string StartOfDay(int value) => $"startOfDay({value})";
-    internal static string StartOfWeek(int value) => $"startOfWeek({value})";
-    internal static string StartOfMonth(int value) => $"startOfMonth({value})";
-    internal static string StartOfYear(int value) => $"startOfYear({value})";
-    internal static string EndOfDay(int value) => $"endOfDay({value})";
-    internal static string EndOfWeek(int value) => $"endOfWeek({value})";
-    internal static string EndOfMonth(int value) => $"endOfMonth({value})";
-    internal static string EndOfYear(int value) => $"endOfYear({value})";
+    internal const string Now = "now";
+    internal const string CurrentLogin = "currentLogin";
+    internal const string LastLogin = "lastLogin";
+    internal const string StartOfDay = "startOfDay";
+    internal const string StartOfWeek = "startOfWeek";
+    internal const string StartOfMonth = "startOfMonth";
+    internal const string StartOfYear = "startOfYear";
+    internal const string EndOfDay = "endOfDay";
+    internal const string EndOfWeek = "endOfWeek";
+    internal const string EndOfMonth = "endOfMonth";
+    internal const string EndOfYear = "endOfYear";
 
     #endregion
 
     #region Project
 
-    internal static string LeadByUser(string user) => $"""projectsLeadByUser("{user}")""";
-    internal static string WhereUserHasPermission(string user) => $"""projectsWhereUserHasPermission("{user}")""";
-    internal static string WhereUserHasRole(string user) => $"""projectsWhereUserHasRole("{user}")""";
+    internal const string LeadByUser = "projectsLeadByUser";
+
+    internal const string WhereUserHasPermission = "projectsWhereUserHasPermission";
+    internal const string WhereUserHasRole = "projectsWhereUserHasRole";
 
     #endregion
 
     #region Version
 
-    internal const string LatestReleased = "latestReleasedVersion()";
-    internal const string LatestUnreleased = "latestUnreleasedVersion()";
-    internal const string Released = "releasedVersions()";
-    internal const string Unreleased = "unreleasedVersions()";
+    internal const string LatestReleased = "latestReleasedVersion";
+    internal const string LatestUnreleased = "latestUnreleasedVersion";
+    internal const string Released = "releasedVersions";
+    internal const string Unreleased = "unreleasedVersions";
 
     #endregion
 
     #region Issue
 
-    internal const string History = "issueHistory()";
-    internal const string VotedIssues = "votedIssues()";
-    internal const string WatchedIssues = "watchedIssues()";
-    internal static string Linked(string key, string? caseSensitiveLinkType = default) => string.IsNullOrEmpty(caseSensitiveLinkType) 
-        ? $"linkedIssues({key})"
-        : $"""linkedIssues({key}, "{caseSensitiveLinkType}")""";
+    internal const string History = "issueHistory";
+    internal const string VotedIssues = "votedIssues";
+    internal const string WatchedIssues = "watchedIssues";
+    internal static string Linked = "linkedIssues";
     
     #endregion
 }

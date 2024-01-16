@@ -14,7 +14,22 @@ internal class JqlTypeRenderer(StringBuilder builder)
         else
             builder.Append(value);
     }
+    
+    public void Function(string name, IReadOnlyList<IJqlType> arguments)
+    {
+        builder.Append(name).Append('(');
 
+        for (var index = 0; index < arguments.Count; index++)
+        {
+            var value = arguments[index];
+            value.Render(this);
+
+            if (index < arguments.Count - 1) builder.Append(", ");
+        }
+
+        builder.Append(')');
+    }
+    
     public void String(string value) => builder.Append('"').Append(value).Append('"');
 
     public void Number(int value) => builder.Append(value);

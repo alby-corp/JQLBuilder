@@ -306,7 +306,7 @@ public partial class PriorityTests
     [TestMethod]
     public void Should_Parses_Changed_After()
     {
-        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.After} "{Date}" {Operators.After} "{DateTime}" {Operators.After} {FunctionsConstants.Now} {Operators.After} {FunctionsConstants.Now} {Operators.After} {FunctionsConstants.Now}""";
+        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.After} "{Date}" {Operators.After} "{DateTime}" {Operators.After} {FunctionsConstants.Now}() {Operators.After} {FunctionsConstants.Now}() {Operators.After} {FunctionsConstants.Now}()""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.Changed(c =>
@@ -324,7 +324,7 @@ public partial class PriorityTests
     [TestMethod]
     public void Should_Parses_Changed_Before()
     {
-        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.Before} "{Date}" {Operators.Before} "{DateTime}" {Operators.Before} {FunctionsConstants.Now} {Operators.Before} {FunctionsConstants.Now} {Operators.Before} {FunctionsConstants.Now}""";
+        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.Before} "{Date}" {Operators.Before} "{DateTime}" {Operators.Before} {FunctionsConstants.Now}() {Operators.Before} {FunctionsConstants.Now}() {Operators.Before} {FunctionsConstants.Now}()""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.Changed(c =>
@@ -342,7 +342,7 @@ public partial class PriorityTests
     [TestMethod]
     public void Should_Parses_Changed_On()
     {
-        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.On} "{Date}" {Operators.On} "{DateTime}" {Operators.On} {FunctionsConstants.Now} {Operators.On} {FunctionsConstants.Now} {Operators.On} {FunctionsConstants.Now}""";
+        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.On} "{Date}" {Operators.On} "{DateTime}" {Operators.On} {FunctionsConstants.Now}() {Operators.On} {FunctionsConstants.Now}() {Operators.On} {FunctionsConstants.Now}()""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.Changed(c =>
@@ -360,7 +360,7 @@ public partial class PriorityTests
     [TestMethod]
     public void Should_Parses_Changed_During()
     {
-        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.During} ({FunctionsConstants.Now}, {FunctionsConstants.Now}) {Operators.During} ("{Date}", "{DateTime}") {Operators.During} ("{DateTime}", {FunctionsConstants.Now}) {Operators.During} ("{Date}", {FunctionsConstants.Now})""";
+        const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.During} ({FunctionsConstants.Now}(), {FunctionsConstants.Now}()) {Operators.During} ("{Date}", "{DateTime}") {Operators.During} ("{DateTime}", {FunctionsConstants.Now}()) {Operators.During} ("{Date}", {FunctionsConstants.Now}())""";
 
         var actual = JqlBuilder.Query.Where(f => 
                 f.Priority.Changed(c => c

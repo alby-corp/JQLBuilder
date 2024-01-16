@@ -12,7 +12,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_VotedIssues()
     {
-        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.VotedIssues}";
+        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.VotedIssues}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Issue.Functions.Voted))
@@ -24,7 +24,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_WatchedIssues()
     {
-        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.WatchedIssues}";
+        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.WatchedIssues}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Issue.Functions.Watched))
@@ -36,7 +36,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_History()
     {
-        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.History}";
+        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.History}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Issue.Functions.History))
@@ -48,7 +48,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_Linked()
     {
-        var expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.Linked(IssueName)}";
+        var expected = $"""{Fields.Id} {Operators.In} {FunctionsConstants.Linked}("{IssueName}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Issue.Functions.Linked(IssueName)))
@@ -62,7 +62,7 @@ public partial class IssueTests
     {
         const string linkType = "is duplicated by";
         
-        var expected = $"{Fields.Id} {Operators.NotIn} {FunctionsConstants.Linked(IssueName, linkType)}";
+        var expected = $"""{Fields.Id} {Operators.NotIn} {FunctionsConstants.Linked}("{IssueName}", "{linkType}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.NotIn(f.Issue.Functions.Linked(IssueName, linkType)))
@@ -78,7 +78,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_VotedIssues_Static()
     {
-        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.VotedIssues}";
+        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.VotedIssues}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(Functions.Issues.Voted))
@@ -90,7 +90,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_WatchedIssues_Static()
     {
-        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.WatchedIssues}";
+        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.WatchedIssues}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(Functions.Issues.Watched))
@@ -102,7 +102,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_History_Static()
     {
-        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.History}";
+        const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.History}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(Functions.Issues.History))
@@ -114,7 +114,7 @@ public partial class IssueTests
     [TestMethod]
     public void Should_Parses_In_Linked_Static()
     {
-        var expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.Linked(IssueName)}";
+        var expected = $"""{Fields.Id} {Operators.In} {FunctionsConstants.Linked}("{IssueName}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(Functions.Issues.Linked(IssueName)))
@@ -128,7 +128,7 @@ public partial class IssueTests
     {
         const string linkType = "is duplicated by";
         
-        var expected = $"{Fields.Id} {Operators.NotIn} {FunctionsConstants.Linked(IssueName, linkType)}";
+        var expected = $"""{Fields.Id} {Operators.NotIn} {FunctionsConstants.Linked}("{IssueName}", "{linkType}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.NotIn(Functions.Issues.Linked(IssueName, linkType)))

@@ -18,6 +18,9 @@ internal static class JqlTypeExtensions
                 break;
             case JqlValue { Value: Field s }:
                 render.Field(s.Value);
+                break;    
+            case JqlValue { Value: Function s }:
+                render.Function(s.Name, s.Arguments);
                 break;
             case JqlIssue { Value: string s}:
                 render.Issue(s);

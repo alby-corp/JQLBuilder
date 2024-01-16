@@ -12,3 +12,8 @@ public class TextExpression : JqlValue, IJqlMembership<TextExpression>, IJqlCont
 {
     public static implicit operator TextExpression(string value) => new() { Value = value };
 }
+
+public class TextArgument : JqlValue, IJqlArgument
+{
+    public static implicit operator TextArgument(string value) => new() { Value = value };
+}

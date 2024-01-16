@@ -12,7 +12,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_In_ProjectLeadByUser()
     {
-        var expected = $"{Fields.Project} {Operators.In} {FunctionsConstants.LeadByUser(Lead)}";
+        var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(f.Project.Functions.LeadByUser(Lead)))
@@ -24,7 +24,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_In_ProjectLeadByUser_Static()
     {
-        var expected = $"{Fields.Project} {Operators.In} {FunctionsConstants.LeadByUser(Lead)}";
+        var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(Functions.Project.LeadByUser(Lead)))
@@ -36,7 +36,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_In_WhereUserHasPermission()
     {
-        var expected = $"{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasPermission(Role)}";
+        var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasPermission}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(f.Project.Functions.WhereUserHasPermission(Role)))
@@ -48,7 +48,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_In_WhereUserHasPermission_Static()
     {
-        var expected = $"{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasPermission(Role)}";
+        var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasPermission}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(Functions.Project.WhereUserHasPermission(Role)))
@@ -60,7 +60,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_In_WhereUserHasRole()
     {
-        var expected = $"{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole(Role)}";
+        var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(f.Project.Functions.WhereUserHasRole(Role)))
@@ -72,7 +72,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_In_WhereUserHasRole_Static()
     {
-        var expected = $"{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole(Role)}";
+        var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(Functions.Project.WhereUserHasRole(Role)))
@@ -88,7 +88,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_NotIn_ProjectLeadByUser()
     {
-        var expected = $"{Fields.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser(Lead)}";
+        var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.NotIn(f.Project.Functions.LeadByUser(Lead)))
@@ -100,7 +100,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_NotIn_ProjectLeadByUser_Static()
     {
-        var expected = $"{Fields.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser(Lead)}";
+        var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.NotIn(Functions.Project.LeadByUser(Lead)))
@@ -112,7 +112,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_NotIn_WhereUserHasPermission()
     {
-        var expected = $"{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasPermission(Role)}";
+        var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasPermission}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.NotIn(f.Project.Functions.WhereUserHasPermission(Role)))
@@ -124,7 +124,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_NotIn_WhereUserHasPermission_Static()
     {
-        var expected = $"{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasPermission(Role)}";
+        var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasPermission}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.NotIn(Functions.Project.WhereUserHasPermission(Role)))
@@ -136,7 +136,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_NotIn_WhereUserHasRole()
     {
-        var expected = $"{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole(Role)}";
+        var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.NotIn(f.Project.Functions.WhereUserHasRole(Role)))
@@ -148,7 +148,7 @@ public partial class ProjectTests
     [TestMethod]
     public void Should_Parses_NotIn_WhereUserHasRole_Static()
     {
-        var expected = $"{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole(Role)}";
+        var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.NotIn(Functions.Project.WhereUserHasRole(Role)))

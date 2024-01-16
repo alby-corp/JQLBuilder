@@ -20,7 +20,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_Equals_LatestReleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected == f.Version.Functions.LatestReleased)
@@ -32,7 +32,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotEquals_LatestUnreleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected != f.Version.Functions.LatestUnreleased)
@@ -48,7 +48,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_Equals_LatestReleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected == Functions.Version.LatestReleased)
@@ -60,7 +60,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotEquals_LatestUnreleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected != Functions.Version.LatestUnreleased)
@@ -76,7 +76,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_LatestReleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(f.Version.Functions.LatestReleased))
@@ -88,7 +88,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_LatestUnreleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(f.Version.Functions.LatestUnreleased))
@@ -100,7 +100,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_ReleasedVersions()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Released}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Released}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(f.Version.Functions.Released))
@@ -112,7 +112,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_UnreleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(f.Version.Functions.Unreleased))
@@ -124,7 +124,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_LatestReleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(f.Version.Functions.LatestReleased))
@@ -136,7 +136,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_LatestUnreleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(f.Version.Functions.LatestUnreleased))
@@ -148,7 +148,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_ReleasedVersions()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(f.Version.Functions.Released))
@@ -160,7 +160,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_UnreleasedVersion()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(f.Version.Functions.Unreleased))
@@ -176,7 +176,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_LatestReleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(Functions.Version.LatestReleased))
@@ -188,7 +188,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_LatestUnreleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(Functions.Version.LatestUnreleased))
@@ -200,7 +200,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_ReleasedVersions_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Released}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Released}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(Functions.Version.Released))
@@ -212,7 +212,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_In_UnreleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(Functions.Version.Unreleased))
@@ -224,7 +224,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_LatestReleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(Functions.Version.LatestReleased))
@@ -236,7 +236,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_LatestUnreleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased})";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased}())";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(Functions.Version.LatestUnreleased))
@@ -248,7 +248,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_ReleasedVersions_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(Functions.Version.Released))
@@ -260,7 +260,7 @@ public partial class VersionTests
     [TestMethod]
     public void Should_Parses_NotIn_UnreleasedVersion_Static()
     {
-        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}";
+        const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.NotIn(Functions.Version.Unreleased))
