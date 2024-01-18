@@ -10,6 +10,7 @@ public partial class DateOnlyTests
     const string CustomFieldName = "Start date";
     const int CustomFieldId = 10421;
     readonly string dateString = $"{DateTime.Now:yyyy-MM-dd}";
+    readonly string relativeDateString = $"2w 1d";
     readonly DateTime dateTime = DateTime.Now;
     readonly DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
 
@@ -62,6 +63,34 @@ public partial class DateOnlyTests
 
         var actual = JqlBuilder.Query
             .Where(f => dateString == f.DateOnly[CustomFieldName])
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Parses_Custom_Date_String_RelativeDate()
+    {
+        var expected = $"""
+                        "{CustomFieldName}" = "{relativeDateString}"
+                        """;
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.DateOnly[CustomFieldName] == relativeDateString)
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Parses_Custom_Date_String_RelativeDate_Reverse()
+    {
+        var expected = $"""
+                        "{CustomFieldName}" = "{relativeDateString}"
+                        """;
+
+        var actual = JqlBuilder.Query
+            .Where(f => relativeDateString == f.DateOnly[CustomFieldName])
             .ToString();
 
         Assert.AreEqual(expected, actual);

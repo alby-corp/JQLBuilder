@@ -51,6 +51,9 @@ internal static class JqlTypeExtensions
                 break;
             case JqlValue { Value : DateOnly s }:
                 render.DateOnly(s);
+                break;   
+            case JqlValue { Value : TimeOffset s }:
+                render.TimeOffset(s);
                 break;
             default:
                 throw new InvalidOperationException($"Passed type '{type.GetType().Name}' is not mapped!");

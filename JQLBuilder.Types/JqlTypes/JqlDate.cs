@@ -5,7 +5,7 @@ using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
 using Support;
-using DateTime = System.DateTime;
+using DateOnly = System.DateOnly;
 
 #pragma warning disable CS0660, CS0661
 public class DateField : JqlValue, IJqlField<DateExpression>, IJqlNullable
@@ -38,9 +38,12 @@ public class DateField : JqlValue, IJqlField<DateExpression>, IJqlNullable
 
 public class DateExpression : DateTimeExpression, IJqlMembership<DateExpression>
 {
-    public static implicit operator DateExpression(string value) => new () { Value = Init(value) };
+    public static implicit operator DateExpression(string value) => new() { Value = ParseDate(value) };
 
-    public static implicit operator DateExpression(System.DateOnly value) => new() { Value = value };
+    public static implicit operator DateExpression(DateOnly value) => new() { Value = value };
+}
 
-    public static implicit operator DateExpression(TimeSpan value) => new() { Value = DateTime.Now.Add(value) };
+public class DateArgument : JqlValue, IJqlArgument
+{
+    public static implicit operator DateArgument(string value) => new() { Value = ParseDate(value) };
 }

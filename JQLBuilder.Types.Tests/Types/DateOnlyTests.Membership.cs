@@ -11,11 +11,11 @@ public partial class DateOnlyTests
     public void Should_Parses_In_Params_When_Are_Heterogeneous()
     {
         var expected = $"""
-                        "{CustomFieldName}" in ("{dateString}", "{dateString}", now())
+                        "{CustomFieldName}" in ("{dateString}", "{dateString}", now(), endOfDay("-1M"))
                         """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateOnly, f.DateOnly.Functions.Now))
+            .Where(f => f.DateOnly[CustomFieldName].In(dateString, dateOnly, f.DateOnly.Functions.Now, f.DateOnly.Functions.EndOfDay("-1M")))
             .ToString();
 
         Assert.AreEqual(expected, actual);
