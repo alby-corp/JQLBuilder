@@ -15,4 +15,6 @@ public class Ordering
     public OrderingType Type { get; } = new();
     
     public OrderingIssue Issue { get; } = new();
+    
+    public OrderingStatus Status { get; } = new();
 }
