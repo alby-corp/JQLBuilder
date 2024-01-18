@@ -14,10 +14,10 @@ internal static class Fields
     internal const string Type = "type";
     internal const string IssueType = "issueType";
     internal const string Parent = "parent";
-    internal const string Key = "key" +
-                                "";
+    internal const string Key = "key";
     internal const string IssueKey = "issueKey";
     internal const string Id = "id";
     internal const string Issue = "issue";
+    internal const string Status = "status";
     internal static string Custom(int id) => $"cf[{id}]";
 }

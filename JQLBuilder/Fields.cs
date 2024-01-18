@@ -28,4 +28,6 @@ public class Fields
     public Parent Parent { get; } = new();
     
     public Issue Issue { get; } = new();
+    
+    public Status Status { get; } = new();
 }
