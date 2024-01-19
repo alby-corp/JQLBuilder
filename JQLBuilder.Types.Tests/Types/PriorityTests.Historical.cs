@@ -312,9 +312,9 @@ public partial class PriorityTests
             .Where(f => f.Priority.Changed(c =>
                 c.After(Date)
                     .After(DateTime)
-                    .After(f.DateTime.Functions.Now)
-                    .After(f.DateOnly.Functions.Now)
-                    .After(Functions.DateTime.Now)
+                    .After(f.Functions.Date.Now)
+                    .After(f.Functions.Date.Now)
+                    .After(Functions.Date.Now)
             ))
             .ToString();
 
@@ -330,9 +330,9 @@ public partial class PriorityTests
             .Where(f => f.Priority.Changed(c =>
                 c.Before(Date)
                     .Before(DateTime)
-                    .Before(f.DateTime.Functions.Now)
-                    .Before(f.DateOnly.Functions.Now)
-                    .Before(Functions.DateTime.Now)
+                    .Before(f.Functions.Date.Now)
+                    .Before(f.Functions.Date.Now)
+                    .Before(Functions.Date.Now)
             ))
             .ToString();
 
@@ -348,9 +348,9 @@ public partial class PriorityTests
             .Where(f => f.Priority.Changed(c =>
                 c.On(Date)
                     .On(DateTime)
-                    .On(f.DateTime.Functions.Now)
-                    .On(f.DateOnly.Functions.Now)
-                    .On(Functions.DateTime.Now)
+                    .On(f.Functions.Date.Now)
+                    .On(f.Functions.Date.Now)
+                    .On(Functions.Date.Now)
             ))
             .ToString();
 
@@ -364,10 +364,10 @@ public partial class PriorityTests
 
         var actual = JqlBuilder.Query.Where(f => 
                 f.Priority.Changed(c => c
-                    .During(f.DateTime.Functions.Now, f.DateOnly.Functions.Now)
+                    .During(f.Functions.Date.Now, f.Functions.Date.Now)
                     .During(Date, DateTime)
-                    .During(DateTime, f.DateOnly.Functions.Now)
-                    .During(Date, f.DateTime.Functions.Now)
+                    .During(DateTime, f.Functions.Date.Now)
+                    .During(Date, f.Functions.Date.Now)
                 ))
             .ToString();
 

@@ -30,4 +30,8 @@ public class Fields
     public Issue Issue { get; } = new();
     
     public Status Status { get; } = new();
+    
+    public User User { get; } = new();
+    
+    public InstanceFunctions Functions { get; } = new();
 }

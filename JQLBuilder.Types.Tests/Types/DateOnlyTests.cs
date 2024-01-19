@@ -22,7 +22,7 @@ public partial class DateOnlyTests
                                  """;
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == Functions.DateOnly.Now)
+            .Where(f => f.DateOnly[CustomFieldName] == Functions.Date.Now)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -34,7 +34,7 @@ public partial class DateOnlyTests
         var expected = $"cf[{CustomFieldId}] = now()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldId] == f.DateOnly.Functions.Now)
+            .Where(f => f.DateOnly[CustomFieldId] == f.Functions.Date.Now)
             .ToString();
 
         Assert.AreEqual(expected, actual);

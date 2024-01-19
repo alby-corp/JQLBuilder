@@ -23,7 +23,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected == f.Version.Functions.LatestReleased)
+            .Where(f => f.Version.Affected == f.Functions.Version.LatestReleased)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -35,7 +35,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected != f.Version.Functions.LatestUnreleased)
+            .Where(f => f.Version.Affected != f.Functions.Version.LatestUnreleased)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -79,7 +79,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased}())";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.In(f.Version.Functions.LatestReleased))
+            .Where(f => f.Version.Affected.In(f.Functions.Version.LatestReleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -91,7 +91,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased}())";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.In(f.Version.Functions.LatestUnreleased))
+            .Where(f => f.Version.Affected.In(f.Functions.Version.LatestUnreleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -103,7 +103,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Released}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.In(f.Version.Functions.Released))
+            .Where(f => f.Version.Affected.In(f.Functions.Version.Released))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -115,7 +115,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.In(f.Version.Functions.Unreleased))
+            .Where(f => f.Version.Affected.In(f.Functions.Version.Unreleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -127,7 +127,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased}())";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.NotIn(f.Version.Functions.LatestReleased))
+            .Where(f => f.Version.Affected.NotIn(f.Functions.Version.LatestReleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -139,7 +139,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased}())";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.NotIn(f.Version.Functions.LatestUnreleased))
+            .Where(f => f.Version.Affected.NotIn(f.Functions.Version.LatestUnreleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -151,7 +151,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.NotIn(f.Version.Functions.Released))
+            .Where(f => f.Version.Affected.NotIn(f.Functions.Version.Released))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -163,7 +163,7 @@ public partial class VersionTests
         const string expected = $"{Fields.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.NotIn(f.Version.Functions.Unreleased))
+            .Where(f => f.Version.Affected.NotIn(f.Functions.Version.Unreleased))
             .ToString();
 
         Assert.AreEqual(expected, actual);
