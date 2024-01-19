@@ -11,4 +11,6 @@ public static class Functions
     public static VersionFunctions Version { get; } = new();
     
     public static IssueFunctions Issues { get; } = new();
+    
+    public static UserFunctions User { get; } = new();
 }

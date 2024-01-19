@@ -19,5 +19,11 @@ internal static class Fields
     internal const string Id = "id";
     internal const string Issue = "issue";
     internal const string Status = "status";
+    internal const string Creator = "creator";
+    internal const string Reporter = "reporter";
+    internal const string Assignee = "assignee";
+    internal const string Voter = "voter";
+    internal const string Watcher = "watcher";
+    
     internal static string Custom(int id) => $"cf[{id}]";
 }

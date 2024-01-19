@@ -44,4 +44,11 @@ internal static class Functions
     internal static string Linked = "linkedIssues";
     
     #endregion
+
+    #region User
+
+    internal const string MembersOf = "membersOf";
+    internal const string CurrentUser = "currentUser";
+
+    #endregion User
 }

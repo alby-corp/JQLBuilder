@@ -17,4 +17,6 @@ public class Ordering
     public OrderingIssue Issue { get; } = new();
     
     public OrderingStatus Status { get; } = new();
+    
+    public OrderingUser User { get; } = new();
 }
