@@ -18,5 +18,5 @@ public class UserField : JqlValue, IJqlField<UserExpression>, IJqlNullable
 
 public class UserExpression : JqlValue, IJqlMembership<UserExpression>
 {
-    public static implicit operator UserExpression(string value) => new() { Value = new Field(value) };
+    public static implicit operator UserExpression(string value) => new() { Value = value };
 }

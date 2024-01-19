@@ -15,7 +15,7 @@ public partial class IssueTests
         const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.VotedIssues}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Issue.Id.In(f.Issue.Functions.Voted))
+            .Where(f => f.Issue.Id.In(f.Functions.Issues.Voted))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -27,7 +27,7 @@ public partial class IssueTests
         const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.WatchedIssues}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Issue.Id.In(f.Issue.Functions.Watched))
+            .Where(f => f.Issue.Id.In(f.Functions.Issues.Watched))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -39,7 +39,7 @@ public partial class IssueTests
         const string expected = $"{Fields.Id} {Operators.In} {FunctionsConstants.History}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Issue.Id.In(f.Issue.Functions.History))
+            .Where(f => f.Issue.Id.In(f.Functions.Issues.History))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -51,7 +51,7 @@ public partial class IssueTests
         var expected = $"""{Fields.Id} {Operators.In} {FunctionsConstants.Linked}("{IssueName}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Issue.Id.In(f.Issue.Functions.Linked(IssueName)))
+            .Where(f => f.Issue.Id.In(f.Functions.Issues.Linked(IssueName)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -65,7 +65,7 @@ public partial class IssueTests
         var expected = $"""{Fields.Id} {Operators.NotIn} {FunctionsConstants.Linked}("{IssueName}", "{linkType}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Issue.Id.NotIn(f.Issue.Functions.Linked(IssueName, linkType)))
+            .Where(f => f.Issue.Id.NotIn(f.Functions.Issues.Linked(IssueName, linkType)))
             .ToString();
 
         Assert.AreEqual(expected, actual);

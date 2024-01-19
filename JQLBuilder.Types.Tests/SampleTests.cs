@@ -21,9 +21,9 @@ public class SampleTests
         var actual = JqlBuilder.Query.Where(f => 
             f.Project == "project" & 
             f.Priority.Changed(c => c
-                .After(f.DateTime.Functions.Now)
+                .After(f.Functions.Date.Now)
                 .Before("2000-01-01")
-                .During("2000-01-01 13:00", f.DateOnly.Functions.Now)
+                .During("2000-01-01 13:00", f.Functions.Date.Now)
                 .By(ProjectLead, ProjectLead)
             ))
             .ToString();
@@ -40,7 +40,7 @@ public class SampleTests
             .Where(f => f.Project == Project1)
             .And(f => f.Project == ProjectId)
             .And(f => f.Project.In(Project1, ProjectId))
-            .And(f => f.Project.In(f.Project.Functions.LeadByUser(ProjectLead)) | (f.Project == Project1))
+            .And(f => f.Project.In(f.Functions.Project.LeadByUser(ProjectLead)) | (f.Project == Project1))
             .And(f => f.Project.NotIn(Functions.Project.WhereUserHasRole(ProjectLead)))
             .ToString();
 
@@ -161,7 +161,7 @@ public class SampleTests
     {
         const string expected = "affectedVersion = latestReleasedVersion()";
 
-        var actual = JqlBuilder.Query.Where(f => f.Version.Affected == f.Version.Functions.LatestReleased).ToString();
+        var actual = JqlBuilder.Query.Where(f => f.Version.Affected == f.Functions.Version.LatestReleased).ToString();
 
         Assert.AreEqual(expected, actual);
     }
@@ -171,7 +171,7 @@ public class SampleTests
     {
         const string expected = "affectedVersion in releasedVersions()";
 
-        var actual = JqlBuilder.Query.Where(f => f.Version.Affected.In(f.Version.Functions.Released)).ToString();
+        var actual = JqlBuilder.Query.Where(f => f.Version.Affected.In(f.Functions.Version.Released)).ToString();
 
         Assert.AreEqual(expected, actual);
     }
@@ -181,7 +181,7 @@ public class SampleTests
     {
         const string expected = """affectedVersion in ("12121", latestReleasedVersion(), 123)""";
 
-        var actual = JqlBuilder.Query.Where(f => f.Version.Affected.In("12121", f.Version.Functions.LatestReleased, 123)).ToString();
+        var actual = JqlBuilder.Query.Where(f => f.Version.Affected.In("12121", f.Functions.Version.LatestReleased, 123)).ToString();
 
         Assert.AreEqual(expected, actual);
     }

@@ -15,7 +15,7 @@ public partial class ProjectTests
         var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(f.Project.Functions.LeadByUser(Lead)))
+            .Where(f => f.Project.In(f.Functions.Project.LeadByUser(Lead)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -39,7 +39,7 @@ public partial class ProjectTests
         var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasPermission}("{Role}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(f.Project.Functions.WhereUserHasPermission(Role)))
+            .Where(f => f.Project.In(f.Functions.Project.WhereUserHasPermission(Role)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -63,7 +63,7 @@ public partial class ProjectTests
         var expected = $"""{Fields.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.In(f.Project.Functions.WhereUserHasRole(Role)))
+            .Where(f => f.Project.In(f.Functions.Project.WhereUserHasRole(Role)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -91,7 +91,7 @@ public partial class ProjectTests
         var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.NotIn(f.Project.Functions.LeadByUser(Lead)))
+            .Where(f => f.Project.NotIn(f.Functions.Project.LeadByUser(Lead)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -115,7 +115,7 @@ public partial class ProjectTests
         var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasPermission}("{Role}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.NotIn(f.Project.Functions.WhereUserHasPermission(Role)))
+            .Where(f => f.Project.NotIn(f.Functions.Project.WhereUserHasPermission(Role)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -139,7 +139,7 @@ public partial class ProjectTests
         var expected = $"""{Fields.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Project.NotIn(f.Project.Functions.WhereUserHasRole(Role)))
+            .Where(f => f.Project.NotIn(f.Functions.Project.WhereUserHasRole(Role)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
