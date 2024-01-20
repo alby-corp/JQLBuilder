@@ -159,6 +159,12 @@
         <Compile Update="Types\Status.Tests.Equality.cs">
           <DependentUpon>StatusTests.cs</DependentUpon>
         </Compile>
+        <Compile Update="Types\UserTests.Simple.cs">
+          <DependentUpon>UserTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\UserTests.Historical.cs">
+          <DependentUpon>UserTests.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
