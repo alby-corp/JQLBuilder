@@ -144,6 +144,21 @@
         <Compile Update="Types\IssueTests.Ordering.cs">
           <DependentUpon>IssueTests.cs</DependentUpon>
         </Compile>
+        <Compile Update="Types\StatusTests.Historical.cs">
+          <DependentUpon>StatusTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\StatusTests.Membership.cs">
+          <DependentUpon>StatusTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\StatusTests.Nullable.cs">
+          <DependentUpon>StatusTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\StatusTests.Ordering.cs">
+          <DependentUpon>StatusTests.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Types\Status.Tests.Equality.cs">
+          <DependentUpon>StatusTests.cs</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
