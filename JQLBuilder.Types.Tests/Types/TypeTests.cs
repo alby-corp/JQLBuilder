@@ -9,7 +9,7 @@ using Fields = Fields;
 using FieldContestants = Constants.Fields;
 
 [TestClass]
-public partial class TypeTests
+public class TypeTests
 {
     const string Type = "Enanchement";
     const int TypeId = 1;
