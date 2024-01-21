@@ -21,8 +21,8 @@ public class IssueTests
     {
         var expression = (IssueExpression)Issue;
 
-        Assert.AreEqual("String", expression.Value.GetType().Name);
-        Assert.AreEqual(Issue, expression.Value);
+        Assert.AreEqual("Field", expression.Value.GetType().Name);
+        Assert.AreEqual(new Field(Issue), expression.Value);
     }
     
     [TestMethod]
@@ -207,7 +207,7 @@ public class IssueTests
     }
     
     [TestMethod]
-    public void Should_Parses_VotedIssues_Functions()
+    public void Should_Parses_VotedIssues_Function()
     {
         const string expected = $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
                                 $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
@@ -225,7 +225,7 @@ public class IssueTests
     }
     
     [TestMethod]
-    public void Should_Parses_WatchedIssues_Functions()
+    public void Should_Parses_WatchedIssues_Function()
     {
         const string expected = $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
                                 $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
@@ -243,7 +243,7 @@ public class IssueTests
     }
     
     [TestMethod]
-    public void Should_Parses_IssueHistory_Functions()
+    public void Should_Parses_IssueHistory_Function()
     {
         const string expected = $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
                                 $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
@@ -261,7 +261,7 @@ public class IssueTests
     }
     
     [TestMethod]
-    public void Should_Parses_LinkedIssues_Functions()
+    public void Should_Parses_LinkedIssues_Function()
     {
         const string link = "is duplicated by";
         const string expectedLink = @"""is duplicated by""";

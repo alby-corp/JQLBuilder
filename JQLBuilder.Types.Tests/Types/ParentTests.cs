@@ -19,8 +19,8 @@ public class ParentTests
     {
         var expression = (ParentExpression)Parent;
 
-        Assert.AreEqual("String", expression.Value.GetType().Name);
-        Assert.AreEqual(Parent, expression.Value);
+        Assert.AreEqual("Field", expression.Value.GetType().Name);
+        Assert.AreEqual(new Field(Parent), expression.Value);
     }
 
     [TestMethod]

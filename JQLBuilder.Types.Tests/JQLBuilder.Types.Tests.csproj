@@ -96,18 +96,6 @@
         <Compile Update="Types\PriorityTests.Historical.cs">
             <DependentUpon>PriorityTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\TypeTests.Equality.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\TypeTests.Membership.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\TypeTests.Nullable.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\TypeTests.Ordering.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
-        </Compile>
         <Compile Update="Types\VersionTests.Equality.cs">
           <DependentUpon>VersionTests.cs</DependentUpon>
         </Compile>

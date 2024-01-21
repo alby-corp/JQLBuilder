@@ -38,7 +38,7 @@ public class IssueField : JqlIssue, IJqlField<IssueExpression>, IJqlNullable
 
 public class IssueExpression : JqlIssue, IJqlMembership<IssueExpression>
 {
-    public static implicit operator IssueExpression(string value) => new() { Value = value };
+    public static implicit operator IssueExpression(string value) => new() { Value = new Field(value) };
     public static implicit operator IssueExpression(int value) => new() { Value = value };
 }
 
