@@ -28,7 +28,7 @@ public partial class UserTests
     }
     
     [TestMethod]
-    public void Should_Parses_Is_And_IsNot_Expressions_For_lUser()
+    public void Should_Parses_Is_And_IsNot_Expressions_For_User()
     {
         const string expected = $"{Fields.Creator} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
                                 $"{Fields.Creator} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
