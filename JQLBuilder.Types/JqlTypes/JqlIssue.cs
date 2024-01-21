@@ -1,6 +1,7 @@
 ﻿namespace JQLBuilder.Types.JqlTypes;
 
 using Abstract;
+using Constants;
 using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
@@ -38,4 +39,11 @@ public class IssueField : JqlIssue, IJqlField<IssueExpression>, IJqlNullable
 public class IssueExpression : JqlIssue, IJqlMembership<IssueExpression>
 {
     public static implicit operator IssueExpression(string value) => new() { Value = value };
+    public static implicit operator IssueExpression(int value) => new() { Value = value };
+}
+
+public class IssueArgument : JqlValue, IJqlArgument
+{
+    public static implicit operator IssueArgument(string value) => new() { Value = new Field(value) };
+    public static implicit operator IssueArgument(int value) => new() { Value = value };
 }

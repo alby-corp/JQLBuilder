@@ -19,6 +19,6 @@ public class ParentField : JqlValue, IJqlField<ParentExpression>
 
 public class ParentExpression : JqlValue, IJqlMembership<ParentExpression>
 {
-    public static implicit operator ParentExpression(string value) => new() { Value = value };
+    public static implicit operator ParentExpression(string value) => new() { Value = new Field(value) };
     public static implicit operator ParentExpression(int value) => new() { Value = value };
 }

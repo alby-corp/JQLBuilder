@@ -15,7 +15,7 @@ public class CategoryTests
     const string ExpectedCategory = @"""Category""";
 
     [TestMethod]
-    public void Should_Cast_Category_Expression()
+    public void Should_Cast_Category_Expression_From_String()
     {
         var expression = (CategoryExpression)Category;
 
@@ -24,9 +24,9 @@ public class CategoryTests
     }
 
     [TestMethod]
-    public void Should_Cast_Category()
+    public void Should_Cast_Category_Field()
     {
-        const string expected = Constants.Fields.Category;
+        const string expected = FieldContestants.Category;
 
         var field = Fields.All.Category;
         var actual = ((Field)field.Value).Value;

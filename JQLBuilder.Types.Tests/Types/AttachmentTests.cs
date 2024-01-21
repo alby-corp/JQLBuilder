@@ -11,7 +11,7 @@ using FieldContestants = Constants.Fields;
 public class AttachmentTests
 {
     [TestMethod]
-    public void Should_Cast_Attachment()
+    public void Should_Cast_Attachment_Field()
     {
         const string expected = FieldContestants.Attachment;
 
