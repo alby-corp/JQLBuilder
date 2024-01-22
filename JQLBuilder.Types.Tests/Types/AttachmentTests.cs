@@ -20,27 +20,27 @@ public class AttachmentTests
 
         Assert.AreEqual(expected, actual);
     }
-    
-        
+
     [TestMethod]
     public void Should_Parses_Nullable_Operators()
     {
-        const string expected = $"{FieldContestants.Attachment} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Attachment} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Attachment} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-                                $"{FieldContestants.Attachment} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Attachment} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Attachment} {Operators.IsNot} {Keywords.Null}";
-        
+        const string expected =
+            $"{FieldContestants.Attachment} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Attachment} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Attachment} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Attachment} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Attachment} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Attachment} {Operators.IsNot} {Keywords.Null}";
+
         var actual = JqlBuilder.Query
             .Where(f => f.Attachment.Is())
             .And(f => f.Attachment.Is(s => s.Empty))
-            .And (f => f.Attachment.Is(s => s.Null))
+            .And(f => f.Attachment.Is(s => s.Null))
             .And(f => f.Attachment.IsNot())
             .And(f => f.Attachment.IsNot(s => s.Empty))
             .And(f => f.Attachment.IsNot(s => s.Null))
             .ToString();
-        
+
         Assert.AreEqual(expected, actual);
     }
 }

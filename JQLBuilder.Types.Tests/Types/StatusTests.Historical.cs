@@ -362,7 +362,7 @@ public partial class StatusTests
     {
         const string expected = $"""{Fields.Status} {Operators.Changed} {Operators.During} ({FunctionsConstants.Now}(), {FunctionsConstants.Now}()) {Operators.During} ("{Date}", "{DateTime}") {Operators.During} ("{DateTime}", {FunctionsConstants.Now}()) {Operators.During} ("{Date}", {FunctionsConstants.Now}())""";
 
-        var actual = JqlBuilder.Query.Where(f => 
+        var actual = JqlBuilder.Query.Where(f =>
                 f.Status.Changed(c => c
                     .During(f.Functions.Date.Now, f.Functions.Date.Now)
                     .During(Date, DateTime)

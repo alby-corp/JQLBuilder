@@ -25,7 +25,7 @@ public class TypeTests
 
     [TestMethod]
     public void Should_Cast_Type_Expression_From_Int()
-    {   
+    {
         var expression = (ProjectExpression)TypeId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
@@ -53,18 +53,19 @@ public class TypeTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
-        var expected = $"{FieldContestants.Type} {Operators.Equals} {Type} {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.Equals} {TypeId} {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotEquals} {Type} {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotEquals} {TypeId} {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.Equals} {Type} {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.Equals} {TypeId} {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotEquals} {Type} {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotEquals} {TypeId}";
+        var expected =
+            $"{FieldContestants.Type} {Operators.Equals} {Type} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.Equals} {TypeId} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotEquals} {Type} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotEquals} {TypeId} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.Equals} {Type} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.Equals} {TypeId} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotEquals} {Type} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotEquals} {TypeId}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Type == Type)
@@ -79,41 +80,43 @@ public class TypeTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Nullable_Operators()
     {
-        const string expected = $"{FieldContestants.Type} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Type} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Type} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-                                $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Null}";
-        
+        const string expected =
+            $"{FieldContestants.Type} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Null}";
+
         var actual = JqlBuilder.Query
             .Where(f => f.Type.Is())
             .And(f => f.Type.Is(s => s.Empty))
-            .And (f => f.Type.Is(s => s.Null))
+            .And(f => f.Type.Is(s => s.Null))
             .And(f => f.Type.IsNot())
             .And(f => f.Type.IsNot(s => s.Empty))
             .And(f => f.Type.IsNot(s => s.Null))
             .ToString();
-        
+
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Membership_Operators()
     {
-        var expected = $"{FieldContestants.Type} {Operators.In} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.In} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.In} ({TypeId}, {Type}, {TypeId}) {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.In} ({TypeId}, {Type}, {TypeId}) {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {Type}, {TypeId}) {Keywords.And} " +
-                       $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {Type}, {TypeId})";
-        
+        var expected =
+            $"{FieldContestants.Type} {Operators.In} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.In} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.In} ({TypeId}, {Type}, {TypeId}) {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.In} ({TypeId}, {Type}, {TypeId}) {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {TypeId}, {TypeId}) {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {Type}, {TypeId}) {Keywords.And} " +
+            $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {Type}, {TypeId})";
+
         var homogeneousFilter = new JqlCollection<TypeExpression> { TypeId, TypeId, TypeId };
         var heterogeneousFilter = new JqlCollection<TypeExpression> { TypeId, Type, TypeId };
 
@@ -130,12 +133,13 @@ public class TypeTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Ordering_Fields()
     {
-        const string expected = $"{Keywords.OrderBy} {FieldContestants.Type} {Keywords.Ascending}, " +
-                                $"{FieldContestants.IssueType} {Keywords.Ascending}";
+        const string expected =
+            $"{Keywords.OrderBy} {FieldContestants.Type} {Keywords.Ascending}, " +
+            $"{FieldContestants.IssueType} {Keywords.Ascending}";
 
         var actual = JqlBuilder.Query
             .OrderBy(f => f.Type)

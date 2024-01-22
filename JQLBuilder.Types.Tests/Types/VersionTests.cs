@@ -56,34 +56,35 @@ public class VersionTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
-        var expected = $"{FieldContestants.FixVersion} {Operators.Equals} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.Equals} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.NotEquals} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.NotEquals} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThan} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThan} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThan} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThan} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.Equals} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.Equals} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.NotEquals} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.NotEquals} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThan} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.LessThan} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {VersionId} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThan} {ExpectedVersion} {Keywords.And} " +
-                       $"{FieldContestants.FixVersion} {Operators.GreaterThan} {VersionId}";
+        var expected =
+            $"{FieldContestants.FixVersion} {Operators.Equals} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.Equals} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.NotEquals} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.NotEquals} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThan} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThan} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThan} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThan} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.Equals} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.Equals} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.NotEquals} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.NotEquals} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThanOrEqual} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThan} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.LessThan} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThanOrEqual} {VersionId} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThan} {ExpectedVersion} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.GreaterThan} {VersionId}";
 
 
         var actual = JqlBuilder.Query
@@ -115,41 +116,43 @@ public class VersionTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Nullable_Operators()
     {
-        const string expected = $"{FieldContestants.FixVersion} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.FixVersion} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.FixVersion} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-                                $"{FieldContestants.FixVersion} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.FixVersion} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.FixVersion} {Operators.IsNot} {Keywords.Null}";
-        
+        const string expected =
+            $"{FieldContestants.FixVersion} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.FixVersion} {Operators.IsNot} {Keywords.Null}";
+
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Fix.Is())
             .And(f => f.Version.Fix.Is(s => s.Empty))
-            .And (f => f.Version.Fix.Is(s => s.Null))
+            .And(f => f.Version.Fix.Is(s => s.Null))
             .And(f => f.Version.Fix.IsNot())
             .And(f => f.Version.Fix.IsNot(s => s.Empty))
             .And(f => f.Version.Fix.IsNot(s => s.Null))
             .ToString();
-        
+
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Membership_Operators()
     {
-        var expected = $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
-                       $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
-                       $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                       $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                       $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
-                       $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
-                       $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                       $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {ExpectedVersion}, {VersionId})";
-        
+        var expected =
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({VersionId}, {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {VersionId}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {ExpectedVersion}, {VersionId})";
+
         var homogeneousFilter = new JqlCollection<VersionExpression> { VersionId, VersionId, VersionId };
         var heterogeneousFilter = new JqlCollection<VersionExpression> { VersionId, Version, VersionId };
 
@@ -166,12 +169,13 @@ public class VersionTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Ordering_Fields()
     {
-        const string expected = $"{Keywords.OrderBy} {FieldContestants.FixVersion} {Keywords.Ascending}, " +
-                                $"{FieldContestants.AffectedVersion} {Keywords.Ascending}";
+        const string expected =
+            $"{Keywords.OrderBy} {FieldContestants.FixVersion} {Keywords.Ascending}, " +
+            $"{FieldContestants.AffectedVersion} {Keywords.Ascending}";
 
         var actual = JqlBuilder.Query
             .OrderBy(f => f.Version.Fix)
@@ -180,69 +184,93 @@ public class VersionTests
 
         Assert.AreEqual(expected, actual);
     }
-    
-        [TestMethod]
-    public void Should_Parses_LatestReleasedVersion_And_LatestUnreleasedVersion()
+
+    [TestMethod]
+    public void Should_Parses_LatestReleasedVersion_Function()
     {
-        const string expected = $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}() {Keywords.And} " +
-                                $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}() {Keywords.And} " +
-                                $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}() {Keywords.And} " +
-                                $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}() {Keywords.And} " +
-                                $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}() {Keywords.And} " +
-                                $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}() {Keywords.And} " +
-                                $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}() {Keywords.And} " +
-                                $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}()";
+        var expected =
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.Equals} {FunctionsConstants.LatestReleased}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected == f.Functions.Version.LatestReleased)
-            .And(f => f.Version.Affected != f.Functions.Version.LatestUnreleased)
+            .Where(f => f.Version.Affected.In(f.Functions.Version.LatestReleased, Version, VersionId))
+            .And(f => f.Version.Affected.NotIn(f.Functions.Version.LatestReleased, Version, VersionId))
+            .And(f => f.Version.Affected.In(Functions.Version.LatestReleased, Version, VersionId))
+            .And(f => f.Version.Affected.NotIn(Functions.Version.LatestReleased, Version, VersionId))
+            .And(f => f.Version.Affected == f.Functions.Version.LatestReleased)
             .And(f => f.Version.Affected == Functions.Version.LatestReleased)
-            .And(f => f.Version.Affected != Functions.Version.LatestUnreleased)
             .And(f => f.Functions.Version.LatestReleased == f.Version.Affected)
-            .And(f => f.Functions.Version.LatestUnreleased != f.Version.Affected)
             .And(f => Functions.Version.LatestReleased == f.Version.Affected)
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_LatestUnreleasedVersion_Function()
+    {
+        var expected =
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotEquals} {FunctionsConstants.LatestUnreleased}()";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Version.Affected.In(f.Functions.Version.LatestUnreleased, Version, VersionId))
+            .And(f => f.Version.Affected.NotIn(f.Functions.Version.LatestUnreleased, Version, VersionId))
+            .And(f => f.Version.Affected.In(Functions.Version.LatestUnreleased, Version, VersionId))
+            .And(f => f.Version.Affected.NotIn(Functions.Version.LatestUnreleased, Version, VersionId))
+            .And(f => f.Version.Affected != f.Functions.Version.LatestUnreleased)
+            .And(f => f.Version.Affected != Functions.Version.LatestUnreleased)
+            .And(f => f.Functions.Version.LatestUnreleased != f.Version.Affected)
             .And(f => Functions.Version.LatestUnreleased != f.Version.Affected)
             .ToString();
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
-    public void Should_Parses_ReleasedVersions_And_UnreleasedVersions()
+    public void Should_Parses_ReleasedVersions_Function()
     {
-        var expected = $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Released}() {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}() {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}() {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}() {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.In} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Released}() {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}() {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestReleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({FunctionsConstants.LatestUnreleased}(), {ExpectedVersion}, {VersionId}) {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}() {Keywords.And} " +
-                            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}()";
+        const string expected =
+            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Released}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Released}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Released}()";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Version.Affected.In(f.Functions.Version.LatestReleased, Version, VersionId))
-            .And(f => f.Version.Affected.In(f.Functions.Version.LatestUnreleased, Version, VersionId))
-            .And(f => f.Version.Affected.In(f.Functions.Version.Released))
-            .And(f => f.Version.Affected.In(f.Functions.Version.Unreleased))
-            .And(f => f.Version.Affected.NotIn(f.Functions.Version.LatestReleased, Version, VersionId))
-            .And(f => f.Version.Affected.NotIn(f.Functions.Version.LatestUnreleased, Version, VersionId))
+            .Where(f => f.Version.Affected.In(f.Functions.Version.Released))
             .And(f => f.Version.Affected.NotIn(f.Functions.Version.Released))
-            .And(f => f.Version.Affected.NotIn(f.Functions.Version.Unreleased))
-            .And(f => f.Version.Affected.In(Functions.Version.LatestReleased, Version, VersionId))
-            .And(f => f.Version.Affected.In(Functions.Version.LatestUnreleased, Version, VersionId))
             .And(f => f.Version.Affected.In(Functions.Version.Released))
-            .And(f => f.Version.Affected.In(Functions.Version.Unreleased))
-            .And(f => f.Version.Affected.NotIn(Functions.Version.LatestReleased, Version, VersionId))
-            .And(f => f.Version.Affected.NotIn(Functions.Version.LatestUnreleased, Version, VersionId))
             .And(f => f.Version.Affected.NotIn(Functions.Version.Released))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_UnreleasedVersions_Function()
+    {
+        const string expected =
+            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.In} {FunctionsConstants.Unreleased}() {Keywords.And} " +
+            $"{FieldContestants.AffectedVersion} {Operators.NotIn} {FunctionsConstants.Unreleased}()";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Version.Affected.In(f.Functions.Version.Unreleased))
+            .And(f => f.Version.Affected.NotIn(f.Functions.Version.Unreleased))
+            .And(f => f.Version.Affected.In(Functions.Version.Unreleased))
             .And(f => f.Version.Affected.NotIn(Functions.Version.Unreleased))
             .ToString();
 

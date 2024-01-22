@@ -2,6 +2,7 @@
 
 using Infrastructure;
 using JqlTypes;
+using Fields = Fields;
 
 [TestClass]
 public partial class PriorityTests

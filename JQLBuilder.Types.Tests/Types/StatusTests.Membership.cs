@@ -12,7 +12,7 @@ public partial class StatusTests
     [TestMethod]
     public void Should_Parses_In_Params_When_Are_Heterogeneous()
     {
-        var expected = $"""{Fields.Status} {Operators.In} ({StatusId}, {StatusName})""";
+        var expected = $"{Fields.Status} {Operators.In} ({StatusId}, {StatusName})";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Status.In(StatusId, StatusName))
@@ -24,7 +24,7 @@ public partial class StatusTests
     [TestMethod]
     public void Should_Parses_In_Collection_When_Are_Heterogeneous()
     {
-        var expected = $"""{Fields.Status} {Operators.In} ({StatusId}, {StatusName})""";
+        var expected = $"{Fields.Status} {Operators.In} ({StatusId}, {StatusName})";
 
         var filter = new JqlCollection<StatusExpression> { StatusId, StatusName };
 
@@ -50,7 +50,7 @@ public partial class StatusTests
     [TestMethod]
     public void Should_Parses_In_Collection_When_Are_Homogeneous()
     {
-        const string expected = $"""{Fields.Status} {Operators.In} ({StatusName}, {StatusName})""";
+        const string expected = $"{Fields.Status} {Operators.In} ({StatusName}, {StatusName})";
 
         var filter = new JqlCollection<StatusExpression> { StatusName, StatusName };
 
@@ -68,7 +68,7 @@ public partial class StatusTests
     [TestMethod]
     public void Should_Parses_Not_In_Params_When_Are_Heterogeneous()
     {
-        var expected = $"""{Fields.Status} {Operators.NotIn} ({StatusId}, {StatusName})""";
+        var expected = $"{Fields.Status} {Operators.NotIn} ({StatusId}, {StatusName})";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Status.NotIn(StatusId, StatusName))
@@ -80,7 +80,7 @@ public partial class StatusTests
     [TestMethod]
     public void Should_Parses_Not_In_Collection_When_Are_Heterogeneous()
     {
-        var expected = $"""{Fields.Status} {Operators.NotIn} ({StatusId}, {StatusName})""";
+        var expected = $"{Fields.Status} {Operators.NotIn} ({StatusId}, {StatusName})";
 
         var filter = new JqlCollection<StatusExpression> { StatusId, StatusName };
 
@@ -94,7 +94,7 @@ public partial class StatusTests
     [TestMethod]
     public void Should_Parses_Not_In_Params_When_Are_Homogeneous()
     {
-        const string expected = $"""{Fields.Status} {Operators.NotIn} ({StatusName}, {StatusName}, {StatusName})""";
+        const string expected = $"{Fields.Status} {Operators.NotIn} ({StatusName}, {StatusName}, {StatusName})";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Status.NotIn(StatusName, StatusName, StatusName))
@@ -106,7 +106,7 @@ public partial class StatusTests
     [TestMethod]
     public void Should_Parses_Not_In_Collection_When_Are_Homogeneous()
     {
-        const string expected = $"""{Fields.Status} {Operators.NotIn} ({StatusName}, {StatusName})""";
+        const string expected = $"{Fields.Status} {Operators.NotIn} ({StatusName}, {StatusName})";
 
         var filter = new JqlCollection<StatusExpression> { StatusName, StatusName };
 

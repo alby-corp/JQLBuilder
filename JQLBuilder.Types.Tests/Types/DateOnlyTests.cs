@@ -9,10 +9,10 @@ public partial class DateOnlyTests
 {
     const string CustomFieldName = "Start date";
     const int CustomFieldId = 10421;
-    readonly string dateString = $"{DateTime.Now:yyyy-MM-dd}";
-    readonly string relativeDateString = $"2w 1d";
-    readonly DateTime dateTime = DateTime.Now;
     readonly DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
+    readonly string dateString = $"{DateTime.Now:yyyy-MM-dd}";
+    readonly DateTime dateTime = DateTime.Now;
+    readonly string relativeDateString = "2w 1d";
 
     [TestMethod]
     public void Should_Parses_Custom_Date_By_Name()
@@ -67,7 +67,7 @@ public partial class DateOnlyTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Custom_Date_String_RelativeDate()
     {
@@ -81,7 +81,7 @@ public partial class DateOnlyTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Custom_Date_String_RelativeDate_Reverse()
     {

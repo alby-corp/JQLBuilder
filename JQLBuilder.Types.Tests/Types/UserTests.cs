@@ -20,7 +20,7 @@ public partial class UserTests
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Cast_HistoricalUser_Expression_By_String()
     {
@@ -29,7 +29,7 @@ public partial class UserTests
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Creator()
     {
@@ -62,7 +62,7 @@ public partial class UserTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Assignee()
     {

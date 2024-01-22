@@ -24,7 +24,7 @@ public class IssueTests
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Issue), expression.Value);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Issue_Expression_From_Int()
     {
@@ -77,34 +77,35 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
-        var expected = $"{FieldContestants.Issue} {Operators.Equals} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.Equals} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotEquals} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotEquals} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThan} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThan} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThan} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThan} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.Equals} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.Equals} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotEquals} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotEquals} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThan} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.LessThan} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {IssueId} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThan} {Issue} {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.GreaterThan} {IssueId}";
+        var expected =
+            $"{FieldContestants.Issue} {Operators.Equals} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.Equals} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotEquals} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotEquals} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThan} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThan} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThan} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThan} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.Equals} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.Equals} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotEquals} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotEquals} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThanOrEqual} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThan} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.LessThan} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThanOrEqual} {IssueId} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThan} {Issue} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.GreaterThan} {IssueId}";
 
 
         var actual = JqlBuilder.Query
@@ -136,41 +137,43 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Nullable_Operators()
     {
-        const string expected = $"{FieldContestants.Issue} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Issue} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Issue} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-                                $"{FieldContestants.Issue} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Issue} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Issue} {Operators.IsNot} {Keywords.Null}";
-        
+        const string expected =
+            $"{FieldContestants.Issue} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.IsNot} {Keywords.Null}";
+
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Is())
             .And(f => f.Issue.Is(s => s.Empty))
-            .And (f => f.Issue.Is(s => s.Null))
+            .And(f => f.Issue.Is(s => s.Null))
             .And(f => f.Issue.IsNot())
             .And(f => f.Issue.IsNot(s => s.Empty))
             .And(f => f.Issue.IsNot(s => s.Null))
             .ToString();
-        
+
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Membership_Operators()
     {
-        var expected = $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {Issue}, {IssueId}) {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {Issue}, {IssueId}) {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {Issue}, {IssueId}) {Keywords.And} " +
-                       $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {Issue}, {IssueId})";
-        
+        var expected =
+            $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {Issue}, {IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.In} ({IssueId}, {Issue}, {IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {IssueId}, {IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {Issue}, {IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {Issue}, {IssueId})";
+
         var homogeneousFilter = new JqlCollection<IssueExpression> { IssueId, IssueId, IssueId };
         var heterogeneousFilter = new JqlCollection<IssueExpression> { IssueId, Issue, IssueId };
 
@@ -187,14 +190,15 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Ordering_Fields()
     {
-        const string expected = $"{Keywords.OrderBy} {FieldContestants.Issue} {Keywords.Ascending}, " +
-                                $"{FieldContestants.IssueKey} {Keywords.Ascending}, " +
-                                $"{FieldContestants.Key} {Keywords.Ascending}, " +
-                                $"{FieldContestants.Id} {Keywords.Ascending}";
+        const string expected =
+            $"{Keywords.OrderBy} {FieldContestants.Issue} {Keywords.Ascending}, " +
+            $"{FieldContestants.IssueKey} {Keywords.Ascending}, " +
+            $"{FieldContestants.Key} {Keywords.Ascending}, " +
+            $"{FieldContestants.Id} {Keywords.Ascending}";
 
         var actual = JqlBuilder.Query
             .OrderBy(f => f.Issue)
@@ -205,14 +209,15 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_VotedIssues_Function()
     {
-        const string expected = $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.VotedIssues}()";
+        const string expected =
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.VotedIssues}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Functions.Issues.Voted))
@@ -223,14 +228,15 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_WatchedIssues_Function()
     {
-        const string expected = $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.WatchedIssues}()";
+        const string expected =
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.WatchedIssues}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Functions.Issues.Watched))
@@ -241,14 +247,15 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_IssueHistory_Function()
     {
-        const string expected = $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.IssueHistory}()";
+        const string expected =
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.IssueHistory}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Functions.Issues.History))
@@ -259,33 +266,34 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_LinkedIssues_Function()
     {
         const string link = "is duplicated by";
         const string expectedLink = @"""is duplicated by""";
 
-        var expected = $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
-                                $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink})";
+        var expected =
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({Issue}, {expectedLink}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.In} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}) {Keywords.And} " +
+            $"{FieldContestants.Id} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({IssueId}, {expectedLink})";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.Id.In(f.Functions.Issues.LinkedIssues(Issue)))
-            .And(f => f.Issue.Id.In(f.Functions.Issues.LinkedIssues(Issue, link))) 
+            .And(f => f.Issue.Id.In(f.Functions.Issues.LinkedIssues(Issue, link)))
             .And(f => f.Issue.Id.NotIn(f.Functions.Issues.LinkedIssues(Issue)))
             .And(f => f.Issue.Id.NotIn(f.Functions.Issues.LinkedIssues(Issue, link)))
             .And(f => f.Issue.Id.In(Functions.Issues.LinkedIssues(Issue)))
@@ -293,7 +301,7 @@ public class IssueTests
             .And(f => f.Issue.Id.NotIn(Functions.Issues.LinkedIssues(Issue)))
             .And(f => f.Issue.Id.NotIn(Functions.Issues.LinkedIssues(Issue, link)))
             .And(f => f.Issue.Id.In(f.Functions.Issues.LinkedIssues(IssueId)))
-            .And(f => f.Issue.Id.In(f.Functions.Issues.LinkedIssues(IssueId, link))) 
+            .And(f => f.Issue.Id.In(f.Functions.Issues.LinkedIssues(IssueId, link)))
             .And(f => f.Issue.Id.NotIn(f.Functions.Issues.LinkedIssues(IssueId)))
             .And(f => f.Issue.Id.NotIn(f.Functions.Issues.LinkedIssues(IssueId, link)))
             .And(f => f.Issue.Id.In(Functions.Issues.LinkedIssues(IssueId)))

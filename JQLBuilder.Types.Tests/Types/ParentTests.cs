@@ -42,18 +42,19 @@ public class ParentTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
-        var expected = $"{FieldContestants.Parent} {Operators.Equals} {Parent} {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.Equals} {ParentId} {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotEquals} {Parent} {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotEquals} {ParentId} {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.Equals} {Parent} {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.Equals} {ParentId} {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotEquals} {Parent} {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotEquals} {ParentId}";
+        var expected =
+            $"{FieldContestants.Parent} {Operators.Equals} {Parent} {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.Equals} {ParentId} {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotEquals} {Parent} {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotEquals} {ParentId} {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.Equals} {Parent} {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.Equals} {ParentId} {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotEquals} {Parent} {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotEquals} {ParentId}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Parent == Parent)
@@ -68,19 +69,20 @@ public class ParentTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Membership_Operators()
     {
-        var expected = $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {Parent}, {ParentId}) {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {Parent}, {ParentId}) {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {Parent}, {ParentId}) {Keywords.And} " +
-                            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {Parent}, {ParentId})";
-        
+        var expected =
+            $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {Parent}, {ParentId}) {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.In} ({ParentId}, {Parent}, {ParentId}) {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {ParentId}, {ParentId}) {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {Parent}, {ParentId}) {Keywords.And} " +
+            $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {Parent}, {ParentId})";
+
         var homogeneousFilter = new JqlCollection<ParentExpression> { ParentId, ParentId, ParentId };
         var heterogeneousFilter = new JqlCollection<ParentExpression> { ParentId, Parent, ParentId };
 

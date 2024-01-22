@@ -26,7 +26,7 @@ public partial class UserTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Is_And_IsNot_Expressions_For_User()
     {
@@ -36,19 +36,19 @@ public partial class UserTests
                                 $"{Fields.Creator} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
                                 $"{Fields.Creator} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
                                 $"{Fields.Creator} {Operators.IsNot} {Keywords.Null}";
-        
+
         var actual = JqlBuilder.Query
             .Where(f => f.User.Creator.Is())
             .And(f => f.User.Creator.Is(s => s.Empty))
-            .And (f => f.User.Creator.Is(s => s.Null))
+            .And(f => f.User.Creator.Is(s => s.Null))
             .And(f => f.User.Creator.IsNot())
             .And(f => f.User.Creator.IsNot(s => s.Empty))
             .And(f => f.User.Creator.IsNot(s => s.Null))
             .ToString();
-        
+
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_In_And_NotIn_Parameters_And_Collections_For_User()
     {
@@ -56,7 +56,7 @@ public partial class UserTests
                                 $"{Fields.Creator} {Operators.In} ({ExpectedUser}, {ExpectedUser}, {ExpectedUser}) {Keywords.And} " +
                                 $"{Fields.Creator} {Operators.NotIn} ({ExpectedUser}, {ExpectedUser}, {ExpectedUser}) {Keywords.And} " +
                                 $"{Fields.Creator} {Operators.NotIn} ({ExpectedUser}, {ExpectedUser}, {ExpectedUser})";
-        
+
         var filter = new JqlCollection<HistoricalUserExpression>
         {
             User, User, User
@@ -71,7 +71,7 @@ public partial class UserTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Ordering_Fields_For_User()
     {
@@ -86,7 +86,7 @@ public partial class UserTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_CurrentUser_Function_For_User()
     {
@@ -104,9 +104,8 @@ public partial class UserTests
 
         Assert.AreEqual(expected, actual);
     }
-    
-    
-    
+
+
     [TestMethod]
     public void Should_Parses_MemberOf_Function_For_User()
     {

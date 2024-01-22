@@ -12,7 +12,7 @@ using FieldContestants = Constants.Fields;
 public class CategoryTests
 {
     const string Category = "Category";
-    const string ExpectedCategory = @"""Category""";
+    const string ExpectedCategory = $@"""{Category}""";
 
     [TestMethod]
     public void Should_Cast_Category_Expression_From_String()
@@ -33,14 +33,15 @@ public class CategoryTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
-        const string expected = $"{FieldContestants.Category} {Operators.Equals} {ExpectedCategory} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.NotEquals} {ExpectedCategory} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.Equals} {ExpectedCategory} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.NotEquals} {ExpectedCategory}";
+        const string expected =
+            $"{FieldContestants.Category} {Operators.Equals} {ExpectedCategory} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.NotEquals} {ExpectedCategory} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.Equals} {ExpectedCategory} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.NotEquals} {ExpectedCategory}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Category == Category)
@@ -51,37 +52,39 @@ public class CategoryTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Nullable_Operators()
     {
-        const string expected = $"{FieldContestants.Category} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.IsNot} {Keywords.Null}";
-        
+        const string expected =
+            $"{FieldContestants.Category} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.IsNot} {Keywords.Null}";
+
         var actual = JqlBuilder.Query
             .Where(f => f.Category.Is())
             .And(f => f.Category.Is(s => s.Empty))
-            .And (f => f.Category.Is(s => s.Null))
+            .And(f => f.Category.Is(s => s.Null))
             .And(f => f.Category.IsNot())
             .And(f => f.Category.IsNot(s => s.Empty))
             .And(f => f.Category.IsNot(s => s.Null))
             .ToString();
-        
+
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Membership_Operators()
     {
-        const string expected = $"{FieldContestants.Category} {Operators.In} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory}) {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.In} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory}) {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.NotIn} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory}) {Keywords.And} " +
-                                $"{FieldContestants.Category} {Operators.NotIn} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory})";
-        
+        const string expected =
+            $"{FieldContestants.Category} {Operators.In} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory}) {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.In} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory}) {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.NotIn} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory}) {Keywords.And} " +
+            $"{FieldContestants.Category} {Operators.NotIn} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory})";
+
         var filter = new JqlCollection<CategoryExpression>
         {
             Category, Category, Category

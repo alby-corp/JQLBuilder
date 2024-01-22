@@ -362,7 +362,7 @@ public partial class PriorityTests
     {
         const string expected = $"""{Fields.Priority} {Operators.Changed} {Operators.During} ({FunctionsConstants.Now}(), {FunctionsConstants.Now}()) {Operators.During} ("{Date}", "{DateTime}") {Operators.During} ("{DateTime}", {FunctionsConstants.Now}()) {Operators.During} ("{Date}", {FunctionsConstants.Now}())""";
 
-        var actual = JqlBuilder.Query.Where(f => 
+        var actual = JqlBuilder.Query.Where(f =>
                 f.Priority.Changed(c => c
                     .During(f.Functions.Date.Now, f.Functions.Date.Now)
                     .During(Date, DateTime)

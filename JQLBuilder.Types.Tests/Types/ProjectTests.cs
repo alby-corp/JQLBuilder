@@ -5,8 +5,8 @@ using Infrastructure;
 using Infrastructure.Constants;
 using JqlTypes;
 using Support;
-using Fields = Fields;
 using FieldContestants = Constants.Fields;
+using Fields = Fields;
 using Functions = JQLBuilder.Functions;
 using FunctionsConstants = Constants.Functions;
 
@@ -39,25 +39,26 @@ public class ProjectTests
     [TestMethod]
     public void Should_Cast_Project_Field()
     {
-        const string expected = Constants.Fields.Project;
+        const string expected = FieldContestants.Project;
 
         var field = Fields.All.Project;
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
-        var expected = $"{FieldContestants.Project} {Operators.Equals} {Project} {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.Equals} {ProjectId} {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotEquals} {Project} {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotEquals} {ProjectId} {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.Equals} {Project} {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.Equals} {ProjectId} {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotEquals} {Project} {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotEquals} {ProjectId}";
+        var expected =
+            $"{FieldContestants.Project} {Operators.Equals} {Project} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.Equals} {ProjectId} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotEquals} {Project} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotEquals} {ProjectId} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.Equals} {Project} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.Equals} {ProjectId} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotEquals} {Project} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotEquals} {ProjectId}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project == Project)
@@ -72,41 +73,43 @@ public class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Nullable_Operators()
     {
-        const string expected = $"{FieldContestants.Project} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Project} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Project} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-                                $"{FieldContestants.Project} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Project} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-                                $"{FieldContestants.Project} {Operators.IsNot} {Keywords.Null}";
-        
+        const string expected =
+            $"{FieldContestants.Project} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.IsNot} {Keywords.Null}";
+
         var actual = JqlBuilder.Query
             .Where(f => f.Project.Is())
             .And(f => f.Project.Is(s => s.Empty))
-            .And (f => f.Project.Is(s => s.Null))
+            .And(f => f.Project.Is(s => s.Null))
             .And(f => f.Project.IsNot())
             .And(f => f.Project.IsNot(s => s.Empty))
             .And(f => f.Project.IsNot(s => s.Null))
             .ToString();
-        
+
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Membership_Operators()
     {
-        var expected = $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {Project}, {ProjectId}) {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {Project}, {ProjectId}) {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {Project}, {ProjectId}) {Keywords.And} " +
-                       $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {Project}, {ProjectId})";
-        
+        var expected =
+            $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {Project}, {ProjectId}) {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.In} ({ProjectId}, {Project}, {ProjectId}) {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {ProjectId}, {ProjectId}) {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {Project}, {ProjectId}) {Keywords.And} " +
+            $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {Project}, {ProjectId})";
+
         var homogeneousFilter = new JqlCollection<ProjectExpression> { ProjectId, ProjectId, ProjectId };
         var heterogeneousFilter = new JqlCollection<ProjectExpression> { ProjectId, Project, ProjectId };
 
@@ -123,7 +126,7 @@ public class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_Ordering_Fields()
     {
@@ -135,18 +138,19 @@ public class ProjectTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_ProjectsLeadByUser_Function()
     {
-        const string expected = $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-                                $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
-                                $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-                                $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
-                                $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-                                $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
-                                $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-                                $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}()";
+        const string expected =
+            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
+            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
+            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
+            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(f.Functions.Project.LeadByUser(Lead)))
@@ -184,11 +188,11 @@ public class ProjectTests
     [TestMethod]
     public void Should_Parses_ProjectsWhereUserHasRole_Function()
     {
-                const string expected = 
-                                $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole}("{Role}") {Keywords.And} """ +
-                                $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole}("{Role}") {Keywords.And} """ +
-                                $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole}("{Role}") {Keywords.And} """ +
-                                $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
+        const string expected =
+            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole}("{Role}") {Keywords.And} """ +
+            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole}("{Role}") {Keywords.And} """ +
+            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.WhereUserHasRole}("{Role}") {Keywords.And} """ +
+            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.WhereUserHasRole}("{Role}")""";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(f.Functions.Project.WhereUserHasRole(Role)))
