@@ -48,26 +48,11 @@
         <Compile Update="Types\NumberTests.Nullable.cs">
             <DependentUpon>NumberTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\ProjectTests.Equality.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Functions.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Membership.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Nullable.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
         <Compile Update="Types\TextTests.Like.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\TextTests.Nullable.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Ordering.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\Priority.Tests.Equality.cs">
             <DependentUpon>PriorityTests.cs</DependentUpon>

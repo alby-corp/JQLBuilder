@@ -19,6 +19,6 @@ public class ProjectField : JqlValue, IJqlField<ProjectExpression>, IJqlNullable
 
 public class ProjectExpression : JqlValue, IJqlMembership<ProjectExpression>
 {
-    public static implicit operator ProjectExpression(string value) => new() { Value = value };
+    public static implicit operator ProjectExpression(string value) => new() { Value = new Field(value) };
     public static implicit operator ProjectExpression(int value) => new() { Value = value };
 }
