@@ -7,7 +7,10 @@ using JqlTypes;
 
 public class ProjectFunctions
 {
-    public IJqlCollection<ProjectExpression> LeadByUser(TextArgument user) => Function.Custom<JqlCollection<ProjectExpression>>(Functions.LeadByUser, [user]);
+    public IJqlCollection<ProjectExpression> LeadByUser(TextArgument? user = default) => user is null 
+        ? Function.Custom<JqlCollection<ProjectExpression>>(Functions.LeadByUser, [])
+        : Function.Custom<JqlCollection<ProjectExpression>>(Functions.LeadByUser, [user]);
+    
     public IJqlCollection<ProjectExpression> WhereUserHasPermission(TextArgument user) => Function.Custom<JqlCollection<ProjectExpression>>(Functions.WhereUserHasPermission, [user]);
     public IJqlCollection<ProjectExpression> WhereUserHasRole(TextArgument user) => Function.Custom<JqlCollection<ProjectExpression>>(Functions.WhereUserHasRole, [user]);
 }

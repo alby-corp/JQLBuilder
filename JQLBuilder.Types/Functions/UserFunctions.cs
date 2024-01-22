@@ -7,6 +7,6 @@ using Functions = Constants.Functions;
 
 public class UserFunctions
 {
-    public IJqlCollection<ProjectExpression> MemberOf(TextArgument user) => Function.Custom<JqlCollection<ProjectExpression>>(Functions.MembersOf, [user]);
-    public IJqlCollection<ProjectExpression> CurrentUser() => Function.Custom<JqlCollection<ProjectExpression>>(Functions.CurrentLogin, []);
+    public IJqlCollection<HistoricalUserExpression> MemberOf(TextArgument user) => Function.Custom<JqlCollection<HistoricalUserExpression>>(Functions.MembersOf, [user]);
+    public HistoricalUserExpression CurrentUser() => Function.Custom<HistoricalUserExpression>(Functions.CurrentUser, []);
 }

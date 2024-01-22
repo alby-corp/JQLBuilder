@@ -38,10 +38,10 @@ internal static class Functions
 
     #region Issue
 
-    internal const string History = "issueHistory";
+    internal const string IssueHistory = "issueHistory";
     internal const string VotedIssues = "votedIssues";
     internal const string WatchedIssues = "watchedIssues";
-    internal static string Linked = "linkedIssues";
+    internal const string LinkedIssues = "linkedIssues";
     
     #endregion
 

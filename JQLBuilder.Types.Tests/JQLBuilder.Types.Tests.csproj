@@ -48,50 +48,11 @@
         <Compile Update="Types\NumberTests.Nullable.cs">
             <DependentUpon>NumberTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\ProjectTests.Equality.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Functions.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Membership.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Nullable.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
         <Compile Update="Types\TextTests.Like.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\TextTests.Nullable.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\VersionTests.Membership.cs">
-            <DependentUpon>VersionTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\VersionTests.Nullable.cs">
-            <DependentUpon>VersionTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\VersionTests.Functions.cs">
-            <DependentUpon>VersionTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\VersionTests.Ordering.cs">
-            <DependentUpon>VersionTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\ProjectTests.Ordering.cs">
-            <DependentUpon>ProjectTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\AttachmentTests.Nullable.cs">
-            <DependentUpon>AttachmentTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\CategoryTests.Equality.cs">
-            <DependentUpon>CategoryTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\CategoryTests.Nullable.cs">
-            <DependentUpon>CategoryTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\CategoryTests.Membership.cs">
-            <DependentUpon>CategoryTests.cs</DependentUpon>
         </Compile>
         <Compile Update="Types\Priority.Tests.Equality.cs">
             <DependentUpon>PriorityTests.cs</DependentUpon>
@@ -108,41 +69,26 @@
         <Compile Update="Types\PriorityTests.Historical.cs">
             <DependentUpon>PriorityTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\ParentTests.Equality.cs">
-          <DependentUpon>ParentTests.cs</DependentUpon>
+        <Compile Update="Types\StatusTests.Historical.cs">
+            <DependentUpon>StatusTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\ParentTests.Membership.cs">
-          <DependentUpon>ParentTests.cs</DependentUpon>
+        <Compile Update="Types\StatusTests.Membership.cs">
+            <DependentUpon>StatusTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\TypeTests.Equality.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
+        <Compile Update="Types\StatusTests.Nullable.cs">
+            <DependentUpon>StatusTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\TypeTests.Membership.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
+        <Compile Update="Types\StatusTests.Ordering.cs">
+            <DependentUpon>StatusTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\TypeTests.Nullable.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
+        <Compile Update="Types\Status.Tests.Equality.cs">
+            <DependentUpon>StatusTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\TypeTests.Ordering.cs">
-          <DependentUpon>TypeTests.cs</DependentUpon>
+        <Compile Update="Types\UserTests.Simple.cs">
+            <DependentUpon>UserTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\VersionTests.Equality.cs">
-          <DependentUpon>VersionTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\IssueTests.Equality.cs">
-          <DependentUpon>IssueTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\IssueTests.Functions.cs">
-          <DependentUpon>IssueTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\IssueTests.Membership.cs">
-          <DependentUpon>IssueTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\IssueTests.Nullable.cs">
-          <DependentUpon>IssueTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\IssueTests.Ordering.cs">
-          <DependentUpon>IssueTests.cs</DependentUpon>
+        <Compile Update="Types\UserTests.Historical.cs">
+            <DependentUpon>UserTests.cs</DependentUpon>
         </Compile>
     </ItemGroup>
 

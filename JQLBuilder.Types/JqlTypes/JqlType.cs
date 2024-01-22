@@ -19,6 +19,6 @@ public class TypeField : JqlValue, IJqlField<TypeExpression>, IJqlNullable
 
 public class TypeExpression : JqlValue, IJqlMembership<TypeExpression>
 {
-    public static implicit operator TypeExpression(string value) => new() { Value = value };
+    public static implicit operator TypeExpression(string value) => new() { Value = new Field(value) };
     public static implicit operator TypeExpression(int value) => new() { Value = value };
 }
