@@ -17,7 +17,7 @@ public class HistoricalUserTests
     const int UserId = 123;
     const string Group = "QA";
     const string SpacedGroup = "Quality Analysts";
-    
+
     [TestMethod]
     public void Should_Cast_HistoricalUser_Expression_From_String()
     {
@@ -26,7 +26,7 @@ public class HistoricalUserTests
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Cast_HistoricalUser_Expression_From_Int()
     {
@@ -39,7 +39,7 @@ public class HistoricalUserTests
     [TestMethod]
     public void Should_Cast_Assignee()
     {
-        const string expected = Constants.Fields.Assignee;
+        const string expected = FieldContestants.Assignee;
 
         var field = Fields.All.User.Assignee;
         var actual = ((Field)field.Value).Value;
@@ -50,15 +50,15 @@ public class HistoricalUserTests
     [TestMethod]
     public void Should_Cast_Reporter()
     {
-        const string expected = Constants.Fields.Reporter;
+        const string expected = FieldContestants.Reporter;
 
         var field = Fields.All.User.Reporter;
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
     }
-    
- [TestMethod]
+
+    [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
         var expected =
@@ -152,8 +152,8 @@ public class HistoricalUserTests
 
         Assert.AreEqual(expected, actual);
     }
-    
-        [TestMethod]
+
+    [TestMethod]
     public void Should_Parses_Historical_Operators()
     {
         var expected =

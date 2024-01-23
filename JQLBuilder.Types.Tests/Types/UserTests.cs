@@ -17,7 +17,7 @@ public class UserTests
     const int UserId = 123;
     const string Group = "QA";
     const string SpacedGroup = "Quality Analysts";
-    
+
     [TestMethod]
     public void Should_Cast_User_Expression_From_String()
     {
