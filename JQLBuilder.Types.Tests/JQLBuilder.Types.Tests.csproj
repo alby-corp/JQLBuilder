@@ -54,36 +54,6 @@
         <Compile Update="Types\TextTests.Nullable.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\Priority.Tests.Equality.cs">
-            <DependentUpon>PriorityTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\PriorityTests.Membership.cs">
-            <DependentUpon>PriorityTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\PriorityTests.Nullable.cs">
-            <DependentUpon>PriorityTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\PriorityTests.Ordering.cs">
-            <DependentUpon>PriorityTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\PriorityTests.Historical.cs">
-            <DependentUpon>PriorityTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\StatusTests.Historical.cs">
-            <DependentUpon>StatusTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\StatusTests.Membership.cs">
-            <DependentUpon>StatusTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\StatusTests.Nullable.cs">
-            <DependentUpon>StatusTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\StatusTests.Ordering.cs">
-            <DependentUpon>StatusTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\Status.Tests.Equality.cs">
-            <DependentUpon>StatusTests.cs</DependentUpon>
-        </Compile>
         <Compile Update="Types\UserTests.Simple.cs">
             <DependentUpon>UserTests.cs</DependentUpon>
         </Compile>
