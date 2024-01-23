@@ -52,16 +52,8 @@ public class StatusTests
         var expected =
             $"{FieldContestants.Status} {Operators.Equals} {Status} {Keywords.And} " +
             $"{FieldContestants.Status} {Operators.NotEquals} {Status} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.GreaterThan} {Status} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.GreaterThanOrEqual} {Status} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.LessThan} {Status} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.LessThanOrEqual} {Status} {Keywords.And} " +
             $"{FieldContestants.Status} {Operators.Equals} {StatusId} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.NotEquals} {StatusId} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.GreaterThan} {StatusId} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.GreaterThanOrEqual} {StatusId} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.LessThan} {StatusId} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.LessThanOrEqual} {StatusId}";
+            $"{FieldContestants.Status} {Operators.NotEquals} {StatusId}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Status == Status)

@@ -54,12 +54,6 @@
         <Compile Update="Types\TextTests.Nullable.cs">
             <DependentUpon>TextTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\UserTests.Simple.cs">
-            <DependentUpon>UserTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\UserTests.Historical.cs">
-            <DependentUpon>UserTests.cs</DependentUpon>
-        </Compile>
     </ItemGroup>
 
 </Project>

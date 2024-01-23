@@ -19,4 +19,5 @@ public class HistoricalUserField : JqlValue, IJqlField<HistoricalUserExpression>
 public class HistoricalUserExpression: UserExpression, IJqlHistorical<HistoricalUserExpression>
 {
     public static implicit operator HistoricalUserExpression(string value) => new() { Value = value };
+    public static implicit operator HistoricalUserExpression(int value) => new() { Value = value };
 }

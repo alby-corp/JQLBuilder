@@ -23,7 +23,7 @@ internal static class Fields
     internal const string Reporter = "reporter";
     internal const string Assignee = "assignee";
     internal const string Voter = "voter";
-    internal const string Watchers = "watchers";
+    internal const string Watcher = "watcher";
     
     internal static string Custom(int id) => $"cf[{id}]";
 }

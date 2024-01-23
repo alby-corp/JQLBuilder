@@ -10,7 +10,7 @@ using Fields = Fields;
 using Functions = JQLBuilder.Functions;
 using FunctionsConstants = Constants.Functions;
 
-public class UserTests
+public class HistoricalUserTests
 {
     const string User = "Me";
     const string ExpectedUser = @"""Me""";
@@ -19,57 +19,46 @@ public class UserTests
     const string SpacedGroup = "Quality Analysts";
     
     [TestMethod]
-    public void Should_Cast_User_Expression_From_String()
+    public void Should_Cast_HistoricalUser_Expression_From_String()
     {
-        var actual = (UserExpression)User;
+        var actual = (HistoricalUserExpression)User;
 
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }
-
+    
     [TestMethod]
-    public void Should_Cast_User_Expression_From_Int()
+    public void Should_Cast_HistoricalUser_Expression_From_Int()
     {
-        var actual = (UserExpression)UserId;
+        var actual = (HistoricalUserExpression)UserId;
 
         Assert.AreEqual("Int31", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }
 
     [TestMethod]
-    public void Should_Cast_Creator()
+    public void Should_Cast_Assignee()
     {
-        const string expected = FieldContestants.Creator;
+        const string expected = Constants.Fields.Assignee;
 
-        var field = Fields.All.User.Creator;
+        var field = Fields.All.User.Assignee;
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void Should_Cast_Voter()
+    public void Should_Cast_Reporter()
     {
-        const string expected = FieldContestants.Voter;
+        const string expected = Constants.Fields.Reporter;
 
-        var field = Fields.All.User.Voter;
+        var field = Fields.All.User.Reporter;
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
     }
-
-    [TestMethod]
-    public void Should_Cast_Watcher()
-    {
-        const string expected = FieldContestants.Watcher;
-
-        var field = Fields.All.User.Watcher;
-        var actual = ((Field)field.Value).Value;
-
-        Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
+    
+ [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
         var expected =
@@ -159,6 +148,44 @@ public class UserTests
         var actual = JqlBuilder.Query
             .OrderBy(f => f.User.Creator)
             .ThenBy(f => f.User.Watcher)
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+        [TestMethod]
+    public void Should_Parses_Historical_Operators()
+    {
+        var expected =
+            $"{FieldContestants.Assignee} {Operators.Was} {User} {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.Was} {UserId} {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNot} {User} {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNot} {UserId} {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {User}, {User}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {User}, {User}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {UserId}, {User}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {UserId}, {User}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {User}, {User}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {User}, {User}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {UserId}, {User}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {UserId}, {User})";
+
+        var homogeneousFilter = new JqlCollection<HistoricalUserExpression> { User, User, User };
+        var heterogeneousFilter = new JqlCollection<HistoricalUserExpression> { User, UserId, User };
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.User.Assignee.Was(User))
+            .And(f => f.User.Assignee.Was(UserId))
+            .And(f => f.User.Assignee.WasNot(User))
+            .And(f => f.User.Assignee.WasNot(UserId))
+            .And(f => f.User.Assignee.WasIn(User, User, User))
+            .And(f => f.User.Assignee.WasIn(homogeneousFilter))
+            .And(f => f.User.Assignee.WasIn(User, UserId, User))
+            .And(f => f.User.Assignee.WasIn(heterogeneousFilter))
+            .And(f => f.User.Assignee.WasNotIn(User, User, User))
+            .And(f => f.User.Assignee.WasNotIn(homogeneousFilter))
+            .And(f => f.User.Assignee.WasNotIn(User, UserId, User))
+            .And(f => f.User.Assignee.WasNotIn(heterogeneousFilter))
             .ToString();
 
         Assert.AreEqual(expected, actual);
