@@ -42,7 +42,7 @@ internal static class Functions
     internal const string VotedIssues = "votedIssues";
     internal const string WatchedIssues = "watchedIssues";
     internal const string LinkedIssues = "linkedIssues";
-    
+
     #endregion
 
     #region User
@@ -51,4 +51,11 @@ internal static class Functions
     internal const string CurrentUser = "currentUser";
 
     #endregion User
+
+    #region Sprint
+
+    internal const string OpenSprints = "openSprints";
+    internal const string ClosedSprints = "closedSprints";
+
+    #endregion
 }
