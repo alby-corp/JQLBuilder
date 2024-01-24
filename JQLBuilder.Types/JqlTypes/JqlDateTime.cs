@@ -28,13 +28,13 @@ public class DateTimeField : JqlValue, IJqlField<DateTimeExpression>, IJqlNullab
 
     public static Bool operator !=(DateTimeExpression left, DateTimeField right) => right.NotEqual(left);
 
-    public static Bool operator >(DateTimeExpression left, DateTimeField right) => right.GreaterThan(left);
+    public static Bool operator >(DateTimeExpression left, DateTimeField right) => right.LessThan(left);
 
-    public static Bool operator >=(DateTimeExpression left, DateTimeField right) => right.GreaterThanOrEqual(left);
+    public static Bool operator >=(DateTimeExpression left, DateTimeField right) => right.LessThanOrEqual(left);
 
-    public static Bool operator <(DateTimeExpression left, DateTimeField right) => right.LessThan(left);
+    public static Bool operator <(DateTimeExpression left, DateTimeField right) => right.GreaterThan(left);
 
-    public static Bool operator <=(DateTimeExpression left, DateTimeField right) => right.LessThanOrEqual(left);
+    public static Bool operator <=(DateTimeExpression left, DateTimeField right) => right.GreaterThanOrEqual(left);
 }
 
 public class DateTimeExpression : JqlValue, IJqlMembership<DateTimeExpression>

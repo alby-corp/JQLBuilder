@@ -1,137 +1,174 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
+using Infrastructure;
+using JQLBuilder.Infrastructure.Constants;
+using Constants;
+using JqlTypes;
+using Support;
+using Fields = Fields;
 using DateOnly = System.DateOnly;
-using DateTime = System.DateTime;
-using Functions = JQLBuilder.Functions;
 
 [TestClass]
-public partial class DateOnlyTests
+public class DateOnlyTests
 {
-    const string CustomFieldName = "Start date";
+    const string CustomFieldName = "DateOnly";
     const int CustomFieldId = 10421;
-    readonly DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
-    readonly string dateString = $"{DateTime.Now:yyyy-MM-dd}";
-    readonly DateTime dateTime = DateTime.Now;
-    readonly string relativeDateString = "2w 1d";
+    static readonly DateOnly dateOnly = new(2001, 2, 3);
+    readonly string dateOnlyString = $"\"{dateOnly:yyyy-MM-dd}\"";
+    readonly string expectedCustomFieldId = $"cf[{CustomFieldId}]";
 
     [TestMethod]
-    public void Should_Parses_Custom_Date_By_Name()
+    public void Should_Cast_Expression_By_DateOnly()
     {
-        const string expected = $"""
-                                 "{CustomFieldName}" = now()
-                                 """;
+        var expression = (DateExpression) dateOnly;
+
+        Assert.AreEqual("DateOnly", expression.Value.GetType().Name);
+        Assert.AreEqual(dateOnly, expression.Value);
+    }
+
+    [TestMethod]
+    public void Should_Parse_DateOnly()
+    {
+        var expected = new DateOnly(2000, 2, 3);
+        var actual = (DateExpression) "2000-02-03";
+        Assert.AreEqual(expected, actual.Value);
+    }
+
+    [TestMethod]
+    public void Should_Parse_RelativeDate()
+    {
+        var expected = new TimeOffset(0, 0, 1, 2, 3, 4);
+        var actual = (DateExpression) "3 1m 5h 2d    -4h +1w 2h";
+        Assert.AreEqual(expected, actual.Value);
+    }
+
+    [TestMethod]
+    public void Should_Render_Literals_Correctly()
+    {
+        var expected = $"{expectedCustomFieldId} {Operators.Equals} \"2000-02-03\" {Keywords.And} " +
+                       $"{expectedCustomFieldId} {Operators.Equals} \"2d 5h 4m\"";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == Functions.Date.Now)
+            .Where(f =>
+                (f.DateTime[CustomFieldId] == "2000-02-03") &
+                (f.DateTime[CustomFieldId] == "3 1m 5h 2d"))
             .ToString();
 
         Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void Should_Parses_Custom_Date_By_Id()
+    public void Should_Throw_When_Parsing_Invalid_Formats()
     {
-        var expected = $"cf[{CustomFieldId}] = now()";
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) " ");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "1m - 4h");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "2000-02-03 04:05:06");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "2000-99-03 04:05");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "1y");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "1M");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "m");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "invalid");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "-");
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "+");
+
+        Assert.ThrowsException<ArgumentException>(() => (DateExpression) "2000-02-03 04:05");
+    }
+
+    [TestMethod]
+    public void Should_Parses_CustomField_DateOnly_From_Name()
+    {
+        var field = Fields.All.DateOnly[CustomFieldName];
+        var actual = ((Field) field.Value).Value;
+
+        Assert.AreEqual(CustomFieldName, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_CustomField_DateOnly_From_Id()
+    {
+        var field = Fields.All.Text[CustomFieldId];
+        var actual = ((Field) field.Value).Value;
+
+        Assert.AreEqual(expectedCustomFieldId, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_Equality_Operators()
+    {
+        var expected =
+            $"{CustomFieldName} {Operators.Equals} {dateOnlyString} {Keywords.And} " +
+            $"{CustomFieldName} {Operators.NotEquals} {dateOnlyString} {Keywords.And} " +
+            $"{CustomFieldName} {Operators.GreaterThan} {dateOnlyString} {Keywords.And} " +
+            $"{CustomFieldName} {Operators.GreaterThanOrEqual} {dateOnlyString} {Keywords.And} " +
+            $"{CustomFieldName} {Operators.LessThan} {dateOnlyString} {Keywords.And} " +
+            $"{CustomFieldName} {Operators.LessThanOrEqual} {dateOnlyString} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.Equals} {dateOnlyString} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.NotEquals} {dateOnlyString} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.GreaterThan} {dateOnlyString} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.GreaterThanOrEqual} {dateOnlyString} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.LessThan} {dateOnlyString} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.LessThanOrEqual} {dateOnlyString}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldId] == f.Functions.Date.Now)
+            .Where(f => f.DateOnly[CustomFieldName] == dateOnly)
+            .And(f => f.DateOnly[CustomFieldName] != dateOnly)
+            .And(f => f.DateOnly[CustomFieldName] > dateOnly)
+            .And(f => f.DateOnly[CustomFieldName] >= dateOnly)
+            .And(f => f.DateOnly[CustomFieldName] < dateOnly)
+            .And(f => f.DateOnly[CustomFieldName] <= dateOnly)
+            .And(f => dateOnly == f.DateOnly[CustomFieldId])
+            .And(f => dateOnly != f.DateOnly[CustomFieldId])
+            .And(f => dateOnly < f.DateOnly[CustomFieldId])
+            .And(f => dateOnly <= f.DateOnly[CustomFieldId])
+            .And(f => dateOnly > f.DateOnly[CustomFieldId])
+            .And(f => dateOnly >= f.DateOnly[CustomFieldId])
             .ToString();
 
         Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void Should_Parses_Custom_Date_String()
+    public void Should_Parses_Nullable_Operators()
     {
-        var expected = $"""
-                        "{CustomFieldName}" = "{dateString}"
-                        """;
+        var expected =
+            $"{CustomFieldName} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{CustomFieldName} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{CustomFieldName} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.IsNot} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == dateString)
+            .Where(f => f.DateOnly[CustomFieldName].Is())
+            .And(f => f.DateOnly[CustomFieldName].Is(s => s.Empty))
+            .And(f => f.DateOnly[CustomFieldName].Is(s => s.Null))
+            .And(f => f.DateOnly[CustomFieldId].IsNot())
+            .And(f => f.DateOnly[CustomFieldId].IsNot(s => s.Empty))
+            .And(f => f.DateOnly[CustomFieldId].IsNot(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void Should_Parses_Custom_Date_String_Reverse()
+    public void Should_Parses_Membership_Operators()
     {
-        var expected = $"""
-                        "{CustomFieldName}" = "{dateString}"
-                        """;
+        var expected =
+            $"{CustomFieldName} {Operators.In} ({dateOnlyString}, {dateOnlyString}, {dateOnlyString}) {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.In} ({dateOnlyString}, {dateOnlyString}, {dateOnlyString}) {Keywords.And} " +
+            $"{CustomFieldName} {Operators.NotIn} ({dateOnlyString}, {dateOnlyString}, {dateOnlyString}) {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.NotIn} ({dateOnlyString}, {dateOnlyString}, {dateOnlyString})";
+
+        var filter = new JqlCollection<DateExpression> {dateOnly, dateOnly, dateOnly};
 
         var actual = JqlBuilder.Query
-            .Where(f => dateString == f.DateOnly[CustomFieldName])
+            .Where(f => f.DateOnly[CustomFieldName].In(dateOnly, dateOnly, dateOnly))
+            .And(f => f.DateOnly[CustomFieldId].In(filter))
+            .And(f => f.DateOnly[CustomFieldName].NotIn(dateOnly, dateOnly, dateOnly))
+            .And(f => f.DateOnly[CustomFieldId].NotIn(filter))
             .ToString();
 
         Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
-    public void Should_Parses_Custom_Date_String_RelativeDate()
-    {
-        var expected = $"""
-                        "{CustomFieldName}" = "{relativeDateString}"
-                        """;
-
-        var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == relativeDateString)
-            .ToString();
-
-        Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
-    public void Should_Parses_Custom_Date_String_RelativeDate_Reverse()
-    {
-        var expected = $"""
-                        "{CustomFieldName}" = "{relativeDateString}"
-                        """;
-
-        var actual = JqlBuilder.Query
-            .Where(f => relativeDateString == f.DateOnly[CustomFieldName])
-            .ToString();
-
-        Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
-    public void Should_Parses_Custom_Date_DateTime()
-    {
-        var expected = $"""
-                        "{CustomFieldName}" = "{dateString}"
-                        """;
-
-        var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == DateOnly.Parse(dateString))
-            .ToString();
-
-        Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
-    public void Should_Parses_Custom_Date_DateTime_Reverse()
-    {
-        var expected = $"""
-                        "{CustomFieldName}" = "{dateString}"
-                        """;
-
-        var actual = JqlBuilder.Query
-            .Where(f => DateOnly.Parse(dateString) == f.DateOnly[CustomFieldName])
-            .ToString();
-
-        Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
-    public void Should_Throw_Exception_When_Custom_Date_Is_Invalid_String()
-    {
-        Assert.ThrowsException<ArgumentException>(Actual, "Invalid Date Format!");
-        return;
-
-        string Actual() => JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == "invalid date")
-            .ToString();
     }
 }
