@@ -42,8 +42,3 @@ public class IssueExpression : JqlIssue, IJqlMembership<IssueExpression>
     public static implicit operator IssueExpression(int value) => new() { Value = value };
 }
 
-public class IssueArgument : JqlValue, IJqlArgument
-{
-    public static implicit operator IssueArgument(string value) => new() { Value = new Field(value) };
-    public static implicit operator IssueArgument(int value) => new() { Value = value };
-}

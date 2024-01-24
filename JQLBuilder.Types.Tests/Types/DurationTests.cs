@@ -1,9 +1,9 @@
 ﻿namespace JQLBuilder.Types.Tests.Types;
 
-using Infrastructure;
-using JQLBuilder.Infrastructure.Constants;
 using Constants;
-using JqlTypes;
+using Infrastructure;
+using Infrastructure.Constants;
+using JqlArguments;
 
 [TestClass]
 public class DurationTests
@@ -14,50 +14,50 @@ public class DurationTests
     public void Should_Parse_Duration_y()
     {
         var expected = new TimeOffset(1, 0, 0, 0, 0, 0);
-        var actual = (DurationArgument) "1y";
+        var actual = (JqlArguments.Duration)"1y";
         Assert.AreEqual(expected, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Parse_Duration_M()
     {
         var expected = new TimeOffset(0, 1, 0, 0, 0, 0);
-        var actual = (DurationArgument) "1M";
+        var actual = (JqlArguments.Duration)"1M";
         Assert.AreEqual(expected, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Parse_Duration_w()
     {
         var expected = new TimeOffset(0, 0, 1, 0, 0, 0);
-        var actual = (DurationArgument) "1w";
+        var actual = (JqlArguments.Duration)"1w";
         Assert.AreEqual(expected, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Parse_Duration_d()
     {
         var expected = new TimeOffset(0, 0, 0, 1, 0, 0);
-        var actual = (DurationArgument) "1d";
+        var actual = (JqlArguments.Duration)"1d";
         Assert.AreEqual(expected, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Parse_Duration_h()
     {
         var expected = new TimeOffset(0, 0, 0, 0, 1, 0);
-        var actual = (DurationArgument) "1h";
+        var actual = (JqlArguments.Duration)"1h";
         Assert.AreEqual(expected, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Parse_Duration_m()
     {
         var expected = new TimeOffset(0, 0, 0, 0, 0, 1);
-        var actual = (DurationArgument) "1m";
+        var actual = (JqlArguments.Duration)"1m";
         Assert.AreEqual(expected, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Render_Literals_Correctly()
     {
@@ -76,16 +76,16 @@ public class DurationTests
     [TestMethod]
     public void Should_Throw_When_Parsing_Invalid_Formats()
     {
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) " ");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "1m - 4h");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "2000-02-03 04:05:06");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "2000-99-03 04:05");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "1y 1w");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "m");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "invalid");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "-");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "+");
-        Assert.ThrowsException<ArgumentException>(() => (DurationArgument) "2000-02-03 04:05");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)" ");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"1m - 4h");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"2000-02-03 04:05:06");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"2000-99-03 04:05");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"1y 1w");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"m");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"invalid");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"-");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"+");
+        Assert.ThrowsException<ArgumentException>(() => (JqlArguments.Duration)"2000-02-03 04:05");
     }
 }
