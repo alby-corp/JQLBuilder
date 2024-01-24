@@ -11,4 +11,5 @@ public class InstanceFunctions
     public IssueFunctions Issues { get; } = new();
     public UserFunctions User { get; } = new();
     public SprintFunctions Sprint { get; } = new();
+    public ComponentFunctions Component { get; } = new();
 }

@@ -20,7 +20,7 @@ internal static class Functions
 
     #region Project
 
-    internal const string LeadByUser = "projectsLeadByUser";
+    internal const string ProjectsLeadByUser = "projectsLeadByUser";
 
     internal const string WhereUserHasPermission = "projectsWhereUserHasPermission";
     internal const string WhereUserHasRole = "projectsWhereUserHasRole";
@@ -56,6 +56,12 @@ internal static class Functions
 
     internal const string OpenSprints = "openSprints";
     internal const string ClosedSprints = "closedSprints";
+
+    #endregion
+
+    #region Component
+
+    internal const string ComponentsLeadByUser = "componentsLeadByUser";
 
     #endregion
 }

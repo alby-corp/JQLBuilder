@@ -143,14 +143,14 @@ public class ProjectTests
     public void Should_Parses_ProjectsLeadByUser_Function()
     {
         const string expected =
-            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-            $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
-            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-            $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
-            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-            $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.LeadByUser}() {Keywords.And} " +
-            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}("{Lead}") {Keywords.And} """ +
-            $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.LeadByUser}()";
+            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.ProjectsLeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.ProjectsLeadByUser}() {Keywords.And} " +
+            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.ProjectsLeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.ProjectsLeadByUser}() {Keywords.And} " +
+            $"""{FieldContestants.Project} {Operators.In} {FunctionsConstants.ProjectsLeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.In} {FunctionsConstants.ProjectsLeadByUser}() {Keywords.And} " +
+            $"""{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.ProjectsLeadByUser}("{Lead}") {Keywords.And} """ +
+            $"{FieldContestants.Project} {Operators.NotIn} {FunctionsConstants.ProjectsLeadByUser}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(f.Functions.Project.LeadByUser(Lead)))

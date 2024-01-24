@@ -25,6 +25,7 @@ internal static class Fields
     internal const string Voter = "voter";
     internal const string Watcher = "watcher";
     internal const string Sprint = "sprint";
+    internal const string Component = "component";
 
     internal static string Custom(int id) => $"cf[{id}]";
 }

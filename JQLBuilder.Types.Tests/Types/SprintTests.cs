@@ -142,14 +142,25 @@ public class SprintTests
     {
         const string expected =
             $"{FieldContestants.Sprint} {Operators.In} {FunctionsConstants.OpenSprints}() {Keywords.And} " +
-            $"{FieldContestants.Sprint} {Operators.NotIn} {FunctionsConstants.OpenSprints}() {Keywords.And} " +
-            $"{FieldContestants.Sprint} {Operators.In} {FunctionsConstants.ClosedSprints}() {Keywords.And} " +
-            $"{FieldContestants.Sprint} {Operators.NotIn} {FunctionsConstants.ClosedSprints}()";
+            $"{FieldContestants.Sprint} {Operators.NotIn} {FunctionsConstants.OpenSprints}()";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Sprint.In(f.Functions.Sprint.Open()))
             .And(f => f.Sprint.NotIn(f.Functions.Sprint.Open()))
-            .And(f => f.Sprint.In(Functions.Sprint.Closed()))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_ClosedSprints_Function()
+    {
+        const string expected =
+            $"{FieldContestants.Sprint} {Operators.In} {FunctionsConstants.ClosedSprints}() {Keywords.And} " +
+            $"{FieldContestants.Sprint} {Operators.NotIn} {FunctionsConstants.ClosedSprints}()";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Sprint.In(Functions.Sprint.Closed()))
             .And(f => f.Sprint.NotIn(Functions.Sprint.Closed()))
             .ToString();
 

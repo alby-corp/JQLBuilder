@@ -20,5 +20,6 @@ public class Fields
     public Status Status { get; } = new();
     public User User { get; } = new();
     public Sprint Sprint { get; } = new();
+    public Component Component { get; } = new();
     public InstanceFunctions Functions { get; } = new();
 }
