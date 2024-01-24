@@ -39,12 +39,6 @@
         <Compile Update="Types\DateTimeTests.Nullable.cs">
             <DependentUpon>DateTimeTests.cs</DependentUpon>
         </Compile>
-        <Compile Update="Types\TextTests.Like.cs">
-            <DependentUpon>TextTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\TextTests.Nullable.cs">
-            <DependentUpon>TextTests.cs</DependentUpon>
-        </Compile>
     </ItemGroup>
 
 </Project>

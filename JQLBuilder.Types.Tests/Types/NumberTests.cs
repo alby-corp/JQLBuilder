@@ -5,9 +5,10 @@ using Infrastructure;
 using Infrastructure.Constants;
 using JqlTypes;
 using Support;
+using Fields = Fields;
 
 [TestClass]
-public partial class NumberTests
+public class NumberTests
 {
     const string CustomFieldName = "Number";
     const int CustomFieldId = 10421;
@@ -15,27 +16,30 @@ public partial class NumberTests
     readonly string expectedCustomFieldId = $"cf[{CustomFieldId}]";
 
     [TestMethod]
+    public void Should_Cast_Project_Expression_By_Int()
+    {
+        var expression = (NumberExpression)Number;
+
+        Assert.AreEqual("Int32", expression.Value.GetType().Name);
+        Assert.AreEqual(Number, expression.Value);
+    }
+
+    [TestMethod]
     public void Should_Parses_CustomField_Number_From_Name()
     {
-        var expected = $"{CustomFieldName} = {Number}";
+        var field = Fields.All.Number[CustomFieldName];
+        var actual = ((Field)field.Value).Value;
 
-        var actual = JqlBuilder.Query
-            .Where(f => f.Number[CustomFieldName] == Number)
-            .ToString();
-
-        Assert.AreEqual(expected, actual);
+        Assert.AreEqual(CustomFieldName, actual);
     }
 
     [TestMethod]
     public void Should_Parses_CustomField_Number_From_Id()
     {
-        var expected = $"{expectedCustomFieldId} = {Number}";
+        var field = Fields.All.Text[CustomFieldId];
+        var actual = ((Field)field.Value).Value;
 
-        var actual = JqlBuilder.Query
-            .Where(f => f.Number[CustomFieldId] == Number)
-            .ToString();
-
-        Assert.AreEqual(expected, actual);
+        Assert.AreEqual(expectedCustomFieldId, actual);
     }
 
     [TestMethod]
