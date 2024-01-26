@@ -13,7 +13,6 @@ using FunctionsConstants = Constants.Functions;
 public class UserTests
 {
     const string User = "Me";
-    const string ExpectedUser = @"""Me""";
     const int UserId = 123;
     const string Group = "QA";
     const string SpacedGroup = "Quality Analysts";
@@ -22,16 +21,16 @@ public class UserTests
     public void Should_Cast_User_Expression_From_String()
     {
         var actual = (UserExpression)User;
-
+    
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }
-
+    
     [TestMethod]
     public void Should_Cast_User_Expression_From_Int()
     {
         var actual = (UserExpression)UserId;
-
+    
         Assert.AreEqual("Int31", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }

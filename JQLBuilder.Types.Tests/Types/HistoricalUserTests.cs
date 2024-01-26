@@ -10,14 +10,38 @@ using Fields = Fields;
 using Functions = JQLBuilder.Functions;
 using FunctionsConstants = Constants.Functions;
 
+[TestClass]
 public class HistoricalUserTests
 {
     const string User = "Me";
-    const string ExpectedUser = @"""Me""";
     const int UserId = 123;
     const string Group = "QA";
     const string SpacedGroup = "Quality Analysts";
+    const string ExpectedUser = $@"""{User}""";
 
+    [TestMethod]
+    public void Should_Parses_CustomField_HistoricalUser_From_Name()
+    {
+        const string customFieldName = "Reviewer";
+        
+        
+        var field = Fields.All.User.Historical[customFieldName];
+        var actual = ((Field)field.Value).Value;
+    
+        Assert.AreEqual(customFieldName, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Parses_CustomField_HistoricalUser_From_Id()
+    {
+        const int customFieldId = 10421;
+        
+        var field = Fields.All.User.Historical[customFieldId];
+        var actual = ((Field)field.Value).Value;
+    
+        Assert.AreEqual(FieldContestants.Custom(customFieldId), actual);
+    }
+    
     [TestMethod]
     public void Should_Cast_HistoricalUser_Expression_From_String()
     {
@@ -32,8 +56,8 @@ public class HistoricalUserTests
     {
         var actual = (HistoricalUserExpression)UserId;
 
-        Assert.AreEqual("Int31", actual.Value.GetType().Name);
-        Assert.AreEqual(User, actual.Value);
+        Assert.AreEqual("Int32", actual.Value.GetType().Name);
+        Assert.AreEqual(UserId, actual.Value);
     }
 
     [TestMethod]
@@ -62,13 +86,13 @@ public class HistoricalUserTests
     public void Should_Parses_Equality_Operators()
     {
         var expected =
-            $"{FieldContestants.Creator} {Operators.Equals} {User} {Keywords.And} " +
+            $"{FieldContestants.Creator} {Operators.Equals} {ExpectedUser} {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.Equals} {UserId} {Keywords.And} " +
-            $"{FieldContestants.Creator} {Operators.NotEquals} {User} {Keywords.And} " +
+            $"{FieldContestants.Creator} {Operators.NotEquals} {ExpectedUser} {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.NotEquals} {UserId} {Keywords.And} " +
-            $"{FieldContestants.Creator} {Operators.Equals} {User} {Keywords.And} " +
+            $"{FieldContestants.Creator} {Operators.Equals} {ExpectedUser} {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.Equals} {UserId} {Keywords.And} " +
-            $"{FieldContestants.Creator} {Operators.NotEquals} {User} {Keywords.And} " +
+            $"{FieldContestants.Creator} {Operators.NotEquals} {ExpectedUser} {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.NotEquals} {UserId}";
 
         var actual = JqlBuilder.Query
@@ -114,12 +138,12 @@ public class HistoricalUserTests
         var expected =
             $"{FieldContestants.Creator} {Operators.In} ({UserId}, {UserId}, {UserId}) {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.In} ({UserId}, {UserId}, {UserId}) {Keywords.And} " +
-            $"{FieldContestants.Creator} {Operators.In} ({UserId}, {User}, {UserId}) {Keywords.And} " +
-            $"{FieldContestants.Creator} {Operators.In} ({UserId}, {User}, {UserId}) {Keywords.And} " +
+            $"{FieldContestants.Creator} {Operators.In} ({UserId}, {ExpectedUser}, {UserId}) {Keywords.And} " +
+            $"{FieldContestants.Creator} {Operators.In} ({UserId}, {ExpectedUser}, {UserId}) {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {UserId}, {UserId}) {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {UserId}, {UserId}) {Keywords.And} " +
-            $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {User}, {UserId}) {Keywords.And} " +
-            $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {User}, {UserId})";
+            $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {ExpectedUser}, {UserId}) {Keywords.And} " +
+            $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {ExpectedUser}, {UserId})";
 
         var homogeneousFilter = new JqlCollection<UserExpression> { UserId, UserId, UserId };
         var heterogeneousFilter = new JqlCollection<UserExpression> { UserId, User, UserId };
@@ -157,18 +181,18 @@ public class HistoricalUserTests
     public void Should_Parses_Historical_Operators()
     {
         var expected =
-            $"{FieldContestants.Assignee} {Operators.Was} {User} {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.Was} {ExpectedUser} {Keywords.And} " +
             $"{FieldContestants.Assignee} {Operators.Was} {UserId} {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasNot} {User} {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNot} {ExpectedUser} {Keywords.And} " +
             $"{FieldContestants.Assignee} {Operators.WasNot} {UserId} {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {User}, {User}) {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {User}, {User}) {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {UserId}, {User}) {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasIn} ({User}, {UserId}, {User}) {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {User}, {User}) {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {User}, {User}) {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {UserId}, {User}) {Keywords.And} " +
-            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({User}, {UserId}, {User})";
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({ExpectedUser}, {ExpectedUser}, {ExpectedUser}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({ExpectedUser}, {ExpectedUser}, {ExpectedUser}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({ExpectedUser}, {UserId}, {ExpectedUser}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasIn} ({ExpectedUser}, {UserId}, {ExpectedUser}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({ExpectedUser}, {ExpectedUser}, {ExpectedUser}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({ExpectedUser}, {ExpectedUser}, {ExpectedUser}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({ExpectedUser}, {UserId}, {ExpectedUser}) {Keywords.And} " +
+            $"{FieldContestants.Assignee} {Operators.WasNotIn} ({ExpectedUser}, {UserId}, {ExpectedUser})";
 
         var homogeneousFilter = new JqlCollection<HistoricalUserExpression> { User, User, User };
         var heterogeneousFilter = new JqlCollection<HistoricalUserExpression> { User, UserId, User };

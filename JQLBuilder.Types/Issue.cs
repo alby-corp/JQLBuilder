@@ -6,6 +6,9 @@ using JqlTypes;
 
 public class Issue : IssueField
 {
+    public IssueField this[string field] => Field.Custom<IssueField>(field);
+    public IssueField this[int field] => Field.Custom<IssueField>(Fields.Custom(field));
+    
     public Issue() => Value = new Field(Fields.Issue);
 
     public IssueField IssueKey { get; } = Field.Custom<IssueField>(Fields.IssueKey);

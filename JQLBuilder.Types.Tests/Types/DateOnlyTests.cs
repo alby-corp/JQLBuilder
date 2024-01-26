@@ -7,6 +7,7 @@ using JqlTypes;
 using Support;
 using Fields = Fields;
 using DateOnly = System.DateOnly;
+using FieldConstants = Constants.Fields;
 
 [TestClass]
 public class DateOnlyTests
@@ -15,7 +16,7 @@ public class DateOnlyTests
     const int CustomFieldId = 10421;
     static readonly DateOnly DateOnly = new(2001, 2, 3);
     readonly string dateOnlyString = $"\"{DateOnly:yyyy-MM-dd}\"";
-    readonly string expectedCustomFieldId = $"cf[{CustomFieldId}]";
+    readonly string expectedCustomFieldId = $"{FieldConstants.Custom(CustomFieldId)}";
 
     [TestMethod]
     public void Should_Cast_Expression_By_DateOnly()
