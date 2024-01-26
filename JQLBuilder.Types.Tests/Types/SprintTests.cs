@@ -19,7 +19,7 @@ public class SprintTests
     [TestMethod]
     public void Should_Cast_Sprint_Expression_From_String()
     {
-        var expression = (SprintExpression)Sprint;
+        var expression = (JqlSprint)Sprint;
 
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Sprint), expression.Value);
@@ -28,7 +28,7 @@ public class SprintTests
     [TestMethod]
     public void Should_Cast_Sprint_Expression_Form_Int()
     {
-        var expression = (SprintExpression)SprintId;
+        var expression = (JqlSprint)SprintId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(SprintId, expression.Value);
@@ -108,8 +108,8 @@ public class SprintTests
             $"{FieldContestants.Sprint} {Operators.NotIn} ({SprintId}, {Sprint}, {SprintId}) {Keywords.And} " +
             $"{FieldContestants.Sprint} {Operators.NotIn} ({SprintId}, {Sprint}, {SprintId})";
 
-        var homogeneousFilter = new JqlCollection<SprintExpression> { SprintId, SprintId, SprintId };
-        var heterogeneousFilter = new JqlCollection<SprintExpression> { SprintId, Sprint, SprintId };
+        var homogeneousFilter = new JqlCollection<JqlSprint> { SprintId, SprintId, SprintId };
+        var heterogeneousFilter = new JqlCollection<JqlSprint> { SprintId, Sprint, SprintId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Sprint.In(SprintId, SprintId, SprintId))

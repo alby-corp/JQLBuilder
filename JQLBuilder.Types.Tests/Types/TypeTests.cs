@@ -17,7 +17,7 @@ public class TypeTests
     [TestMethod]
     public void Should_Cast_Type_Expression_From_String()
     {
-        var expression = (TypeExpression)Type;
+        var expression = (JqlType)Type;
 
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Type), expression.Value);
@@ -26,7 +26,7 @@ public class TypeTests
     [TestMethod]
     public void Should_Cast_Type_Expression_From_Int()
     {
-        var expression = (ProjectExpression)TypeId;
+        var expression = (JqlProject)TypeId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(TypeId, expression.Value);
@@ -117,8 +117,8 @@ public class TypeTests
             $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {Type}, {TypeId}) {Keywords.And} " +
             $"{FieldContestants.Type} {Operators.NotIn} ({TypeId}, {Type}, {TypeId})";
 
-        var homogeneousFilter = new JqlCollection<TypeExpression> { TypeId, TypeId, TypeId };
-        var heterogeneousFilter = new JqlCollection<TypeExpression> { TypeId, Type, TypeId };
+        var homogeneousFilter = new JqlCollection<JqlType> { TypeId, TypeId, TypeId };
+        var heterogeneousFilter = new JqlCollection<JqlType> { TypeId, Type, TypeId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Type.In(TypeId, TypeId, TypeId))

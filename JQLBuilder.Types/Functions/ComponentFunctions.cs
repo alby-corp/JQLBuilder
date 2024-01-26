@@ -8,6 +8,6 @@ using JqlTypes;
 
 public class ComponentFunctions
 {
-    public IJqlCollection<ComponentExpression> LeadByUser() => Function.Custom<JqlCollection<ComponentExpression>>(Functions.ComponentsLeadByUser, []);
-    public IJqlCollection<ComponentExpression> LeadByUser(JqlArguments.Text user) => Function.Custom<JqlCollection<ComponentExpression>>(Functions.ComponentsLeadByUser, [user]);
+    public IJqlCollection<JqlComponent> LeadByUser() => Function.Custom<JqlCollection<JqlComponent>>(Functions.ComponentsLeadByUser, []);
+    public IJqlCollection<JqlComponent> LeadByUser(JqlArguments.Text user) => Function.Custom<JqlCollection<JqlComponent>>(Functions.ComponentsLeadByUser, [user]);
 }

@@ -20,7 +20,7 @@ public class VersionTests
     [TestMethod]
     public void Should_Cast_Version_Expression_From_String()
     {
-        var expression = (VersionExpression)Version;
+        var expression = (JqlVersion)Version;
 
         Assert.AreEqual("String", expression.Value.GetType().Name);
         Assert.AreEqual(Version, expression.Value);
@@ -29,7 +29,7 @@ public class VersionTests
     [TestMethod]
     public void Should_Cast_Version_Expression_From_Int()
     {
-        var expression = (VersionExpression)VersionId;
+        var expression = (JqlVersion)VersionId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(VersionId, expression.Value);
@@ -153,8 +153,8 @@ public class VersionTests
             $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {ExpectedVersion}, {VersionId}) {Keywords.And} " +
             $"{FieldContestants.AffectedVersion} {Operators.NotIn} ({VersionId}, {ExpectedVersion}, {VersionId})";
 
-        var homogeneousFilter = new JqlCollection<VersionExpression> { VersionId, VersionId, VersionId };
-        var heterogeneousFilter = new JqlCollection<VersionExpression> { VersionId, Version, VersionId };
+        var homogeneousFilter = new JqlCollection<JqlVersion> { VersionId, VersionId, VersionId };
+        var heterogeneousFilter = new JqlCollection<JqlVersion> { VersionId, Version, VersionId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Version.Affected.In(VersionId, VersionId, VersionId))

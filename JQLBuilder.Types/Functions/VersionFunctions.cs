@@ -7,8 +7,8 @@ using JqlTypes;
 
 public class VersionFunctions
 {
-    public VersionExpression LatestReleased => Function.Custom<VersionExpression>(Functions.LatestReleased, []);
-    public VersionExpression LatestUnreleased => Function.Custom<VersionExpression>(Functions.LatestUnreleased, []);
-    public IJqlCollection<VersionExpression> Released => Function.Custom<JqlCollection<VersionExpression>>(Functions.Released, []);
-    public IJqlCollection<VersionExpression> Unreleased => Function.Custom<JqlCollection<VersionExpression>>(Functions.Unreleased, []);
+    public JqlVersion LatestReleased => Function.Custom<JqlVersion>(Functions.LatestReleased, []);
+    public JqlVersion LatestUnreleased => Function.Custom<JqlVersion>(Functions.LatestUnreleased, []);
+    public IJqlCollection<JqlVersion> Released => Function.Custom<JqlCollection<JqlVersion>>(Functions.Released, []);
+    public IJqlCollection<JqlVersion> Unreleased => Function.Custom<JqlCollection<JqlVersion>>(Functions.Unreleased, []);
 }

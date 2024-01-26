@@ -21,7 +21,7 @@ public class DateTimeTests
     [TestMethod]
     public void Should_Cast_Expression_By_DateTime()
     {
-        var expression = (DateTimeExpression)DateTime;
+        var expression = (JqlDateTime)DateTime;
 
         Assert.AreEqual("DateTime", expression.Value.GetType().Name);
         Assert.AreEqual(DateTime, expression.Value);
@@ -31,7 +31,7 @@ public class DateTimeTests
     public void Should_Parse_DateTime()
     {
         var expected = new DateTime(2000, 2, 3, 4, 5, 0);
-        var actual = (DateTimeExpression)"2000-02-03 04:05";
+        var actual = (JqlDateTime)"2000-02-03 04:05";
         Assert.AreEqual(expected, actual.Value);
     }
 
@@ -39,7 +39,7 @@ public class DateTimeTests
     public void Should_Parse_DateOnly()
     {
         var expected = new DateOnly(2000, 2, 3);
-        var actual = (DateTimeExpression)"2000-02-03";
+        var actual = (JqlDateTime)"2000-02-03";
         Assert.AreEqual(expected, actual.Value);
     }
 
@@ -47,7 +47,7 @@ public class DateTimeTests
     public void Should_Parse_RelativeDate()
     {
         var expected = new TimeOffset(0, 0, 1, 2, 3, 4);
-        var actual = (DateTimeExpression)"3 1m 5h 2d    -4h +1w 2h";
+        var actual = (JqlDateTime)"3 1m 5h 2d    -4h +1w 2h";
         Assert.AreEqual(expected, actual.Value);
     }
 
@@ -72,17 +72,17 @@ public class DateTimeTests
     [TestMethod]
     public void Should_Throw_When_Parsing_Invalid_Formats()
     {
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)" ");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"1m - 4h");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"2000-02-03 04:05:06");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"2000-99-03 04:05");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"1y");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"1M");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"m");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"invalid");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"-");
-        Assert.ThrowsException<ArgumentException>(() => (DateTimeExpression)"+");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)" ");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"1m - 4h");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"2000-02-03 04:05:06");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"2000-99-03 04:05");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"1y");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"1M");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"m");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"invalid");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"-");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"+");
     }
 
     [TestMethod]
@@ -170,7 +170,7 @@ public class DateTimeTests
             $"{CustomFieldName} {Operators.NotIn} ({dateTimeString}, {dateTimeString}, {dateTimeString}) {Keywords.And} " +
             $"{expectedCustomFieldId} {Operators.NotIn} ({dateTimeString}, {dateTimeString}, {dateTimeString})";
 
-        var filter = new JqlCollection<DateTimeExpression> { DateTime, DateTime, DateTime };
+        var filter = new JqlCollection<JqlDateTime> { DateTime, DateTime, DateTime };
 
         var actual = JqlBuilder.Query
             .Where(f => f.DateTime[CustomFieldName].In(DateTime, DateTime, DateTime))

@@ -5,7 +5,7 @@ using Infrastructure;
 using JqlArguments;
 using JqlTypes;
 
-public class DateFunctions<T> where T : DateTimeExpression, new()
+public class DateFunctions<T> where T : JqlDateTime, new()
 {
     public T Now => Function.Custom<T>(Functions.Now, []);
     public T CurrentLogin => Function.Custom<T>(Functions.CurrentLogin, []);

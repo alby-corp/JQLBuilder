@@ -20,7 +20,7 @@ public class ComponentTests
     [TestMethod]
     public void Should_Cast_Component_Expression_From_String()
     {
-        var expression = (ComponentExpression)Component;
+        var expression = (JqlComponent)Component;
 
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Component), expression.Value);
@@ -29,7 +29,7 @@ public class ComponentTests
     [TestMethod]
     public void Should_Cast_Component_Expression_Form_Int()
     {
-        var expression = (ComponentExpression)ComponentId;
+        var expression = (JqlComponent)ComponentId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(ComponentId, expression.Value);
@@ -109,8 +109,8 @@ public class ComponentTests
             $"{FieldContestants.Component} {Operators.NotIn} ({ComponentId}, {Component}, {ComponentId}) {Keywords.And} " +
             $"{FieldContestants.Component} {Operators.NotIn} ({ComponentId}, {Component}, {ComponentId})";
 
-        var homogeneousFilter = new JqlCollection<ComponentExpression> { ComponentId, ComponentId, ComponentId };
-        var heterogeneousFilter = new JqlCollection<ComponentExpression> { ComponentId, Component, ComponentId };
+        var homogeneousFilter = new JqlCollection<JqlComponent> { ComponentId, ComponentId, ComponentId };
+        var heterogeneousFilter = new JqlCollection<JqlComponent> { ComponentId, Component, ComponentId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Component.In(ComponentId, ComponentId, ComponentId))

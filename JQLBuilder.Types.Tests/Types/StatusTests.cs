@@ -20,7 +20,7 @@ public class StatusTests
     [TestMethod]
     public void Should_Cast_Status_Expression_From_String()
     {
-        var expression = (VersionExpression)Status;
+        var expression = (JqlVersion)Status;
 
         Assert.AreEqual("String", expression.Value.GetType().Name);
         Assert.AreEqual(Status, expression.Value);
@@ -29,7 +29,7 @@ public class StatusTests
     [TestMethod]
     public void Should_Cast_Status_Expression_From_Int()
     {
-        var expression = (VersionExpression)StatusId;
+        var expression = (JqlVersion)StatusId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(StatusId, expression.Value);
@@ -101,8 +101,8 @@ public class StatusTests
             $"{FieldContestants.Status} {Operators.NotIn} ({StatusId}, {Status}, {StatusId}) {Keywords.And} " +
             $"{FieldContestants.Status} {Operators.NotIn} ({StatusId}, {Status}, {StatusId})";
 
-        var homogeneousFilter = new JqlCollection<StatusExpression> { StatusId, StatusId, StatusId };
-        var heterogeneousFilter = new JqlCollection<StatusExpression> { StatusId, Status, StatusId };
+        var homogeneousFilter = new JqlCollection<JqlStatus> { StatusId, StatusId, StatusId };
+        var heterogeneousFilter = new JqlCollection<JqlStatus> { StatusId, Status, StatusId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Status.In(StatusId, StatusId, StatusId))
@@ -147,8 +147,8 @@ public class StatusTests
             $"{FieldContestants.Status} {Operators.WasNotIn} ({Status}, {StatusId}, {Status}) {Keywords.And} " +
             $"{FieldContestants.Status} {Operators.WasNotIn} ({Status}, {StatusId}, {Status})";
 
-        var homogeneousFilter = new JqlCollection<StatusExpression> { Status, Status, Status };
-        var heterogeneousFilter = new JqlCollection<StatusExpression> { Status, StatusId, Status };
+        var homogeneousFilter = new JqlCollection<JqlStatus> { Status, Status, Status };
+        var heterogeneousFilter = new JqlCollection<JqlStatus> { Status, StatusId, Status };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Status.Was(Status))

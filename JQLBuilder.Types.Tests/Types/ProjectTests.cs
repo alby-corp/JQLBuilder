@@ -21,7 +21,7 @@ public class ProjectTests
     [TestMethod]
     public void Should_Cast_Project_Expression_From_String()
     {
-        var expression = (ProjectExpression)Project;
+        var expression = (JqlProject)Project;
 
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Project), expression.Value);
@@ -30,7 +30,7 @@ public class ProjectTests
     [TestMethod]
     public void Should_Cast_Project_Expression_Form_Int()
     {
-        var expression = (ProjectExpression)ProjectId;
+        var expression = (JqlProject)ProjectId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(ProjectId, expression.Value);
@@ -110,8 +110,8 @@ public class ProjectTests
             $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {Project}, {ProjectId}) {Keywords.And} " +
             $"{FieldContestants.Project} {Operators.NotIn} ({ProjectId}, {Project}, {ProjectId})";
 
-        var homogeneousFilter = new JqlCollection<ProjectExpression> { ProjectId, ProjectId, ProjectId };
-        var heterogeneousFilter = new JqlCollection<ProjectExpression> { ProjectId, Project, ProjectId };
+        var homogeneousFilter = new JqlCollection<JqlProject> { ProjectId, ProjectId, ProjectId };
+        var heterogeneousFilter = new JqlCollection<JqlProject> { ProjectId, Project, ProjectId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Project.In(ProjectId, ProjectId, ProjectId))

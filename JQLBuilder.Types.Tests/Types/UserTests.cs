@@ -20,7 +20,7 @@ public class UserTests
     [TestMethod]
     public void Should_Cast_User_Expression_From_String()
     {
-        var actual = (UserExpression)User;
+        var actual = (JqlUser)User;
     
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
@@ -29,7 +29,7 @@ public class UserTests
     [TestMethod]
     public void Should_Cast_User_Expression_From_Int()
     {
-        var actual = (UserExpression)UserId;
+        var actual = (JqlUser)UserId;
     
         Assert.AreEqual("Int31", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
@@ -131,8 +131,8 @@ public class UserTests
             $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {User}, {UserId}) {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {User}, {UserId})";
 
-        var homogeneousFilter = new JqlCollection<UserExpression> { UserId, UserId, UserId };
-        var heterogeneousFilter = new JqlCollection<UserExpression> { UserId, User, UserId };
+        var homogeneousFilter = new JqlCollection<JqlUser> { UserId, UserId, UserId };
+        var heterogeneousFilter = new JqlCollection<JqlUser> { UserId, User, UserId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.User.Creator.In(UserId, UserId, UserId))

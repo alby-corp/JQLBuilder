@@ -17,7 +17,7 @@ public class LabelsTests
     [TestMethod]
     public void Should_Cast_Labels_Expression_From_String()
     {
-        var expression = (LabelsExpression)Labels;
+        var expression = (JqlLabels)Labels;
 
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Labels), expression.Value);
@@ -26,7 +26,7 @@ public class LabelsTests
     [TestMethod]
     public void Should_Cast_Labels_Expression_Form_Int()
     {
-        var expression = (LabelsExpression)LabelsId;
+        var expression = (JqlLabels)LabelsId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(LabelsId, expression.Value);
@@ -106,8 +106,8 @@ public class LabelsTests
             $"{FieldContestants.Labels} {Operators.NotIn} ({LabelsId}, {Labels}, {LabelsId}) {Keywords.And} " +
             $"{FieldContestants.Labels} {Operators.NotIn} ({LabelsId}, {Labels}, {LabelsId})";
 
-        var homogeneousFilter = new JqlCollection<LabelsExpression> { LabelsId, LabelsId, LabelsId };
-        var heterogeneousFilter = new JqlCollection<LabelsExpression> { LabelsId, Labels, LabelsId };
+        var homogeneousFilter = new JqlCollection<JqlLabels> { LabelsId, LabelsId, LabelsId };
+        var heterogeneousFilter = new JqlCollection<JqlLabels> { LabelsId, Labels, LabelsId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Labels.In(LabelsId, LabelsId, LabelsId))

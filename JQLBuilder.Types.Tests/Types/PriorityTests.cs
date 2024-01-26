@@ -20,7 +20,7 @@ public class PriorityTests
     [TestMethod]
     public void Should_Cast_Priority_Expression_From_String()
     {
-        var expression = (VersionExpression)Priority;
+        var expression = (JqlVersion)Priority;
 
         Assert.AreEqual("String", expression.Value.GetType().Name);
         Assert.AreEqual(Priority, expression.Value);
@@ -29,7 +29,7 @@ public class PriorityTests
     [TestMethod]
     public void Should_Cast_Priority_Expression_From_Int()
     {
-        var expression = (VersionExpression)PriorityId;
+        var expression = (JqlVersion)PriorityId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(PriorityId, expression.Value);
@@ -117,8 +117,8 @@ public class PriorityTests
             $"{FieldContestants.Priority} {Operators.NotIn} ({PriorityId}, {Priority}, {PriorityId}) {Keywords.And} " +
             $"{FieldContestants.Priority} {Operators.NotIn} ({PriorityId}, {Priority}, {PriorityId})";
 
-        var homogeneousFilter = new JqlCollection<PriorityExpression> { PriorityId, PriorityId, PriorityId };
-        var heterogeneousFilter = new JqlCollection<PriorityExpression> { PriorityId, Priority, PriorityId };
+        var homogeneousFilter = new JqlCollection<JqlPriority> { PriorityId, PriorityId, PriorityId };
+        var heterogeneousFilter = new JqlCollection<JqlPriority> { PriorityId, Priority, PriorityId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.In(PriorityId, PriorityId, PriorityId))
@@ -163,8 +163,8 @@ public class PriorityTests
             $"{FieldContestants.Priority} {Operators.WasNotIn} ({Priority}, {PriorityId}, {Priority}) {Keywords.And} " +
             $"{FieldContestants.Priority} {Operators.WasNotIn} ({Priority}, {PriorityId}, {Priority})";
 
-        var homogeneousFilter = new JqlCollection<PriorityExpression> { Priority, Priority, Priority };
-        var heterogeneousFilter = new JqlCollection<PriorityExpression> { Priority, PriorityId, Priority };
+        var homogeneousFilter = new JqlCollection<JqlPriority> { Priority, Priority, Priority };
+        var heterogeneousFilter = new JqlCollection<JqlPriority> { Priority, PriorityId, Priority };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.Was(Priority))

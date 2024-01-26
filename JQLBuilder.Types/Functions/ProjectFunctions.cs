@@ -8,8 +8,8 @@ using JqlTypes;
 
 public class ProjectFunctions
 {
-    public IJqlCollection<ProjectExpression> LeadByUser() => Function.Custom<JqlCollection<ProjectExpression>>(Functions.ProjectsLeadByUser, []);
-    public IJqlCollection<ProjectExpression> LeadByUser(JqlArguments.Text user) => Function.Custom<JqlCollection<ProjectExpression>>(Functions.ProjectsLeadByUser, [user]);
-    public IJqlCollection<ProjectExpression> WhereUserHasPermission(JqlArguments.Text user) => Function.Custom<JqlCollection<ProjectExpression>>(Functions.WhereUserHasPermission, [user]);
-    public IJqlCollection<ProjectExpression> WhereUserHasRole(JqlArguments.Text user) => Function.Custom<JqlCollection<ProjectExpression>>(Functions.WhereUserHasRole, [user]);
+    public IJqlCollection<JqlProject> LeadByUser() => Function.Custom<JqlCollection<JqlProject>>(Functions.ProjectsLeadByUser, []);
+    public IJqlCollection<JqlProject> LeadByUser(JqlArguments.Text user) => Function.Custom<JqlCollection<JqlProject>>(Functions.ProjectsLeadByUser, [user]);
+    public IJqlCollection<JqlProject> WhereUserHasPermission(JqlArguments.Text user) => Function.Custom<JqlCollection<JqlProject>>(Functions.WhereUserHasPermission, [user]);
+    public IJqlCollection<JqlProject> WhereUserHasRole(JqlArguments.Text user) => Function.Custom<JqlCollection<JqlProject>>(Functions.WhereUserHasRole, [user]);
 }

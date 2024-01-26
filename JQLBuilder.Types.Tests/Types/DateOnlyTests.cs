@@ -21,7 +21,7 @@ public class DateOnlyTests
     [TestMethod]
     public void Should_Cast_Expression_By_DateOnly()
     {
-        var expression = (DateExpression)DateOnly;
+        var expression = (JqlJqlDate)DateOnly;
 
         Assert.AreEqual("DateOnly", expression.Value.GetType().Name);
         Assert.AreEqual(DateOnly, expression.Value);
@@ -31,7 +31,7 @@ public class DateOnlyTests
     public void Should_Parse_DateOnly()
     {
         var expected = new DateOnly(2000, 2, 3);
-        var actual = (DateExpression)"2000-02-03";
+        var actual = (JqlJqlDate)"2000-02-03";
         Assert.AreEqual(expected, actual.Value);
     }
 
@@ -39,7 +39,7 @@ public class DateOnlyTests
     public void Should_Parse_RelativeDate()
     {
         var expected = new TimeOffset(0, 0, 1, 2, 3, 4);
-        var actual = (DateExpression)"3 1m 5h 2d    -4h +1w 2h";
+        var actual = (JqlJqlDate)"3 1m 5h 2d    -4h +1w 2h";
         Assert.AreEqual(expected, actual.Value);
     }
 
@@ -62,19 +62,19 @@ public class DateOnlyTests
     [TestMethod]
     public void Should_Throw_When_Parsing_Invalid_Formats()
     {
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)" ");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"1m - 4h");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"2000-02-03 04:05:06");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"2000-99-03 04:05");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"1y");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"1M");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"m");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"invalid");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"-");
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"+");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)" ");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"1m - 4h");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"2000-02-03 04:05:06");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"2000-99-03 04:05");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"1y");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"1M");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"m");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"invalid");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"-");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"+");
 
-        Assert.ThrowsException<ArgumentException>(() => (DateExpression)"2000-02-03 04:05");
+        Assert.ThrowsException<ArgumentException>(() => (JqlJqlDate)"2000-02-03 04:05");
     }
 
     [TestMethod]
@@ -162,7 +162,7 @@ public class DateOnlyTests
             $"{CustomFieldName} {Operators.NotIn} ({dateOnlyString}, {dateOnlyString}, {dateOnlyString}) {Keywords.And} " +
             $"{expectedCustomFieldId} {Operators.NotIn} ({dateOnlyString}, {dateOnlyString}, {dateOnlyString})";
 
-        var filter = new JqlCollection<DateExpression> { DateOnly, DateOnly, DateOnly };
+        var filter = new JqlCollection<JqlJqlDate> { DateOnly, DateOnly, DateOnly };
 
         var actual = JqlBuilder.Query
             .Where(f => f.DateOnly[CustomFieldName].In(DateOnly, DateOnly, DateOnly))

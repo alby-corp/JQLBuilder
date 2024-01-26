@@ -20,7 +20,7 @@ public class TextTests
     [TestMethod]
     public void Should_Cast_Project_Expression_By_String()
     {
-        var expression = (TextExpression)Text;
+        var expression = (JqlText)Text;
 
         Assert.AreEqual("String", expression.Value.GetType().Name);
         Assert.AreEqual(Text, expression.Value);

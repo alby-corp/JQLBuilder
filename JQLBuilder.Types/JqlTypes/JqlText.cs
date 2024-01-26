@@ -5,10 +5,10 @@ using Infrastructure;
 using Infrastructure.Abstract;
 
 #pragma warning disable CS0660, CS0661
-public class TextField : JqlValue, IJqlField<TextExpression>, IJqlNullable;
+public class TextField : JqlValue, IJqlField<JqlText>, IJqlNullable;
 #pragma warning restore CS0660, CS0661
 
-public class TextExpression : JqlValue, IJqlMembership<TextExpression>, IJqlContains<TextExpression>
+public class JqlText : JqlValue, IJqlMembership<JqlText>, IJqlContains<JqlText>
 {
-    public static implicit operator TextExpression(string value) => new() { Value = value };
+    public static implicit operator JqlText(string value) => new() { Value = value };
 }

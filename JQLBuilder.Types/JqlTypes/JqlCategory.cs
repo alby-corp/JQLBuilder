@@ -7,18 +7,17 @@ using Infrastructure.Operators;
 using Support;
 
 #pragma warning disable CS0660, CS0661
-public class CategoryField : JqlValue, IJqlField<CategoryExpression>, IJqlNullable
+public class CategoryField : JqlValue, IJqlField<JqlCategory>, IJqlNullable
 #pragma warning restore CS0660, CS0661
 {
-    public static Bool operator ==(CategoryField left, CategoryExpression right) => left.Equal(right);
-    public static Bool operator !=(CategoryField left, CategoryExpression right) => left.NotEqual(right);
-
-    public static Bool operator ==(CategoryExpression left, CategoryField right) => right.Equal(left);
-    public static Bool operator !=(CategoryExpression left, CategoryField right) => right.NotEqual(left);
+    public static Bool operator ==(CategoryField left, JqlCategory right) => left.Equal(right);
+    public static Bool operator !=(CategoryField left, JqlCategory right) => left.NotEqual(right);
+    public static Bool operator ==(JqlCategory left, CategoryField right) => right.Equal(left);
+    public static Bool operator !=(JqlCategory left, CategoryField right) => right.NotEqual(left);
 }
 
-public class CategoryExpression : JqlValue, IJqlMembership<CategoryExpression>
+public class JqlCategory : JqlValue, IJqlMembership<JqlCategory>
 {
-    public static implicit operator CategoryExpression(string value) => new() { Value = value };
-    public static implicit operator CategoryExpression(int value) => new() { Value = value };
+    public static implicit operator JqlCategory(string value) => new() { Value = value };
+    public static implicit operator JqlCategory(int value) => new() { Value = value };
 }

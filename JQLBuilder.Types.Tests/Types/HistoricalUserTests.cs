@@ -45,7 +45,7 @@ public class HistoricalUserTests
     [TestMethod]
     public void Should_Cast_HistoricalUser_Expression_From_String()
     {
-        var actual = (HistoricalUserExpression)User;
+        var actual = (JqlHistoricalJqlUser)User;
 
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
@@ -54,7 +54,7 @@ public class HistoricalUserTests
     [TestMethod]
     public void Should_Cast_HistoricalUser_Expression_From_Int()
     {
-        var actual = (HistoricalUserExpression)UserId;
+        var actual = (JqlHistoricalJqlUser)UserId;
 
         Assert.AreEqual("Int32", actual.Value.GetType().Name);
         Assert.AreEqual(UserId, actual.Value);
@@ -145,8 +145,8 @@ public class HistoricalUserTests
             $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {ExpectedUser}, {UserId}) {Keywords.And} " +
             $"{FieldContestants.Creator} {Operators.NotIn} ({UserId}, {ExpectedUser}, {UserId})";
 
-        var homogeneousFilter = new JqlCollection<UserExpression> { UserId, UserId, UserId };
-        var heterogeneousFilter = new JqlCollection<UserExpression> { UserId, User, UserId };
+        var homogeneousFilter = new JqlCollection<JqlUser> { UserId, UserId, UserId };
+        var heterogeneousFilter = new JqlCollection<JqlUser> { UserId, User, UserId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.User.Creator.In(UserId, UserId, UserId))
@@ -194,8 +194,8 @@ public class HistoricalUserTests
             $"{FieldContestants.Assignee} {Operators.WasNotIn} ({ExpectedUser}, {UserId}, {ExpectedUser}) {Keywords.And} " +
             $"{FieldContestants.Assignee} {Operators.WasNotIn} ({ExpectedUser}, {UserId}, {ExpectedUser})";
 
-        var homogeneousFilter = new JqlCollection<HistoricalUserExpression> { User, User, User };
-        var heterogeneousFilter = new JqlCollection<HistoricalUserExpression> { User, UserId, User };
+        var homogeneousFilter = new JqlCollection<JqlHistoricalJqlUser> { User, User, User };
+        var heterogeneousFilter = new JqlCollection<JqlHistoricalJqlUser> { User, UserId, User };
 
         var actual = JqlBuilder.Query
             .Where(f => f.User.Assignee.Was(User))

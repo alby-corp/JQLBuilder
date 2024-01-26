@@ -18,7 +18,7 @@ public class NumberTests
     [TestMethod]
     public void Should_Cast_Project_Expression_By_Int()
     {
-        var expression = (NumberExpression)Number;
+        var expression = (JqlNumber)Number;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(Number, expression.Value);
@@ -109,7 +109,7 @@ public class NumberTests
             $"{CustomFieldName} {Operators.NotIn} ({Number}, {Number}, {Number}) {Keywords.And} " +
             $"{expectedCustomFieldId} {Operators.NotIn} ({Number}, {Number}, {Number})";
 
-        var filter = new JqlCollection<NumberExpression> { Number, Number, Number };
+        var filter = new JqlCollection<JqlNumber> { Number, Number, Number };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Number[CustomFieldName].In(Number, Number, Number))

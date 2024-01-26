@@ -9,6 +9,7 @@ using Fields = Fields;
 using FieldContestants = Constants.Fields;
 using Functions = JQLBuilder.Functions;
 using FunctionsConstants = Constants.Functions;
+using JqlIssue = JqlTypes.JqlIssue;
 
 [TestClass]
 public class IssueTests
@@ -63,7 +64,7 @@ public class IssueTests
     [TestMethod]
     public void Should_Cast_Issue_Expression_From_String()
     {
-        var expression = (IssueExpression)Issue;
+        var expression = (JqlIssue)Issue;
 
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Issue), expression.Value);
@@ -72,7 +73,7 @@ public class IssueTests
     [TestMethod]
     public void Should_Cast_Issue_Expression_From_Int()
     {
-        var expression = (IssueExpression)IssueId;
+        var expression = (JqlIssue)IssueId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(IssueId, expression.Value);
@@ -218,8 +219,8 @@ public class IssueTests
             $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {Issue}, {IssueId}) {Keywords.And} " +
             $"{FieldContestants.Issue} {Operators.NotIn} ({IssueId}, {Issue}, {IssueId})";
 
-        var homogeneousFilter = new JqlCollection<IssueExpression> { IssueId, IssueId, IssueId };
-        var heterogeneousFilter = new JqlCollection<IssueExpression> { IssueId, Issue, IssueId };
+        var homogeneousFilter = new JqlCollection<JqlIssue> { IssueId, IssueId, IssueId };
+        var heterogeneousFilter = new JqlCollection<JqlIssue> { IssueId, Issue, IssueId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.In(IssueId, IssueId, IssueId))

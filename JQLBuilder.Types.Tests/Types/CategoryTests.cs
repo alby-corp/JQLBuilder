@@ -17,7 +17,7 @@ public class CategoryTests
     [TestMethod]
     public void Should_Cast_Category_Expression_From_String()
     {
-        var expression = (CategoryExpression)Category;
+        var expression = (JqlCategory)Category;
 
         Assert.AreEqual("String", expression.Value.GetType().Name);
         Assert.AreEqual(Category, expression.Value);
@@ -85,7 +85,7 @@ public class CategoryTests
             $"{FieldContestants.Category} {Operators.NotIn} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory}) {Keywords.And} " +
             $"{FieldContestants.Category} {Operators.NotIn} ({ExpectedCategory}, {ExpectedCategory}, {ExpectedCategory})";
 
-        var filter = new JqlCollection<CategoryExpression>
+        var filter = new JqlCollection<JqlCategory>
         {
             Category, Category, Category
         };

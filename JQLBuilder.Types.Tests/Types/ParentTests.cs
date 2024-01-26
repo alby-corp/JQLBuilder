@@ -17,7 +17,7 @@ public class ParentTests
     [TestMethod]
     public void Should_Cast_Parent_Expression_From_String()
     {
-        var expression = (ParentExpression)Parent;
+        var expression = (JqlParent)Parent;
 
         Assert.AreEqual("Field", expression.Value.GetType().Name);
         Assert.AreEqual(new Field(Parent), expression.Value);
@@ -26,7 +26,7 @@ public class ParentTests
     [TestMethod]
     public void Should_Cast_Parent_Expression_From_Int()
     {
-        var expression = (ParentExpression)ParentId;
+        var expression = (JqlParent)ParentId;
 
         Assert.AreEqual("Int32", expression.Value.GetType().Name);
         Assert.AreEqual(ParentId, expression.Value);
@@ -83,8 +83,8 @@ public class ParentTests
             $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {Parent}, {ParentId}) {Keywords.And} " +
             $"{FieldContestants.Parent} {Operators.NotIn} ({ParentId}, {Parent}, {ParentId})";
 
-        var homogeneousFilter = new JqlCollection<ParentExpression> { ParentId, ParentId, ParentId };
-        var heterogeneousFilter = new JqlCollection<ParentExpression> { ParentId, Parent, ParentId };
+        var homogeneousFilter = new JqlCollection<JqlParent> { ParentId, ParentId, ParentId };
+        var heterogeneousFilter = new JqlCollection<JqlParent> { ParentId, Parent, ParentId };
 
         var actual = JqlBuilder.Query
             .Where(f => f.Parent.In(ParentId, ParentId, ParentId))
