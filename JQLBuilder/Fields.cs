@@ -15,7 +15,6 @@ public class Fields
     public Category Category { get; } = new();
     public Priority Priority { get; } = new();
     public Type Type { get; } = new();
-    public Parent Parent { get; } = new();
     public Issue Issue { get; } = new();
     public Status Status { get; } = new();
     public User User { get; } = new();

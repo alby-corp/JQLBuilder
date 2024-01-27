@@ -14,6 +14,7 @@ public class Issue : IssueField
     public IssueField IssueKey { get; } = Field.Custom<IssueField>(Fields.IssueKey);
     public IssueField Id { get; } = Field.Custom<IssueField>(Fields.Id);
     public IssueField Key { get; } = Field.Custom<IssueField>(Fields.Key);
+    public ParentField Parent { get; } = Field.Custom<ParentField>(Fields.Parent);
 }
 
 public class OrderingIssue : IssueField

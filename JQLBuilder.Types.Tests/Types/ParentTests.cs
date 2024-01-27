@@ -37,7 +37,7 @@ public class ParentTests
     {
         const string expected = FieldContestants.Parent;
 
-        var field = Fields.All.Parent;
+        var field = Fields.All.Issue.Parent;
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
@@ -57,14 +57,14 @@ public class ParentTests
             $"{FieldContestants.Parent} {Operators.NotEquals} {ParentId}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Parent == Parent)
-            .And(f => f.Parent == ParentId)
-            .And(f => f.Parent != Parent)
-            .And(f => f.Parent != ParentId)
-            .And(f => Parent == f.Parent)
-            .And(f => ParentId == f.Parent)
-            .And(f => Parent != f.Parent)
-            .And(f => ParentId != f.Parent)
+            .Where(f => f.Issue.Parent == Parent)
+            .And(f => f.Issue.Parent == ParentId)
+            .And(f => f.Issue.Parent != Parent)
+            .And(f => f.Issue.Parent != ParentId)
+            .And(f => Parent == f.Issue.Parent)
+            .And(f => ParentId == f.Issue.Parent)
+            .And(f => Parent != f.Issue.Parent)
+            .And(f => ParentId != f.Issue.Parent)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -87,14 +87,14 @@ public class ParentTests
         var heterogeneousFilter = new JqlCollection<JqlParent> { ParentId, Parent, ParentId };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Parent.In(ParentId, ParentId, ParentId))
-            .And(f => f.Parent.In(homogeneousFilter))
-            .And(f => f.Parent.In(ParentId, Parent, ParentId))
-            .And(f => f.Parent.In(heterogeneousFilter))
-            .And(f => f.Parent.NotIn(ParentId, ParentId, ParentId))
-            .And(f => f.Parent.NotIn(homogeneousFilter))
-            .And(f => f.Parent.NotIn(ParentId, Parent, ParentId))
-            .And(f => f.Parent.NotIn(heterogeneousFilter))
+            .Where(f => f.Issue.Parent.In(ParentId, ParentId, ParentId))
+            .And(f => f.Issue.Parent.In(homogeneousFilter))
+            .And(f => f.Issue.Parent.In(ParentId, Parent, ParentId))
+            .And(f => f.Issue.Parent.In(heterogeneousFilter))
+            .And(f => f.Issue.Parent.NotIn(ParentId, ParentId, ParentId))
+            .And(f => f.Issue.Parent.NotIn(homogeneousFilter))
+            .And(f => f.Issue.Parent.NotIn(ParentId, Parent, ParentId))
+            .And(f => f.Issue.Parent.NotIn(heterogeneousFilter))
             .ToString();
 
         Assert.AreEqual(expected, actual);
