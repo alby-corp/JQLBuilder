@@ -191,8 +191,8 @@ public class StatusTests
             $"{FieldContestants.Status} {Operators.Changed} {Operators.To} {Status} {Operators.To} {StatusId} {Operators.To} {Keywords.Empty} {Operators.To} {Keywords.Null} {Keywords.And} " +
             $"{FieldContestants.Status} {Operators.Changed} {Operators.By} {expectedUser} {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} {Keywords.Empty} {Operators.By} {Keywords.Null}";
 
-        var filter = new JqlCollection<JqlUser>(){ user, user, userId };
-        
+        var filter = new JqlCollection<JqlUser>() { user, user, userId };
+
         var actual = JqlBuilder.Query
             .Where(f => f.Status.Changed())
             .And(f => f.Status.Changed(c => c.After(now).After(date).After(dateTime).After(f.Functions.Date.Now).After(Functions.Date.Now)))

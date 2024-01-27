@@ -207,8 +207,8 @@ public class PriorityTests
             $"{FieldContestants.Priority} {Operators.Changed} {Operators.To} {Priority} {Operators.To} {PriorityId} {Operators.To} {Keywords.Empty} {Operators.To} {Keywords.Null} {Keywords.And} " +
             $"{FieldContestants.Priority} {Operators.Changed} {Operators.By} {expectedUser} {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} {Keywords.Empty} {Operators.By} {Keywords.Null}";
 
-        var filter = new JqlCollection<JqlUser>(){ user, user, userId };
-        
+        var filter = new JqlCollection<JqlUser>() { user, user, userId };
+
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.Changed())
             .And(f => f.Priority.Changed(c => c.After(now).After(date).After(dateTime).After(f.Functions.Date.Now).After(Functions.Date.Now)))
