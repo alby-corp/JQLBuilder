@@ -27,6 +27,10 @@ internal static class Fields
     internal const string Sprint = "sprint";
     internal const string Component = "component";
     internal const string Labels = "labels";
+    internal const string Text = "text";
+    internal const string Description = "description";
+    internal const string Comment = "comment";
+    internal const string Environment = "environment";
 
     internal static string Custom(int id) => $"cf[{id}]";
 }

@@ -56,6 +56,50 @@ public class TextTests
 
         Assert.AreEqual(expected, actual);
     }
+    
+    [TestMethod]
+    public void Should_Cast_Description_Field()
+    {
+        const string expected = Constants.Fields.Description;
+
+        var field = Fields.All.Text.Description;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_Comment_Field()
+    {
+        const string expected = Constants.Fields.Comment;
+
+        var field = Fields.All.Text.Comment;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_Environment_Field()
+    {
+        const string expected = Constants.Fields.Environment;
+
+        var field = Fields.All.Text.Environment;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_Text_Field()
+    {
+        const string expected = Constants.Fields.Text;
+
+        var field = Fields.All.Text;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
 
     [TestMethod]
     public void Should_Parses_Nullable_Operators()

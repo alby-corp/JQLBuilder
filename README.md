@@ -9,20 +9,83 @@
 [![NuGet Version](https://img.shields.io/nuget/v/JQLBuilder.svg?style=flat-square)](https://www.nuget.org/packages/JQLBuilder/)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/JQLBuilder.svg)](https://www.nuget.org/packages/JQLBuilder/)
 
-This repository houses a C# library designed to provide a JQL (Jira Query Language) builder, aiding programmers in
-constructing JQL queries programmatically.
-
-> **_NOTE:_** At its current stage, the package is considered alpha, implementing only partial functionality for the
-> Project and Version fields.
-
-However, the library's structure is well-defined. While a comprehensive readme is currently deemed excessive, here are
-some examples demonstrating how the library is intended to be used, with a focus on operators and query production.
+> **_NOTE:_** In its current state, the package is in the beta phase, providing partial implementation for specified fields along with support for all functions and operators.
 
 ## Introduction
 
+This repository houses a C# library designed to provide a JQL (Jira Query Language) builder, aiding programmers in
+constructing JQL queries programmatically.
+
 The JqlBuilder library provides a fluent interface for constructing Jira Query Language (JQL) queries in a flexible and
 expressive manner.
-This README serves as a guide to help you understand how to use the library effectively.
+
+For more details about JQL, please refer to the [wiki](https://github.com/alby-corp/JQLBuilder/wiki).
+
+## Supported JQL
+The following table lists the supported fields and their corresponding types, along with the supported functions and operations grouped by type
+
+### Supported Fields
+
+| Fields | TYPE            |
+|--------|-----------------|
+| AffectedVersion | VERSION         |
+| Assignee | HISTORICAL_USER |
+| Attachment | ATTACHMENT      |
+| Category | CATEGORY        |
+| Component | COMPONENT       |
+| Creator | USER            |
+| Due | DATE            |
+| DueDate | DATE            |
+| FixVersion | VERSION         |
+| Id | ISSUE           |
+| Issue | ISSUE           |
+| IssueKey | ISSUE           |
+| IssueType | TYPE            |
+| Key | ISSUE           |
+| Labels | LABELS          |
+| Parent | PARENT          |
+| Priority | PRIORITY        |
+| Project | PROJECT         |
+| Reporter | HISTORICAL_USER |
+| Sprint | SPRINT          |
+| Status | STATUS          |
+| Summary | TEXT            |
+| Type | TYPE            |
+| Voter | USER            |
+| Watcher | USER            |
+
+### Supported Operators
+| Fields          | TYPE                                                                                           |
+|-----------------|------------------------------------------------------------------------------------------------|
+| VERSION         | = , != , > , >= , < , <=, IS, IS NOT, IN, NOT IN                                               |
+| HISTORICAL_USER | = , !=, IS, IS NOT, IN, NOT IN, WAS, WAS IN, WAS NOT, WAS NOT IN, CHANGED                      |
+| ATTACHMENT      | IS, IS NOT                                                                                     |
+| CATEGORY        | =, !=, IS, IS NOT, IN, NOT IN                                                                  |
+| TEXT            | ~ , !~                                                                                         |
+| COMPONENT       | = , !=, IS , IS NOT , IN , NOT IN                                                              |
+| DATE            | = , != , > , >= , < , <= IS , IS NOT , IN , NOT IN                                             |
+| USER            | ~ , !~ , > , >= , < , <= CHANGED, WAS, WAS IN, WAS NOT, WAS NOT IN                             |
+| ISSUE           | = , != , > , >= , < , <=, IN, NOT IN                                                           |
+| LABELS          | = , !=, IS, IS NOT, IN, NOT IN                                                                 |
+| PARENT          | =, !=, IN, NOT IN                                                                              |
+| PRIORITY        | = , != , > , >= , < , <= IS , IS NOT, IN , NOT IN , WAS, WAS IN, WAS NOT, WAS NOT IN , CHANGED |
+| PROJECT         | = , !=, IS , IS NOT, IN , NOT IN                                                               |
+| SPRINT          | = , !=, IS , IS NOT, IN , NOT IN                                                               |
+| STATUS          | = , != , > , >= , < , <= IS , IS NOT, IN , NOT IN , WAS, WAS IN, WAS NOT, WAS NOT IN , CHANGED |
+| Type            | = , !=, IS , IS NOT , IN , NOT IN                                                              |
+
+### Supported Functions
+
+| Type            | Functions                                                                                                                    |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------|
+| DATE            | now, currentLogin, lastLogin, startOfDay, startOfWeek, startOfMonth, startOfYear, endOfDay, endOfWeek, endOfMonth, endOfYear |
+| PROJECT         | projectsLeadByUser, projectsWhereUserHasPermission, projectsWhereUserHasRole                                                 |
+| VERSION         | latestReleasedVersion, latestUnreleasedVersion, releasedVersions, unreleasedVersions                                         |
+| ISSUE           | issueHistory, votedIssues, watchedIssues, linkedIssues                                                                       |
+| USER            | membersOf, currentUser                                                                                                       |
+| HISTORICAL_USER | membersOf, currentUser                                                                                                       |
+| SPRINT          | openSprints, closedSprints                                                                                                   |
+| COMPONENT       | componentsLeadByUser                                                                                                         |
 
 ## Getting Started
 
@@ -80,148 +143,4 @@ JqlBuilder.Query
     .OrderBy(f => f.Project)
     .ThenByDescending(f => f.Priority)
     .ToString();
-```
-
-## Examples:
-
-Below are examples demonstrating the usage of the JqlBuilder library based on the provided test class.
-
-### Example 1: Basic Query Construction
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project == "CLOVER")
-    .And(f => f.Project == 12345)
-    .And(f => f.Project.In("CLOVER", 12345))
-    .And(f => f.Project.In(func => func.LeadByUser("hulk@avengers.world")) | (f.Project == "CLOVER"))
-    .And(f => f.Project.NotIn(func => func.WhereUserHasRole("hulk@avengers.world")))
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql 
-    project = "CLOVER" AND project = 12345 AND project in ("CLOVER", 12345) AND (project in projectsLeadByUser("hulk@avengers.world") OR project = "CLOVER") AND project not in projectsWhereUserHasRole("hulk@avengers.world")
-```
-
-### Example 2: OR Condition with Ordering
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project == "CLOVER")
-    .Or(f => f.Project == "HEARTH")
-    .OrderBy(f => f.Project)
-    .ThenByDescending(f => f.Assignee)
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql
-    project = "CLOVER" OR project = "HEARTH" order by project asc, assignee desc
-```
-
-### Example 3: Ordering Without Filtering
-
-```csharp
-JqlBuilder.Query
-    .OrderBy(f => f.Project)
-    .ThenByDescending(f => f.Assignee)
-    .ThenBy(f => f.Assignee)
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql
-    order by project asc, assignee desc, assignee asc
-```
-
-### Example 4: Complex Nested Conditions
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project == "CLOVER")
-    .And(f => (f.Project == 12345) | f.Project.In("CLOVER", 12345))
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql
-    project = "CLOVER" AND (project = 12345 OR project in ("CLOVER", 12345))
-```
-
-### Example 5: Nested AND and OR Conditions
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project == "CLOVER")
-    .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql
-    project = "CLOVER" AND (project = 12345 OR project = "HEARTH" AND project = "SPADE")
-```
-
-### Example 6: NOT Conditions
-
-```csharp
-JqlBuilder.Query
-    .Where(f => !(f.Project == "CLOVER"))
-    .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql
-    NOT(project = "CLOVER") AND (project = 12345 OR project = "HEARTH" AND project = "SPADE")
-```
-
-### Example 7: Double NOT Conditions
-
-```csharp
-JqlBuilder.Query
-    .Where(f => !!(f.Project == "CLOVER"))
-    .And(f => (f.Project == 12345) | ((f.Project == "HEARTH") & (f.Project == "SPADE")))
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql
-    NOT NOT(project = "CLOVER") AND (project = 12345 OR project = "HEARTH" AND project = "SPADE")
-```
-
-### Example 8: Double NOT Condition Only
-
-```csharp
-JqlBuilder.Query
-    .Where(f => !!(f.Project == "CLOVER"))
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql 
-    NOT NOT(project = "CLOVER")
-```
-
-### Example 9: NULL and NOT EMPTY Conditions
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project.Is(v => v.Null))
-    .And(f => (f.Project == 12345) | f.Project.IsNot(v => v.Empty))
-    .ToString();
-```
-
-**Generated JQL:**
-
-```jql
-    project is NULL AND (project = 12345 OR project is not EMPTY)
 ```
