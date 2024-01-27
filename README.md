@@ -21,6 +21,64 @@ expressive manner.
 
 For more details about JQL, please refer to the [wiki](https://github.com/alby-corp/JQLBuilder/wiki).
 
+## Getting Started
+
+To start building JQL queries, use the ```JqlBuilder.Query``` entry point. The library follows a fluent API design,
+allowing you to chain methods to construct complex queries.
+
+```csharp
+JqlBuilder.Query
+    .Where(f => f.Project == "example")
+    .And(f => f.Assignee == "john.doe")
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Priority)
+    .ToString();
+```
+
+## Query Construction
+
+The library provides extension methods for constructing various parts of a JQL query:
+
+### Filtering
+
+- **Where:** Start the query with a filter condition.
+- **And:** Add an AND condition to the existing filter.
+- **Or:** Add an OR condition to the existing filter.
+
+```csharp
+JqlBuilder.Query
+    .Where(f => f.Project == "example")
+    .And(f => f.Assignee == "john.doe")
+    .Or(f => f.Status == "In Progress");
+```
+
+### Ordering
+
+- **OrderBy:** Specify the primary ordering field.
+- **OrderByDescending:** Specify the primary ordering field in descending order.
+- **ThenBy:** Add secondary ordering fields.
+- **ThenByDescending:** Add secondary ordering fields in descending order.
+
+```csharp
+JqlBuilder.Query
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Priority)
+    .ThenBy(f => f.Assignee);
+```
+
+### Building
+
+The ```ToString``` method is used to obtain the final JQL query string.
+
+```csharp
+JqlBuilder.Query
+    .Where(f => f.Project == "example")
+    .And(f => f.Assignee == "john.doe")
+    .OrderBy(f => f.Project)
+    .ThenByDescending(f => f.Priority)
+    .ToString();
+```
+
 ## Supported JQL
 
 The following table lists the supported fields and their corresponding types, along with the supported functions and operations grouped by type
@@ -88,61 +146,3 @@ The following table lists the supported fields and their corresponding types, al
 | HISTORICAL_USER | membersOf, currentUser                                                                                                       |
 | SPRINT          | openSprints, closedSprints                                                                                                   |
 | COMPONENT       | componentsLeadByUser                                                                                                         |
-
-## Getting Started
-
-To start building JQL queries, use the ```JqlBuilder.Query``` entry point. The library follows a fluent API design,
-allowing you to chain methods to construct complex queries.
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project == "example")
-    .And(f => f.Assignee == "john.doe")
-    .OrderBy(f => f.Project)
-    .ThenByDescending(f => f.Priority)
-    .ToString();
-```
-
-## Query Construction
-
-The library provides extension methods for constructing various parts of a JQL query:
-
-### Filtering
-
-- **Where:** Start the query with a filter condition.
-- **And:** Add an AND condition to the existing filter.
-- **Or:** Add an OR condition to the existing filter.
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project == "example")
-    .And(f => f.Assignee == "john.doe")
-    .Or(f => f.Status == "In Progress");
-```
-
-### Ordering
-
-- **OrderBy:** Specify the primary ordering field.
-- **OrderByDescending:** Specify the primary ordering field in descending order.
-- **ThenBy:** Add secondary ordering fields.
-- **ThenByDescending:** Add secondary ordering fields in descending order.
-
-```csharp
-JqlBuilder.Query
-    .OrderBy(f => f.Project)
-    .ThenByDescending(f => f.Priority)
-    .ThenBy(f => f.Assignee);
-```
-
-### Building
-
-The ```ToString``` method is used to obtain the final JQL query string.
-
-```csharp
-JqlBuilder.Query
-    .Where(f => f.Project == "example")
-    .And(f => f.Assignee == "john.doe")
-    .OrderBy(f => f.Project)
-    .ThenByDescending(f => f.Priority)
-    .ToString();
-```
