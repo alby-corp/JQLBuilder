@@ -2,6 +2,12 @@
 
 internal static class Functions
 {
+    #region Component
+
+    internal const string ComponentsLeadByUser = "componentsLeadByUser";
+
+    #endregion
+
     #region Date
 
     internal const string Now = "now";
@@ -56,12 +62,6 @@ internal static class Functions
 
     internal const string OpenSprints = "openSprints";
     internal const string ClosedSprints = "closedSprints";
-
-    #endregion
-
-    #region Component
-
-    internal const string ComponentsLeadByUser = "componentsLeadByUser";
 
     #endregion
 }

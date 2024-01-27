@@ -1,8 +1,7 @@
 ﻿namespace JQLBuilder.Types.JqlTypes;
 
 using Infrastructure;
-using JQLBuilder.Infrastructure.Abstract;
-using JQLBuilder.Infrastructure.Constants;
+using Infrastructure.Abstract;
 using Infrastructure.Operators;
 using Constants = Constants.Operators;
 
@@ -26,6 +25,6 @@ internal class JqlChange<T> : JqlValue where T : IJqlType
     public JqlChange<T> To(Func<JqlNoValues, JqlValue> selector) => new([..Operators, new(Constants.To, selector(new()))]);
     public JqlChange<T> By(JqlUser jqlUser) => new([..Operators, new(Constants.By, jqlUser)]);
     public JqlChange<T> By(params JqlUser[] users) => By(new JqlCollection<JqlUser>(users));
-    public JqlChange<T> By(IJqlCollection<JqlUser> users) => new([..Operators, new(Constants.By, users)]);    
+    public JqlChange<T> By(IJqlCollection<JqlUser> users) => new([..Operators, new(Constants.By, users)]);
     public JqlChange<T> By(Func<JqlNoValues, JqlValue> selector) => new([..Operators, new(Constants.By, selector(new()))]);
 }

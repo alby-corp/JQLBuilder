@@ -5,10 +5,7 @@ using Infrastructure;
 
 public class JqlNoValue : JqlValue
 {
-    internal JqlNoValue(string? noValue = default)
-    {
-        Value = new Field(noValue ?? Operators.Empty);
-    }
+    internal JqlNoValue(string? noValue = default) => Value = new Field(noValue ?? Operators.Empty);
 }
 
 public class JqlNoValues

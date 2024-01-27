@@ -3,7 +3,6 @@
 using Constants;
 using Infrastructure;
 using Infrastructure.Constants;
-using JqlTypes;
 using Support;
 using Fields = Fields;
 using FieldContestants = Constants.Fields;
@@ -16,45 +15,45 @@ public class IssueTests
 {
     const string Issue = "ABC-123";
     const int IssueId = 123;
-    
+
     [TestMethod]
     public void Should_Parses_CustomField_User_From_Name()
     {
         const string customFieldName = "Reviewer";
-        
+
         var field = Fields.All.User[customFieldName];
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(customFieldName, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_CustomField_User_From_Id()
     {
         const int customFieldId = 10421;
-        
+
         var field = Fields.All.User[customFieldId];
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(FieldContestants.Custom(customFieldId), actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_CustomField_Issue_From_Name()
     {
         const string customFieldName = "Ticket-Id";
-        
+
         var field = Fields.All.Issue[customFieldName];
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(customFieldName, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_CustomField_Issue_From_Id()
     {
         const int customFieldId = 10421;
-        
+
         var field = Fields.All.Issue[customFieldId];
         var actual = ((Field)field.Value).Value;
 

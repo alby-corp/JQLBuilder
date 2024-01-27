@@ -15,7 +15,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
         else
             builder.Append(value);
     }
-    
+
     public void Function(string name, IReadOnlyList<IJqlType> arguments)
     {
         builder.Append(name).Append('(');
@@ -30,11 +30,11 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
         builder.Append(')');
     }
-    
+
     public void String(string value) => builder.Append('"').Append(value).Append('"');
 
     public void Number(int value) => builder.Append(value);
-    
+
     public void Issue(string value) => builder.Append(value);
 
     public void Bool(bool value) => builder.Append(value ? "true" : "false");
@@ -94,11 +94,11 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
     public void DateTime(DateTime value) => builder.Append('"').Append($"{value:yyyy-MM-dd HH:mm}").Append('"');
     public void DateOnly(DateOnly value) => builder.Append('"').Append($"{value:yyyy-MM-dd}").Append('"');
-    
+
     public void TimeOffset(TimeOffset value)
     {
         builder.Append('"');
-        
+
         if (value.Years != 0) builder.Append(value.Years).Append("y ");
         if (value.Months != 0) builder.Append(value.Months).Append("M ");
         if (value.Weeks != 0) builder.Append(value.Weeks).Append("w ");
@@ -107,9 +107,9 @@ internal class JqlTypeRenderer(StringBuilder builder)
         if (value.Minutes != 0) builder.Append(value.Minutes).Append("m ");
 
         builder.Length--;
-        
+
         builder.Append('"');
-    } 
+    }
 
     public override string ToString() => builder.ToString();
 
@@ -124,7 +124,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
             if (index < readOnlyList.Count - 1) builder.Append(' ');
         }
     }
-    
+
     public void NoValueOperator(NoValueOperator @operator)
     {
         @operator.Field.Render(this);

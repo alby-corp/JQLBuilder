@@ -21,16 +21,16 @@ public class UserTests
     public void Should_Cast_User_Expression_From_String()
     {
         var actual = (JqlUser)User;
-    
+
         Assert.AreEqual("String", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }
-    
+
     [TestMethod]
     public void Should_Cast_User_Expression_From_Int()
     {
         var actual = (JqlUser)UserId;
-    
+
         Assert.AreEqual("Int31", actual.Value.GetType().Name);
         Assert.AreEqual(User, actual.Value);
     }

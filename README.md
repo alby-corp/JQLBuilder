@@ -22,39 +22,41 @@ expressive manner.
 For more details about JQL, please refer to the [wiki](https://github.com/alby-corp/JQLBuilder/wiki).
 
 ## Supported JQL
+
 The following table lists the supported fields and their corresponding types, along with the supported functions and operations grouped by type
 
 ### Supported Fields
 
-| Fields | TYPE            |
-|--------|-----------------|
+| Fields          | TYPE            |
+|-----------------|-----------------|
 | AffectedVersion | VERSION         |
-| Assignee | HISTORICAL_USER |
-| Attachment | ATTACHMENT      |
-| Category | CATEGORY        |
-| Component | COMPONENT       |
-| Creator | USER            |
-| Due | DATE            |
-| DueDate | DATE            |
-| FixVersion | VERSION         |
-| Id | ISSUE           |
-| Issue | ISSUE           |
-| IssueKey | ISSUE           |
-| IssueType | TYPE            |
-| Key | ISSUE           |
-| Labels | LABELS          |
-| Parent | PARENT          |
-| Priority | PRIORITY        |
-| Project | PROJECT         |
-| Reporter | HISTORICAL_USER |
-| Sprint | SPRINT          |
-| Status | STATUS          |
-| Summary | TEXT            |
-| Type | TYPE            |
-| Voter | USER            |
-| Watcher | USER            |
+| Assignee        | HISTORICAL_USER |
+| Attachment      | ATTACHMENT      |
+| Category        | CATEGORY        |
+| Component       | COMPONENT       |
+| Creator         | USER            |
+| Due             | DATE            |
+| DueDate         | DATE            |
+| FixVersion      | VERSION         |
+| Id              | ISSUE           |
+| Issue           | ISSUE           |
+| IssueKey        | ISSUE           |
+| IssueType       | TYPE            |
+| Key             | ISSUE           |
+| Labels          | LABELS          |
+| Parent          | PARENT          |
+| Priority        | PRIORITY        |
+| Project         | PROJECT         |
+| Reporter        | HISTORICAL_USER |
+| Sprint          | SPRINT          |
+| Status          | STATUS          |
+| Summary         | TEXT            |
+| Type            | TYPE            |
+| Voter           | USER            |
+| Watcher         | USER            |
 
 ### Supported Operators
+
 | Fields          | TYPE                                                                                           |
 |-----------------|------------------------------------------------------------------------------------------------|
 | VERSION         | = , != , > , >= , < , <=, IS, IS NOT, IN, NOT IN                                               |

@@ -56,7 +56,7 @@ public class TextTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Description_Field()
     {
@@ -67,7 +67,7 @@ public class TextTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Comment_Field()
     {
@@ -78,7 +78,7 @@ public class TextTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Environment_Field()
     {
@@ -89,7 +89,7 @@ public class TextTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Text_Field()
     {

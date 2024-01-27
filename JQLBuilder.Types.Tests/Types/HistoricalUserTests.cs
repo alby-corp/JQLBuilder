@@ -23,25 +23,25 @@ public class HistoricalUserTests
     public void Should_Parses_CustomField_HistoricalUser_From_Name()
     {
         const string customFieldName = "Reviewer";
-        
-        
+
+
         var field = Fields.All.User.Historical[customFieldName];
         var actual = ((Field)field.Value).Value;
-    
+
         Assert.AreEqual(customFieldName, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_CustomField_HistoricalUser_From_Id()
     {
         const int customFieldId = 10421;
-        
+
         var field = Fields.All.User.Historical[customFieldId];
         var actual = ((Field)field.Value).Value;
-    
+
         Assert.AreEqual(FieldContestants.Custom(customFieldId), actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_HistoricalUser_Expression_From_String()
     {

@@ -5,7 +5,6 @@ using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
 using Support;
-using DateOnly = System.DateOnly;
 using DateTime = System.DateTime;
 
 #pragma warning disable CS0660, CS0661

@@ -4,7 +4,6 @@ using Constants;
 using Infrastructure;
 using Infrastructure.Abstract;
 using JqlArguments;
-using JqlTypes;
 using JqlIssue = JqlTypes.JqlIssue;
 
 public class IssueFunctions

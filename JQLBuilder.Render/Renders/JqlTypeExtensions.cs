@@ -18,11 +18,11 @@ internal static class JqlTypeExtensions
                 break;
             case JqlValue { Value: Field s }:
                 render.Field(s.Value);
-                break;    
+                break;
             case JqlValue { Value: Function s }:
                 render.Function(s.Name, s.Arguments);
                 break;
-            case JqlIssue { Value: string s}:
+            case JqlIssue { Value: string s }:
                 render.Issue(s);
                 break;
             case JqlValue { Value : string s }:
@@ -51,7 +51,7 @@ internal static class JqlTypeExtensions
                 break;
             case JqlValue { Value : DateOnly s }:
                 render.DateOnly(s);
-                break;   
+                break;
             case JqlValue { Value : TimeOffset s }:
                 render.TimeOffset(s);
                 break;

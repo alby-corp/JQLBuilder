@@ -16,7 +16,7 @@ public class HistoricalUserField : JqlValue, IJqlField<JqlHistoricalJqlUser>, IJ
     public static Bool operator !=(JqlHistoricalJqlUser left, HistoricalUserField right) => right.NotEqual(left);
 }
 
-public class JqlHistoricalJqlUser: JqlUser, IJqlHistorical<JqlHistoricalJqlUser>
+public class JqlHistoricalJqlUser : JqlUser, IJqlHistorical<JqlHistoricalJqlUser>
 {
     public static implicit operator JqlHistoricalJqlUser(string value) => new() { Value = value };
     public static implicit operator JqlHistoricalJqlUser(int value) => new() { Value = value };
