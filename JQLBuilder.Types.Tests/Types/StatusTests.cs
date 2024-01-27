@@ -177,6 +177,7 @@ public class StatusTests
         var expectedDate = $@"""{date}""";
         var expectedDateTime = $@"""{dateTime}""";
 
+        const int userId = 123;
         const string user = "USER";
         const string expectedUser = $@"""{user}""";
 
@@ -186,17 +187,21 @@ public class StatusTests
             $"{FieldContestants.Status} {Operators.Changed} {Operators.Before} {expectedDateTime} {Operators.Before} {expectedDate} {Operators.Before} {expectedDateTime} {Operators.Before} {FunctionsConstants.Now}() {Operators.Before} {FunctionsConstants.Now}() {Keywords.And} " +
             $"{FieldContestants.Status} {Operators.Changed} {Operators.On} {expectedDateTime} {Operators.On} {expectedDate} {Operators.On} {expectedDateTime} {Operators.On} {FunctionsConstants.Now}() {Operators.On} {FunctionsConstants.Now}() {Keywords.And} " +
             $"{FieldContestants.Status} {Operators.Changed} {Operators.During} ({expectedDateTime}, {expectedDate}) {Operators.During} ({expectedDate}, {expectedDateTime}) {Operators.During} ({expectedDateTime}, {expectedDateTime}) {Operators.During} ({FunctionsConstants.Now}(), {expectedDateTime}) {Operators.During} ({FunctionsConstants.Now}(), {expectedDate}) {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.Changed} {Operators.From} {Status} {Operators.From} {StatusId} {Operators.To} {Status} {Operators.To} {StatusId} {Keywords.And} " +
-            $"{FieldContestants.Status} {Operators.Changed} {Operators.By} {expectedUser}";
+            $"{FieldContestants.Status} {Operators.Changed} {Operators.From} {Status} {Operators.From} {StatusId} {Operators.From} {Keywords.Empty} {Operators.From} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Status} {Operators.Changed} {Operators.To} {Status} {Operators.To} {StatusId} {Operators.To} {Keywords.Empty} {Operators.To} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Status} {Operators.Changed} {Operators.By} {expectedUser} {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} {Keywords.Empty} {Operators.By} {Keywords.Null}";
 
+        var filter = new JqlCollection<JqlUser>(){ user, user, userId };
+        
         var actual = JqlBuilder.Query
             .Where(f => f.Status.Changed())
             .And(f => f.Status.Changed(c => c.After(now).After(date).After(dateTime).After(f.Functions.Date.Now).After(Functions.Date.Now)))
             .And(f => f.Status.Changed(c => c.Before(now).Before(date).Before(dateTime).Before(f.Functions.Date.Now).Before(Functions.Date.Now)))
             .And(f => f.Status.Changed(c => c.On(now).On(date).On(dateTime).On(f.Functions.Date.Now).On(Functions.Date.Now)))
             .And(f => f.Status.Changed(c => c.During(now, date).During(date, dateTime).During(dateTime, now).During(f.Functions.Date.Now, now).During(Functions.Date.Now, date)))
-            .And(f => f.Status.Changed(c => c.From(Status).From(StatusId).To(Status).To(StatusId)))
-            .And(f => f.Status.Changed(c => c.By(user)))
+            .And(f => f.Status.Changed(c => c.From(Status).From(StatusId).From(a => a.Empty).From(a => a.Null)))
+            .And(f => f.Status.Changed(c => c.To(Status).To(StatusId).To(a => a.Empty).To(a => a.Null)))
+            .And(f => f.Status.Changed(c => c.By(user).By(filter).By(user, user, userId).By(a => a.Empty).By(a => a.Null)))
             .ToString();
 
         Assert.AreEqual(expected, actual);

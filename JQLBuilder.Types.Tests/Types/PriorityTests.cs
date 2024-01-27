@@ -193,6 +193,7 @@ public class PriorityTests
         var expectedDate = $@"""{date}""";
         var expectedDateTime = $@"""{dateTime}""";
 
+        const int userId = 123;
         const string user = "USER";
         const string expectedUser = $@"""{user}""";
 
@@ -202,17 +203,21 @@ public class PriorityTests
             $"{FieldContestants.Priority} {Operators.Changed} {Operators.Before} {expectedDateTime} {Operators.Before} {expectedDate} {Operators.Before} {expectedDateTime} {Operators.Before} {FunctionsConstants.Now}() {Operators.Before} {FunctionsConstants.Now}() {Keywords.And} " +
             $"{FieldContestants.Priority} {Operators.Changed} {Operators.On} {expectedDateTime} {Operators.On} {expectedDate} {Operators.On} {expectedDateTime} {Operators.On} {FunctionsConstants.Now}() {Operators.On} {FunctionsConstants.Now}() {Keywords.And} " +
             $"{FieldContestants.Priority} {Operators.Changed} {Operators.During} ({expectedDateTime}, {expectedDate}) {Operators.During} ({expectedDate}, {expectedDateTime}) {Operators.During} ({expectedDateTime}, {expectedDateTime}) {Operators.During} ({FunctionsConstants.Now}(), {expectedDateTime}) {Operators.During} ({FunctionsConstants.Now}(), {expectedDate}) {Keywords.And} " +
-            $"{FieldContestants.Priority} {Operators.Changed} {Operators.From} {Priority} {Operators.From} {PriorityId} {Operators.To} {Priority} {Operators.To} {PriorityId} {Keywords.And} " +
-            $"{FieldContestants.Priority} {Operators.Changed} {Operators.By} {expectedUser}";
+            $"{FieldContestants.Priority} {Operators.Changed} {Operators.From} {Priority} {Operators.From} {PriorityId} {Operators.From} {Keywords.Empty} {Operators.From} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Priority} {Operators.Changed} {Operators.To} {Priority} {Operators.To} {PriorityId} {Operators.To} {Keywords.Empty} {Operators.To} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.Priority} {Operators.Changed} {Operators.By} {expectedUser} {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} ({expectedUser}, {expectedUser}, {userId}) {Operators.By} {Keywords.Empty} {Operators.By} {Keywords.Null}";
 
+        var filter = new JqlCollection<JqlUser>(){ user, user, userId };
+        
         var actual = JqlBuilder.Query
             .Where(f => f.Priority.Changed())
             .And(f => f.Priority.Changed(c => c.After(now).After(date).After(dateTime).After(f.Functions.Date.Now).After(Functions.Date.Now)))
             .And(f => f.Priority.Changed(c => c.Before(now).Before(date).Before(dateTime).Before(f.Functions.Date.Now).Before(Functions.Date.Now)))
             .And(f => f.Priority.Changed(c => c.On(now).On(date).On(dateTime).On(f.Functions.Date.Now).On(Functions.Date.Now)))
             .And(f => f.Priority.Changed(c => c.During(now, date).During(date, dateTime).During(dateTime, now).During(f.Functions.Date.Now, now).During(Functions.Date.Now, date)))
-            .And(f => f.Priority.Changed(c => c.From(Priority).From(PriorityId).To(Priority).To(PriorityId)))
-            .And(f => f.Priority.Changed(c => c.By(user)))
+            .And(f => f.Priority.Changed(c => c.From(Priority).From(PriorityId).From(a => a.Empty).From(a => a.Null)))
+            .And(f => f.Priority.Changed(c => c.To(Priority).To(PriorityId).To(a => a.Empty).To(a => a.Null)))
+            .And(f => f.Priority.Changed(c => c.By(user).By(filter).By(user, user, userId).By(a => a.Empty).By(a => a.Null)))
             .ToString();
 
         Assert.AreEqual(expected, actual);
