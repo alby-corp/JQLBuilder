@@ -15,7 +15,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\JQLBuilder.Infrastructure\JQLBuilder.Infrastructure.csproj"/>
+        <ProjectReference Include="..\JQLBuilder.Infrastructure\JQLBuilder.Infrastructure.csproj">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>JQLBuilder.Infrastructure.dll</IncludeAssets>
+        </ProjectReference>
     </ItemGroup>
 
 </Project>

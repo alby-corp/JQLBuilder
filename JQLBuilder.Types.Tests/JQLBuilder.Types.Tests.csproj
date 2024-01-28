@@ -17,28 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\JQLBuilder.Infrastructure\JQLBuilder.Infrastructure.csproj" />
+        <ProjectReference Include="..\JQLBuilder.Render\JQLBuilder.Render.csproj" />
+        <ProjectReference Include="..\JQLBuilder.Types\JQLBuilder.Types.csproj" />
         <ProjectReference Include="..\JQLBuilder\JQLBuilder.csproj"/>
     </ItemGroup>
-
-    <ItemGroup>
-        <Compile Update="Types\DateOnlyTests.Equality.cs">
-            <DependentUpon>DateOnlyTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\DateOnlyTests.Membership.cs">
-            <DependentUpon>DateOnlyTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\DateOnlyTests.Nullable.cs">
-            <DependentUpon>DateOnlyTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\DateTimeTests.Equality.cs">
-            <DependentUpon>DateTimeTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\DateTimeTests.Membership.cs">
-            <DependentUpon>DateTimeTests.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Types\DateTimeTests.Nullable.cs">
-            <DependentUpon>DateTimeTests.cs</DependentUpon>
-        </Compile>
-    </ItemGroup>
-
+    
 </Project>

@@ -23,8 +23,18 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\JQLBuilder.Render\JQLBuilder.Render.csproj"/>
-        <ProjectReference Include="..\JQLBuilder.Types\JQLBuilder.Types.csproj"/>
+        <ProjectReference Include="..\JQLBuilder.Render\JQLBuilder.Render.csproj">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>JQLBuilder.Render.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\JQLBuilder.Types\JQLBuilder.Types.csproj">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>JQLBuilder.Types.dll</IncludeAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\JQLBuilder.Infrastructure\JQLBuilder.Infrastructure.csproj">
+            <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+            <IncludeAssets>JQLBuilder.Infrastructure.dll</IncludeAssets>
+        </ProjectReference>
     </ItemGroup>
 
 </Project>
