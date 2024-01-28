@@ -9,7 +9,7 @@
 [![NuGet Version](https://img.shields.io/nuget/v/JQLBuilder.svg?style=flat-square)](https://www.nuget.org/packages/JQLBuilder/)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/JQLBuilder.svg)](https://www.nuget.org/packages/JQLBuilder/)
 
-> **_NOTE:_** In its current state, the package is in the beta phase, providing partial implementation for specified fields along with support for all functions and operators.
+> **_NOTE:_** In its current state, the package is in the **RELEASE CANDIDATE** phase, offering partial implementation for specified fields, along with support for all functions and operators.
 
 ## Introduction
 
@@ -20,6 +20,22 @@ The JqlBuilder library provides a fluent interface for constructing Jira Query L
 expressive manner.
 
 For more details about JQL, please refer to the [wiki](https://github.com/alby-corp/JQLBuilder/wiki).
+
+## Installation
+
+You should install JqlBuilder with NuGet:
+
+```
+NuGet\Install-Package JQLBuilder
+```
+
+Or via the .NET Core command line interface:
+
+```
+dotnet add package JQLBuilder
+```
+
+Either commands, from Package Manager Console or .NET Core CLI, will download and install JqlBuilder and all required dependencies.
 
 ## Getting Started
 
