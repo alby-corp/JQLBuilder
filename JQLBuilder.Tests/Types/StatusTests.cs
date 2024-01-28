@@ -3,7 +3,6 @@
 using Constants;
 using Infrastructure;
 using JQLBuilder.Types.JqlTypes;
-using JQLBuilder.Types.Support;
 using DateTime = DateTime;
 using FieldContestants = Constants.Fields;
 using Fields = Fields;

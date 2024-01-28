@@ -1,17 +1,18 @@
-﻿namespace JQLBuilder.Types.Support;
+﻿// ReSharper disable once CheckNamespace
+namespace JQLBuilder;
 
-using Abstract;
 using Constants;
 using Infrastructure.Operators;
-using JqlTypes;
+using Types.Abstract;
+using Types.JqlTypes;
 
-internal static class NullableExtensions
+public static class NullableExtensions
 {
     static JqlNoValues ValuesSelection { get; } = new();
 
-    internal static Bool Is<T>(this T value, Func<JqlNoValues, JqlNoValue>? selector = default) where T : IJqlNullable =>
+    public static Bool Is<T>(this T value, Func<JqlNoValues, JqlNoValue>? selector = default) where T : IJqlNullable =>
         new NoValueOperator(value, $"{Operators.Is}", selector?.Invoke(ValuesSelection) ?? ValuesSelection.Empty);
 
-    internal static Bool IsNot<T>(this T value, Func<JqlNoValues, JqlNoValue>? selector = default) where T : IJqlNullable =>
+    public static Bool IsNot<T>(this T value, Func<JqlNoValues, JqlNoValue>? selector = default) where T : IJqlNullable =>
         new NoValueOperator(value, $"{Operators.IsNot}", selector?.Invoke(ValuesSelection) ?? ValuesSelection.Empty);
 }

@@ -1,7 +1,6 @@
-namespace JQLBuilder.Tests;
+namespace JQLBuilder.API.Tests;
 
-using JQLBuilder.Types.Support;
-using Functions = Functions;
+using JQLBuilder;
 
 [TestClass]
 public class SampleTests

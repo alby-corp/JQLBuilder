@@ -5,7 +5,7 @@ using Infrastructure.Abstract;
 using Infrastructure.Operators;
 using Constants = Constants.Operators;
 
-internal class JqlChange<T> : JqlValue where T : IJqlType
+public class JqlChange<T> : JqlValue where T : IJqlType
 {
     public JqlChange(IReadOnlyList<ChangeOperator> operators)
     {

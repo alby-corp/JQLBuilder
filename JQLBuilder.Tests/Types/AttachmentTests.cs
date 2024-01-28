@@ -2,7 +2,6 @@
 
 using Constants;
 using Infrastructure;
-using JQLBuilder.Types.Support;
 using Fields = Fields;
 using FieldContestants = Constants.Fields;
 
