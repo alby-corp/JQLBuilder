@@ -1,9 +1,8 @@
-﻿namespace JQLBuilder.Types.Tests.Types;
+﻿namespace JQLBuilder.Tests.Types;
 
 using Constants;
 using Infrastructure;
-using Infrastructure.Constants;
-using Support;
+using JQLBuilder.Types.Support;
 using Fields = Fields;
 using FieldContestants = Constants.Fields;
 

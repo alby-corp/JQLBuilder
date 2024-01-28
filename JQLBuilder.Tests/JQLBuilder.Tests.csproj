@@ -17,9 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\JQLBuilder.Infrastructure\JQLBuilder.Infrastructure.csproj" />
-        <ProjectReference Include="..\JQLBuilder.Render\JQLBuilder.Render.csproj" />
-        <ProjectReference Include="..\JQLBuilder.Types\JQLBuilder.Types.csproj" />
         <ProjectReference Include="..\JQLBuilder\JQLBuilder.csproj"/>
     </ItemGroup>
     

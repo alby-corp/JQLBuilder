@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Infrastructure.Constants;
+﻿namespace JQLBuilder.Constants;
 
 internal static class Keywords
 {

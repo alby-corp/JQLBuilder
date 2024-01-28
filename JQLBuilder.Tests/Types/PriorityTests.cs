@@ -1,14 +1,13 @@
-﻿namespace JQLBuilder.Types.Tests.Types;
+﻿namespace JQLBuilder.Tests.Types;
 
 using Constants;
 using Infrastructure;
-using Infrastructure.Constants;
-using JqlTypes;
-using Support;
-using DateTime = System.DateTime;
+using JQLBuilder.Types.JqlTypes;
+using JQLBuilder.Types.Support;
+using DateTime = DateTime;
 using FieldContestants = Constants.Fields;
 using Fields = Fields;
-using Functions = JQLBuilder.Functions;
+using Functions = Functions;
 using FunctionsConstants = Constants.Functions;
 
 [TestClass]

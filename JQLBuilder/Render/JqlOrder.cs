@@ -1,9 +1,9 @@
 ﻿namespace JQLBuilder.Render;
 
 using System.Text;
+using Constants;
 using Enums;
 using Infrastructure.Abstract;
-using Infrastructure.Constants;
 using Renders;
 
 public class JqlOrder(JqlFilter? query, IReadOnlyList<(IJqlType Value, Order Order)> orderings)

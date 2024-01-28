@@ -1,13 +1,12 @@
-﻿namespace JQLBuilder.Types.Tests.Types;
+﻿namespace JQLBuilder.Tests.Types;
 
 using Constants;
 using Infrastructure;
-using Infrastructure.Constants;
-using JqlTypes;
-using Support;
+using JQLBuilder.Types.JqlTypes;
+using JQLBuilder.Types.Support;
 using FieldContestants = Constants.Fields;
 using Fields = Fields;
-using Functions = JQLBuilder.Functions;
+using Functions = Functions;
 using FunctionsConstants = Constants.Functions;
 
 public class UserTests

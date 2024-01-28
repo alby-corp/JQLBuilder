@@ -1,4 +1,4 @@
-﻿namespace JQLBuilder.Types.Constants;
+﻿namespace JQLBuilder.Constants;
 
 internal static class Operators
 {
