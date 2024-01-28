@@ -97,18 +97,27 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
     public void TimeOffset(TimeOffset value)
     {
-        builder.Append('"');
+        var years = value.Years != 0;
+        var months = value.Months != 0;
+        var weeks = value.Weeks != 0;
+        var days = value.Days != 0;
+        var hours = value.Hours != 0;
+        var minutes = value.Minutes != 0;
+        
+        var complex = (years ? 1 : 0) + (months ? 1 : 0) + (weeks ? 1 : 0) + (days ? 1 : 0) + (hours ? 1 : 0) + (minutes ? 1 : 0) >= 2;
+        
+        if(complex) builder.Append('"');
 
-        if (value.Years != 0) builder.Append(value.Years).Append("y ");
-        if (value.Months != 0) builder.Append(value.Months).Append("M ");
-        if (value.Weeks != 0) builder.Append(value.Weeks).Append("w ");
-        if (value.Days != 0) builder.Append(value.Days).Append("d ");
-        if (value.Hours != 0) builder.Append(value.Hours).Append("h ");
-        if (value.Minutes != 0) builder.Append(value.Minutes).Append("m ");
+        if (years) builder.Append(value.Years).Append("y ");
+        if (months) builder.Append(value.Months).Append("M ");
+        if (weeks) builder.Append(value.Weeks).Append("w ");
+        if (days) builder.Append(value.Days).Append("d ");
+        if (hours) builder.Append(value.Hours).Append("h ");
+        if (minutes) builder.Append(value.Minutes).Append("m ");
 
         builder.Length--;
 
-        builder.Append('"');
+        if(complex) builder.Append('"');
     }
 
     public override string ToString() => builder.ToString();

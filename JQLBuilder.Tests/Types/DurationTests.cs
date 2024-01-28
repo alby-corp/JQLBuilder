@@ -59,8 +59,8 @@ public class DurationTests
     [TestMethod]
     public void Should_Render_Literals_Correctly()
     {
-        var expected = $"{Fields.Custom(CustomFieldId)} {Operators.Equals} {Functions.StartOfDay}(\"-1M\") {Keywords.And} " +
-                       $"{Fields.Custom(CustomFieldId)} {Operators.Equals} {Functions.EndOfWeek}(\"1h\")";
+        var expected = $"{Fields.Custom(CustomFieldId)} {Operators.Equals} {Functions.StartOfDay}(-1M) {Keywords.And} " +
+                       $"{Fields.Custom(CustomFieldId)} {Operators.Equals} {Functions.EndOfWeek}(1h)";
 
         var actual = JqlBuilder.Query
             .Where(f =>
