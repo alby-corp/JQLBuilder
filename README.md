@@ -23,7 +23,7 @@ For more details about JQL, please refer to the [wiki](https://github.com/alby-c
 
 ## Installation
 
-You should install JqlBuilder with NuGet:
+You should install JqlBuilder with [NuGet](https://www.nuget.org/packages/JqlBuilder):
 
 ```
 NuGet\Install-Package JQLBuilder
