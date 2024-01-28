@@ -10,7 +10,7 @@
         <PackageProjectUrl>https://github.com/alby-corp/jql-builder</PackageProjectUrl>
         <PackageLicense>https://github.com/alby-corp/jql-builder/blob/main/LICENSE</PackageLicense>
         <RepositoryUrl>https://github.com/alby-corp/jql-builder</RepositoryUrl>
-        <PackageTags>jql builder atlassian</PackageTags>
+        <PackageTags>jql builder atlassian jql-builder jqlbuilder jira</PackageTags>
         <Version>1.0.0</Version>
     </PropertyGroup>
 
