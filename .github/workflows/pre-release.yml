@@ -32,5 +32,5 @@ jobs:
       - name: Publish
         working-directory: ${{ env.PROJECT_FOLDER }}
         run: |
-          dotnet pack --configuration Release --output ./artifacts /p:Version=${{ env.VERSION }}
+          dotnet pack --no-dependencies --configuration Release --output ./artifacts /p:Version=${{ env.VERSION }}
           dotnet nuget push ./artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ secrets.SQLBUILDER_NUGET_API_KEY }}
