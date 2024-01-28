@@ -8,7 +8,7 @@ public class Ordering
     public OrderingProject Project { get; } = new();
     public OrderingVersion Version { get; } = new();
     public OrderingPriority Priority { get; } = new();
-    public OrderingType Type { get; } = new();
+    public OrderingIssueType IssueType { get; } = new();
     public OrderingIssue Issue { get; } = new();
     public OrderingStatus Status { get; } = new();
     public OrderingUser User { get; } = new();

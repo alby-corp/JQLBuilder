@@ -7,7 +7,7 @@ using Fields = Fields;
 using FieldContestants = Constants.Fields;
 
 [TestClass]
-public class TypeTests
+public class IssueTypeTests
 {
     const string Type = "Enanchement";
     const int TypeId = 1;
@@ -35,7 +35,7 @@ public class TypeTests
     {
         const string expected = FieldContestants.Type;
 
-        var field = Fields.All.Type;
+        var field = Fields.All.Issue.Type;
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
@@ -46,7 +46,7 @@ public class TypeTests
     {
         const string expected = FieldContestants.IssueType;
 
-        var field = Fields.All.Type.Issue;
+        var field = Fields.All.Issue.IssueType;
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expected, actual);
@@ -56,24 +56,24 @@ public class TypeTests
     public void Should_Parses_Equality_Operators()
     {
         var expected =
-            $"{FieldContestants.Type} {Operators.Equals} {Type} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.Equals} {TypeId} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.NotEquals} {Type} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.NotEquals} {TypeId} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.Equals} {Type} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.Equals} {TypeId} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.NotEquals} {Type} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.NotEquals} {TypeId}";
+            $"{FieldContestants.IssueType} {Operators.Equals} {Type} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.Equals} {TypeId} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.NotEquals} {Type} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.NotEquals} {TypeId} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.Equals} {Type} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.Equals} {TypeId} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.NotEquals} {Type} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.NotEquals} {TypeId}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Type == Type)
-            .And(f => f.Type == TypeId)
-            .And(f => f.Type != Type)
-            .And(f => f.Type != TypeId)
-            .And(f => Type == f.Type)
-            .And(f => TypeId == f.Type)
-            .And(f => Type != f.Type)
-            .And(f => TypeId != f.Type)
+            .Where(f => f.Issue.IssueType == Type)
+            .And(f => f.Issue.IssueType == TypeId)
+            .And(f => f.Issue.IssueType != Type)
+            .And(f => f.Issue.IssueType != TypeId)
+            .And(f => Type == f.Issue.IssueType)
+            .And(f => TypeId == f.Issue.IssueType)
+            .And(f => Type != f.Issue.IssueType)
+            .And(f => TypeId != f.Issue.IssueType)
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -83,20 +83,20 @@ public class TypeTests
     public void Should_Parses_Nullable_Operators()
     {
         const string expected =
-            $"{FieldContestants.Type} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-            $"{FieldContestants.Type} {Operators.IsNot} {Keywords.Null}";
+            $"{FieldContestants.IssueType} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{FieldContestants.IssueType} {Operators.IsNot} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Type.Is())
-            .And(f => f.Type.Is(s => s.Empty))
-            .And(f => f.Type.Is(s => s.Null))
-            .And(f => f.Type.IsNot())
-            .And(f => f.Type.IsNot(s => s.Empty))
-            .And(f => f.Type.IsNot(s => s.Null))
+            .Where(f => f.Issue.IssueType.Is())
+            .And(f => f.Issue.IssueType.Is(s => s.Empty))
+            .And(f => f.Issue.IssueType.Is(s => s.Null))
+            .And(f => f.Issue.IssueType.IsNot())
+            .And(f => f.Issue.IssueType.IsNot(s => s.Empty))
+            .And(f => f.Issue.IssueType.IsNot(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -119,14 +119,14 @@ public class TypeTests
         var heterogeneousFilter = new JqlCollection<JqlType> { TypeId, Type, TypeId };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.Type.In(TypeId, TypeId, TypeId))
-            .And(f => f.Type.In(homogeneousFilter))
-            .And(f => f.Type.In(TypeId, Type, TypeId))
-            .And(f => f.Type.In(heterogeneousFilter))
-            .And(f => f.Type.NotIn(TypeId, TypeId, TypeId))
-            .And(f => f.Type.NotIn(homogeneousFilter))
-            .And(f => f.Type.NotIn(TypeId, Type, TypeId))
-            .And(f => f.Type.NotIn(heterogeneousFilter))
+            .Where(f => f.Issue.Type.In(TypeId, TypeId, TypeId))
+            .And(f => f.Issue.Type.In(homogeneousFilter))
+            .And(f => f.Issue.Type.In(TypeId, Type, TypeId))
+            .And(f => f.Issue.Type.In(heterogeneousFilter))
+            .And(f => f.Issue.Type.NotIn(TypeId, TypeId, TypeId))
+            .And(f => f.Issue.Type.NotIn(homogeneousFilter))
+            .And(f => f.Issue.Type.NotIn(TypeId, Type, TypeId))
+            .And(f => f.Issue.Type.NotIn(heterogeneousFilter))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -140,8 +140,8 @@ public class TypeTests
             $"{FieldContestants.IssueType} {Keywords.Ascending}";
 
         var actual = JqlBuilder.Query
-            .OrderBy(f => f.Type)
-            .ThenBy(f => f.Type.Issue)
+            .OrderBy(f => f.Issue.Type)
+            .ThenBy(f => f.Issue.IssueType)
             .ToString();
 
         Assert.AreEqual(expected, actual);

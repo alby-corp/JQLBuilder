@@ -41,6 +41,7 @@ internal static class Fields
     internal const string Votes = "votes";
     internal const string Watchers = "watchers";
     internal const string HierarchicalLevel = "hierarchicalLevel";
+    internal const string ProjectType = "projectType";
 
     internal static string Custom(int id) => $"cf[{id}]";
 }

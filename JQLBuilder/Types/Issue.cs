@@ -14,6 +14,8 @@ public class Issue : IssueField
     public IssueField Id { get; } = Field.Custom<IssueField>(Fields.Id);
     public IssueField Key { get; } = Field.Custom<IssueField>(Fields.Key);
     public ParentField Parent { get; } = Field.Custom<ParentField>(Fields.Parent);
+    public TypeField IssueType { get; } = Field.Custom<TypeField>(Fields.IssueType);
+    public TypeField Type { get; } = Field.Custom<TypeField>(Fields.Type);
 }
 
 public class OrderingIssue : IssueField
@@ -23,4 +25,6 @@ public class OrderingIssue : IssueField
     public IssueField IssueKey { get; } = Field.Custom<IssueField>(Fields.IssueKey);
     public IssueField Id { get; } = Field.Custom<IssueField>(Fields.Id);
     public IssueField Key { get; } = Field.Custom<IssueField>(Fields.Key);
+    public TypeField IssueType { get; } = Field.Custom<TypeField>(Fields.IssueType);
+    public TypeField Type { get; } = Field.Custom<TypeField>(Fields.Type);
 }

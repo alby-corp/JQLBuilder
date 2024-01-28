@@ -13,7 +13,6 @@ public class Fields
     public Attachment Attachment { get; } = new();
     public Category Category { get; } = new();
     public Priority Priority { get; } = new();
-    public Type Type { get; } = new();
     public Issue Issue { get; } = new();
     public Status Status { get; } = new();
     public User User { get; } = new();
