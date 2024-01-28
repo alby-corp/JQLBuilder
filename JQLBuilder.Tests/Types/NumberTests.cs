@@ -4,6 +4,8 @@ using Constants;
 using Infrastructure;
 using JQLBuilder.Types.JqlTypes;
 using Fields = Fields;
+using FieldContestants = Constants.Fields;
+
 
 [TestClass]
 public class NumberTests
@@ -38,6 +40,39 @@ public class NumberTests
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(expectedCustomFieldId, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_Votes_Field()
+    {
+        const string expected = FieldContestants.Votes;
+
+        var field = Fields.All.Number.Votes;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_Watchers_Field()
+    {
+        const string expected = FieldContestants.Watchers;
+
+        var field = Fields.All.Number.Watchers;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_HierarchicalLevel_Field()
+    {
+        const string expected = FieldContestants.HierarchicalLevel;
+
+        var field = Fields.All.Number.HierarchicalLevel;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
