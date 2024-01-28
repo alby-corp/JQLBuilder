@@ -64,8 +64,8 @@ public class DurationTests
 
         var actual = JqlBuilder.Query
             .Where(f =>
-                (f.DateTime[CustomFieldId] == f.Functions.Date.StartOfDay("-1M")) &
-                (f.DateOnly[CustomFieldId] == f.Functions.Date.EndOfWeek("1h")))
+                (f.Date.Time[CustomFieldId] == f.Functions.Date.StartOfDay("-1M")) &
+                (f.Date.Only[CustomFieldId] == f.Functions.Date.EndOfWeek("1h")))
             .ToString();
 
         Assert.AreEqual(expected, actual);

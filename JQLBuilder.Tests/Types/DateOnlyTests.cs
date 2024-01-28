@@ -6,6 +6,7 @@ using JQLBuilder.Types.JqlTypes;
 using Fields = Fields;
 using DateOnly = DateOnly;
 using FieldConstants = Constants.Fields;
+using FieldContestants = Constants.Fields;
 
 [TestClass]
 public class DateOnlyTests
@@ -23,6 +24,28 @@ public class DateOnlyTests
 
         Assert.AreEqual("DateOnly", expression.Value.GetType().Name);
         Assert.AreEqual(DateOnly, expression.Value);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_Due_Field()
+    {
+        const string expected = FieldContestants.Due;
+
+        var field = Fields.All.Date.Due;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    public void Should_Cast_DueDate_Field()
+    {
+        const string expected = FieldContestants.DueDate;
+
+        var field = Fields.All.Date.DueDate;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
@@ -50,8 +73,8 @@ public class DateOnlyTests
 
         var actual = JqlBuilder.Query
             .Where(f =>
-                (f.DateTime[CustomFieldId] == "2000-02-03") &
-                (f.DateTime[CustomFieldId] == "3 1m 5h 2d"))
+                (f.Date.Time[CustomFieldId] == "2000-02-03") &
+                (f.Date.Time[CustomFieldId] == "3 1m 5h 2d"))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -78,7 +101,7 @@ public class DateOnlyTests
     [TestMethod]
     public void Should_Parses_CustomField_DateOnly_From_Name()
     {
-        var field = Fields.All.DateOnly[CustomFieldName];
+        var field = Fields.All.Date.Only[CustomFieldName];
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(CustomFieldName, actual);
@@ -111,18 +134,18 @@ public class DateOnlyTests
             $"{expectedCustomFieldId} {Operators.LessThanOrEqual} {dateOnlyString}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName] == DateOnly)
-            .And(f => f.DateOnly[CustomFieldName] != DateOnly)
-            .And(f => f.DateOnly[CustomFieldName] > DateOnly)
-            .And(f => f.DateOnly[CustomFieldName] >= DateOnly)
-            .And(f => f.DateOnly[CustomFieldName] < DateOnly)
-            .And(f => f.DateOnly[CustomFieldName] <= DateOnly)
-            .And(f => DateOnly == f.DateOnly[CustomFieldId])
-            .And(f => DateOnly != f.DateOnly[CustomFieldId])
-            .And(f => DateOnly < f.DateOnly[CustomFieldId])
-            .And(f => DateOnly <= f.DateOnly[CustomFieldId])
-            .And(f => DateOnly > f.DateOnly[CustomFieldId])
-            .And(f => DateOnly >= f.DateOnly[CustomFieldId])
+            .Where(f => f.Date.Only[CustomFieldName] == DateOnly)
+            .And(f => f.Date.Only[CustomFieldName] != DateOnly)
+            .And(f => f.Date.Only[CustomFieldName] > DateOnly)
+            .And(f => f.Date.Only[CustomFieldName] >= DateOnly)
+            .And(f => f.Date.Only[CustomFieldName] < DateOnly)
+            .And(f => f.Date.Only[CustomFieldName] <= DateOnly)
+            .And(f => DateOnly == f.Date.Only[CustomFieldId])
+            .And(f => DateOnly != f.Date.Only[CustomFieldId])
+            .And(f => DateOnly < f.Date.Only[CustomFieldId])
+            .And(f => DateOnly <= f.Date.Only[CustomFieldId])
+            .And(f => DateOnly > f.Date.Only[CustomFieldId])
+            .And(f => DateOnly >= f.Date.Only[CustomFieldId])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -140,12 +163,12 @@ public class DateOnlyTests
             $"{expectedCustomFieldId} {Operators.IsNot} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName].Is())
-            .And(f => f.DateOnly[CustomFieldName].Is(s => s.Empty))
-            .And(f => f.DateOnly[CustomFieldName].Is(s => s.Null))
-            .And(f => f.DateOnly[CustomFieldId].IsNot())
-            .And(f => f.DateOnly[CustomFieldId].IsNot(s => s.Empty))
-            .And(f => f.DateOnly[CustomFieldId].IsNot(s => s.Null))
+            .Where(f => f.Date.Only[CustomFieldName].Is())
+            .And(f => f.Date.Only[CustomFieldName].Is(s => s.Empty))
+            .And(f => f.Date.Only[CustomFieldName].Is(s => s.Null))
+            .And(f => f.Date.Only[CustomFieldId].IsNot())
+            .And(f => f.Date.Only[CustomFieldId].IsNot(s => s.Empty))
+            .And(f => f.Date.Only[CustomFieldId].IsNot(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -163,10 +186,10 @@ public class DateOnlyTests
         var filter = new JqlCollection<JqlJqlDate> { DateOnly, DateOnly, DateOnly };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateOnly[CustomFieldName].In(DateOnly, DateOnly, DateOnly))
-            .And(f => f.DateOnly[CustomFieldId].In(filter))
-            .And(f => f.DateOnly[CustomFieldName].NotIn(DateOnly, DateOnly, DateOnly))
-            .And(f => f.DateOnly[CustomFieldId].NotIn(filter))
+            .Where(f => f.Date.Only[CustomFieldName].In(DateOnly, DateOnly, DateOnly))
+            .And(f => f.Date.Only[CustomFieldId].In(filter))
+            .And(f => f.Date.Only[CustomFieldName].NotIn(DateOnly, DateOnly, DateOnly))
+            .And(f => f.Date.Only[CustomFieldId].NotIn(filter))
             .ToString();
 
         Assert.AreEqual(expected, actual);

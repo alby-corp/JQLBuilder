@@ -31,6 +31,16 @@ internal static class Fields
     internal const string Description = "description";
     internal const string Comment = "comment";
     internal const string Environment = "environment";
+    internal const string Created = "created";
+    internal const string Updated = "updated";
+    internal const string CreatedDate = "createdDate";
+    internal const string UpdatedDate = "updatedDate";
+    internal const string Resolved = "resolved";
+    internal const string ResolutionDate  = "resolutionDate ";
+    internal const string LastViewed = "lastViewed";
+    internal const string Votes = "votes";
+    internal const string Watchers = "watchers";
+    internal const string HierarchicalLevel = "hierarchicalLevel";
 
     internal static string Custom(int id) => $"cf[{id}]";
 }

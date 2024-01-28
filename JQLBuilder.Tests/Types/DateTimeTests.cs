@@ -6,6 +6,8 @@ using JQLBuilder.Types.JqlTypes;
 using DateOnly = DateOnly;
 using Fields = Fields;
 using DateTime = DateTime;
+using FieldContestants = Constants.Fields;
+
 
 [TestClass]
 public class DateTimeTests
@@ -25,6 +27,83 @@ public class DateTimeTests
         Assert.AreEqual(DateTime, expression.Value);
     }
 
+    [TestMethod]
+    public void Should_Cast_Created_Field()
+    {
+        const string expected = FieldContestants.Created;
+
+        var field = Fields.All.Date.Created;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_CreatedDate_Field()
+    {
+        const string expected = FieldContestants.CreatedDate;
+
+        var field = Fields.All.Date.CreatedDate;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_Updated_Field()
+    {
+        const string expected = FieldContestants.Updated;
+
+        var field = Fields.All.Date.Updated;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_UpdatedDate_Field()
+    {
+        const string expected = FieldContestants.UpdatedDate;
+
+        var field = Fields.All.Date.UpdatedDate;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_LastViewed_Field()
+    {
+        const string expected = FieldContestants.LastViewed;
+
+        var field = Fields.All.Date.LastViewed;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_Resolved_Field()
+    {
+        const string expected = FieldContestants.Resolved;
+
+        var field = Fields.All.Date.Resolved;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_ResolutionDate_Field()
+    {
+        const string expected = FieldContestants.ResolutionDate;
+
+        var field = Fields.All.Date.ResolutionDate;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+    
     [TestMethod]
     public void Should_Parse_DateTime()
     {
@@ -59,9 +138,9 @@ public class DateTimeTests
 
         var actual = JqlBuilder.Query
             .Where(f =>
-                (f.DateTime[CustomFieldId] == "2000-02-03 04:05") &
-                (f.DateTime[CustomFieldId] == "2000-02-03") &
-                (f.DateTime[CustomFieldId] == "3 1m 5h 2d"))
+                (f.Date.Time[CustomFieldId] == "2000-02-03 04:05") &
+                (f.Date.Time[CustomFieldId] == "2000-02-03") &
+                (f.Date.Time[CustomFieldId] == "3 1m 5h 2d"))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -86,7 +165,7 @@ public class DateTimeTests
     [TestMethod]
     public void Should_Parses_CustomField_DateTime_From_Name()
     {
-        var field = Fields.All.DateTime[CustomFieldName];
+        var field = Fields.All.Date.Time[CustomFieldName];
         var actual = ((Field)field.Value).Value;
 
         Assert.AreEqual(CustomFieldName, actual);
@@ -119,18 +198,18 @@ public class DateTimeTests
             $"{expectedCustomFieldId} {Operators.LessThanOrEqual} {dateTimeString}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName] == DateTime)
-            .And(f => f.DateTime[CustomFieldName] != DateTime)
-            .And(f => f.DateTime[CustomFieldName] > DateTime)
-            .And(f => f.DateTime[CustomFieldName] >= DateTime)
-            .And(f => f.DateTime[CustomFieldName] < DateTime)
-            .And(f => f.DateTime[CustomFieldName] <= DateTime)
-            .And(f => DateTime == f.DateTime[CustomFieldId])
-            .And(f => DateTime != f.DateTime[CustomFieldId])
-            .And(f => DateTime < f.DateTime[CustomFieldId])
-            .And(f => DateTime <= f.DateTime[CustomFieldId])
-            .And(f => DateTime > f.DateTime[CustomFieldId])
-            .And(f => DateTime >= f.DateTime[CustomFieldId])
+            .Where(f => f.Date.Time[CustomFieldName] == DateTime)
+            .And(f => f.Date.Time[CustomFieldName] != DateTime)
+            .And(f => f.Date.Time[CustomFieldName] > DateTime)
+            .And(f => f.Date.Time[CustomFieldName] >= DateTime)
+            .And(f => f.Date.Time[CustomFieldName] < DateTime)
+            .And(f => f.Date.Time[CustomFieldName] <= DateTime)
+            .And(f => DateTime == f.Date.Time[CustomFieldId])
+            .And(f => DateTime != f.Date.Time[CustomFieldId])
+            .And(f => DateTime < f.Date.Time[CustomFieldId])
+            .And(f => DateTime <= f.Date.Time[CustomFieldId])
+            .And(f => DateTime > f.Date.Time[CustomFieldId])
+            .And(f => DateTime >= f.Date.Time[CustomFieldId])
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -148,12 +227,12 @@ public class DateTimeTests
             $"{expectedCustomFieldId} {Operators.IsNot} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].Is())
-            .And(f => f.DateTime[CustomFieldName].Is(s => s.Empty))
-            .And(f => f.DateTime[CustomFieldName].Is(s => s.Null))
-            .And(f => f.DateTime[CustomFieldId].IsNot())
-            .And(f => f.DateTime[CustomFieldId].IsNot(s => s.Empty))
-            .And(f => f.DateTime[CustomFieldId].IsNot(s => s.Null))
+            .Where(f => f.Date.Time[CustomFieldName].Is())
+            .And(f => f.Date.Time[CustomFieldName].Is(s => s.Empty))
+            .And(f => f.Date.Time[CustomFieldName].Is(s => s.Null))
+            .And(f => f.Date.Time[CustomFieldId].IsNot())
+            .And(f => f.Date.Time[CustomFieldId].IsNot(s => s.Empty))
+            .And(f => f.Date.Time[CustomFieldId].IsNot(s => s.Null))
             .ToString();
 
         Assert.AreEqual(expected, actual);
@@ -171,10 +250,10 @@ public class DateTimeTests
         var filter = new JqlCollection<JqlDateTime> { DateTime, DateTime, DateTime };
 
         var actual = JqlBuilder.Query
-            .Where(f => f.DateTime[CustomFieldName].In(DateTime, DateTime, DateTime))
-            .And(f => f.DateTime[CustomFieldId].In(filter))
-            .And(f => f.DateTime[CustomFieldName].NotIn(DateTime, DateTime, DateTime))
-            .And(f => f.DateTime[CustomFieldId].NotIn(filter))
+            .Where(f => f.Date.Time[CustomFieldName].In(DateTime, DateTime, DateTime))
+            .And(f => f.Date.Time[CustomFieldId].In(filter))
+            .And(f => f.Date.Time[CustomFieldName].NotIn(DateTime, DateTime, DateTime))
+            .And(f => f.Date.Time[CustomFieldId].NotIn(filter))
             .ToString();
 
         Assert.AreEqual(expected, actual);
