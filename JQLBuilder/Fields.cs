@@ -19,5 +19,6 @@ public class Fields
     public Sprint Sprint { get; } = new();
     public Component Component { get; } = new();
     public Labels Labels { get; } = new();
+    public Filter Filter { get; } = new();
     public InstanceFunctions Functions { get; } = new();
 }

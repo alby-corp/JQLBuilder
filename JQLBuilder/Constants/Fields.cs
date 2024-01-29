@@ -43,6 +43,10 @@ internal static class Fields
     internal const string HierarchicalLevel = "hierarchicalLevel";
     internal const string ProjectType = "projectType";
     internal const string EpicLink = "Epic Link";
+    internal const string Filter = "filter";
+    internal const string Request = "request";
+    internal const string SavedFilter = "savedFilter";
+    internal const string SearchRequest = "searchRequest";
 
     internal static string Custom(int id) => $"cf[{id}]";
 }
