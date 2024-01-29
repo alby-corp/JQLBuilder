@@ -16,6 +16,7 @@ public class Issue : IssueField
     public ParentField Parent { get; } = Field.Custom<ParentField>(Fields.Parent);
     public TypeField IssueType { get; } = Field.Custom<TypeField>(Fields.IssueType);
     public TypeField Type { get; } = Field.Custom<TypeField>(Fields.Type);
+    public EpicLinkField EpicLink { get; } = Field.Custom<EpicLinkField>(Fields.EpicLink);
 }
 
 public class OrderingIssue : IssueField
@@ -27,4 +28,5 @@ public class OrderingIssue : IssueField
     public IssueField Key { get; } = Field.Custom<IssueField>(Fields.Key);
     public TypeField IssueType { get; } = Field.Custom<TypeField>(Fields.IssueType);
     public TypeField Type { get; } = Field.Custom<TypeField>(Fields.Type);
+    public EpicLinkField EpicLink { get; } = Field.Custom<EpicLinkField>(Fields.EpicLink);
 }

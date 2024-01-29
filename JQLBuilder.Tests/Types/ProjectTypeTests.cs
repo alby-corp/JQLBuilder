@@ -11,8 +11,8 @@ public class ProjectTypeTests
 {
     const string ProjectType = "software";
     const string ExpectedProjectType = $@"""{ProjectType}""";
-    
-       [TestMethod]
+
+    [TestMethod]
     public void Should_Cast_Project_Expression_From_String()
     {
         var expression = (JqlProjectType)ProjectType;
@@ -35,7 +35,7 @@ public class ProjectTypeTests
     [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
-        var expected =
+        const string expected =
             $"{FieldContestants.ProjectType} {Operators.Equals} {ExpectedProjectType} {Keywords.And} " +
             $"{FieldContestants.ProjectType} {Operators.NotEquals} {ExpectedProjectType} {Keywords.And} " +
             $"{FieldContestants.ProjectType} {Operators.Equals} {ExpectedProjectType} {Keywords.And} " +
@@ -54,7 +54,7 @@ public class ProjectTypeTests
     [TestMethod]
     public void Should_Parses_Membership_Operators()
     {
-        var expected =
+        const string expected =
             $"{FieldContestants.ProjectType} {Operators.In} ({ExpectedProjectType}, {ExpectedProjectType}, {ExpectedProjectType}) {Keywords.And} " +
             $"{FieldContestants.ProjectType} {Operators.In} ({ExpectedProjectType}, {ExpectedProjectType}, {ExpectedProjectType}) {Keywords.And} " +
             $"{FieldContestants.ProjectType} {Operators.NotIn} ({ExpectedProjectType}, {ExpectedProjectType}, {ExpectedProjectType}) {Keywords.And} " +
