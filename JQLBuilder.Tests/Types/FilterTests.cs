@@ -9,7 +9,8 @@ using Fields = Fields;
 [TestClass]
 public class FilterTests
 {
-    const string Filter = "ABS";
+    const string Filter = "Issues closed in the last 7 days";
+    const string ExpectedFilter = $@"""{Filter}""";
     const int FilterId = 123;
 
     [TestMethod]
@@ -78,13 +79,13 @@ public class FilterTests
     public void Should_Parses_Equality_Operators()
     {
         var expected =
-            $"{FieldContestants.Filter} {Operators.Equals} {Filter} {Keywords.And} " +
+            $"{FieldContestants.Filter} {Operators.Equals} {ExpectedFilter} {Keywords.And} " +
             $"{FieldContestants.Filter} {Operators.Equals} {FilterId} {Keywords.And} " +
-            $"{FieldContestants.Filter} {Operators.NotEquals} {Filter} {Keywords.And} " +
+            $"{FieldContestants.Filter} {Operators.NotEquals} {ExpectedFilter} {Keywords.And} " +
             $"{FieldContestants.Filter} {Operators.NotEquals} {FilterId} {Keywords.And} " +
-            $"{FieldContestants.Filter} {Operators.Equals} {Filter} {Keywords.And} " +
+            $"{FieldContestants.Filter} {Operators.Equals} {ExpectedFilter} {Keywords.And} " +
             $"{FieldContestants.Filter} {Operators.Equals} {FilterId} {Keywords.And} " +
-            $"{FieldContestants.Filter} {Operators.NotEquals} {Filter} {Keywords.And} " +
+            $"{FieldContestants.Filter} {Operators.NotEquals} {ExpectedFilter} {Keywords.And} " +
             $"{FieldContestants.Filter} {Operators.NotEquals} {FilterId}";
 
         var actual = JqlBuilder.Query
@@ -107,12 +108,12 @@ public class FilterTests
         var expected =
             $"{FieldContestants.Filter} {Operators.In} ({FilterId}, {FilterId}, {FilterId}) {Keywords.And} " +
             $"{FieldContestants.Filter} {Operators.In} ({FilterId}, {FilterId}, {FilterId}) {Keywords.And} " +
-            $"{FieldContestants.Filter} {Operators.In} ({FilterId}, {Filter}, {FilterId}) {Keywords.And} " +
-            $"{FieldContestants.Filter} {Operators.In} ({FilterId}, {Filter}, {FilterId}) {Keywords.And} " +
+            $"{FieldContestants.Filter} {Operators.In} ({FilterId}, {ExpectedFilter}, {FilterId}) {Keywords.And} " +
+            $"{FieldContestants.Filter} {Operators.In} ({FilterId}, {ExpectedFilter}, {FilterId}) {Keywords.And} " +
             $"{FieldContestants.Filter} {Operators.NotIn} ({FilterId}, {FilterId}, {FilterId}) {Keywords.And} " +
             $"{FieldContestants.Filter} {Operators.NotIn} ({FilterId}, {FilterId}, {FilterId}) {Keywords.And} " +
-            $"{FieldContestants.Filter} {Operators.NotIn} ({FilterId}, {Filter}, {FilterId}) {Keywords.And} " +
-            $"{FieldContestants.Filter} {Operators.NotIn} ({FilterId}, {Filter}, {FilterId})";
+            $"{FieldContestants.Filter} {Operators.NotIn} ({FilterId}, {ExpectedFilter}, {FilterId}) {Keywords.And} " +
+            $"{FieldContestants.Filter} {Operators.NotIn} ({FilterId}, {ExpectedFilter}, {FilterId})";
 
         var homogeneousFilter = new JqlCollection<JqlFilter> { FilterId, FilterId, FilterId };
         var heterogeneousFilter = new JqlCollection<JqlFilter> { FilterId, Filter, FilterId };
