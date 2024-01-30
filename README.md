@@ -97,58 +97,74 @@ JqlBuilder.Query
 
 The following table lists the supported fields and their corresponding types, along with the supported functions and operations grouped by type
 
-### Supported Fields
+### Supported Fields by Type
 
-| Fields          | TYPE            |
-|-----------------|-----------------|
-| AffectedVersion | VERSION         |
-| Assignee        | HISTORICAL_USER |
-| Attachment      | ATTACHMENT      |
-| Category        | CATEGORY        |
-| Component       | COMPONENT       |
-| Creator         | USER            |
-| Due             | DATE            |
-| DueDate         | DATE            |
-| FixVersion      | VERSION         |
-| Id              | ISSUE           |
-| Issue           | ISSUE           |
-| IssueKey        | ISSUE           |
-| IssueType       | TYPE            |
-| Key             | ISSUE           |
-| Labels          | LABELS          |
-| Parent          | PARENT          |
-| Priority        | PRIORITY        |
-| Project         | PROJECT         |
-| Reporter        | HISTORICAL_USER |
-| Sprint          | SPRINT          |
-| Status          | STATUS          |
-| Summary         | TEXT            |
-| Type            | TYPE            |
-| Voter           | USER            |
-| Watcher         | USER            |
+| Fields                | TYPE            | Notes                                                                                                                 |
+|-----------------------|-----------------|-----------------------------------------------------------------------------------------------------------------------|
+| affectedVersion       | VERSION         |                                                                                                                       |
+| assignee              | HISTORICAL_USER |                                                                                                                       |
+| attachment            | ATTACHMENT      |                                                                                                                       |
+| category              | CATEGORY        |                                                                                                                       |
+| component             | COMPONENT       |                                                                                                                       |
+| creator               | USER            |                                                                                                                       |
+| due                   | DATE            |                                                                                                                       |
+| dueDate               | DATE            |                                                                                                                       |
+| fixVersion            | VERSION         |                                                                                                                       |
+| id                    | ISSUE           |                                                                                                                       |
+| issue                 | ISSUE           |                                                                                                                       |       
+| issueKey              | ISSUE           |                                                                                                                       |
+| issueType             | TYPE            |                                                                                                                       |   
+| key                   | ISSUE           |                                                                                                                       |
+| labels                | LABELS          |                                                                                                                       |
+| parent                | PARENT          |                                                                                                                       |
+| priority              | PRIORITY        |                                                                                                                       |
+| project               | PROJECT         |                                                                                                                       |
+| reporter              | HISTORICAL_USER |                                                                                                                       |
+| sprint                | SPRINT          |                                                                                                                       |
+| status                | STATUS          |                                                                                                                       |
+| summary               | TEXT            |                                                                                                                       |
+| type                  | TYPE            |                                                                                                                       |
+| voter                 | USER            |                                                                                                                       |
+| watcher               | USER            |                                                                                                                       |
+| "epic link"           | EPIC_LINK       |                                                                                                                       |
+| filter                | FILTER          |                                                                                                                       |
+| request               | FILTER          |                                                                                                                       |
+| savedFilter           | FILTER          |                                                                                                                       |
+| searchRequest         | FILTER          |                                                                                                                       |
+| projectType           | PROJECT_TYPE    |                                                                                                                       |
+| issueLink             | ISSUE_LINK      |                                                                                                                       |
+| issueLinkType         | ISSUE_LINK_TYPE |                                                                                                                       |
+| issueLink["LinkType"] | ISSUE_LINK      | Where LinkType is a variable you replace with the issue link type (blocks, duplicates, or is blocked by, for example) |
+| ~~issueLinkType~~     | ISSUE_LINK      | UNSUPPORTED                                                                                                           |
 
-### Supported Operators
 
-| Fields          | TYPE                                                                                           |
-|-----------------|------------------------------------------------------------------------------------------------|
-| VERSION         | = , != , > , >= , < , <=, IS, IS NOT, IN, NOT IN                                               |
-| HISTORICAL_USER | = , !=, IS, IS NOT, IN, NOT IN, WAS, WAS IN, WAS NOT, WAS NOT IN, CHANGED                      |
-| ATTACHMENT      | IS, IS NOT                                                                                     |
-| CATEGORY        | =, !=, IS, IS NOT, IN, NOT IN                                                                  |
-| TEXT            | ~ , !~                                                                                         |
-| COMPONENT       | = , !=, IS , IS NOT , IN , NOT IN                                                              |
-| DATE            | = , != , > , >= , < , <= IS , IS NOT , IN , NOT IN                                             |
-| USER            | ~ , !~ , > , >= , < , <= CHANGED, WAS, WAS IN, WAS NOT, WAS NOT IN                             |
-| ISSUE           | = , != , > , >= , < , <=, IN, NOT IN                                                           |
-| LABELS          | = , !=, IS, IS NOT, IN, NOT IN                                                                 |
-| PARENT          | =, !=, IN, NOT IN                                                                              |
-| PRIORITY        | = , != , > , >= , < , <= IS , IS NOT, IN , NOT IN , WAS, WAS IN, WAS NOT, WAS NOT IN , CHANGED |
-| PROJECT         | = , !=, IS , IS NOT, IN , NOT IN                                                               |
-| SPRINT          | = , !=, IS , IS NOT, IN , NOT IN                                                               |
-| STATUS          | = , != , > , >= , < , <= IS , IS NOT, IN , NOT IN , WAS, WAS IN, WAS NOT, WAS NOT IN , CHANGED |
-| Type            | = , !=, IS , IS NOT , IN , NOT IN                                                              |
+### Supported Operators by Type
 
-### Supported Functions
+| Fields          | TYPE                                                                                  |
+|-----------------|---------------------------------------------------------------------------------------|
+| VERSION         | =, !=, >, >=, <, <=, IS, IS NOT, IN, NOT IN                                           |
+| HISTORICAL_USER | =, !=, IS, IS NOT, IN, NOT IN, WAS, WAS IN, WAS NOT, WAS NOT IN, CHANGED              |
+| ATTACHMENT      | IS, IS NOT                                                                            |
+| CATEGORY        | =, !=, IS, IS NOT, IN, NOT IN                                                         |
+| TEXT            | ~, !~                                                                                 |
+| COMPONENT       | =, !=, IS, IS NOT, IN, NOT IN                                                         |
+| DATE            | =, !=, >, >=, <, <=, IS, IS NOT, IN, NOT IN                                           |
+| USER            | ~, !~, >, >=, <, <= CHANGED, WAS, WAS IN, WAS NOT, WAS NOT IN                         |
+| ISSUE           | =, !=, >, >=, <, <=, IN, NOT IN                                                       |
+| LABELS          | =, !=, IS, IS NOT, IN, NOT IN                                                         |
+| PARENT          | = !=, IN, NOT IN                                                                      |
+| PRIORITY        | =, !=, >, >=, <, <= IS, IS NOT, IN, NOT IN, WAS, WAS IN, WAS NOT, WAS NOT IN, CHANGED |
+| PROJECT         | =, !=, IS, IS NOT, IN, NOT IN                                                         |
+| SPRINT          | =, !=, IS, IS NOT, IN, NOT IN                                                         |
+| STATUS          | =, !=, >, >=, <, <= IS, IS NOT, IN, NOT IN, WAS, WAS IN, WAS NOT, WAS NOT IN, CHANGED |
+| TYPE            | =, !=, IS, IS NOT, IN, NOT IN                                                         |
+| EPIC_LINK       | =, !=, IS, IS NOT, IN, NOT IN                                                         |
+| FILTER          | =, !=, IN, NOT IN                                                                     | 
+| PROJECT_TYPE    | =, !=, IN, NOT IN                                                                     |
+| ISSUE_LINK      | =, !=, IN, NOT IN                                                                     |
+| ISSUE_LINK_TYPE | =, !=, IN, NOT IN                                                                     |
+
+### Supported Functions by Type
 
 | Type            | Functions                                                                                                                    |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------|
@@ -160,3 +176,8 @@ The following table lists the supported fields and their corresponding types, al
 | HISTORICAL_USER | membersOf, currentUser                                                                                                       |
 | SPRINT          | openSprints, closedSprints                                                                                                   |
 | COMPONENT       | componentsLeadByUser                                                                                                         |
+| PROJECT_TYPE    | issueHistory, votedIssues, watchedIssues, linkedIssues                                                                       |
+
+## Bibliography
+1. [Fields](https://support.atlassian.com/jira-work-management/docs/jql-fields/)
+2. [Functions](https://support.atlassian.com/jira-work-management/docs/jql-functions/)
