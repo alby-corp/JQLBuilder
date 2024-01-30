@@ -98,6 +98,25 @@ public class TextTests
 
         Assert.AreEqual(expected, actual);
     }
+    
+    [TestMethod]
+    public void Should_Parses_Equality_Operators()
+    {
+        var expected =
+            $"{ExpectedCustomFieldName} {Operators.Equals} {ExpectedText} {Keywords.And} " +
+            $"{ExpectedCustomFieldName} {Operators.NotEquals} {ExpectedText} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.Equals} {ExpectedText} {Keywords.And} " +
+            $"{expectedCustomFieldId} {Operators.NotEquals} {ExpectedText}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Text[CustomFieldName] == Text)
+            .And(f => f.Text[CustomFieldName] != Text)
+            .And(f => Text == f.Text[CustomFieldId])
+            .And(f => Text != f.Text[CustomFieldId])
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
 
     [TestMethod]
     public void Should_Parses_Nullable_Operators()
