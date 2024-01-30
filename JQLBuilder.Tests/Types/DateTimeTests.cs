@@ -258,4 +258,37 @@ public class DateTimeTests
 
         Assert.AreEqual(expected, actual);
     }
+    
+        [TestMethod]
+    public void Should_Cast_Date_Functions()
+    {
+        const string increment = "(-1m)";
+
+        const string expected =
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.Now}() {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.CurrentLogin}() {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.StartOfDay}{increment} {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.StartOfWeek}{increment} {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.StartOfMonth}{increment} {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.StartOfYear}{increment} {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.EndOfDay}{increment} {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.EndOfWeek}{increment} {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.EndOfMonth}{increment} {Keywords.And} " +
+            $"{FieldContestants.Created} {Operators.Equals} {Functions.EndOfYear}{increment}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Date.Created == f.Functions.Date.Now)
+            .And(f => f.Date.Created == f.Functions.Date.CurrentLogin)
+            .And(f => f.Date.Created == f.Functions.Date.StartOfDay("-1"))
+            .And(f => f.Date.Created == f.Functions.Date.StartOfWeek("-1"))
+            .And(f => f.Date.Created == f.Functions.Date.StartOfMonth("-1"))
+            .And(f => f.Date.Created == f.Functions.Date.StartOfYear("-1"))
+            .And(f => f.Date.Created == f.Functions.Date.EndOfDay("-1"))
+            .And(f => f.Date.Created == f.Functions.Date.EndOfWeek("-1"))
+            .And(f => f.Date.Created == f.Functions.Date.EndOfMonth("-1"))
+            .And(f => f.Date.Created == f.Functions.Date.EndOfYear("-1"))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
 }

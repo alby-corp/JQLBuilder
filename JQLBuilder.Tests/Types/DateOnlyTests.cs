@@ -25,7 +25,7 @@ public class DateOnlyTests
         Assert.AreEqual("DateOnly", expression.Value.GetType().Name);
         Assert.AreEqual(DateOnly, expression.Value);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Due_Field()
     {
@@ -36,7 +36,7 @@ public class DateOnlyTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_DueDate_Field()
     {
@@ -190,6 +190,39 @@ public class DateOnlyTests
             .And(f => f.Date.Only[CustomFieldId].In(filter))
             .And(f => f.Date.Only[CustomFieldName].NotIn(DateOnly, DateOnly, DateOnly))
             .And(f => f.Date.Only[CustomFieldId].NotIn(filter))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Cast_Date_Functions()
+    {
+        const string increment = "(-1m)";
+
+        const string expected =
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.Now}() {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.CurrentLogin}() {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.StartOfDay}{increment} {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.StartOfWeek}{increment} {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.StartOfMonth}{increment} {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.StartOfYear}{increment} {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.EndOfDay}{increment} {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.EndOfWeek}{increment} {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.EndOfMonth}{increment} {Keywords.And} " +
+            $"{FieldContestants.Due} {Operators.Equals} {Functions.EndOfYear}{increment}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Date.Due == f.Functions.Date.Now)
+            .And(f => f.Date.Due == f.Functions.Date.CurrentLogin)
+            .And(f => f.Date.Due == f.Functions.Date.StartOfDay("-1"))
+            .And(f => f.Date.Due == f.Functions.Date.StartOfWeek("-1"))
+            .And(f => f.Date.Due == f.Functions.Date.StartOfMonth("-1"))
+            .And(f => f.Date.Due == f.Functions.Date.StartOfYear("-1"))
+            .And(f => f.Date.Due == f.Functions.Date.EndOfDay("-1"))
+            .And(f => f.Date.Due == f.Functions.Date.EndOfWeek("-1"))
+            .And(f => f.Date.Due == f.Functions.Date.EndOfMonth("-1"))
+            .And(f => f.Date.Due == f.Functions.Date.EndOfYear("-1"))
             .ToString();
 
         Assert.AreEqual(expected, actual);
