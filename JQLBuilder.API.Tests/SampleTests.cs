@@ -1,7 +1,5 @@
 namespace JQLBuilder.API.Tests;
 
-using JQLBuilder;
-
 [TestClass]
 public class SampleTests
 {

@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\JQLBuilder\JQLBuilder.csproj" />
+        <ProjectReference Include="..\JQLBuilder\JQLBuilder.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
 ﻿namespace JQLBuilder.Types;
 
 using Functions;
-using JqlTypes;
 
 public class InstanceFunctions
 {

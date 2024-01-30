@@ -8,7 +8,6 @@ using Fields = Fields;
 using DateTime = DateTime;
 using FieldContestants = Constants.Fields;
 
-
 [TestClass]
 public class DateTimeTests
 {
@@ -103,7 +102,7 @@ public class DateTimeTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parse_DateTime()
     {
@@ -258,8 +257,8 @@ public class DateTimeTests
 
         Assert.AreEqual(expected, actual);
     }
-    
-        [TestMethod]
+
+    [TestMethod]
     public void Should_Cast_Date_Functions()
     {
         const string increment = "(-1m)";

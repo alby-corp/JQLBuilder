@@ -5,38 +5,36 @@ using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Enum;
 using Infrastructure.Operators;
-using Issue = Types.Issue;
 
 internal class JqlTypeRenderer(StringBuilder builder)
 {
     public void Field(Field field)
     {
         var (value, arguments) = field;
-        
+
         if (value.Contains(' '))
             builder.Append('"').Append(value).Append('"');
         else
             builder.Append(value);
 
-        if (arguments.Count > 0)
-        {
-            builder.Append('[');
-            
-            for (var index = 0; index < arguments.Count; index++)
-            {
-                arguments[index].Render(this);
+        if (arguments.Count <= 0) return;
+        
+        builder.Append('[');
 
-                if (index < arguments.Count - 1) builder.Append(", ");
-            }
-            
-            builder.Append(']');
+        for (var index = 0; index < arguments.Count; index++)
+        {
+            arguments[index].Render(this);
+
+            if (index < arguments.Count - 1) builder.Append(", ");
         }
+
+        builder.Append(']');
     }
 
     public void Function(Function function)
     {
         var (name, arguments) = function;
-        
+
         builder.Append(name).Append('(');
 
         for (var index = 0; index < arguments.Count; index++)
@@ -54,7 +52,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
     public void Number(int value) => builder.Append(value);
 
-    public void Issue(Infrastructure.Issue value) => builder.Append(value.Key);
+    public void Issue(Issue value) => builder.Append(value.Key);
 
     public void Bool(bool value) => builder.Append(value ? "true" : "false");
 
@@ -78,7 +76,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
     public void UnaryOperator(UnaryOperator @operator)
     {
         var (name, left, direction) = @operator;
-        
+
         if (left is BinaryOperator ||
             (direction == Direction.Suffix && left is UnaryOperator { Direction: Direction.Prefix }))
         {
@@ -126,10 +124,10 @@ internal class JqlTypeRenderer(StringBuilder builder)
         var days = value.Days != 0;
         var hours = value.Hours != 0;
         var minutes = value.Minutes != 0;
-        
+
         var complex = (years ? 1 : 0) + (months ? 1 : 0) + (weeks ? 1 : 0) + (days ? 1 : 0) + (hours ? 1 : 0) + (minutes ? 1 : 0) >= 2;
-        
-        if(complex) builder.Append('"');
+
+        if (complex) builder.Append('"');
 
         if (years) builder.Append(value.Years).Append("y ");
         if (months) builder.Append(value.Months).Append("M ");
@@ -140,7 +138,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
         builder.Length--;
 
-        if(complex) builder.Append('"');
+        if (complex) builder.Append('"');
     }
 
     public override string ToString() => builder.ToString();

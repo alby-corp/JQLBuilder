@@ -6,7 +6,6 @@ using JQLBuilder.Types.JqlTypes;
 using Fields = Fields;
 using FieldContestants = Constants.Fields;
 
-
 [TestClass]
 public class NumberTests
 {
@@ -41,7 +40,7 @@ public class NumberTests
 
         Assert.AreEqual(expectedCustomFieldId, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Votes_Field()
     {
@@ -52,7 +51,7 @@ public class NumberTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_Watchers_Field()
     {
@@ -63,7 +62,7 @@ public class NumberTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Cast_HierarchicalLevel_Field()
     {

@@ -1,6 +1,7 @@
 ﻿namespace JQLBuilder.Types.JqlTypes;
 
 using Abstract;
+using Constants;
 using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
@@ -32,5 +33,5 @@ public class JqlIssue : JqlEpicLink, IJqlMembership<JqlIssue>
 
 public class IssueLinkField : IssueField
 {
-    public IssueField this[JqlArguments.Text linkType] => Field.Custom<IssueField>(Constants.Fields.IssueLink, [linkType]);
+    public IssueField this[JqlArguments.Text linkType] => Field.Custom<IssueField>(Fields.IssueLink, [linkType]);
 }

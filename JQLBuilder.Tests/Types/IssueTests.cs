@@ -365,16 +365,16 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
-    
+
     [TestMethod]
     public void Should_Parses_IssueLink()
     {
         const string link = "is duplicated by";
         const string expectedLink = @"""is duplicated by""";
 
-        var expected =
-                $"{FieldContestants.IssueLink} {Operators.Equals} {Issue} {Keywords.And} " +
-                $"{FieldContestants.IssueLink}[{expectedLink}] {Operators.Equals} {Issue}";
+        const string expected =
+            $"{FieldContestants.IssueLink} {Operators.Equals} {Issue} {Keywords.And} " +
+            $"{FieldContestants.IssueLink}[{expectedLink}] {Operators.Equals} {Issue}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.IssueLink == Issue)
@@ -382,5 +382,5 @@ public class IssueTests
             .ToString();
 
         Assert.AreEqual(expected, actual);
-    }   
+    }
 }

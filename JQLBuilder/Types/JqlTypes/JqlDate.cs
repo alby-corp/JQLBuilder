@@ -4,7 +4,6 @@ using Abstract;
 using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
-using DateOnly = System.DateOnly;
 
 #pragma warning disable CS0660, CS0661
 public class DateField : JqlValue, IJqlField<JqlDate>, IJqlNullable

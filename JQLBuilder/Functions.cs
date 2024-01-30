@@ -1,7 +1,6 @@
 ﻿namespace JQLBuilder;
 
 using Types.Functions;
-using Types.JqlTypes;
 
 public static class Functions
 {

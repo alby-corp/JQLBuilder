@@ -11,7 +11,7 @@ public class ProjectTypeField : JqlValue, IJqlField<JqlProjectType>
 {
     public static Bool operator ==(ProjectTypeField left, JqlProjectType right) => left.Equal(right);
     public static Bool operator !=(ProjectTypeField left, JqlProjectType right) => left.NotEqual(right);
-    public static Bool operator ==(JqlProjectType left,  ProjectTypeField right) => right.Equal(left);
+    public static Bool operator ==(JqlProjectType left, ProjectTypeField right) => right.Equal(left);
     public static Bool operator !=(JqlProjectType left, ProjectTypeField right) => right.NotEqual(left);
 }
 

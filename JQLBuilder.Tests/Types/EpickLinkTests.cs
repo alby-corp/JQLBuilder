@@ -121,8 +121,8 @@ public class EpicLinkTests
 
         Assert.AreEqual(expected, actual);
     }
-    
-        [TestMethod]
+
+    [TestMethod]
     public void Should_Parses_VotedIssues_Function()
     {
         const string expected =

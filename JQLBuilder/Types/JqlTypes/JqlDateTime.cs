@@ -4,7 +4,6 @@ using Abstract;
 using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
-using DateTime = System.DateTime;
 
 #pragma warning disable CS0660, CS0661
 public class DateTimeField : JqlValue, IJqlField<JqlDateTime>, IJqlNullable

@@ -38,7 +38,7 @@ internal static class Fields
     internal const string CreatedDate = "createdDate";
     internal const string UpdatedDate = "updatedDate";
     internal const string Resolved = "resolved";
-    internal const string ResolutionDate  = "resolutionDate ";
+    internal const string ResolutionDate = "resolutionDate ";
     internal const string LastViewed = "lastViewed";
     internal const string Votes = "votes";
     internal const string Watchers = "watchers";
