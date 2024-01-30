@@ -9,8 +9,6 @@
 [![NuGet Version](https://img.shields.io/nuget/v/JQLBuilder.svg?style=flat-square)](https://www.nuget.org/packages/JQLBuilder/)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/JQLBuilder.svg)](https://www.nuget.org/packages/JQLBuilder/)
 
-> **_NOTE:_** In its current state, the package is in the **RELEASE CANDIDATE** phase, offering partial implementation for specified fields, along with support for all functions and operators.
-
 ## Introduction
 
 This repository houses a C# library designed to provide a JQL (Jira Query Language) builder, aiding programmers in
