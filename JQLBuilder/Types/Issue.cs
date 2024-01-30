@@ -17,6 +17,8 @@ public class Issue : IssueField
     public TypeField IssueType { get; } = Field.Custom<TypeField>(Fields.IssueType);
     public TypeField Type { get; } = Field.Custom<TypeField>(Fields.Type);
     public EpicLinkField EpicLink { get; } = Field.Custom<EpicLinkField>(Fields.EpicLink);
+    public IssueLinkField IssueLink { get; } = Field.Custom<IssueLinkField>(Fields.IssueLink);
+    public TextField IssueLinkType { get; } = Field.Custom<TextField>(Fields.IssueLinkType);
 }
 
 public class OrderingIssue : IssueField

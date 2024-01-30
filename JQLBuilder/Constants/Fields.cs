@@ -16,6 +16,8 @@ internal static class Fields
     internal const string Parent = "parent";
     internal const string Key = "key";
     internal const string IssueKey = "issueKey";
+    internal const string IssueLink = "issueLink";
+    internal const string IssueLinkType = "IssueLinkType";
     internal const string Id = "id";
     internal const string Issue = "issue";
     internal const string Status = "status";

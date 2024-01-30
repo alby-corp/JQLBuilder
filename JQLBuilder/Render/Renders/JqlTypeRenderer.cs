@@ -8,16 +8,34 @@ using Infrastructure.Operators;
 
 internal class JqlTypeRenderer(StringBuilder builder)
 {
-    public void Field(string value)
+    public void Field(Field field)
     {
+        var (value, arguments) = field;
+        
         if (value.Contains(' '))
             builder.Append('"').Append(value).Append('"');
         else
             builder.Append(value);
+
+        if (arguments.Count > 0)
+        {
+            builder.Append('[');
+            
+            for (var index = 0; index < arguments.Count; index++)
+            {
+                arguments[index].Render(this);
+
+                if (index < arguments.Count - 1) builder.Append(", ");
+            }
+            
+            builder.Append(']');
+        }
     }
 
-    public void Function(string name, IReadOnlyList<IJqlType> arguments)
+    public void Function(Function function)
     {
+        var (name, arguments) = function;
+        
         builder.Append(name).Append('(');
 
         for (var index = 0; index < arguments.Count; index++)
@@ -39,8 +57,10 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
     public void Bool(bool value) => builder.Append(value ? "true" : "false");
 
-    public void BinaryOperator(IJqlType left, string name, IJqlType right, Priority priority)
+    public void BinaryOperator(BinaryOperator @operator)
     {
+        var (left, name, right, priority) = @operator;
+
         left.Render(this);
         builder.Append(' ').Append(name).Append(' ');
 
@@ -54,8 +74,10 @@ internal class JqlTypeRenderer(StringBuilder builder)
             right.Render(this);
     }
 
-    public void UnaryOperator(IJqlType left, string name, Direction direction)
+    public void UnaryOperator(UnaryOperator @operator)
     {
+        var (name, left, direction) = @operator;
+        
         if (left is BinaryOperator ||
             (direction == Direction.Suffix && left is UnaryOperator { Direction: Direction.Prefix }))
         {

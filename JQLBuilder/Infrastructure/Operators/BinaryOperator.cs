@@ -3,11 +3,4 @@
 using Abstract;
 using Enum;
 
-public class BinaryOperator(IJqlType left, string name, IJqlType right, Priority priority) : Bool
-{
-    public IJqlType Left { get; } = left;
-    public string Name { get; } = name;
-    public IJqlType Right { get; } = right;
-
-    public Priority Priority { get; } = priority;
-}
+public record BinaryOperator(IJqlType Left, string Name, IJqlType Right, Priority Priority) : Bool;

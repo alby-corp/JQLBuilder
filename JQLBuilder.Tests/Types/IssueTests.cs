@@ -121,6 +121,17 @@ public class IssueTests
     }
 
     [TestMethod]
+    public void Should_Cast_IssueLinkType_Field()
+    {
+        const string expected = FieldContestants.IssueLinkType;
+
+        var field = Fields.All.Issue.IssueLinkType;
+        var actual = ((Field)field.Value).Value;
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
     public void Should_Parses_Equality_Operators()
     {
         var expected =
@@ -354,4 +365,22 @@ public class IssueTests
 
         Assert.AreEqual(expected, actual);
     }
+    
+    [TestMethod]
+    public void Should_Parses_IssueLink()
+    {
+        const string link = "is duplicated by";
+        const string expectedLink = @"""is duplicated by""";
+
+        var expected =
+                $"{FieldContestants.IssueLink} {Operators.Equals} {Issue} {Keywords.And} " +
+                $"{FieldContestants.IssueLink}[{expectedLink}] {Operators.Equals} {Issue}";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Issue.IssueLink == Issue)
+            .And(f => f.Issue.IssueLink[link] == Issue)
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }   
 }

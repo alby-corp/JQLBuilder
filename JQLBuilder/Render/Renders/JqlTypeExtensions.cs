@@ -11,16 +11,16 @@ internal static class JqlTypeExtensions
         switch (type)
         {
             case BinaryOperator f:
-                render.BinaryOperator(f.Left, f.Name, f.Right, f.Priority);
+                render.BinaryOperator(f);
                 break;
             case UnaryOperator f:
-                render.UnaryOperator(f.Value, f.Name, f.Direction);
+                render.UnaryOperator(f);
                 break;
             case JqlValue { Value: Field s }:
-                render.Field(s.Value);
+                render.Field(s);
                 break;
             case JqlValue { Value: Function s }:
-                render.Function(s.Name, s.Arguments);
+                render.Function(s);
                 break;
             case JqlIssue { Value: string s }:
                 render.Issue(s);

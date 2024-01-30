@@ -4,6 +4,7 @@ using Abstract;
 using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
+using JqlArguments;
 
 #pragma warning disable CS0660, CS0661
 public class IssueField : Infrastructure.JqlIssue, IJqlField<JqlIssue>, IJqlNullable
@@ -27,4 +28,9 @@ public class JqlIssue : Infrastructure.JqlIssue, IJqlMembership<JqlIssue>
 {
     public static implicit operator JqlIssue(string value) => new() { Value = new Field(value) };
     public static implicit operator JqlIssue(int value) => new() { Value = value };
+}
+
+public class IssueLinkField : IssueField
+{
+    public IssueField this[JqlArguments.Text linkType] => Field.Custom<IssueField>(Constants.Fields.IssueLink, [linkType]);
 }
