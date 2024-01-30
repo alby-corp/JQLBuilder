@@ -103,4 +103,4 @@ public class JqlValue : IJqlType
     }
 }
 
-public class JqlIssue : JqlValue;
+public record Issue(string Key);

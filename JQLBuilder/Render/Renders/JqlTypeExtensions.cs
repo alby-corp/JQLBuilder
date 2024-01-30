@@ -3,6 +3,7 @@
 using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Operators;
+using Issue = Types.Issue;
 
 internal static class JqlTypeExtensions
 {
@@ -22,7 +23,7 @@ internal static class JqlTypeExtensions
             case JqlValue { Value: Function s }:
                 render.Function(s);
                 break;
-            case JqlIssue { Value: string s }:
+            case JqlValue { Value: Infrastructure.Issue s }:
                 render.Issue(s);
                 break;
             case JqlValue { Value : string s }:

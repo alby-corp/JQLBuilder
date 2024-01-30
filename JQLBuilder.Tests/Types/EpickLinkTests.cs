@@ -13,15 +13,15 @@ public class EpicLinkTests
 {
     const string EpicLink = "ABS-123";
     const int EpicLinkId = 123;
-    const string ExpectedEpicLinkField = $@"""{FieldContestants.EpicLink}""";
+    const string EpicLinkField = $@"""{FieldContestants.EpicLink}""";
 
     [TestMethod]
     public void Should_Cast_EpicLink_Expression_From_String()
     {
         var expression = (JqlEpicLink)EpicLink;
 
-        Assert.AreEqual("Field", expression.Value.GetType().Name);
-        Assert.AreEqual(new Field(EpicLink), expression.Value);
+        Assert.AreEqual("Issue", expression.Value.GetType().Name);
+        Assert.AreEqual(new Issue(EpicLink), expression.Value);
     }
 
     [TestMethod]
@@ -46,14 +46,14 @@ public class EpicLinkTests
     public void Should_Parses_Equality_Operators()
     {
         var expected =
-            $"{ExpectedEpicLinkField} {Operators.Equals} {EpicLink} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.Equals} {EpicLinkId} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotEquals} {EpicLink} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotEquals} {EpicLinkId} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.Equals} {EpicLink} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.Equals} {EpicLinkId} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotEquals} {EpicLink} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotEquals} {EpicLinkId}";
+            $"{EpicLinkField} {Operators.Equals} {EpicLink} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.Equals} {EpicLinkId} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotEquals} {EpicLink} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotEquals} {EpicLinkId} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.Equals} {EpicLink} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.Equals} {EpicLinkId} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotEquals} {EpicLink} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotEquals} {EpicLinkId}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.EpicLink == EpicLink)
@@ -73,12 +73,12 @@ public class EpicLinkTests
     public void Should_Parses_Nullable_Operators()
     {
         const string expected =
-            $"{ExpectedEpicLinkField} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.Is} {Keywords.Null} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.IsNot} {Keywords.Null}";
+            $"{EpicLinkField} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.Is} {Keywords.Empty} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.Is} {Keywords.Null} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.IsNot} {Keywords.Empty} {Keywords.And} " +
+            $"{EpicLinkField} {Operators.IsNot} {Keywords.Null}";
 
         var actual = JqlBuilder.Query
             .Where(f => f.Issue.EpicLink.Is())
@@ -96,14 +96,14 @@ public class EpicLinkTests
     public void Should_Parses_Membership_Operators()
     {
         var expected =
-            $"{ExpectedEpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLink}, {EpicLinkId}) {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLink}, {EpicLinkId}) {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLink}, {EpicLinkId}) {Keywords.And} " +
-            $"{ExpectedEpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLink}, {EpicLinkId})";
+            $"{EpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLink}, {EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} ({EpicLinkId}, {EpicLink}, {EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLinkId}, {EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLink}, {EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} ({EpicLinkId}, {EpicLink}, {EpicLinkId})";
 
         var homogeneousFilter = new JqlCollection<JqlEpicLink> { EpicLinkId, EpicLinkId, EpicLinkId };
         var heterogeneousFilter = new JqlCollection<JqlEpicLink> { EpicLinkId, EpicLink, EpicLinkId };
@@ -117,6 +117,109 @@ public class EpicLinkTests
             .And(f => f.Issue.EpicLink.NotIn(homogeneousFilter))
             .And(f => f.Issue.EpicLink.NotIn(EpicLinkId, EpicLink, EpicLinkId))
             .And(f => f.Issue.EpicLink.NotIn(heterogeneousFilter))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+        [TestMethod]
+    public void Should_Parses_VotedIssues_Function()
+    {
+        const string expected =
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.VotedIssues}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.VotedIssues}()";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Issue.EpicLink.In(f.Functions.Issues.Voted))
+            .And(f => f.Issue.EpicLink.NotIn(f.Functions.Issues.Voted))
+            .And(f => f.Issue.EpicLink.In(Functions.Issues.Voted))
+            .And(f => f.Issue.EpicLink.NotIn(Functions.Issues.Voted))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_WatchedIssues_Function()
+    {
+        const string expected =
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.WatchedIssues}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.WatchedIssues}()";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Issue.EpicLink.In(f.Functions.Issues.Watched))
+            .And(f => f.Issue.EpicLink.NotIn(f.Functions.Issues.Watched))
+            .And(f => f.Issue.EpicLink.In(Functions.Issues.Watched))
+            .And(f => f.Issue.EpicLink.NotIn(Functions.Issues.Watched))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_IssueHistory_Function()
+    {
+        const string expected =
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.IssueHistory}() {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.IssueHistory}()";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Issue.EpicLink.In(f.Functions.Issues.History))
+            .And(f => f.Issue.EpicLink.NotIn(f.Functions.Issues.History))
+            .And(f => f.Issue.EpicLink.In(Functions.Issues.History))
+            .And(f => f.Issue.EpicLink.NotIn(Functions.Issues.History))
+            .ToString();
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Should_Parses_LinkedIssues_Function()
+    {
+        const string link = "is duplicated by";
+        const string expectedLink = @"""is duplicated by""";
+
+        var expected =
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLink}, {expectedLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLink}, {expectedLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLink}, {expectedLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLink}, {expectedLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLinkId}, {expectedLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLinkId}, {expectedLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.In} {FunctionsConstants.LinkedIssues}({EpicLinkId}, {expectedLink}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLinkId}) {Keywords.And} " +
+            $"{EpicLinkField} {Operators.NotIn} {FunctionsConstants.LinkedIssues}({EpicLinkId}, {expectedLink})";
+
+        var actual = JqlBuilder.Query
+            .Where(f => f.Issue.EpicLink.In(f.Functions.Issues.LinkedIssues(EpicLink)))
+            .And(f => f.Issue.EpicLink.In(f.Functions.Issues.LinkedIssues(EpicLink, link)))
+            .And(f => f.Issue.EpicLink.NotIn(f.Functions.Issues.LinkedIssues(EpicLink)))
+            .And(f => f.Issue.EpicLink.NotIn(f.Functions.Issues.LinkedIssues(EpicLink, link)))
+            .And(f => f.Issue.EpicLink.In(Functions.Issues.LinkedIssues(EpicLink)))
+            .And(f => f.Issue.EpicLink.In(Functions.Issues.LinkedIssues(EpicLink, link)))
+            .And(f => f.Issue.EpicLink.NotIn(Functions.Issues.LinkedIssues(EpicLink)))
+            .And(f => f.Issue.EpicLink.NotIn(Functions.Issues.LinkedIssues(EpicLink, link)))
+            .And(f => f.Issue.EpicLink.In(f.Functions.Issues.LinkedIssues(EpicLinkId)))
+            .And(f => f.Issue.EpicLink.In(f.Functions.Issues.LinkedIssues(EpicLinkId, link)))
+            .And(f => f.Issue.EpicLink.NotIn(f.Functions.Issues.LinkedIssues(EpicLinkId)))
+            .And(f => f.Issue.EpicLink.NotIn(f.Functions.Issues.LinkedIssues(EpicLinkId, link)))
+            .And(f => f.Issue.EpicLink.In(Functions.Issues.LinkedIssues(EpicLinkId)))
+            .And(f => f.Issue.EpicLink.In(Functions.Issues.LinkedIssues(EpicLinkId, link)))
+            .And(f => f.Issue.EpicLink.NotIn(Functions.Issues.LinkedIssues(EpicLinkId)))
+            .And(f => f.Issue.EpicLink.NotIn(Functions.Issues.LinkedIssues(EpicLinkId, link)))
             .ToString();
 
         Assert.AreEqual(expected, actual);

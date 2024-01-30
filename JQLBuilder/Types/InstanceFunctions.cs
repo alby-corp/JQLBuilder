@@ -5,7 +5,7 @@ using JqlTypes;
 
 public class InstanceFunctions
 {
-    public DateFunctions<JqlJqlDate> Date { get; } = new();
+    public DateFunctions Date { get; } = new();
     public ProjectFunctions Project { get; } = new();
     public VersionFunctions Version { get; } = new();
     public IssueFunctions Issues { get; } = new();

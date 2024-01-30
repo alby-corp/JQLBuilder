@@ -5,6 +5,7 @@ using Infrastructure;
 using Infrastructure.Abstract;
 using Infrastructure.Enum;
 using Infrastructure.Operators;
+using Issue = Types.Issue;
 
 internal class JqlTypeRenderer(StringBuilder builder)
 {
@@ -53,7 +54,7 @@ internal class JqlTypeRenderer(StringBuilder builder)
 
     public void Number(int value) => builder.Append(value);
 
-    public void Issue(string value) => builder.Append(value);
+    public void Issue(Infrastructure.Issue value) => builder.Append(value.Key);
 
     public void Bool(bool value) => builder.Append(value ? "true" : "false");
 

@@ -7,7 +7,7 @@ using Infrastructure.Operators;
 using JqlArguments;
 
 #pragma warning disable CS0660, CS0661
-public class IssueField : Infrastructure.JqlIssue, IJqlField<JqlIssue>, IJqlNullable
+public class IssueField : JqlValue, IJqlField<JqlIssue>, IJqlNullable
 #pragma warning restore CS0660, CS0661
 {
     public static Bool operator ==(IssueField left, JqlIssue right) => left.Equal(right);
@@ -24,7 +24,7 @@ public class IssueField : Infrastructure.JqlIssue, IJqlField<JqlIssue>, IJqlNull
     public static Bool operator <=(JqlIssue left, IssueField right) => right.GreaterThanOrEqual(left);
 }
 
-public class JqlIssue : Infrastructure.JqlIssue, IJqlMembership<JqlIssue>
+public class JqlIssue : JqlEpicLink, IJqlMembership<JqlIssue>
 {
     public static implicit operator JqlIssue(string value) => new() { Value = new Field(value) };
     public static implicit operator JqlIssue(int value) => new() { Value = value };

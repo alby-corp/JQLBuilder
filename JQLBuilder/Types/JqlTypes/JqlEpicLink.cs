@@ -17,6 +17,6 @@ public class EpicLinkField : JqlValue, IJqlField<JqlEpicLink>, IJqlNullable
 
 public class JqlEpicLink : JqlValue, IJqlMembership<JqlEpicLink>
 {
-    public static implicit operator JqlEpicLink(string value) => new() { Value = new Field(value) };
+    public static implicit operator JqlEpicLink(string value) => new() { Value = new Issue(value) };
     public static implicit operator JqlEpicLink(int value) => new() { Value = value };
 }
