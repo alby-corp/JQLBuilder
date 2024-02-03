@@ -49,6 +49,10 @@ internal static class Fields
     internal const string Request = "request";
     internal const string SavedFilter = "savedFilter";
     internal const string SearchRequest = "searchRequest";
+    internal const string WorklogComment = "worklogComment";
+    internal const string WorkRatio = "workRatio";
+    internal const string WorklogDate = "worklogDate";
+
 
     internal static string Custom(int id) => $"cf[{id}]";
 }

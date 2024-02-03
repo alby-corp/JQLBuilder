@@ -15,4 +15,5 @@ public class Ordering
     public OrderingSprint Sprint { get; } = new();
     public OrderingComponent Component { get; } = new();
     public OrderingLabels Labels { get; } = new();
+    public OrderingTimeTracking TimeTracking { get; } = new();
 }
