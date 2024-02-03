@@ -20,5 +20,6 @@ public class Fields
     public Component Component { get; } = new();
     public Labels Labels { get; } = new();
     public Filter Filter { get; } = new();
+    public TimeTracking TimeTracking { get; } = new();
     public InstanceFunctions Functions { get; } = new();
 }
