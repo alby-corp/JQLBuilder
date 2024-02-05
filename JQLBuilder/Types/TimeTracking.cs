@@ -19,7 +19,7 @@ public class WorkLog
 {
     public TextField Comment { get; } = Field.Custom<TextField>(Fields.WorklogComment);
     public NumberField Ratio { get; } = Field.Custom<NumberField>(Fields.WorkRatio);
-    public DateTimeField Date { get; } = Field.Custom<DateTimeField>(Fields.WorkRatio);
+    public DateField Date { get; } = Field.Custom<DateField>(Fields.WorklogDate);
 }
 
 public class OrderingWorkLog
