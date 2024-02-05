@@ -6,7 +6,7 @@ using Fields = Fields;
 using FieldContestants = Constants.Fields;
 
 [TestClass]
-public class WorkLogComment
+public class WorkLogCommentTests
 {
     const string Comment = "MyText";
     const string ExpectedText = $@"""{Comment}""";
