@@ -8,7 +8,7 @@ using DateOnly = DateOnly;
 using FieldContestants = Constants.Fields;
 
 [TestClass]
-public class WorkLogDate
+public class WorkLogDateTests
 {
     static readonly DateOnly DateOnly = new(2001, 2, 3);
     readonly string dateOnlyString = $"\"{DateOnly:yyyy-MM-dd}\"";

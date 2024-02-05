@@ -24,6 +24,15 @@ public class JqlValue : IJqlType
         => TryParseDuration(value) ??
            throw new ArgumentException($"Duration value '{value}' is invalid. The accepted format is '(+/-)n(yMwdhm)', eg. '-1M'");
 
+    internal static object ParsePositiveDuration(string value)
+    {
+        const string errorMessage = "Duration value '{0}' is invalid. The accepted format is '(+)n(yMwdhm)', eg. '-1M'";
+    
+        if (value.Contains('-')) throw new ArgumentException(string.Format(errorMessage, value));
+    
+        return TryParseRelativeDate(value) ?? throw new ArgumentException(string.Format(errorMessage, value));
+    }
+
     static object? TryParseDateTime(string value)
     {
         if (TryParseDateOnly(value) is { } dateTime)

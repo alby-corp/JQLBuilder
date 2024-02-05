@@ -52,7 +52,11 @@ internal static class Fields
     internal const string WorklogComment = "worklogComment";
     internal const string WorkRatio = "workRatio";
     internal const string WorklogDate = "worklogDate";
-
+    internal const string TimeOriginalEstimate = "timeOriginalEstimate";
+    internal const string TimeEstimate = "timeEstimate";
+    internal const string TimeSpent = "timeSpent";
+    internal const string OriginalEstimate = "originalEstimate";
+    internal const string RemainingEstimate = "remainingEstimate";
 
     internal static string Custom(int id) => $"cf[{id}]";
 }
