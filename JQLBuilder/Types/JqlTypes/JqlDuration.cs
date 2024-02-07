@@ -26,5 +26,11 @@ public class DurationField : JqlValue, IJqlField<JqlDuration>, IJqlNullable
 public class JqlDuration : JqlDateTime, IJqlMembership<JqlDuration>
 {
     public static implicit operator JqlDuration(string value) => new() { Value = ParsePositiveDuration(value) };
-    public static implicit operator JqlDuration(TimeSpan value) => new() { Value = ParsePositiveDuration($"{value.TotalMinutes}") };
+    public static implicit operator JqlDuration(TimeSpan value)
+    {
+        if(value < TimeSpan.Zero)
+            throw new ArgumentOutOfRangeException(nameof(value), "Duration value cannot be negative");
+                
+        return new() {Value = TimeOffset.FromTimeSpan(value)};
+    }
 }

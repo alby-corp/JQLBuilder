@@ -11,8 +11,8 @@ public class DurationTests
 {
     const string DurationString = "2d 5h 4m";
     const string ExpectedDuration = $@"""{DurationString}""";
-    readonly TimeSpan TimeSpan = TimeSpan.FromHours(1);
-    string ExpectedTimeSpan => $"{TimeSpan.TotalMinutes}m";
+    readonly TimeSpan TimeSpan = TimeSpan.FromSeconds(555 * 24 * 60 * 60 + 4 * 60 * 60 + 3 * 60);
+    string ExpectedTimeSpan => $"\"555d 4h 3m\"";
     
     [TestMethod]
     public void Should_Cast_OriginalEstimate_Field()
@@ -80,8 +80,8 @@ public class DurationTests
     [TestMethod]
     public void Should_Parse_TimeStamp_Duration()
     {
-        var expected = new TimeOffset(0,0,0,0,0, 600);
-        var actual = (JqlDuration)TimeSpan.FromHours(10);
+        var expected = new TimeOffset(0, 0, 0, 10, 9, 8);
+        var actual = (JqlDuration)TimeSpan.FromDays(10).Add(TimeSpan.FromHours(9).Add(TimeSpan.FromMinutes(8)));
         Assert.AreEqual(expected, actual.Value);
     }
 
