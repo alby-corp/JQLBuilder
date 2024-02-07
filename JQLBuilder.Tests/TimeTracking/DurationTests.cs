@@ -3,7 +3,6 @@
 using Constants;
 using Infrastructure;
 using JQLBuilder.Types.JqlTypes;
-using DateOnly = DateOnly;
 using Fields = Fields;
 using FieldContestants = Constants.Fields;
 
@@ -87,22 +86,6 @@ public class DurationTests
     }
 
     [TestMethod]
-    public void Should_Parse_DateOnly()
-    {
-        var expected = new DateOnly(2000, 2, 3);
-        var actual = (JqlDateTime)"2000-02-03";
-        Assert.AreEqual(expected, actual.Value);
-    }
-
-    [TestMethod]
-    public void Should_Parse_RelativeDate()
-    {
-        var expected = new TimeOffset(0, 0, 1, 2, 3, 4);
-        var actual = (JqlDateTime)"3 1m 5h 2d    -4h +1w 2h";
-        Assert.AreEqual(expected, actual.Value);
-    }
-
-    [TestMethod]
     public void Should_Render_Literals_Correctly()
     {
         const string expected = $@"{FieldContestants.TimeEstimate} {Operators.Equals} ""2d 5h 4m""";
@@ -117,19 +100,20 @@ public class DurationTests
     [TestMethod]
     public void Should_Throw_When_Parsing_Invalid_Formats()
     {
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)" ");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"1m - 4h");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"2000-02-03 04:05:06");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"2000-99-03 04:05");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"1y");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"1M");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"m");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"invalid");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"-");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"+");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"1m - 4h");
-        Assert.ThrowsException<ArgumentException>(() => (JqlDateTime)"- 4h");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)" ");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"1m - 4h");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"2000-02-03 04:05:06");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"2000-99-03 04:05");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"1y");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"1M");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"m");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"invalid");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"-");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"+");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"1m - 4h");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"- 4h");
+        Assert.ThrowsException<ArgumentException>(() => (JqlDuration)"+4h");
     }
 
     [TestMethod]
