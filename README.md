@@ -136,6 +136,16 @@ The following table lists the supported fields and their corresponding types, al
 | issueLinkType         | ISSUE_LINK_TYPE |                                                                                                                       |
 | issueLink["LinkType"] | ISSUE_LINK      | Where LinkType is a variable you replace with the issue link type (blocks, duplicates, or is blocked by, for example) |
 | ~~issueLinkType~~     | ISSUE_LINK      | UNSUPPORTED                                                                                                           |
+| worklogComment        | TEXT            | Unlike other fields, time tracking fields are categorized under the object TimeTracking.                              |
+| workRatio             | NUMBER          | Unlike other fields, time tracking fields are categorized under the object TimeTracking.                              |
+| worklogDate           | DATETIME        | Unlike other fields, time tracking fields are categorized under the object TimeTracking.                              |
+| timeOriginalEstimate  | DURATION        | Unlike other fields, time tracking fields are categorized under the object TimeTracking.                              |
+| originalEstimate      | DURATION        | Unlike other fields, time tracking fields are categorized under the object TimeTracking.                              |
+| timeEstimate          | DURATION        | Unlike other fields, time tracking fields are categorized under the object TimeTracking.                              |
+| remainingEstimate     | DURATION        | Unlike other fields, time tracking fields are categorized under the object TimeTracking.                              |
+
+ |timeSpent|
+
 
 
 ### Supported Operators by Type
@@ -163,6 +173,7 @@ The following table lists the supported fields and their corresponding types, al
 | PROJECT_TYPE    | =, !=, IN, NOT IN                                                                     |
 | ISSUE_LINK      | =, !=, IN, NOT IN                                                                     |
 | ISSUE_LINK_TYPE | =, !=, IN, NOT IN                                                                     |
+| DURATION        | =, !=, >, >=, <, <=, IS, IS NOT, IN, NOT IN                                           |
 
 ### Supported Functions by Type
 
